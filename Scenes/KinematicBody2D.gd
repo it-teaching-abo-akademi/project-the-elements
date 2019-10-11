@@ -10,6 +10,8 @@ const FLYING_ADJUST_SPEED = 3
 const GRAVITY = 5
 var fuel : int = 2000
 
+
+
 func _physics_process(delta):
 	motion.y+=GRAVITY
 	if state == STATE_FLY:
@@ -39,19 +41,22 @@ func _physics_process(delta):
 	pass
 	
 
+var attack_begin
+var last_mouse_position
+var attack_end
+var coordinate_array = Array()
+var frame_count : int = 0
+
 func _input(event):
-	var attack_begin
-	#var last_mouse_position
-	var attack_end
-	var coordinator_array = Array()
-	var frame_count : int = 0
+
 	
 	if state == STATE_IDLE:
 		if event is InputEventMouseButton && event.is_pressed():
 			if event.button_index == BUTTON_LEFT:
 				attack_begin = get_global_mouse_position()
 				#last_mouse_position = attack_begin
-				coordinator_array.append(attack_begin)
+				#print(attack_begin)
+				coordinate_array.append(attack_begin)
 				state = STATE_ATTACK
 			if event.button_index == BUTTON_RIGHT:
 				state = STATE_FLY
@@ -63,20 +68,21 @@ func _input(event):
 			frame_count+=1
 			if(frame_count == 5):
 				frame_count = 0
-				coordinator_array.append(get_global_mouse_position())
+				coordinate_array.append(get_global_mouse_position())
 			#print("Attacking mode:", event.position)
 			#last_mouse_position = get_global_mouse_position()
 			#some manipulation here
 		if event is InputEventMouseButton && (!event.is_pressed()) && event.button_index == BUTTON_LEFT:
 			state = STATE_IDLE
 			attack_end = get_global_mouse_position()
-			coordinator_array.append(attack_end)
-			attack(attack_begin,attack_end,coordinator_array)
-			coordinator_array.clear()
+			coordinate_array.append(attack_end)
+			attack(coordinate_array)
+			coordinate_array.clear()
 	elif state == STATE_FLY:
 		#flying logic in the _physics_process function
 		if event is InputEventMouseButton && (!event.is_pressed()) && event.button_index == BUTTON_RIGHT:
 			state = STATE_IDLE
 
-func attack(attack_begin:Vector2, attack_end:Vector2,coordinator_array:Array):
+func attack(coordinate_array:Array):
+	print(coordinate_array)
 	pass
