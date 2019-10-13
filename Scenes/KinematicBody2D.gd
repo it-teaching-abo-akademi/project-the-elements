@@ -4,10 +4,14 @@ const UP = Vector2(0,-1)
 var motion =Vector2()
 enum {STATE_IDLE, STATE_ATTACK, STATE_FLY}
 var state : int = STATE_IDLE
-const SPEED = 15
+const SPEED = 60
 const FLYING_SPEED = 8
 const FLYING_ADJUST_SPEED = 3
 const GRAVITY = 5
+var burst = true
+const BURST_SPEED = 80
+const FUEL_CONSUME = 1
+const BURST_FUEL_CONSUME = 20
 var fuel : int = 2000
 
 
@@ -15,9 +19,15 @@ var fuel : int = 2000
 func _physics_process(delta):
 	motion.y+=GRAVITY
 	if state == STATE_FLY:
-		motion += -get_local_mouse_position().normalized()*FLYING_SPEED
-		fuel -=1
-		#print(fuel)
+		if(burst):
+			print("burst")
+			burst = false
+			motion += -get_local_mouse_position().normalized()*BURST_SPEED
+			fuel -= BURST_FUEL_CONSUME
+		else:
+			motion += -get_local_mouse_position().normalized()*FLYING_SPEED
+			fuel -= FUEL_CONSUME
+		print(fuel)
 		
 	if(!is_on_floor() || state == STATE_FLY):
 		if Input.is_action_pressed("ui_right"):
@@ -60,6 +70,7 @@ func _input(event):
 				state = STATE_ATTACK
 			if event.button_index == BUTTON_RIGHT:
 				state = STATE_FLY
+				burst = true
 	elif state == STATE_ATTACK:
 		#attacking mode detection here
 		
