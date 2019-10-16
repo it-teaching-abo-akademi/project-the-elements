@@ -13,7 +13,7 @@ func _ready():
 	
 	
 func _process(delta):
-	if Input.is_action_pressed("up") and area_entered and not dialogue_triggered:
+	if area_entered and not dialogue_triggered:
 		get_tree().paused = true
 		dialogue.start()
 		yield(dialogue,"dialogue_finished")
