@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Dialogue/Character/Character.gd" type="Script" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/Idle0.png-7f3430501802949ad0d6ed458caabfca.stex"
+
+[resource]
+script = ExtResource( 1 )
+display_name = "Harry"
+backstory = "He is Harry"
+expressions = {
+"neutral": SubResource( 1 )
+}

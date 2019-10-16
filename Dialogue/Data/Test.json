@@ -1,0 +1,7 @@
+{
+    "001" : {"name":"Harry", "expression": "neutral", "text":"You found something." },
+    "002" : {"name":"Ben", "expression": "neutral", "text":"I don't know what that is, but at least it's something!" },
+	"003" : {"name":"Harry", "expression": "neutral", "text":"Oh yes!" },
+	"004" : {"name":"Ben", "expression": "neutral", "text":"Let's have a close look at it!" },
+	"005" : {"name":"Harry", "expression": "neutral", "text":"wryyyyyyyyyyyyy!" }
+}

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Dialogue/DialogueAction.gd" type="Script" id=1]
+[ext_resource path="res://Dialogue/DialogueElements/DialogueBox.tscn" type="PackedScene" id=2]
+
+[node name="DialogueAction" type="Node"]
+script = ExtResource( 1 )
+dialogue_file_path = "res://Dialogue/Data/Test.json"
+
+[node name="DialogueBox" parent="." instance=ExtResource( 2 )]
+visible = false
