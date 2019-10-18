@@ -19,7 +19,7 @@ func _on_ChangeStage_body_exited(body):
 	
 	
 func _process(delta):
-	if Input.is_action_pressed("up") and area_entered:
+	if Input.is_action_pressed("ctrl") and area_entered:
 		get_tree().change_scene(target_stage)
 
 

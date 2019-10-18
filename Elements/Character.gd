@@ -9,13 +9,14 @@ const FLYING_ADJUST_SPEED = global.FLYING_ADJUST_SPEED
 const BURST_SPEED = global.BURST_SPEED
 const FUEL_CONSUME = global.FUEL_CONSUME
 const BURST_FUEL_CONSUME = global.BURST_FUEL_CONSUME
-
+const ELEMENTS = global.ELEMENTS
 
 var fuel : int = 2000
 var burst = true
 var state = global.CHARACTER_STATES['STATE_IDLE']
 var motion = Vector2()
-
+var element_left = 0 #index of element
+var element_right = 1 #index of element
 
 class_name Character
 
@@ -54,7 +55,6 @@ func _physics_process(delta):
 				motion.x = 0
 				$Sprite.play("Idle")
 	motion = move_and_slide(motion,UP)
-	pass
 	
 
 var attack_begin
@@ -64,19 +64,41 @@ var coordinate_array = Array()
 var frame_count : int = 0
 
 func _input(event):
-
+	#change elements
+	if Input.is_action_pressed("change_element_left_previous"):
+		element_left = change_element_to_previous(element_left, element_right)
+	if Input.is_action_pressed("change_element_left_next"):
+		element_left = change_element_to_next(element_left, element_right)
+	if Input.is_action_pressed("change_element_right_previous"):
+		element_right = change_element_to_previous(element_right, element_left)
+	if Input.is_action_pressed("change_element_right_next"):
+		element_right = change_element_to_next(element_right, element_left)
 	
 	if state == global.CHARACTER_STATES['STATE_IDLE']:
-		if event is InputEventMouseButton && event.is_pressed():
-			if event.button_index == BUTTON_LEFT:
+		if Input.is_action_pressed("left_mouse_click"):
+			if ELEMENTS[element_left] == 'spring':
+				state = global.CHARACTER_STATES['STATE_FLY']
+				burst = true
+			else:
+				state = global.CHARACTER_STATES['STATE_ATTACK']
+				print(ELEMENTS[element_left])
 				attack_begin = get_global_mouse_position()
 				#last_mouse_position = attack_begin
 				#print(attack_begin)
 				coordinate_array.append(attack_begin)
-				state = global.CHARACTER_STATES['STATE_ATTACK']
-			if event.button_index == BUTTON_RIGHT:
+				state = global.CHARACTER_STATES['STATE_IDLE']
+		if Input.is_action_pressed("right_mouse_click"):
+			if ELEMENTS[element_right] == 'spring':
 				state = global.CHARACTER_STATES['STATE_FLY']
 				burst = true
+			else:
+				state = global.CHARACTER_STATES['STATE_ATTACK']
+				print(ELEMENTS[element_right])
+				attack_begin = get_global_mouse_position()
+				#last_mouse_position = attack_begin
+				#print(attack_begin)
+				coordinate_array.append(attack_begin)
+				state = global.CHARACTER_STATES['STATE_IDLE']
 	elif state == global.CHARACTER_STATES['STATE_ATTACK']:
 		#attacking mode detection here
 		
@@ -97,10 +119,34 @@ func _input(event):
 			coordinate_array.clear()
 	elif state == global.CHARACTER_STATES['STATE_FLY']:
 		#flying logic in the _physics_process function
-		if event is InputEventMouseButton && (!event.is_pressed()) && event.button_index == BUTTON_RIGHT:
 			state = global.CHARACTER_STATES['STATE_IDLE']
 
 func attack(coordinate_array:Array):
 	print(coordinate_array)
 	pass
 
+func change_element_to_next(element:int, element_chosen:int):
+	"""
+	change the element to the next unseleted element
+	"""
+	element += 1
+	if element < ELEMENTS.size():
+		if element != element_chosen:
+			return element
+		else:
+			return change_element_to_next(element, element_chosen)
+	else:
+		return change_element_to_next(-1, element_chosen)
+		
+func change_element_to_previous(element:int, element_chosen:int):
+	"""
+	change the element to the next unseleted element
+	"""
+	element -= 1
+	if element >= 0:
+		if element != element_chosen:
+			return element
+		else:
+			return change_element_to_previous(element, element_chosen)
+	else:
+		return change_element_to_previous(ELEMENTS.size(), element_chosen)

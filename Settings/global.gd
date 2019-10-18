@@ -2,7 +2,8 @@ extends Node
 
 #environment variables
 const CONFIG_FILE = "user://input.cfg"
-const ACTIONS = [ "move_left", "move_right", "up", "down" ]
+const ACTIONS = [ "move_left", "move_right", "change_element_left_previous", "change_element_left_next", "change_element_right_previous", "change_element_right_next", "ctrl" ]
+const ELEMENTS = [ "spring", "knife", "fire", "wood", "soil"]
 
 
 #game data
