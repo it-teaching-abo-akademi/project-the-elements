@@ -22,6 +22,7 @@ class_name Character
 
 func _physics_process(delta):
 	motion.y += GRAVITY
+	$Sprite.play("Gem")
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
 			print("burst")
@@ -38,7 +39,7 @@ func _physics_process(delta):
 			motion.x += FLYING_ADJUST_SPEED
 		elif Input.is_action_pressed("move_left"):
 			motion.x += -FLYING_ADJUST_SPEED
-		$Sprite.play("Jump")
+		#$Sprite.play("Jump")
 	else: #if there is no flying effect
 		if (abs(motion.x) > SPEED):
 			motion *= 0.95
@@ -46,14 +47,14 @@ func _physics_process(delta):
 			if Input.is_action_pressed("move_right"):
 				motion.x = SPEED
 				$Sprite.flip_h = false
-				$Sprite.play("Run")
+				#$Sprite.play("Run")
 			elif Input.is_action_pressed("move_left"):
 				motion.x = -SPEED
 				$Sprite.flip_h = true
-				$Sprite.play("Run")
+				#$Sprite.play("Run")
 			else:
 				motion.x = 0
-				$Sprite.play("Idle")
+				#$Sprite.play("Idle")
 	motion = move_and_slide(motion,UP)
 	
 

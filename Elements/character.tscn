@@ -1,14 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Elements/Character.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Player/Idle0.png" type="Texture" id=2]
-[ext_resource path="res://Elements/Sprites/Player/Jump0.png" type="Texture" id=3]
-[ext_resource path="res://Elements/Sprites/Player/Run0.png" type="Texture" id=4]
-[ext_resource path="res://Elements/Sprites/Player/Run1.png" type="Texture" id=5]
-[ext_resource path="res://Elements/Sprites/Player/Run2.png" type="Texture" id=6]
-[ext_resource path="res://Elements/Sprites/Player/Run3.png" type="Texture" id=7]
-[ext_resource path="res://Elements/Sprites/Player/Run4.png" type="Texture" id=8]
-[ext_resource path="res://Elements/Sprites/Player/Run7.png" type="Texture" id=9]
+[ext_resource path="res://Elements/Sprites/Player/Run0.png" type="Texture" id=3]
+[ext_resource path="res://Elements/Sprites/Player/Run1.png" type="Texture" id=4]
+[ext_resource path="res://Elements/Sprites/Player/Run2.png" type="Texture" id=5]
+[ext_resource path="res://Elements/Sprites/Player/Run3.png" type="Texture" id=6]
+[ext_resource path="res://Elements/Sprites/Player/Run4.png" type="Texture" id=7]
+[ext_resource path="res://Elements/Sprites/Player/Run7.png" type="Texture" id=8]
+[ext_resource path="res://Elements/Sprites/Player/Jump0.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Hero/Hero_Knife/01.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Hero/Hero_Knife/02.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Hero/Hero_Knife/03.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Hero/Hero_Knife/04.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Hero/Hero_Knife/05.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Hero/Hero_Knife/06.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -17,34 +23,38 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
-"name": "Run",
-"speed": 10.0
+"name": "Gem",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 14, 28 )
+extents = Vector2( 24.7278, 36.9911 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 511.269, 511.155 )
+position = Vector2( 309.133, 184.231 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "Gem_Idle"
+animation = "Gem"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( -0.441284, -0.830414 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
