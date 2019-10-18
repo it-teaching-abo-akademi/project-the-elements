@@ -111,7 +111,7 @@ func _input(event):
 			#print("Attacking mode:", event.position)
 			#last_mouse_position = get_global_mouse_position()
 			#some manipulation here
-		if event is InputEventMouseButton && (!event.is_pressed()) && event.button_index == BUTTON_LEFT:
+		if Input.is_action_pressed("left_mouse_click"):
 			state = global.CHARACTER_STATES['STATE_IDLE']
 			attack_end = get_global_mouse_position()
 			coordinate_array.append(attack_end)
