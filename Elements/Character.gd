@@ -65,13 +65,13 @@ var frame_count : int = 0
 
 func _input(event):
 	#change elements
-	if Input.is_action_pressed("change_element_left_previous"):
+	if Input.is_action_just_pressed("change_element_left_previous"):
 		element_left = change_element_to_previous(element_left, element_right)
-	if Input.is_action_pressed("change_element_left_next"):
+	if Input.is_action_just_pressed("change_element_left_next"):
 		element_left = change_element_to_next(element_left, element_right)
-	if Input.is_action_pressed("change_element_right_previous"):
+	if Input.is_action_just_pressed("change_element_right_previous"):
 		element_right = change_element_to_previous(element_right, element_left)
-	if Input.is_action_pressed("change_element_right_next"):
+	if Input.is_action_just_pressed("change_element_right_next"):
 		element_right = change_element_to_next(element_right, element_left)
 	
 	if state == global.CHARACTER_STATES['STATE_IDLE']:
