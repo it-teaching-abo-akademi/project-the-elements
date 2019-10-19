@@ -11,6 +11,8 @@ var gestures_in_progress = Array()
 
 signal start_gesture
 signal fail_gesture
+
+# Parameter: Attack
 signal character_attack
 
 func _draw():
@@ -38,6 +40,7 @@ func _input(event):
 		# Check if we are starting a new gesture
 		for gesture in gestures:
 			if gesture.is_index_valid(pos, 0):
+				emit_signal("start_gesture")
 				# Start drawing this gesture
 				gesture.state = 0
 				gestures_in_progress.append(gesture)
@@ -71,11 +74,13 @@ func _input(event):
 			if gesture.is_complete():
 				gestures_in_progress.erase(gesture)
 				print("Gesture complete!: " + str(gesture.points.size()))
+				emit_signal("character_attack", gesture.attack)				
+				print("Emited signal attack " + gesture.attack.name)
 				gesture.init_again()
 				
-				# TODO: call something
 			elif gesture.state == -2:
 				# The gesture was not draw
 				gestures_in_progress.erase(gesture)
+				emit_signal("fail_gesture")
 				gesture.init_again()
 				print("Broken gesture")
