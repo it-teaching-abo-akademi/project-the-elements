@@ -9,18 +9,16 @@ var gestures = Array()
 # can start at the same point
 var gestures_in_progress = Array()
 
+signal start_gesture
+signal fail_gesture
+signal character_attack
+
 func _draw():
+	# For debug purposes
 	for gesture in gestures:
 		for point in gesture.points:
 			draw_circle(point, gesture.radius, Color.red)
-
-func _ready():
-	var gesture = Gesture.new(1.0, [Vector2(100,100), Vector2(500,100)])
 	
-	gesture.radius = 25.0
-	print(str(gesture.points))
-	
-	gestures.append(gesture)
 
 func add_gesture(gesture: Gesture):
 	gestures.append(gesture)

@@ -16,6 +16,9 @@ var radius: float = 5.0 setget set_radius, get_radius
 # Tell how much index are already been 'draw'. -1 to 'not started'
 var state: int = -1 setget set_state, get_state
 
+# The associated attack
+var attack: Attack = null setget set_attack, get_attack
+
 func _init(time_max: float, pts: Array = Array()):
 	time_limit = time_max
 	points = pts
@@ -81,3 +84,9 @@ func set_state(s: int):
 
 func get_state():
 	return state
+
+func set_attack(a:Attack):
+	attack = a
+
+func get_attack():
+	return attack
