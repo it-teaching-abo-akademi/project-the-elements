@@ -22,7 +22,7 @@ class_name Character
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	$Sprite.play("Gem")
+	$Sprite.play("Spring")
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
 			print("burst")
