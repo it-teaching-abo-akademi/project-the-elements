@@ -134,3 +134,20 @@ margin_left = 473.473
 margin_top = 95.4617
 margin_right = 485.473
 margin_bottom = 115.462
+
+[node name="space" type="Control" parent="bindings"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="bindings/space"]
+margin_left = 407.844
+margin_top = 137.816
+margin_right = 575.844
+margin_bottom = 151.816
+text = "space"
+
+[node name="Button" type="Button" parent="bindings/space"]
+margin_left = 473.473
+margin_top = 133.743
+margin_right = 485.473
+margin_bottom = 153.744
