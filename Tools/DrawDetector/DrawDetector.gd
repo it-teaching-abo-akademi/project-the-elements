@@ -15,6 +15,9 @@ signal fail_gesture
 # Parameter: Attack
 signal character_attack
 
+# Names of the attacks already done to check for combo
+var attacks = []
+
 func _draw():
 	# For debug purposes
 	for gesture in gestures:
@@ -74,6 +77,8 @@ func _input(event):
 			if gesture.is_complete():
 				gestures_in_progress.erase(gesture)
 				print("Gesture complete!: " + str(gesture.points.size()))
+				attacks.append(gesture.attack.name)
+				# We can check for combo here
 				emit_signal("character_attack", gesture.attack)				
 				print("Emited signal attack " + gesture.attack.name)
 				gesture.init_again()
