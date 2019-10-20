@@ -18,11 +18,15 @@ var motion = Vector2()
 var element_left = 0 #index of element
 var element_right = 1 #index of element
 
+#temp var
+var element_look = 0
+
 class_name Character
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	$Sprite.play("Spring")
+	$Sprite.play(ELEMENTS[element_look])
+	
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
 			print("burst")
@@ -75,9 +79,13 @@ func _input(event):
 	if Input.is_action_just_pressed("change_element_right_next"):
 		element_right = change_element_to_next(element_right, element_left)
 	
+	#temp
+	if Input.is_action_just_pressed("space"):
+		element_look = change_element_to_next(element_look, 6)
+	
 	if state == global.CHARACTER_STATES['STATE_IDLE']:
 		if Input.is_action_pressed("left_mouse_click"):
-			if ELEMENTS[element_left] == 'spring':
+			if ELEMENTS[element_left] == 'Spring':
 				state = global.CHARACTER_STATES['STATE_FLY']
 				burst = true
 			else:
@@ -89,7 +97,7 @@ func _input(event):
 				coordinate_array.append(attack_begin)
 				state = global.CHARACTER_STATES['STATE_IDLE']
 		if Input.is_action_pressed("right_mouse_click"):
-			if ELEMENTS[element_right] == 'spring':
+			if ELEMENTS[element_right] == 'Spring':
 				state = global.CHARACTER_STATES['STATE_FLY']
 				burst = true
 			else:
@@ -141,7 +149,7 @@ func change_element_to_next(element:int, element_chosen:int):
 		
 func change_element_to_previous(element:int, element_chosen:int):
 	"""
-	change the element to the next unseleted element
+	change the element to the previous unseleted element
 	"""
 	element -= 1
 	if element >= 0:
