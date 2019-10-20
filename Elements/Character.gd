@@ -22,7 +22,7 @@ class_name Character
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	$Sprite.play("Gem")
+	$Sprite.play("Spring")
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
 			print("burst")
@@ -151,3 +151,18 @@ func change_element_to_previous(element:int, element_chosen:int):
 			return change_element_to_previous(element, element_chosen)
 	else:
 		return change_element_to_previous(ELEMENTS.size(), element_chosen)
+
+
+func _ready():
+	# Create gestures
+	# Eventually it should be loaded from a file
+	var attack = Attack.new()
+	attack.damage = 42.0
+	attack.name = 'Random name'
+	
+	var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
+	gesture.radius = 25.0
+	gesture.attack = attack
+	
+	$DrawDetector.add_gesture(gesture)
+	
