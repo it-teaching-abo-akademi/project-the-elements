@@ -3,7 +3,6 @@ extends Area2D
 export(String, FILE, "*.tscn")  var target_stage
 
 onready var dialogue : DialogueAction = get_node("/root/MainStage/CanvasLayer/DialogueAction")
-onready var character : Character = $Character
 
 var area_entered = false
 var dialogue_triggered = false
