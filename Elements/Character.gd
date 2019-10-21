@@ -23,6 +23,12 @@ var element_look = 0
 
 class_name Character
 
+signal start_gesture
+signal fail_gesture
+
+# Parameter: Attack
+signal character_attack
+
 func _physics_process(delta):
 	motion.y += GRAVITY
 	$Sprite.play(ELEMENTS[element_look])
@@ -130,9 +136,19 @@ func _input(event):
 		#flying logic in the _physics_process function
 			state = global.CHARACTER_STATES['STATE_IDLE']
 
-func attack(coordinate_array:Array):
-	print(coordinate_array)
-	pass
+
+func attack(attack:Attack):
+	print("Attack!!")
+	emit_signal("character_attack", attack)
+
+func start_gesture():
+	print("start gesture!!")
+	emit_signal("start_gesture")
+
+func fail_gesture():
+	print("fail gesture :(")
+	emit_signal("fail_gesture")
+
 
 func change_element_to_next(element:int, element_chosen:int):
 	"""
