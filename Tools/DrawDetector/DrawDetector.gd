@@ -37,7 +37,7 @@ func _distance_line_point(line_p1: Vector2, line_p2: Vector2, point: Vector2):
 	return a / sr
 
 func _input(event):
-	if event.is_action("left_click") and event.is_pressed():
+	if event.is_action("left_mouse_click") and event.is_pressed():
 		var pos = get_local_mouse_position()
 		print("left! " + str(pos))
 		# Check if we are starting a new gesture
