@@ -68,12 +68,8 @@ func _physics_process(delta):
 		else:
 			if Input.is_action_pressed("move_right"):
 				motion.x = SPEED
-				$Sprite.flip_h = false
-				#$Sprite.play("Run")
 			elif Input.is_action_pressed("move_left"):
 				motion.x = -SPEED
-				$Sprite.flip_h = true
-				#$Sprite.play("Run")
 			else:
 				motion.x = 0
 				#$Sprite.play("Idle")
@@ -106,6 +102,12 @@ func _input(event):
 	if Input.is_action_just_pressed("change_element_right_next"):
 		element_right = change_element_to_next(element_right, element_left)
 	
+	#flip sprite
+	if Input.is_action_pressed("move_right"):
+				$Sprite.flip_h = false
+	elif Input.is_action_pressed("move_left"):
+				$Sprite.flip_h = true
+				
 	#temp
 	if Input.is_action_just_pressed("space"):
 		element_look = change_element_to_next(element_look, 6)
