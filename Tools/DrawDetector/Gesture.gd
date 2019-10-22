@@ -5,88 +5,91 @@ extends Object
 class_name Gesture
 
 var points = Array() setget set_points, get_points
-var time_limit:float = 0.0 setget set_time_limit, get_time_limit
+var line:bool = false setget set_is_line, is_line
 
-# The maximum offset the drawing can have (it means that it can start somewhere else)
-# var offset: float = 0.0 setget set_offset, get_offset
+var computed:bool = false
 
-# The radius to valid each point
-var radius: float = 5.0 setget set_radius, get_radius
+var direction = -1 setget set_direction, get_direction
 
-# Tell how much index are already been 'draw'. -1 to 'not started'
-var state: int = -1 setget set_state, get_state
+var MAX_DISTANCE:float = 5.0
 
-# The associated attack
-var attack: Attack = null setget set_attack, get_attack
 
-func _init(time_max: float, pts: Array = Array()):
-	time_limit = time_max
-	points = pts
-	state = -1
-
-func add_point(coords: Vector2):
-	points.append(coords)
-
-# Check if the given position is on a point
-func is_index_valid(position: Vector2, index: int = 0):
-	# TODO: check if index is not outside the array
-	var point = points[index]
-	
-	if position.x <= point.x + radius and position.x >= point.x - radius \
-	and position.y <= point.y + radius and position.y >= point.y - radius:
-		return true
-	return false
-
-func look_valid_index(position: Vector2):
-	var index = 0
-	for point in points:
-		if is_index_valid(position, index):
-			return index
-		index += 1
-	return -1
-
-func is_complete():
-	return state >= points.size() - 1
-
-func init_again():
-	state = -1
-
-###
-# Getters/Setters
-###
-
-func set_time_limit(time: float):
-	time_limit = time
-
-func get_time_limit():
-	return time_limit
-
-func set_points(pts: Array):
-	points = pts
+func set_points(pts:Array):
+	if not points.empty():
+		points.clear()
+	for p in pts:
+		points.append(p)
 
 func get_points():
 	return points
 
-#func set_offset(o: float):
-#	offset = o
+func set_is_line(is_line:bool):
+	line = is_line
 
-#func get_offset():
-#	return offset
+func is_line():
+	"""
+	To know if it's a line, we get the first and last point and compute the angle of the line formed
+	Then we can check if every point is not far from the line
+	"""
+	computed = true
+	if points.size() < 2:
+		direction = -1
+		return false
+	var first = points[0]
+	var last = points.back()
+	
+	for i in range(1, points.size()):
+		if _distance_line_point(first, last, points[i]) > MAX_DISTANCE:
+			direction = -1
+			return false
+	
+	# It is considered as a line
+	# We now need to know the direction of the line
+	
+	# Compute the angle between the line and the x axe
+	var angle_with_x = first.angle_to_point(last)
+	while angle_with_x > 2 * PI:
+		angle_with_x -= 2 * PI
+	
+	if angle_with_x < 0:
+		angle_with_x += 2 * PI
+	
+	if angle_with_x < PI / 8:
+		direction = global.DIRECTION['DIR_W']
+	elif angle_with_x < 3 * PI / 8:
+		direction = global.DIRECTION['DIR_NW']
+	elif angle_with_x < 5 * PI / 8:
+		direction = global.DIRECTION['DIR_N']
+	elif angle_with_x < 7 * PI / 8:
+		direction = global.DIRECTION['DIR_NE']
+	elif angle_with_x < 9 * PI / 8:
+		direction = global.DIRECTION['DIR_E']
+	elif angle_with_x < 11 * PI / 8:
+		direction = global.DIRECTION['DIR_SE']
+	elif angle_with_x < 13 * PI / 8:
+		direction = global.DIRECTION['DIR_S']
+	elif angle_with_x < 15 * PI / 8:
+		direction = global.DIRECTION['DIR_SW']
+	else:
+		direction = global.DIRECTION['DIR_W']
 
-func set_radius(r: float):
-	radius = r
+	return true
 
-func get_radius():
-	return radius
+func set_direction(dir):
+	direction = dir
 
-func set_state(s: int):
-	state = s
+func get_direction():
+	if not computed:
+		is_line()
+	return direction
 
-func get_state():
-	return state
-
-func set_attack(a:Attack):
-	attack = a
-
-func get_attack():
-	return attack
+func _distance_line_point(line_p1: Vector2, line_p2: Vector2, point: Vector2):
+	var y2y1 = line_p2.y - line_p1.y
+	var x2x1 = line_p2.x - line_p1.x
+	var a = abs(y2y1 * point.x - x2x1 * point.y + line_p2.x * line_p1.y - line_p2.y * line_p1.x)
+	var sr = sqrt(y2y1 * y2y1 + x2x1 * x2x1)
+	
+	if sr == 0:
+		return 0
+	
+	return a / sr

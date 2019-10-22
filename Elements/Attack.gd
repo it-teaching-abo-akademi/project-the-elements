@@ -9,6 +9,8 @@ var time_before:float = 0.0
 var time_attack:float = 1.0
 var time_after:float = 0.0
 
+var element:int = -1 setget set_element, get_element
+
 # It can be an idea to have an 'Effect' class, who handle the effect
 # For example, the enemy call methods from this class to create the effect
 # without having to check every case itself
@@ -46,3 +48,9 @@ func set_combo_effect(cb:int):
 
 func get_combo_effect():
 	return combo_effect
+
+func set_element(e:int):
+	element = e
+
+func get_element():
+	return element

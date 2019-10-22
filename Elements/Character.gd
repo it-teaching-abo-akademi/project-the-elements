@@ -11,6 +11,9 @@ const FUEL_CONSUME = global.FUEL_CONSUME
 const BURST_FUEL_CONSUME = global.BURST_FUEL_CONSUME
 const ELEMENTS = global.ELEMENTS
 
+export(float) var ATTACK_RANGE = 50.0
+export(float) var MINIMUM_LINE_LENGTH = 50.0
+
 var fuel : int = 2000
 var burst = true
 var state = global.CHARACTER_STATES['STATE_IDLE']
@@ -26,8 +29,11 @@ class_name Character
 signal start_gesture
 signal fail_gesture
 
-# Parameter: Attack
+# Parameter: Attack, element
 signal character_attack
+
+func _draw():
+	draw_circle(to_local(position), ATTACK_RANGE, Color(1.0, 0.0, 0.0, 0.5))
 
 func _physics_process(delta):
 	motion.y += GRAVITY
@@ -35,14 +41,14 @@ func _physics_process(delta):
 	
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
-			print("burst")
+			# print("burst")
 			burst = false
 			motion += -get_local_mouse_position().normalized() * BURST_SPEED
 			fuel -= BURST_FUEL_CONSUME
 		else:
 			motion += -get_local_mouse_position().normalized() * FLYING_SPEED
 			fuel -= FUEL_CONSUME
-		print(fuel)
+		# print(fuel)
 		
 	if(!is_on_floor() || state == global.CHARACTER_STATES['STATE_FLY']):
 		if Input.is_action_pressed("move_right"):
@@ -130,7 +136,7 @@ func _input(event):
 			state = global.CHARACTER_STATES['STATE_IDLE']
 			attack_end = get_global_mouse_position()
 			coordinate_array.append(attack_end)
-			attack(coordinate_array)
+			# attack(coordinate_array)
 			coordinate_array.clear()
 	elif state == global.CHARACTER_STATES['STATE_FLY']:
 		#flying logic in the _physics_process function
@@ -138,17 +144,76 @@ func _input(event):
 
 
 func attack(attack:Attack):
-	print("Attack!!")
+	print("Attack " + attack.name)
 	emit_signal("character_attack", attack)
 
-func start_gesture():
-	print("start gesture!!")
-	emit_signal("start_gesture")
+func start_gesture(button):
+	if button == 1:
+		print("start left gesture")
+	else:
+		print("start right gesture")
+	emit_signal("start_gesture", button)
 
-func fail_gesture():
-	print("fail gesture :(")
-	emit_signal("fail_gesture")
+func _point_is_in_range(point:Vector2):
+	return point.x > position.x - ATTACK_RANGE and point.x < position.x + ATTACK_RANGE \
+	and point.y > position.y - ATTACK_RANGE and point.y < position.y + ATTACK_RANGE
 
+func complete_gesture(gesture, button):
+	if button == 1:
+		print("complete left gesture")
+	else:
+		print("complete right gesture")
+	
+	if gesture.line:
+		print("It's a line")
+		if gesture.direction == global.DIRECTION['DIR_N']:
+			print("Direction: N")
+		elif gesture.direction == global.DIRECTION['DIR_S']:
+			print("Direction: S")
+		elif gesture.direction == global.DIRECTION['DIR_E']:
+			print("Direction: E")
+		elif gesture.direction == global.DIRECTION['DIR_W']:
+			print("Direction: W")
+		elif gesture.direction == global.DIRECTION['DIR_NE']:
+			print("Direction: NE")
+		elif gesture.direction == global.DIRECTION['DIR_NW']:
+			print("Direction: NW")
+		elif gesture.direction == global.DIRECTION['DIR_SE']:
+			print("Direction: SE")
+		elif gesture.direction == global.DIRECTION['DIR_SW']:
+			print("Direction: SW")
+
+	var attack = Attack.new()
+	if button == 1:
+		attack.element = element_left
+	else:
+		attack.element = element_right
+
+	if gesture.points[0].distance_squared_to(gesture.points.back()) < MINIMUM_LINE_LENGTH * MINIMUM_LINE_LENGTH:
+		return
+
+	if gesture.direction == global.DIRECTION['DIR_SE']:
+		if ELEMENTS[attack.element] == "Knife" and _point_is_in_range(gesture.points[0]) and _point_is_in_range(gesture.points.back()):
+			attack.name = "Slash"
+			attack.damage = 42.0
+			attack.start_position = position
+	elif gesture.direction == global.DIRECTION['DIR_E']:
+		if ELEMENTS[attack.element] == "Knife" and _point_is_in_range(gesture.points[0]) and _point_is_in_range(gesture.points.back()):
+			attack.name = "Thrust"
+			attack.damage = 18.0
+			attack.start_position = position
+		elif ELEMENTS[attack.element] == "Fire":
+			# Arrow or fireball
+			pass
+	elif gesture.direction == global.DIRECTION['DIR_NE']:
+		if ELEMENTS[attack.element] == "Knife" and _point_is_in_range(gesture.points[0]) and _point_is_in_range(gesture.points.back()):
+			attack.name = "Lift"
+			attack.damage = 5.0
+			attack.start_position = position
+	
+	if attack.name != "unknown":
+		attack(attack)
+	
 
 func change_element_to_next(element:int, element_chosen:int):
 	"""
@@ -180,13 +245,13 @@ func change_element_to_previous(element:int, element_chosen:int):
 func _ready():
 	# Create gestures
 	# Eventually it should be loaded from a file
-	var attack = Attack.new()
-	attack.damage = 42.0
-	attack.name = 'Random name'
+	# var attack = Attack.new()
+	# attack.damage = 42.0
+	# attack.name = 'Random name'
 	
-	var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
-	gesture.radius = 25.0
-	gesture.attack = attack
+	# var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
+	# gesture.radius = 25.0
+	# gesture.attack = attack
 	
-	$DrawDetector.add_gesture(gesture)
-	
+	# $DrawDetector.add_gesture(gesture)
+	pass

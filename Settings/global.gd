@@ -18,7 +18,16 @@ const FUEL_CONSUME = 1  #character fuel consume per time unit
 const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
 
 enum CHARACTER_STATES {STATE_IDLE, STATE_ATTACK, STATE_FLY}  # states of charater
-
+enum DIRECTION {
+	DIR_N,
+	DIR_S,
+	DIR_W,
+	DIR_E,
+	DIR_NE,
+	DIR_NW,
+	DIR_SE,
+	DIR_SW
+}
 
 #functions
 func _ready():
