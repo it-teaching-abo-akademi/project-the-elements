@@ -21,6 +21,10 @@ var motion = Vector2()
 var element_left = 0 #index of element
 var element_right = 1 #index of element
 
+#element selection
+onready var selection_plate = $SelectionPlate
+
+
 #temp var
 var element_look = 0
 
@@ -37,7 +41,7 @@ func _draw():
 
 func _physics_process(delta):
 	motion.y += GRAVITY
-	$Sprite.play(ELEMENTS[element_look])
+	#$Sprite.play(ELEMENTS[element_look])
 	
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
@@ -81,6 +85,15 @@ var coordinate_array = Array()
 var frame_count : int = 0
 
 func _input(event):
+	#show selection plate
+	if Input.is_action_pressed("ctrl"):
+		selection_plate.show()
+		selection_plate.lighten_element(get_element_by_angle(get_mouse_angle()))
+		
+	if Input.is_action_just_released("ctrl"):
+		selection_plate.hide()
+		$Sprite.play(get_element_by_angle(get_mouse_angle()))
+	
 	#change elements
 	if Input.is_action_just_pressed("change_element_left_previous"):
 		element_left = change_element_to_previous(element_left, element_right)
@@ -241,8 +254,30 @@ func change_element_to_previous(element:int, element_chosen:int):
 	else:
 		return change_element_to_previous(ELEMENTS.size(), element_chosen)
 
+func get_mouse_angle():
+	"""
+	get the angle between mouse and + x axis in degrees
+	"""
+	return get_angle_to(get_global_mouse_position()) / PI * 180
+
+func get_element_by_angle(angle : float):
+	"""
+	change the element using the selection plate
+	"""
+	if angle < 18 and angle >= -54:
+		return "Fire"
+	elif angle < -54 and angle >= -126:
+		return "Earth"
+	elif angle < -126 or angle >= 162:
+		return "Wood"
+	elif angle < 162 and angle >= 90:
+		return "Spring"
+	elif angle < 90 and angle >= 18:
+		return "Knife"
+	
 
 func _ready():
+	selection_plate.hide()
 	# Create gestures
 	# Eventually it should be loaded from a file
 	# var attack = Attack.new()

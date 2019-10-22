@@ -13,7 +13,7 @@ func _draw():
 			draw_line(prev, to_local(point), Color(0.0, 0.0, 0.75), 2.0)
 		prev = to_local(point)
 		# draw_circle(point, 1, Color.red)
-	
+
 
 func _input(event):
 	if event.is_action_pressed("left_mouse_click"):
@@ -28,7 +28,7 @@ func _input(event):
 		points.append(get_global_mouse_position())
 		get_owner().start_gesture(button)
 		started = true
-	
+
 	if (button == 1 and event.is_action_released("left_mouse_click")) \
 	or (button == 0 and event.is_action_released("right_mouse_click")):
 		# End drawing
@@ -41,7 +41,7 @@ func _input(event):
 		points.clear()
 		update()
 		started = false
-	
+
 	if started and event is InputEventMouseMotion:
 		var current_position = get_global_mouse_position()
 		if not points.empty():
