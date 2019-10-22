@@ -8,7 +8,7 @@ const ELEMENTS = [ "Spring", "Knife", "Fire", "Wood", "Earth"]
 
 #game data
 const UP = Vector2(0, -1) 
-const GRAVITY = 10
+const GRAVITY = 5
 const CHARACTER_SPEED = 150 #character moving speed
 const JUMP_HEIGHT = -500  #character jumping height
 const FLYING_SPEED = 20  #character flying speed 
@@ -16,6 +16,7 @@ const FLYING_ADJUST_SPEED = 20  #character adjusting speed while flying
 const BURST_SPEED = 50  #character burst speed
 const FUEL_CONSUME = 1  #character fuel consume per time unit
 const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
+const FRICTION = 0.1
 
 enum CHARACTER_STATES {STATE_IDLE, STATE_ATTACK, STATE_FLY}  # states of charater
 enum DIRECTION {

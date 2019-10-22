@@ -10,6 +10,7 @@ const BURST_SPEED = global.BURST_SPEED
 const FUEL_CONSUME = global.FUEL_CONSUME
 const BURST_FUEL_CONSUME = global.BURST_FUEL_CONSUME
 const ELEMENTS = global.ELEMENTS
+const friction = global.FRICTION
 
 export(float) var ATTACK_RANGE = 50.0
 export(float) var MINIMUM_LINE_LENGTH = 50.0
@@ -42,6 +43,7 @@ func _draw():
 func _physics_process(delta):
 	motion.y += GRAVITY
 	#$Sprite.play(ELEMENTS[element_look])
+	motion.x = lerp(motion.x, 0, friction)
 	
 	if state == global.CHARACTER_STATES['STATE_FLY']:
 		if(burst):
@@ -151,9 +153,9 @@ func _input(event):
 			coordinate_array.append(attack_end)
 			# attack(coordinate_array)
 			coordinate_array.clear()
-	elif state == global.CHARACTER_STATES['STATE_FLY']:
+	if state == global.CHARACTER_STATES['STATE_FLY'] and Input.is_action_just_released("left_mouse_click"):
 		#flying logic in the _physics_process function
-			state = global.CHARACTER_STATES['STATE_IDLE']
+		state = global.CHARACTER_STATES['STATE_IDLE']
 
 
 func attack(attack:Attack):
