@@ -159,6 +159,18 @@ func _input(event):
 func attack(attack:Attack):
 	print("Attack " + attack.name)
 	emit_signal("character_attack", attack)
+	
+	var animator = null
+	if attack.name == "Slash":
+		animator = $SwordAnimations
+	elif attack.name == "Thrust":
+		animator = $SpearAnimations
+	
+	if animator:
+		animator.play("Appear")
+		animator.queue("Attack")
+		animator.queue("Disappear")
+	
 
 func start_gesture(button):
 	if button == 1:
@@ -210,11 +222,13 @@ func complete_gesture(gesture, button):
 			attack.name = "Slash"
 			attack.damage = 42.0
 			attack.start_position = position
+			attack.range_effect = 100.0
 	elif gesture.direction == global.DIRECTION['DIR_E']:
 		if ELEMENTS[attack.element] == "Knife" and _point_is_in_range(gesture.points[0]) and _point_is_in_range(gesture.points.back()):
 			attack.name = "Thrust"
 			attack.damage = 18.0
 			attack.start_position = position
+			attack.range_effect = 200.0
 		elif ELEMENTS[attack.element] == "Fire":
 			# Arrow or fireball
 			pass
