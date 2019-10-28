@@ -5,7 +5,7 @@
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/Monster.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=7]
 
 [node name="MainStage" type="Node"]
@@ -40,11 +40,17 @@ margin_right = 227.0
 margin_bottom = 110.0
 text = "TriggerDialogue"
 
-[node name="Monster" parent="." instance=ExtResource( 6 )]
-position = Vector2( 471.635, 172.961 )
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Monster" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 468.635, 162.961 )
+
+[node name="Monster2" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 376, 164 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 7 )]
 pause_mode = 2
-[connection signal="character_attack" from="Player" to="Monster" method="_on_Player_character_attack"]
+[connection signal="character_attack" from="Player" to="Enemies/Monster" method="_on_Player_character_attack"]
