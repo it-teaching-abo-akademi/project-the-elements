@@ -300,7 +300,7 @@ func complete_gesture(gesture, button):
 		# Fireball
 		# Arrow
 		# if the line is in direction of the player, it's an arrow. Else it's a fireball
-		if position.distance_squarred_to(gesture.points[0]) > position.distance_squarred_to(gesture.points[1]):
+		if position.distance_squared_to(gesture.points[0]) > position.distance_squared_to(gesture.points[1]):
 			# Direction of the player
 			attack.name = "Arrow"
 			attack.damage = 10.0
