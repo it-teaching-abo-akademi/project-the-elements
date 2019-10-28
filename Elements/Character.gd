@@ -43,7 +43,7 @@ func _draw():
 	draw_circle(to_local(position), ATTACK_RANGE, Color(1.0, 0.0, 0.0, 0.5))
 
 func _physics_process(delta):
-	motion.y += GRAVITY
+	motion.y += GRAVITY * delta
 	#$Sprite.play(ELEMENTS[element_look])
 	motion.x = lerp(motion.x, 0, friction)
 	
@@ -51,31 +51,31 @@ func _physics_process(delta):
 		if(burst):
 			# print("burst")
 			burst = false
-			motion += -get_local_mouse_position().normalized() * BURST_SPEED
+			motion += -get_local_mouse_position().normalized() * BURST_SPEED * delta
 			fuel -= BURST_FUEL_CONSUME
 		else:
-			motion += -get_local_mouse_position().normalized() * FLYING_SPEED
+			motion += -get_local_mouse_position().normalized() * FLYING_SPEED * delta
 			fuel -= FUEL_CONSUME
 		# print(fuel)
 		
 	if(!is_on_floor() || state == global.CHARACTER_STATES['STATE_FLY']):
 		if Input.is_action_pressed("move_right"):
-			motion.x += FLYING_ADJUST_SPEED
+			motion.x += FLYING_ADJUST_SPEED * delta
 		elif Input.is_action_pressed("move_left"):
-			motion.x += -FLYING_ADJUST_SPEED
+			motion.x += -FLYING_ADJUST_SPEED * delta
 		#$Sprite.play("Jump")
 	else: #if there is no flying effect
 		if (abs(motion.x) > SPEED):
 			motion *= 0.95
 		else:
 			if Input.is_action_pressed("move_right"):
-				motion.x = SPEED
+				motion.x = SPEED * delta
 			elif Input.is_action_pressed("move_left"):
-				motion.x = -SPEED
+				motion.x = -SPEED * delta 
 			else:
 				motion.x = 0
 				#$Sprite.play("Idle")
-	motion = move_and_slide(motion,UP)
+	motion = move_and_slide(motion,UP, false, 4, PI/4, true)
 	
 
 var attack_begin
