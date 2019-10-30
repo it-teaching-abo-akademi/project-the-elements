@@ -19,7 +19,7 @@ const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
 const FRICTION = 0.1
 
 enum CHARACTER_STATES {STATE_IDLE, STATE_ATTACK, STATE_FLY}  # states of charater
-enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD} # states of enemies
+enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT} # states of enemies
 enum DIRECTION {
 	DIR_N,
 	DIR_S,

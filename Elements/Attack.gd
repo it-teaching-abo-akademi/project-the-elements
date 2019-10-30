@@ -26,6 +26,8 @@ var combo_effect:int = 0 setget set_combo_effect, get_combo_effect
 # It's an aboslute position, not relative to the character
 var start_position:Vector2 = Vector2(0.0, 0.0) setget set_start_position, get_start_position
 
+var points = []
+
 func set_start_position(position: Vector2):
 	start_position.x = position.x
 	start_position.y = position.y

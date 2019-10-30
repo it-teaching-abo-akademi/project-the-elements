@@ -39,6 +39,9 @@ signal character_attack
 # List of attack names, to check if there is a combo
 var combo_list = []
 
+onready var arrow_scene = preload("res://Elements/Arrow.tscn")
+onready var fireball_scene = preload("res://Elements/Fireball.tscn")
+
 func _draw():
 	draw_circle(to_local(position), ATTACK_RANGE, Color(1.0, 0.0, 0.0, 0.5))
 
@@ -180,10 +183,12 @@ func _check_combo(attack:Attack):
 		if one == "Thrust" and two == "Thrust" and three == "Thrust":
 			# Lunge
 			attack.combo_effect = 1
+			combo_list.clear()
 			return attack
 		elif one == "Thrust" and two == "Thrust" and three == "Slash":
 			# Sword wave (sword intent)
 			attack.combo_effect = 2
+			combo_list.clear()
 			return attack
 	if combo_list.size() >= 2:
 		var two = combo_list[combo_list.size() - 1]
@@ -193,14 +198,17 @@ func _check_combo(attack:Attack):
 		if one == "Lift" and two == "Arrow":
 			# Arrow power up: +speed +damage
 			attack.combo_effect = 3
+			combo_list.clear()
 			return attack
 		elif (one == "Lift" and two == "Slash") or (one == "Thrust" and two == "Slash"):
 			# Heavy slash
 			attack.combo_effect = 4
+			combo_list.clear()
 			return attack
 		elif one == "Lift" and two == "Lift":
 			# Special lift
 			attack.combo_effect = 5
+			combo_list.clear()
 			return attack
 		elif one == "Thrust" and two == "Lift":
 			# Fast lift
@@ -209,10 +217,12 @@ func _check_combo(attack:Attack):
 		elif one == "Slash" and two == "Thrust":
 			# Laijutsu
 			attack.combo_effect = 7
+			combo_list.clear()
 			return attack
 		elif one == "Slash" and two == "Lift":
 			# Higher lift
 			attack.combo_effect = 8
+			combo_list.clear()
 			return attack
 	
 	return attack
@@ -229,7 +239,20 @@ func attack(attack:Attack):
 		animator = $SwordAnimations
 	elif attack.name == "Thrust":
 		animator = $SpearAnimations
-	
+	elif attack.name == "Arrow":
+		var arrow_instance = arrow_scene.instance()
+		# arrow_instance.position = position
+		# arrow_instance.linear_velocity.x = 1000
+		arrow_instance.linear_velocity = attack.points[1].direction_to(attack.points[0]) * 1000
+		arrow_instance.position = to_local(attack.start_position)
+		add_child(arrow_instance)
+	elif attack.name == "Fireball":
+		var fireball_instance = fireball_scene.instance()
+		# fireball_instance.linear_velocity.x = 1000
+		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
+		fireball_instance.position = to_local(attack.start_position)		
+		add_child(fireball_instance)
+		
 	if animator:
 		animator.play("Appear")
 		animator.queue("Attack")
@@ -280,8 +303,9 @@ func complete_gesture(gesture, button):
 
 	if gesture.points[0].distance_squared_to(gesture.points.back()) < MINIMUM_LINE_LENGTH * MINIMUM_LINE_LENGTH:
 		return
-
-	if ELEMENTS[attack.element] == "Knife":
+	
+	var elmt = ELEMENTS[attack.element]
+	if elmt == "Knife":
 		if gesture.direction == global.DIRECTION['DIR_SE']:
 			attack.name = "Slash"
 			attack.damage = 42.0
@@ -292,32 +316,44 @@ func complete_gesture(gesture, button):
 			attack.damage = 18.0
 			attack.start_position = position
 			attack.range_effect = 200.0
+			attack.time_before = 0.1
+			attack.time_attack = 0.15
+			attack.time_after = 1.0
 		elif gesture.direction == global.DIRECTION['DIR_NE']:
 			attack.name = "Lift"
 			attack.damage = 5.0
 			attack.start_position = position
-	elif ELEMENTS[attack.element] == "Fire":
+			attack.time_before = 0.2 # Before being lifted
+			attack.time_attack = 0.5 # Time lifted
+			attack.time_after = 0.5 # Time go down
+	elif elmt == "Fire":
 		# Fireball
 		# Arrow
 		# if the line is in direction of the player, it's an arrow. Else it's a fireball
-		if position.distance_squared_to(gesture.points[0]) > position.distance_squared_to(gesture.points[1]):
+		if position.distance_squared_to(gesture.points[0]) > position.distance_squared_to(gesture.points.back()):
 			# Direction of the player
 			attack.name = "Arrow"
 			attack.damage = 10.0
 			attack.start_position = position
+			attack.start_position.x += 75
+			attack.points.append(gesture.points[0])
+			attack.points.append(gesture.points.back())
 		else:
 			attack.name = "Fireball"
 			attack.damage = 15.0
 			attack.start_position = position
+			attack.start_position.x += 75
+			attack.points.append(gesture.points[0])
+			attack.points.append(gesture.points.back())
 		
 		# Rain of arrows (maybe later)
-	elif ELEMENTS[attack.element] == "Spring":
+	elif elmt == "Spring":
 		# Nothing, we fly
 		pass
-	elif ELEMENTS[attack.element] == "Wood":
+	elif elmt == "Wood":
 		# Attack anywhere, not really designed yet
 		pass
-	elif ELEMENTS[attack.element] == "Earth":
+	elif elmt == "Earth":
 		# Create a shield
 		pass
 	
