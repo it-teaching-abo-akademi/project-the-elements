@@ -232,6 +232,9 @@ func attack(attack:Attack):
 	
 	attack = _check_combo(attack)
 	
+	# Create the collectable element
+	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
+	
 	emit_signal("character_attack", attack)
 	
 	var animator = null
@@ -408,6 +411,23 @@ func get_element_by_angle(angle : float):
 	elif angle < 90 and angle >= 18:
 		return "Knife"
 	
+
+enum {WATER, KNIFE, FIRE, WOOD, SOIL}
+func element_collected(type, amount):
+	"""
+	called when a  collectable element is collected
+	"""
+	# Add the amount of element type
+	
+	# TODO logic and assignments
+	if type == WATER:
+		fuel += floor(amount*100)
+	# elif type == KNIFE:
+	# elif type == FIRE:
+	# elif type == WOOD:
+	# elif type == SOIL:
+		
+	print("COLLECTED: ", type, ", ", amount)
 
 func _ready():
 	selection_plate.hide()

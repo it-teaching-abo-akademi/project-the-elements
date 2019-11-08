@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=8]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -50,4 +51,7 @@ editor/display_folded = true
 
 [node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 7 )]
 pause_mode = 2
+
+[node name="ElementHandler" type="Node2D" parent="."]
+script = ExtResource( 8 )
 [connection signal="character_attack" from="Player" to="Enemies/Monster2" method="_on_Player_character_attack"]
