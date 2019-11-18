@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Attack/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Attack/dissolveShader.tres" type="Shader" id=2]
+[ext_resource path="res://Attack/particle.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/Brightness = null
+shader_param/dissolve = 0.0
+shader_param/WeaponTexture = ExtResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 3
+emission_point_count = 416
+flag_disable_z = true
+spread = 180.0
+flatness = 0.85
+gravity = Vector3( 0, 5, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 402.6
+angle_random = 1.0
+scale = 0.15
+scale_random = 1.0
+hue_variation = -1.0
+
+[node name="Weapon" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -0.440125, -0.880249 )
+texture = ExtResource( 3 )
+
+[node name="VisualEffect" type="Particles2D" parent="."]
+scale = Vector2( 0.4, 0.4 )
+emitting = false
+amount = 70
+lifetime = 4.01
+one_shot = true
+preprocess = 0.01
+speed_scale = 4.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )

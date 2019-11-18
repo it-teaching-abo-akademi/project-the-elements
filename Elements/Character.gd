@@ -25,6 +25,7 @@ var element_right = 1 #index of element
 #element selection
 onready var selection_plate = $SelectionPlate
 
+var direction = 1 # 1: look right, -1 left
 
 #temp var
 var element_look = 0
@@ -43,8 +44,8 @@ onready var arrow_scene = preload("res://Elements/Arrow.tscn")
 onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
 func _draw():
-	draw_circle(to_local(position), ATTACK_RANGE, Color(1.0, 0.0, 0.0, 0.5))
-
+	pass
+	
 func _physics_process(delta):
 	motion.y += GRAVITY * delta
 	#$Sprite.play(ELEMENTS[element_look])
@@ -110,8 +111,10 @@ func _input(event):
 	#flip sprite
 	if Input.is_action_pressed("move_right"):
 				$Sprite.flip_h = false
+				direction = 1
 	elif Input.is_action_pressed("move_left"):
 				$Sprite.flip_h = true
+				direction = -1
 				
 	#temp
 	if Input.is_action_just_pressed("space"):
@@ -239,9 +242,11 @@ func attack(attack:Attack):
 	
 	var animator = null
 	if attack.name == "Slash":
-		animator = $SwordAnimations
+		# animator = $SwordAnimations
+		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
 	elif attack.name == "Thrust":
-		animator = $SpearAnimations
+		# animator = $SpearAnimations
+		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
 	elif attack.name == "Arrow":
 		var arrow_instance = arrow_scene.instance()
 		# arrow_instance.position = position
