@@ -187,11 +187,13 @@ func _check_combo(attack:Attack):
 			# Lunge
 			attack.combo_effect = 1
 			combo_list.clear()
+			print("ATTACK: combo lunge")
 			return attack
 		elif one == "Thrust" and two == "Thrust" and three == "Slash":
 			# Sword wave (sword intent)
 			attack.combo_effect = 2
 			combo_list.clear()
+			print("ATTACK: combo sword wave")
 			return attack
 	if combo_list.size() >= 2:
 		var two = combo_list[combo_list.size() - 1]
@@ -202,30 +204,36 @@ func _check_combo(attack:Attack):
 			# Arrow power up: +speed +damage
 			attack.combo_effect = 3
 			combo_list.clear()
+			print("ATTACK: combo arrow power up")
 			return attack
 		elif (one == "Lift" and two == "Slash") or (one == "Thrust" and two == "Slash"):
 			# Heavy slash
 			attack.combo_effect = 4
 			combo_list.clear()
+			print("ATTACK: combo heavy slash")
 			return attack
 		elif one == "Lift" and two == "Lift":
 			# Special lift
 			attack.combo_effect = 5
 			combo_list.clear()
+			print("ATTACK: combo special lift")
 			return attack
 		elif one == "Thrust" and two == "Lift":
 			# Fast lift
 			attack.combo_effect = 6
+			print("ATTACK: combo fast lift")
 			return attack
 		elif one == "Slash" and two == "Thrust":
 			# Laijutsu
 			attack.combo_effect = 7
 			combo_list.clear()
+			print("ATTACK: combo laijustsu")
 			return attack
 		elif one == "Slash" and two == "Lift":
 			# Higher lift
 			attack.combo_effect = 8
 			combo_list.clear()
+			print("ATTACK: combo higher lift")
 			return attack
 	
 	return attack
