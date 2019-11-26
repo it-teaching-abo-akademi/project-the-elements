@@ -248,6 +248,7 @@ func attack(attack:Attack):
 	
 	attack.direction = direction
 	print("emit: " + attack.name)
+	attack.set_parameter("test", 42.51)
 	emit_signal("character_attack", attack)
 	
 #	var animator = null

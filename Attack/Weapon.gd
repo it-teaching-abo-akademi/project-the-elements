@@ -212,4 +212,5 @@ func _spear_attack(delta: float):
 
 func _on_Player_character_attack(attack:Attack):
 	# Display the attack
+	print("param test: " + str(attack.get_parameter("test")))
 	display_attack(attack, attack.direction)
