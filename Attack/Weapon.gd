@@ -14,14 +14,8 @@ const WEAPON_SPEAR = 1
 
 var is_weapon_set = false
 
-const KATANA_APPEAR_TIME = 1.0
-const KATANA_DISAPPEAR_TIME = 1.0
-const KATANA_ATTACK_TIME = 1.0
 const KATANA_ROTATION = 90.0
 
-const SPEAR_APPEAR_TIME = 1.0
-const SPEAR_DISAPPEAR_TIME = 1.0
-const SPEAR_ATTACK_TIME = 1.0
 const SPEAR_MOVE_X = 100.0
 const SPEAR_START_POSITION = Vector2(100.0, 0.0)
 
@@ -45,19 +39,19 @@ var emited = false
 # 1 -> right ; -1 -> left
 var direction = 1 setget set_direction, get_direction
 
-func _ready():
-	display_attack(WEAPON_SPEAR, -1)
+#func _ready():
+#	display_attack(WEAPON_SPEAR, -1)
 
 var need_direction_change = false
 var direction_requested = 0
 
 
-func display_attack(weapon, dir):
+func display_attack(attack:Attack, dir:int):
 	if is_weapon_set:
 		return
 	_re_init()
 	set_direction(dir)
-	set_weapon(weapon)
+	set_weapon(attack)
 	appear()
 
 
@@ -85,12 +79,17 @@ func _re_init():
 func get_direction():
 	return direction
 
-func set_weapon(weapon):
-	current_weapon = weapon
+func set_weapon(attack:Attack):
+	print("set_weapon(" + attack.name + ")")
+	if attack.name == "Slash":
+		current_weapon = WEAPON_KATANA
+	elif attack.name == "Thrust":
+		current_weapon = WEAPON_SPEAR
+	
 	is_weapon_set = true
 	
 	var sprite = $Sprite
-	if weapon == WEAPON_KATANA:
+	if current_weapon == WEAPON_KATANA:
 		# Display katana
 		var katana_image = Image.new()
 		katana_image.load("res://Attack/katana.png")
@@ -102,13 +101,13 @@ func set_weapon(weapon):
 		sprite.material.set_shader_param("WeaponTexture", katana_texture)
 		sprite.material.set_shader_param("dissolve", -1.0)
 		
-		appear_time = KATANA_APPEAR_TIME
-		disappear_time = KATANA_DISAPPEAR_TIME
-		attack_time = KATANA_ATTACK_TIME
+		appear_time = attack.time_before
+		disappear_time = attack.time_after
+		attack_time = attack.time_attack
 		
 		sprite.position.y = -1 * 100.0
 		$VisualEffect.position.y = -1 * 50.0
-	elif weapon == WEAPON_SPEAR:
+	elif current_weapon == WEAPON_SPEAR:
 		# Display spear
 		var spear_image = Image.new()
 		spear_image.load("res://Attack/spear.png")
@@ -120,9 +119,9 @@ func set_weapon(weapon):
 		sprite.material.set_shader_param("WeaponTexture", spear_texture)
 		sprite.material.set_shader_param("dissolve", -1.0)
 		
-		appear_time = SPEAR_APPEAR_TIME
-		disappear_time = SPEAR_DISAPPEAR_TIME
-		attack_time = SPEAR_ATTACK_TIME
+		appear_time = attack.time_before
+		disappear_time = attack.time_after
+		attack_time = attack.time_attack
 		
 		sprite.position = direction * SPEAR_START_POSITION
 		$VisualEffect.position.x = direction * SPEAR_START_POSITION.x / 2.0
@@ -141,7 +140,7 @@ func _process(delta):
 			if timer > appear_time / 5.0 and emited == false:
 				$VisualEffect.emitting = true
 				emited = true
-			sprite.material.set_shader_param("dissolve", timer / KATANA_APPEAR_TIME - 1.0)
+			sprite.material.set_shader_param("dissolve", timer / appear_time - 1.0)
 		else:
 			sprite.material.set_shader_param("dissolve", 0.0)
 			_set_state(STATE_ATTACK)
@@ -149,7 +148,7 @@ func _process(delta):
 		timer += delta
 		var sprite = $Sprite
 		if timer < disappear_time:
-			sprite.material.set_shader_param("dissolve", 0.0 - timer / KATANA_APPEAR_TIME)
+			sprite.material.set_shader_param("dissolve", 0.0 - timer / disappear_time)
 		else:
 			sprite.material.set_shader_param("dissolve", -1.0)
 			_set_state(STATE_HIDED)
@@ -209,3 +208,8 @@ func _spear_attack(delta: float):
 		position.x = direction * SPEAR_MOVE_X
 		_set_state(STATE_DISAPPEAR)
 
+
+
+func _on_Player_character_attack(attack:Attack):
+	# Display the attack
+	display_attack(attack, attack.direction)

@@ -10,6 +10,7 @@ var time_attack:float = 1.0
 var time_after:float = 0.0
 
 var element:int = -1 setget set_element, get_element
+var direction:int = 1 setget set_direction, get_direction
 
 # It can be an idea to have an 'Effect' class, who handle the effect
 # For example, the enemy call methods from this class to create the effect
@@ -56,3 +57,9 @@ func set_element(e:int):
 
 func get_element():
 	return element
+
+func set_direction(dir:int):
+	direction = dir
+
+func get_direction():
+	return direction

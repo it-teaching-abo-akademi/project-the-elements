@@ -246,34 +246,35 @@ func attack(attack:Attack):
 	# Create the collectable element
 	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 	
+	attack.direction = direction
+	print("emit: " + attack.name)
 	emit_signal("character_attack", attack)
 	
-	var animator = null
-	if attack.name == "Slash":
-		# animator = $SwordAnimations
-		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
-	elif attack.name == "Thrust":
-		# animator = $SpearAnimations
-		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
-	elif attack.name == "Arrow":
-		var arrow_instance = arrow_scene.instance()
-		# arrow_instance.position = position
-		# arrow_instance.linear_velocity.x = 1000
-		arrow_instance.linear_velocity = attack.points[1].direction_to(attack.points[0]) * 1000
-		arrow_instance.position = to_local(attack.start_position)
-		add_child(arrow_instance)
-	elif attack.name == "Fireball":
-		var fireball_instance = fireball_scene.instance()
-		# fireball_instance.linear_velocity.x = 1000
-		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
-		fireball_instance.position = to_local(attack.start_position)		
-		add_child(fireball_instance)
-		
-	if animator:
-		animator.play("Appear")
-		animator.queue("Attack")
-		animator.queue("Disappear")
-	
+#	var animator = null
+#	if attack.name == "Slash":
+#		# animator = $SwordAnimations
+#		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
+#	elif attack.name == "Thrust":
+#		# animator = $SpearAnimations
+#		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
+#	elif attack.name == "Arrow":
+#		var arrow_instance = arrow_scene.instance()
+#		# arrow_instance.position = position
+#		# arrow_instance.linear_velocity.x = 1000
+#		arrow_instance.linear_velocity = attack.points[1].direction_to(attack.points[0]) * 1000
+#		arrow_instance.position = to_local(attack.start_position)
+#		add_child(arrow_instance)
+#	elif attack.name == "Fireball":
+#		var fireball_instance = fireball_scene.instance()
+#		# fireball_instance.linear_velocity.x = 1000
+#		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
+#		fireball_instance.position = to_local(attack.start_position)		
+#		add_child(fireball_instance)
+#
+#	if animator:
+#		animator.play("Appear")
+#		animator.queue("Attack")
+#		animator.queue("Disappear")
 
 func start_gesture(button):
 	if button == 1:
@@ -327,6 +328,9 @@ func complete_gesture(gesture, button):
 			attack.damage = 42.0
 			attack.start_position = position
 			attack.range_effect = 100.0
+			attack.time_before = 0.25
+			attack.time_attack = 0.5
+			attack.time_after = 0.5
 		elif gesture.direction == global.DIRECTION['DIR_E']:
 			attack.name = "Thrust"
 			attack.damage = 18.0
