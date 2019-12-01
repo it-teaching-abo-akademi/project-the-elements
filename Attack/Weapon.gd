@@ -45,6 +45,7 @@ var direction = 1 setget set_direction, get_direction
 var need_direction_change = false
 var direction_requested = 0
 
+var global_vfx = null
 
 func display_attack(attack:Attack, dir:int):
 	if is_weapon_set:
@@ -107,6 +108,23 @@ func set_weapon(attack:Attack):
 		
 		sprite.position.y = -1 * 100.0
 		$VisualEffect.position.y = -1 * 50.0
+		
+		var vfx = VFXTrail.new()
+		vfx.from = Vector2(direction * -7, -50)
+		vfx.to = Vector2(direction * -7, -190)
+		vfx.point_count = 20
+		vfx.line_width = vfx.Repartition.RANDOM
+		vfx.minimum_line_width = 5
+		vfx.maximum_line_width = 15
+		vfx.line_length = vfx.Repartition.RANDOM
+		vfx.minimum_length = 7
+		vfx.maximum_length = 12
+		vfx.name = "VFX"
+		
+		add_child(vfx)
+		
+		global_vfx = vfx
+		
 	elif current_weapon == WEAPON_SPEAR:
 		# Display spear
 		var spear_image = Image.new()
@@ -125,6 +143,22 @@ func set_weapon(attack:Attack):
 		
 		sprite.position = direction * SPEAR_START_POSITION
 		$VisualEffect.position.x = direction * SPEAR_START_POSITION.x / 2.0
+		
+		var vfx = VFXTrail.new()
+		vfx.from = Vector2(0, -4)
+		vfx.to = Vector2(0, 4)
+		vfx.point_count = 5
+		vfx.line_width = vfx.Repartition.RANDOM
+		vfx.minimum_line_width = 1
+		vfx.maximum_line_width = 6
+		vfx.line_length = vfx.Repartition.RANDOM
+		vfx.minimum_length = 5
+		vfx.maximum_length = 10
+		vfx.name = "VFX"
+		
+		add_child(vfx)
+		
+		global_vfx = vfx
 	else:
 		# Unknown weapon
 		is_weapon_set = false
@@ -187,6 +221,10 @@ func _set_state(new_state: int):
 		emit_signal("end_appear")
 	elif state == STATE_DISAPPEAR:
 		emit_signal("end_disappear")
+		if global_vfx != null:
+			remove_child(global_vfx)
+			global_vfx.free()
+			global_vfx = null
 	
 	state = new_state
 	timer = 0.0

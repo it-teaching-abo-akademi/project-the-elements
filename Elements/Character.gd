@@ -329,8 +329,8 @@ func complete_gesture(gesture, button):
 			attack.damage = 42.0
 			attack.start_position = position
 			attack.range_effect = 100.0
-			attack.time_before = 0.25
-			attack.time_attack = 0.5
+			attack.time_before = 0.15
+			attack.time_attack = 0.25
 			attack.time_after = 0.5
 		elif gesture.direction == global.DIRECTION['DIR_E']:
 			attack.name = "Thrust"
