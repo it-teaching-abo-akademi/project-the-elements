@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/Brightness = null
-shader_param/dissolve = 0.0
+shader_param/dissolve = -1.0
 shader_param/WeaponTexture = ExtResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=2]
