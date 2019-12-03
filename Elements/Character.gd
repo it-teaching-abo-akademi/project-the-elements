@@ -324,7 +324,7 @@ func complete_gesture(gesture, button):
 	
 	var elmt = ELEMENTS[attack.element]
 	if elmt == "Knife":
-		if gesture.direction == global.DIRECTION['DIR_SE']:
+		if (direction == 1 and gesture.direction == global.DIRECTION['DIR_SE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_SW']):
 			attack.name = "Slash"
 			attack.damage = 42.0
 			attack.start_position = position
@@ -332,15 +332,15 @@ func complete_gesture(gesture, button):
 			attack.time_before = 0.15
 			attack.time_attack = 0.25
 			attack.time_after = 0.5
-		elif gesture.direction == global.DIRECTION['DIR_E']:
+		elif (direction == 1 and gesture.direction == global.DIRECTION['DIR_E']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_W']):
 			attack.name = "Thrust"
 			attack.damage = 18.0
 			attack.start_position = position
-			attack.range_effect = 200.0
+			attack.range_effect = direction * 200.0
 			attack.time_before = 0.1
 			attack.time_attack = 0.15
 			attack.time_after = 1.0
-		elif gesture.direction == global.DIRECTION['DIR_NE']:
+		elif (direction == 1 and gesture.direction == global.DIRECTION['DIR_NE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_NW']):
 			attack.name = "Lift"
 			attack.damage = 5.0
 			attack.start_position = position
@@ -356,14 +356,14 @@ func complete_gesture(gesture, button):
 			attack.name = "Arrow"
 			attack.damage = 10.0
 			attack.start_position = position
-			attack.start_position.x += 75
+			attack.start_position.x += direction * 75
 			attack.points.append(gesture.points[0])
 			attack.points.append(gesture.points.back())
 		else:
 			attack.name = "Fireball"
 			attack.damage = 15.0
 			attack.start_position = position
-			attack.start_position.x += 75
+			attack.start_position.x += direction * 75
 			attack.points.append(gesture.points[0])
 			attack.points.append(gesture.points.back())
 		
