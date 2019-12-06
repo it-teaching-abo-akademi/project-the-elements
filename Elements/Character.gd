@@ -43,44 +43,55 @@ var combo_list = []
 onready var arrow_scene = preload("res://Elements/Arrow.tscn")
 onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
+var current_jump = null
+var jump_timer = 0.0
+
 func _draw():
 	pass
 	
 func _physics_process(delta):
-	motion.y += GRAVITY * delta
+	motion.y += GRAVITY
 	#$Sprite.play(ELEMENTS[element_look])
 	motion.x = lerp(motion.x, 0, friction)
 	
-	if state == global.CHARACTER_STATES['STATE_FLY']:
-		if(burst):
-			# print("burst")
-			burst = false
-			motion += -get_local_mouse_position().normalized() * BURST_SPEED * delta
-			fuel -= BURST_FUEL_CONSUME
+	if current_jump != null:
+		jump_timer += delta
+		if jump_timer < current_jump.get_parameter("time_jumping"):
+			motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
 		else:
-			motion += -get_local_mouse_position().normalized() * FLYING_SPEED * delta
-			fuel -= FUEL_CONSUME
-		# print(fuel)
-		
-	if(!is_on_floor() || state == global.CHARACTER_STATES['STATE_FLY']):
-		if Input.is_action_pressed("move_right"):
-			motion.x += FLYING_ADJUST_SPEED * delta
-		elif Input.is_action_pressed("move_left"):
-			motion.x += -FLYING_ADJUST_SPEED * delta
-		#$Sprite.play("Jump")
-	else: #if there is no flying effect
+			current_jump = null
+	
+#	if state == global.CHARACTER_STATES['STATE_FLY']:
+#		if(burst):
+#			# print("burst")
+#			burst = false
+#			motion += -get_local_mouse_position().normalized() * BURST_SPEED
+#			fuel -= BURST_FUEL_CONSUME
+#		else:
+#			motion += -get_local_mouse_position().normalized() * FLYING_SPEED
+#			fuel -= FUEL_CONSUME
+#		# print(fuel)
+
+#	if(!is_on_floor() || state == global.CHARACTER_STATES['STATE_FLY']):
+#		if Input.is_action_pressed("move_right"):
+#			motion.x += FLYING_ADJUST_SPEED * delta
+#		elif Input.is_action_pressed("move_left"):
+#			motion.x += -FLYING_ADJUST_SPEED * delta
+#		#$Sprite.play("Jump")
+#	else: #if there is no flying effect
+	if current_jump == null:
 		if (abs(motion.x) > SPEED):
 			motion *= 0.95
 		else:
 			if Input.is_action_pressed("move_right"):
-				motion.x = SPEED * delta
+				motion.x = SPEED
 			elif Input.is_action_pressed("move_left"):
-				motion.x = -SPEED * delta 
+				motion.x = -SPEED
 			else:
 				motion.x = 0
-				#$Sprite.play("Idle")
-	motion = move_and_slide(motion,UP, false, 4, PI/4, true)
 	
+	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
+	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
 
 var attack_begin
 var last_mouse_position
@@ -120,52 +131,52 @@ func _input(event):
 	if Input.is_action_just_pressed("space"):
 		element_look = change_element_to_next(element_look, 6)
 	
-	if state == global.CHARACTER_STATES['STATE_IDLE']:
-		if Input.is_action_pressed("left_mouse_click"):
-			if ELEMENTS[element_left] == 'Spring':
-				state = global.CHARACTER_STATES['STATE_FLY']
-				burst = true
-			else:
-				state = global.CHARACTER_STATES['STATE_ATTACK']
-				print(ELEMENTS[element_left])
-				attack_begin = get_global_mouse_position()
-				#last_mouse_position = attack_begin
-				#print(attack_begin)
-				coordinate_array.append(attack_begin)
-				state = global.CHARACTER_STATES['STATE_IDLE']
-		if Input.is_action_pressed("right_mouse_click"):
-			if ELEMENTS[element_right] == 'Spring':
-				state = global.CHARACTER_STATES['STATE_FLY']
-				burst = true
-			else:
-				state = global.CHARACTER_STATES['STATE_ATTACK']
-				print(ELEMENTS[element_right])
-				attack_begin = get_global_mouse_position()
-				#last_mouse_position = attack_begin
-				#print(attack_begin)
-				coordinate_array.append(attack_begin)
-				state = global.CHARACTER_STATES['STATE_IDLE']
-	elif state == global.CHARACTER_STATES['STATE_ATTACK']:
-		#attacking mode detection here
-		
-		#
-		if event is InputEventMouseMotion:
-			frame_count+=1
-			if(frame_count == 5):
-				frame_count = 0
-				coordinate_array.append(get_global_mouse_position())
-			#print("Actioning mode:", event.position)
-			#last_mouse_position = get_global_mouse_position()
-			#some manipulation here
-		if Input.is_action_pressed("left_mouse_click"):
-			state = global.CHARACTER_STATES['STATE_IDLE']
-			attack_end = get_global_mouse_position()
-			coordinate_array.append(attack_end)
-			# attack(coordinate_array)
-			coordinate_array.clear()
-	if state == global.CHARACTER_STATES['STATE_FLY'] and Input.is_action_just_released("left_mouse_click"):
-		#flying logic in the _physics_process function
-		state = global.CHARACTER_STATES['STATE_IDLE']
+#	if state == global.CHARACTER_STATES['STATE_IDLE']:
+#		if Input.is_action_pressed("left_mouse_click"):
+#			if ELEMENTS[element_left] == 'Spring':
+#				state = global.CHARACTER_STATES['STATE_FLY']
+#				burst = true
+#			else:
+#				state = global.CHARACTER_STATES['STATE_ATTACK']
+#				print(ELEMENTS[element_left])
+#				attack_begin = get_global_mouse_position()
+#				#last_mouse_position = attack_begin
+#				#print(attack_begin)
+#				coordinate_array.append(attack_begin)
+#				state = global.CHARACTER_STATES['STATE_IDLE']
+#		if Input.is_action_pressed("right_mouse_click"):
+#			if ELEMENTS[element_right] == 'Spring':
+#				state = global.CHARACTER_STATES['STATE_FLY']
+#				burst = true
+#			else:
+#				state = global.CHARACTER_STATES['STATE_ATTACK']
+#				print(ELEMENTS[element_right])
+#				attack_begin = get_global_mouse_position()
+#				#last_mouse_position = attack_begin
+#				#print(attack_begin)
+#				coordinate_array.append(attack_begin)
+#				state = global.CHARACTER_STATES['STATE_IDLE']
+#	elif state == global.CHARACTER_STATES['STATE_ATTACK']:
+#		#attacking mode detection here
+#
+#		#
+#		if event is InputEventMouseMotion:
+#			frame_count+=1
+#			if(frame_count == 5):
+#				frame_count = 0
+#				coordinate_array.append(get_global_mouse_position())
+#			#print("Actioning mode:", event.position)
+#			#last_mouse_position = get_global_mouse_position()
+#			#some manipulation here
+#		if Input.is_action_pressed("left_mouse_click"):
+#			state = global.CHARACTER_STATES['STATE_IDLE']
+#			attack_end = get_global_mouse_position()
+#			coordinate_array.append(attack_end)
+#			# attack(coordinate_array)
+#			coordinate_array.clear()
+#	if state == global.CHARACTER_STATES['STATE_FLY'] and Input.is_action_just_released("left_mouse_click"):
+#		#flying logic in the _physics_process function
+#		state = global.CHARACTER_STATES['STATE_IDLE']
 
 
 func _check_combo(attack:Action):
@@ -174,7 +185,7 @@ func _check_combo(attack:Action):
 	update the Action object and return it
 	"""
 	
-	combo_list.append(attack.name)
+	combo_list.append(attack.get_parameter("name"))
 	
 	# If there is a combo, we don't try to check others
 	if combo_list.size() >= 3:
@@ -237,9 +248,13 @@ func _check_combo(attack:Action):
 			return attack
 	
 	return attack
-	
+
+func move(action:Action):
+	jump_timer = 0.0
+	current_jump = action
+
 func attack(attack:Action):
-	print("Action " + attack.name)
+	print("Action " + attack.get_parameter("name"))
 	
 	attack = _check_combo(attack)
 	
@@ -247,25 +262,25 @@ func attack(attack:Action):
 	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 	
 	attack.direction = direction
-	print("emit: " + attack.name)
+	print("emit: " + attack.get_parameter("name"))
 	attack.set_parameter("test", 42.51)
 	emit_signal("character_attack", attack)
 	
 #	var animator = null
-#	if attack.name == "Slash":
+#	if attack.get_parameter("name") == "Slash":
 #		# animator = $SwordAnimations
 #		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
-#	elif attack.name == "Thrust":
+#	elif attack.get_parameter("name") == "Thrust":
 #		# animator = $SpearAnimations
 #		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
-#	elif attack.name == "Arrow":
+#	elif attack.get_parameter("name") == "Arrow":
 #		var arrow_instance = arrow_scene.instance()
 #		# arrow_instance.position = position
 #		# arrow_instance.linear_velocity.x = 1000
 #		arrow_instance.linear_velocity = attack.points[1].direction_to(attack.points[0]) * 1000
 #		arrow_instance.position = to_local(attack.start_position)
 #		add_child(arrow_instance)
-#	elif attack.name == "Fireball":
+#	elif attack.get_parameter("name") == "Fireball":
 #		var fireball_instance = fireball_scene.instance()
 #		# fireball_instance.linear_velocity.x = 1000
 #		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
@@ -325,52 +340,57 @@ func complete_gesture(gesture, button):
 	var elmt = ELEMENTS[attack.element]
 	if elmt == "Knife":
 		if (direction == 1 and gesture.direction == global.DIRECTION['DIR_SE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_SW']):
-			attack.name = "Slash"
-			attack.damage = 42.0
-			attack.start_position = position
-			attack.range_effect = 100.0
-			attack.time_before = 0.15
-			attack.time_attack = 0.25
-			attack.time_after = 0.3
+			attack.set_parameter("name", "Slash")
+			attack.set_parameter("damage", 42.0)
+			attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", 100.0)
+			attack.set_parameter("time_before", 0.15)
+			attack.set_parameter("time_attack", 0.25)
+			attack.set_parameter("time_after", 0.3)
 		elif (direction == 1 and gesture.direction == global.DIRECTION['DIR_E']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_W']):
-			attack.name = "Thrust"
-			attack.damage = 18.0
-			attack.start_position = position
-			attack.range_effect = direction * 200.0
-			attack.time_before = 0.1
-			attack.time_attack = 0.15
-			attack.time_after = 1.0
+			attack.set_parameter("name", "Thrust")
+			attack.set_parameter("damage", 18.0)
+			attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", direction * 200.0)
+			attack.set_parameter("time_before", 0.1)
+			attack.set_parameter("time_attack", 0.15)
+			attack.set_parameter("time_after", 1.0)
 		elif (direction == 1 and gesture.direction == global.DIRECTION['DIR_NE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_NW']):
-			attack.name = "Lift"
-			attack.damage = 5.0
-			attack.start_position = position
-			attack.time_before = 0.2 # Before being lifted
-			attack.time_attack = 0.5 # Time lifted
-			attack.time_after = 0.5 # Time go down
+			attack.set_parameter("name", "Lift")
+			attack.set_parameter("damage", 5.0)
+			attack.set_parameter("start_position", position)
+			attack.set_parameter("time_before", 0.2)
+			attack.set_parameter("time_attack", 0.5)
+			attack.set_parameter("time_after", 0.5)
 	elif elmt == "Fire":
 		# Fireball
 		# Arrow
 		# if the line is in direction of the player, it's an arrow. Else it's a fireball
 		if position.distance_squared_to(gesture.points[0]) > position.distance_squared_to(gesture.points.back()):
 			# Direction of the player
-			attack.name = "Arrow"
-			attack.damage = 10.0
-			attack.start_position = position
-			attack.start_position.x += direction * 75
-			attack.points.append(gesture.points[0])
-			attack.points.append(gesture.points.back())
+#			attack.get_parameter("name") = "Arrow"
+#			attack.damage = 10.0
+#			attack.start_position = position
+#			attack.start_position.x += direction * 75
+#			attack.points.append(gesture.points[0])
+#			attack.points.append(gesture.points.back())
+			pass
 		else:
-			attack.name = "Fireball"
-			attack.damage = 15.0
-			attack.start_position = position
-			attack.start_position.x += direction * 75
-			attack.points.append(gesture.points[0])
-			attack.points.append(gesture.points.back())
+			pass
+#			attack.get_parameter("name") = "Fireball"
+#			attack.damage = 15.0
+#			attack.start_position = position
+#			attack.start_position.x += direction * 75
+#			attack.points.append(gesture.points[0])
+#			attack.points.append(gesture.points.back())
 		
 		# Rain of arrows (maybe later)
 	elif elmt == "Spring":
-		# Nothing, we fly
-		pass
+		attack.set_parameter("name", "Fly")
+		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
+		attack.set_parameter("power", 70.0)
+		attack.set_parameter("time_jumping", .25)
+		attack.set_parameter("element_used", 10.0)
 	elif elmt == "Wood":
 		# Action anywhere, not really designed yet
 		pass
@@ -378,7 +398,9 @@ func complete_gesture(gesture, button):
 		# Create a shield
 		pass
 	
-	if attack.name != "unknown":
+	if attack.get_parameter("name") == "Fly" or attack.get_parameter("name") == "Jump":
+		move(attack)
+	elif attack.get_parameter("name") != "unknown":
 		attack(attack)
 	
 
@@ -453,7 +475,7 @@ func _ready():
 	# Eventually it should be loaded from a file
 	# var attack = Action.new()
 	# attack.damage = 42.0
-	# attack.name = 'Random name'
+	# attack.get_parameter("name") = 'Random name'
 	
 	# var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
 	# gesture.radius = 25.0

@@ -81,10 +81,10 @@ func get_direction():
 	return direction
 
 func set_weapon(attack:Action):
-	print("set_weapon(" + attack.name + ")")
-	if attack.name == "Slash":
+	print("set_weapon(" + attack.get_parameter("name") + ")")
+	if attack.get_parameter("name") == "Slash":
 		current_weapon = WEAPON_KATANA
-	elif attack.name == "Thrust":
+	elif attack.get_parameter("name") == "Thrust":
 		current_weapon = WEAPON_SPEAR
 	
 	is_weapon_set = true
@@ -102,9 +102,9 @@ func set_weapon(attack:Action):
 		sprite.material.set_shader_param("WeaponTexture", katana_texture)
 		sprite.material.set_shader_param("dissolve", -1.0)
 		
-		appear_time = attack.time_before
-		disappear_time = attack.time_after
-		attack_time = attack.time_attack
+		appear_time = attack.get_parameter("time_before")
+		disappear_time = attack.get_parameter("time_after")
+		attack_time = attack.get_parameter("time_attack")
 		
 		sprite.position.y = -1 * 100.0
 		$VisualEffect.position.y = -1 * 50.0
@@ -137,9 +137,9 @@ func set_weapon(attack:Action):
 		sprite.material.set_shader_param("WeaponTexture", spear_texture)
 		sprite.material.set_shader_param("dissolve", -1.0)
 		
-		appear_time = attack.time_before
-		disappear_time = attack.time_after
-		attack_time = attack.time_attack
+		appear_time = attack.get_parameter("time_before")
+		disappear_time = attack.get_parameter("time_after")
+		attack_time = attack.get_parameter("time_attack")
 		
 		sprite.position = direction * SPEAR_START_POSITION
 		$VisualEffect.position.x = direction * SPEAR_START_POSITION.x / 2.0
