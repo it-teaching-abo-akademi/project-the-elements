@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Object",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Elements/Action.gd"
+}, {
 "base": "Reference",
 "class": "Array2D",
 "language": "GDScript",
 "path": "res://addons/godot-next/references/array_2d.gd"
-}, {
-"base": "Object",
-"class": "Attack",
-"language": "GDScript",
-"path": "res://Elements/Attack.gd"
 }, {
 "base": "Resource",
 "class": "Behavior",
@@ -185,8 +185,8 @@ _global_script_classes=[ {
 "path": "res://addons/godot-next/global/variant.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
 "Array2D": "",
-"Attack": "",
 "Behavior": "",
 "BitFlag": "",
 "CSVFile": "",

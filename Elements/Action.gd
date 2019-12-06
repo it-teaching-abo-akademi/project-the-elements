@@ -1,6 +1,6 @@
 extends Object
 
-class_name Attack
+class_name Action
 
 var name:String = 'unknown'
 var damage:float = 0.0
@@ -13,6 +13,8 @@ var element:int = -1 setget set_element, get_element
 var direction:int = 1 setget set_direction, get_direction
 
 var parameters = {}
+
+# TODO: element consumed
 
 # It can be an idea to have an 'Effect' class, who handle the effect
 # For example, the enemy call methods from this class to create the effect

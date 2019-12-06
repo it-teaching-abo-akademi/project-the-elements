@@ -47,7 +47,7 @@ var direction_requested = 0
 
 var global_vfx = null
 
-func display_attack(attack:Attack, dir:int):
+func display_attack(attack:Action, dir:int):
 	if is_weapon_set:
 		return
 	_re_init()
@@ -80,7 +80,7 @@ func _re_init():
 func get_direction():
 	return direction
 
-func set_weapon(attack:Attack):
+func set_weapon(attack:Action):
 	print("set_weapon(" + attack.name + ")")
 	if attack.name == "Slash":
 		current_weapon = WEAPON_KATANA
@@ -248,7 +248,7 @@ func _spear_attack(delta: float):
 
 
 
-func _on_Player_character_attack(attack:Attack):
+func _on_Player_character_attack(attack:Action):
 	# Display the attack
 	print("param test: " + str(attack.get_parameter("test")))
 	display_attack(attack, attack.direction)

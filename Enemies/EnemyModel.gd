@@ -140,7 +140,7 @@ func chase():
 
 
 
-func _on_Player_character_attack(attack:Attack):
+func _on_Player_character_attack(attack:Action):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
 	

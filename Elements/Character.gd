@@ -34,7 +34,7 @@ class_name Character
 
 signal start_gesture
 
-# Parameter: Attack, element
+# Parameter: Action, element
 signal character_attack
 
 # List of attack names, to check if there is a combo
@@ -154,7 +154,7 @@ func _input(event):
 			if(frame_count == 5):
 				frame_count = 0
 				coordinate_array.append(get_global_mouse_position())
-			#print("Attacking mode:", event.position)
+			#print("Actioning mode:", event.position)
 			#last_mouse_position = get_global_mouse_position()
 			#some manipulation here
 		if Input.is_action_pressed("left_mouse_click"):
@@ -168,10 +168,10 @@ func _input(event):
 		state = global.CHARACTER_STATES['STATE_IDLE']
 
 
-func _check_combo(attack:Attack):
+func _check_combo(attack:Action):
 	"""
 	Check if there is a combo, and if there is,
-	update the Attack object and return it
+	update the Action object and return it
 	"""
 	
 	combo_list.append(attack.name)
@@ -238,8 +238,8 @@ func _check_combo(attack:Attack):
 	
 	return attack
 	
-func attack(attack:Attack):
-	print("Attack " + attack.name)
+func attack(attack:Action):
+	print("Action " + attack.name)
 	
 	attack = _check_combo(attack)
 	
@@ -274,7 +274,7 @@ func attack(attack:Attack):
 #
 #	if animator:
 #		animator.play("Appear")
-#		animator.queue("Attack")
+#		animator.queue("Action")
 #		animator.queue("Disappear")
 
 func start_gesture(button):
@@ -313,7 +313,7 @@ func complete_gesture(gesture, button):
 		elif gesture.direction == global.DIRECTION['DIR_SW']:
 			print("Direction: SW")
 
-	var attack = Attack.new()
+	var attack = Action.new()
 	if button == 1:
 		attack.element = element_left
 	else:
@@ -331,7 +331,7 @@ func complete_gesture(gesture, button):
 			attack.range_effect = 100.0
 			attack.time_before = 0.15
 			attack.time_attack = 0.25
-			attack.time_after = 0.5
+			attack.time_after = 0.3
 		elif (direction == 1 and gesture.direction == global.DIRECTION['DIR_E']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_W']):
 			attack.name = "Thrust"
 			attack.damage = 18.0
@@ -372,7 +372,7 @@ func complete_gesture(gesture, button):
 		# Nothing, we fly
 		pass
 	elif elmt == "Wood":
-		# Attack anywhere, not really designed yet
+		# Action anywhere, not really designed yet
 		pass
 	elif elmt == "Earth":
 		# Create a shield
@@ -451,7 +451,7 @@ func _ready():
 	selection_plate.hide()
 	# Create gestures
 	# Eventually it should be loaded from a file
-	# var attack = Attack.new()
+	# var attack = Action.new()
 	# attack.damage = 42.0
 	# attack.name = 'Random name'
 	
