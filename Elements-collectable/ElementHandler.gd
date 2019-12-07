@@ -70,11 +70,12 @@ func createElement(type, amount, position):
 	# Make an instance of the element scene
 	var element = elementScene.instance()
 	var particles = element.get_node("ElementParticles")
-	# Make the process material unique for this instance (making it independent of other instances)
+	# Make the process material and gradient unique for this instance (making it independent of other instances)
 	particles.process_material = particles.process_material.duplicate()
+	particles.process_material.color_ramp = particles.process_material.color_ramp.duplicate()
+	particles.process_material.color_ramp.gradient = particles.process_material.color_ramp.gradient.duplicate()
 	element.position = position
 	# The amount of the element brightens the color
-	# element.process_material.set_color(_ELEMENT_COLORS[type].lightened(amount*0.5))
 	particles.process_material.color_ramp.gradient.set_color(0, _ELEMENT_COLORS[type].lightened(amount*0.5))
 	# Set the type and amount in the instance
 	element.element_type = type

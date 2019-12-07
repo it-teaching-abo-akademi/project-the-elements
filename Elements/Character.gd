@@ -263,7 +263,6 @@ func attack(attack:Action):
 	print("emit: " + attack.get_parameter("name"))
 	attack.set_parameter("test", 42.51)
 	emit_signal("character_attack", attack)
-		element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 
 #	var animator = null
 #	if attack.get_parameter("name") == "Slash":
@@ -338,6 +337,7 @@ func complete_gesture(gesture, button):
 
 	var elmt = ELEMENTS[attack.element]
 	if elmt == "Knife":
+		element_handler.createElement(1, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 		if (direction == 1 and gesture.direction == global.DIRECTION['DIR_SE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_SW']):
 			attack.set_parameter("name", "Slash")
 			attack.set_parameter("damage", 42.0)
@@ -362,6 +362,8 @@ func complete_gesture(gesture, button):
 			attack.set_parameter("time_attack", 0.5)
 			attack.set_parameter("time_after", 0.5)
 	elif elmt == "Fire":
+		# Create element
+		element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 		# Fireball
 		# Arrow
 		# if the line is in direction of the player, it's an arrow. Else it's a fireball
@@ -385,15 +387,18 @@ func complete_gesture(gesture, button):
 
 		# Rain of arrows (maybe later)
 	elif elmt == "Spring":
+		element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 		attack.set_parameter("name", "Fly")
 		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
 		attack.set_parameter("power", 70.0)
 		attack.set_parameter("time_jumping", .25)
 		attack.set_parameter("element_used", 10.0)
 	elif elmt == "Wood":
+		element_handler.createElement(3, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 		# Action anywhere, not really designed yet
 		pass
 	elif elmt == "Earth":
+		element_handler.createElement(4, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 		# Create a shield
 		pass
 
