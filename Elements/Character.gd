@@ -22,6 +22,8 @@ var motion = Vector2()
 var element_left = 0 #index of element
 var element_right = 1 #index of element
 
+var element_handler # Handles collectable elements
+
 #element selection
 onready var selection_plate = $SelectionPlate
 
@@ -235,8 +237,6 @@ func attack(attack:Attack):
 	
 	attack = _check_combo(attack)
 	
-	# Create the collectable element
-	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
 	
 	emit_signal("character_attack", attack)
 	
@@ -244,6 +244,8 @@ func attack(attack:Attack):
 	if attack.name == "Slash":
 		# animator = $SwordAnimations
 		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
+		
+
 	elif attack.name == "Thrust":
 		# animator = $SpearAnimations
 		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
@@ -255,6 +257,10 @@ func attack(attack:Attack):
 		arrow_instance.position = to_local(attack.start_position)
 		add_child(arrow_instance)
 	elif attack.name == "Fireball":
+		# Create the collectable element
+		# FIXME make it work for all scenes
+		element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
+		
 		var fireball_instance = fireball_scene.instance()
 		# fireball_instance.linear_velocity.x = 1000
 		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
@@ -436,6 +442,8 @@ func element_collected(type, amount):
 
 func _ready():
 	selection_plate.hide()
+	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
+	element_handler.set_gravity(10)
 	# Create gestures
 	# Eventually it should be loaded from a file
 	# var attack = Attack.new()
