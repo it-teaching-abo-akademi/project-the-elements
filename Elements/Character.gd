@@ -48,19 +48,19 @@ var jump_timer = 0.0
 
 func _draw():
 	pass
-	
+
 func _physics_process(delta):
 	motion.y += GRAVITY
 	#$Sprite.play(ELEMENTS[element_look])
 	motion.x = lerp(motion.x, 0, friction)
-	
+
 	if current_jump != null:
 		jump_timer += delta
 		if jump_timer < current_jump.get_parameter("time_jumping"):
 			motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
 		else:
 			current_jump = null
-	
+
 #	if state == global.CHARACTER_STATES['STATE_FLY']:
 #		if(burst):
 #			# print("burst")
@@ -87,9 +87,7 @@ func _physics_process(delta):
 				motion.x = SPEED
 			elif Input.is_action_pressed("move_left"):
 				motion.x = -SPEED
-			else:
-				motion.x = 0
-	
+
 	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
 
@@ -104,11 +102,11 @@ func _input(event):
 	if Input.is_action_pressed("ctrl"):
 		selection_plate.show()
 		selection_plate.lighten_element(get_element_by_angle(get_mouse_angle()))
-		
+
 	if Input.is_action_just_released("ctrl"):
 		selection_plate.hide()
 		$Sprite.play(get_element_by_angle(get_mouse_angle()))
-	
+
 	#change elements
 	if Input.is_action_just_pressed("change_element_left_previous"):
 		element_left = change_element_to_previous(element_left, element_right)
@@ -118,7 +116,7 @@ func _input(event):
 		element_right = change_element_to_previous(element_right, element_left)
 	if Input.is_action_just_pressed("change_element_right_next"):
 		element_right = change_element_to_next(element_right, element_left)
-	
+
 	#flip sprite
 	if Input.is_action_pressed("move_right"):
 				$Sprite.flip_h = false
@@ -126,11 +124,11 @@ func _input(event):
 	elif Input.is_action_pressed("move_left"):
 				$Sprite.flip_h = true
 				direction = -1
-				
+
 	#temp
 	if Input.is_action_just_pressed("space"):
 		element_look = change_element_to_next(element_look, 6)
-	
+
 #	if state == global.CHARACTER_STATES['STATE_IDLE']:
 #		if Input.is_action_pressed("left_mouse_click"):
 #			if ELEMENTS[element_left] == 'Spring':
@@ -184,16 +182,16 @@ func _check_combo(attack:Action):
 	Check if there is a combo, and if there is,
 	update the Action object and return it
 	"""
-	
+
 	combo_list.append(attack.get_parameter("name"))
-	
+
 	# If there is a combo, we don't try to check others
 	if combo_list.size() >= 3:
 		# Check size 3 combo
 		var three = combo_list[combo_list.size() - 1]
 		var two = combo_list[combo_list.size() - 2]
 		var one = combo_list[combo_list.size() - 3]
-		
+
 		if one == "Thrust" and two == "Thrust" and three == "Thrust":
 			# Lunge
 			attack.combo_effect = 1
@@ -209,7 +207,7 @@ func _check_combo(attack:Action):
 	if combo_list.size() >= 2:
 		var two = combo_list[combo_list.size() - 1]
 		var one = combo_list[combo_list.size() - 2]
-		
+
 		# Check size 2 combo
 		if one == "Lift" and two == "Arrow":
 			# Arrow power up: +speed +damage
@@ -246,7 +244,7 @@ func _check_combo(attack:Action):
 			combo_list.clear()
 			print("ATTACK: combo higher lift")
 			return attack
-	
+
 	return attack
 
 func move(action:Action):
@@ -255,24 +253,24 @@ func move(action:Action):
 
 func attack(attack:Action):
 	print("Action " + attack.get_parameter("name"))
-	
+
 	attack = _check_combo(attack)
-	
+
 	# Create the collectable element
 	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
-	
+
 	attack.direction = direction
 	print("emit: " + attack.get_parameter("name"))
 	attack.set_parameter("test", 42.51)
 	emit_signal("character_attack", attack)
-	
+
 #	var animator = null
 #	if attack.get_parameter("name") == "Slash":
 #		# animator = $SwordAnimations
 #		$Weapon.display_attack($Weapon.WEAPON_KATANA, direction)
 #	elif attack.get_parameter("name") == "Thrust":
 #		# animator = $SpearAnimations
-#		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)		
+#		$Weapon.display_attack($Weapon.WEAPON_SPEAR, direction)
 #	elif attack.get_parameter("name") == "Arrow":
 #		var arrow_instance = arrow_scene.instance()
 #		# arrow_instance.position = position
@@ -283,8 +281,8 @@ func attack(attack:Action):
 #	elif attack.get_parameter("name") == "Fireball":
 #		var fireball_instance = fireball_scene.instance()
 #		# fireball_instance.linear_velocity.x = 1000
-#		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000		
-#		fireball_instance.position = to_local(attack.start_position)		
+#		fireball_instance.linear_velocity = attack.points[0].direction_to(attack.points[1]) * 1000
+#		fireball_instance.position = to_local(attack.start_position)
 #		add_child(fireball_instance)
 #
 #	if animator:
@@ -308,7 +306,7 @@ func complete_gesture(gesture, button):
 		print("complete left gesture")
 	else:
 		print("complete right gesture")
-	
+
 	if gesture.line:
 		print("It's a line")
 		if gesture.direction == global.DIRECTION['DIR_N']:
@@ -336,7 +334,7 @@ func complete_gesture(gesture, button):
 
 	if gesture.points[0].distance_squared_to(gesture.points.back()) < MINIMUM_LINE_LENGTH * MINIMUM_LINE_LENGTH:
 		return
-	
+
 	var elmt = ELEMENTS[attack.element]
 	if elmt == "Knife":
 		if (direction == 1 and gesture.direction == global.DIRECTION['DIR_SE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_SW']):
@@ -383,7 +381,7 @@ func complete_gesture(gesture, button):
 #			attack.start_position.x += direction * 75
 #			attack.points.append(gesture.points[0])
 #			attack.points.append(gesture.points.back())
-		
+
 		# Rain of arrows (maybe later)
 	elif elmt == "Spring":
 		attack.set_parameter("name", "Fly")
@@ -397,12 +395,12 @@ func complete_gesture(gesture, button):
 	elif elmt == "Earth":
 		# Create a shield
 		pass
-	
+
 	if attack.get_parameter("name") == "Fly" or attack.get_parameter("name") == "Jump":
 		move(attack)
-	elif attack.get_parameter("name") != "unknown":
+	elif attack.get_parameter("name") != null:
 		attack(attack)
-	
+
 
 func change_element_to_next(element:int, element_chosen:int):
 	"""
@@ -416,7 +414,7 @@ func change_element_to_next(element:int, element_chosen:int):
 			return change_element_to_next(element, element_chosen)
 	else:
 		return change_element_to_next(-1, element_chosen)
-		
+
 func change_element_to_previous(element:int, element_chosen:int):
 	"""
 	change the element to the previous unseleted element
@@ -450,7 +448,7 @@ func get_element_by_angle(angle : float):
 		return "Spring"
 	elif angle < 90 and angle >= 18:
 		return "Knife"
-	
+
 
 enum {WATER, KNIFE, FIRE, WOOD, SOIL}
 func element_collected(type, amount):
@@ -458,7 +456,7 @@ func element_collected(type, amount):
 	called when a  collectable element is collected
 	"""
 	# Add the amount of element type
-	
+
 	# TODO logic and assignments
 	if type == WATER:
 		fuel += floor(amount*100)
@@ -466,7 +464,7 @@ func element_collected(type, amount):
 	# elif type == FIRE:
 	# elif type == WOOD:
 	# elif type == SOIL:
-		
+
 	print("COLLECTED: ", type, ", ", amount)
 
 func _ready():
@@ -476,10 +474,10 @@ func _ready():
 	# var attack = Action.new()
 	# attack.damage = 42.0
 	# attack.get_parameter("name") = 'Random name'
-	
+
 	# var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
 	# gesture.radius = 25.0
 	# gesture.attack = attack
-	
+
 	# $DrawDetector.add_gesture(gesture)
 	pass
