@@ -1,15 +1,13 @@
 extends Object
 
-class_name Attack
-
-var name:String = 'unknown'
-var damage:float = 0.0
-var range_effect:float = 0.0
-var time_before:float = 0.0
-var time_attack:float = 1.0
-var time_after:float = 0.0
+class_name Action
 
 var element:int = -1 setget set_element, get_element
+var direction:int = 1 setget set_direction, get_direction
+
+var parameters = {}
+
+# TODO: element consumed
 
 # It can be an idea to have an 'Effect' class, who handle the effect
 # For example, the enemy call methods from this class to create the effect
@@ -23,17 +21,7 @@ var effect:int = 0
 var is_combo:bool = false setget set_is_combo, is_combo
 var combo_effect:int = 0 setget set_combo_effect, get_combo_effect
 
-# It's an aboslute position, not relative to the character
-var start_position:Vector2 = Vector2(0.0, 0.0) setget set_start_position, get_start_position
-
 var points = []
-
-func set_start_position(position: Vector2):
-	start_position.x = position.x
-	start_position.y = position.y
-
-func get_start_position():
-	return Vector2(start_position.x, start_position.y)
 
 func init_again():
 	# TODO: init again everything
@@ -56,3 +44,18 @@ func set_element(e:int):
 
 func get_element():
 	return element
+
+func set_direction(dir:int):
+	direction = dir
+
+func get_direction():
+	return direction
+
+func set_parameter(name, data):
+	parameters[name] = data
+
+func get_parameter(name):
+	if parameters.has(name):
+		return parameters[name]
+	else:
+		return null

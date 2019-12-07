@@ -54,26 +54,26 @@ func _physics_process(delta):
 		# Lunge
 		# Sword wave
 		time_counter += delta
-		if current_attack.time_before != 0:
-			if time_counter > current_attack.time_before:
+		if current_attack.get_parameter("time_before") != 0:
+			if time_counter > current_attack.get_parameter("time_before"):
 				time_counter = 0
-				current_attack.time_before = 0.0
-		elif current_attack.time_attack != 0:
+				current_attack.set_parameter("time_before", 0.0)
+		elif current_attack.get_parameter("time_attack") != 0:
 			velocity.y = global.GRAVITY
 			velocity.x += speed * delta
 			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.time_attack:
+			if time_counter > current_attack.get_parameter("time_attack"):
 				time_counter = 0
-				current_attack.time_attack = 0.0
-		elif current_attack.time_after != 0:
+				current_attack.set_parameter("time_attack", 0.0)
+		elif current_attack.get_parameter("time_after") != 0:
 			velocity = Vector2.ZERO
-			if time_counter > current_attack.time_after:
+			if time_counter > current_attack.get_parameter("time_after"):
 				time_counter = 0
-				current_attack.time_after = 0.0
+				current_attack.set_parameter("time_after", 0.0)
 				_set_state(previous_state)
 		else:
 			time_counter = 0
-			current_attack.time_after = 0.0
+			current_attack.set_parameter("time_after", 0.0)
 			_set_state(previous_state)
 	elif state == global.ENEMY_STATES['LIFT']:
 		# Normal lift
@@ -81,40 +81,40 @@ func _physics_process(delta):
 		# fast lift
 		# higher lift
 		time_counter += delta
-		if current_attack.time_before != 0:
-			if time_counter > current_attack.time_before:
+		if current_attack.get_parameter("time_before") != 0:
+			if time_counter > current_attack.get_parameter("time_before"):
 				time_counter = 0
-				current_attack.time_before = 0.0
-		elif current_attack.time_attack != 0:
-			if current_attack.combo_effect == 6:
+				current_attack.set_parameter("time_before", 0.0)
+		elif current_attack.get_parameter("time_attack") != 0:
+			if current_attack.get_parameter("combo_effect") == 6:
 				# Faster lift
-				current_attack.time_attack /= 2.0
+				current_attack.set_parameter("time_attack", current_attack.get_parameter("time_attack") / 2.0)
 				velocity.y = -speed * delta * 2.0
-			elif current_attack.combo_effect == 8:
+			elif current_attack.get_parameter("combo_effect") == 8:
 				# Higher lift
 				velocity.y = -speed * delta * 1.5
 			else:
 				# Normal lift
 				velocity.y = -speed * delta
 			velocity.x = 0
-			if time_counter > current_attack.time_attack / 2.0:
+			if time_counter > current_attack.get_parameter("time_attack") / 2.0:
 				# 180°
 				velocity.x = 200
 			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.time_attack:
+			if time_counter > current_attack.get_parameter("time_attack"):
 				time_counter = 0
-				current_attack.time_attack = 0.0
-		elif current_attack.time_after != 0:
+				current_attack.set_parameter("time_attack", 0.0)
+		elif current_attack.get_parameter("time_after") != 0:
 			velocity.y = global.GRAVITY * delta
 			velocity.x = 0
 			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.time_after:
+			if time_counter > current_attack.get_parameter("time_after"):
 				time_counter = 0
-				current_attack.time_after = 0.0
+				current_attack.set_parameter("time_after", 0.0)
 				_set_state(previous_state)
 		else:
 			time_counter = 0
-			current_attack.time_after = 0.0
+			current_attack.set_parameter("time_after", 0.0)
 			_set_state(previous_state)
 func _ready():
 	_init()
@@ -140,15 +140,15 @@ func chase():
 
 
 
-func _on_Player_character_attack(attack:Attack):
+func _on_Player_character_attack(attack):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
 	
-	if position.x < attack.start_position.x + attack.range_effect:
+	if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
 		current_attack = attack
-		print("Damage done: " + str(attack.damage))
+		print("Damage done: " + str(attack.get_parameter("damage")))
 		
-		if attack.name == "Thrust":
+		if attack.get_parameter("name") == "Thrust":
 			_set_state(global.ENEMY_STATES['KNOCK'])
 
 

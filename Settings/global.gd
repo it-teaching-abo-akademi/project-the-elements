@@ -8,12 +8,12 @@ const ELEMENTS = [ "Spring", "Knife", "Fire", "Wood", "Earth"]
 
 #game data
 const UP = Vector2(0, -1) 
-const GRAVITY = 500
-const CHARACTER_SPEED = 15000 #character moving speed
-const JUMP_HEIGHT = -50000  #character jumping height
-const FLYING_SPEED = 2000  #character flying speed 
-const FLYING_ADJUST_SPEED = 2000 #character adjusting speed while flying
-const BURST_SPEED = 5000  #character burst speed
+const GRAVITY = 9
+const CHARACTER_SPEED = 150 #character moving speed
+const JUMP_HEIGHT = -500  #character jumping height
+const FLYING_SPEED = 20  #character flying speed 
+const FLYING_ADJUST_SPEED = 20 #character adjusting speed while flying
+const BURST_SPEED = 50  #character burst speed
 const FUEL_CONSUME = 10  #character fuel consume per time unit
 const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
 const FRICTION = 0.1
