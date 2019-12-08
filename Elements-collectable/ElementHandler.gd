@@ -42,11 +42,12 @@ func refPlayer(p):
 	hero = p
 
 func set_gravity(g):
-	gravity = g
+	gravity = Vector2(0, g)
 
-var timer
+# list of timers (each element needs its own timer)
+var cloud_timers = []
 
-func _timer_callback():
+func _turn_into_cloud():
 	# Turn particles into cloud point
 	var elem = elements[-1]
 	var particles = elem.get_node("ElementParticles")
@@ -56,21 +57,22 @@ func _timer_callback():
 	particles.process_material.trail_divisor = 4
 	particles.explosiveness = 0.2
 	elem.element_is_collectable = true
+	cloud_timers.remove(0)
 	
 
 ## type = 0 to 4, amount = 0.1 to 1.0, position = Vector2(x, y)
 func createElement(type, amount, position):
-	timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_timer_process_mode(Timer.TIMER_PROCESS_IDLE)
-	timer.set_wait_time(1.0)
-	timer.connect("timeout", self, "_timer_callback")
-	add_child(timer)
-	timer.start()
+	cloud_timers.append(Timer.new())
+	cloud_timers[-1].set_one_shot(true)
+	cloud_timers[-1].set_timer_process_mode(Timer.TIMER_PROCESS_IDLE)
+	cloud_timers[-1].set_wait_time(1.0)
+	cloud_timers[-1].connect("timeout", self, "_turn_into_cloud")
+	add_child(cloud_timers[-1])
+	cloud_timers[-1].start()
 	# Make an instance of the element scene
 	var element = elementScene.instance()
 	var particles = element.get_node("ElementParticles")
-	# Make the process material and gradient unique for this instance (making it independent of other instances)
+	# Make the process material and its objects unique for this instance (making it independent of other instances)
 	particles.process_material = particles.process_material.duplicate()
 	particles.process_material.color_ramp = particles.process_material.color_ramp.duplicate()
 	particles.process_material.color_ramp.gradient = particles.process_material.color_ramp.gradient.duplicate()
@@ -83,20 +85,36 @@ func createElement(type, amount, position):
 	# The element is collectable, when it turns into its cloud form
 	element.element_is_collectable = false
 	
+	# Do not collide physically with the player
+	element.add_collision_exception_with(hero)
+	
 	#element.Node
 	add_child(element)
 	
 	elements.append(element)
 
 
-func element_process(element, delta):
+func _element_process(element, delta):
 	# Gravity
-	element.position.y += gravity * delta
+	element.move_and_collide(gravity * delta)
 	
-	element_collection_process(element, delta)
+	_element_collection_process(element, delta)
+
+# List of timers
+var collection_timers = []
+
+var elements_to_remove = []
+
+func _remove_element():
+	# Remove the instance and the references to it
+	print(elements_to_remove[0])
+	elements_to_remove[0].queue_free()
+	elements.erase(elements_to_remove[0])
+	elements_to_remove.remove(0)
+	collection_timers.remove(0)
 
 # Handles Element collection behavior
-func element_collection_process(element, delta):
+func _element_collection_process(element, delta):
 	var particles = element.get_node("ElementParticles")
 	# The element collection is done only when the element is in cloud form
 	if !element.element_is_collectable:
@@ -109,17 +127,34 @@ func element_collection_process(element, delta):
 	if (-attractionRange <= dx && dx <= attractionRange
 		&& -attractionRange <= dy && dy <= attractionRange):
 		
-		# Set gravity against player (leaving a trail)
-		particles.process_material.set_gravity(Vector3(dx, dy, 0))
+		# Set gravity towards player (for absorbing effect)
+		particles.process_material.set_gravity(Vector3(-dx, dy, 0)*2)
+		particles.process_material.orbit_velocity = 0
 		# Move towards player
-		particles.position = Vector2(element.position[0] - dx*delta, element.position[1] - dy*delta)
+		element.position = Vector2(element.position[0] - dx*delta, element.position[1] - dy*delta)
 		# If element reaches the player, it is collected
 		if (-collectionRange <= dx && dx <= collectionRange
 			&& -collectionRange <= dy && dy <= collectionRange):
-			hero.element_collected(element.element_type, element.element_amount)
-			# Remove the instance and the reference to it
-			elements.erase(element)
-			element.queue_free()
+			
+				# If the element has been collected, some things should not occur, like recollecting
+			if !element in elements_to_remove:
+				hero.element_collected(element.element_type, element.element_amount)
+				# Animate collection
+				particles.process_material.scale = 1
+				particles.process_material.initial_velocity = 30
+				particles.process_material.trail_divisor = 1
+				particles.explosiveness = 0.2
+			
+				# Remove element after the animation has played
+				elements_to_remove.append(element)
+				collection_timers.append(Timer.new())
+				collection_timers[-1].set_one_shot(true)
+				collection_timers[-1].set_timer_process_mode(Timer.TIMER_PROCESS_PHYSICS)
+				collection_timers[-1].set_wait_time(1.0)
+				collection_timers[-1].connect("timeout", self, "_remove_element")
+				add_child(collection_timers[-1])
+				collection_timers[-1].start()
+			
 	else:
 		particles.process_material.set_gravity(Vector3(0, 0, 0))
 	
@@ -130,5 +165,5 @@ func element_collection_process(element, delta):
 func _physics_process(delta):
 	# Do the processing in each element instance
 	for elem in elements:
-		element_process(elem, delta)
+		_element_process(elem, delta)
 
