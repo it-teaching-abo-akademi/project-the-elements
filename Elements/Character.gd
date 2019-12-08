@@ -45,6 +45,8 @@ onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
 var current_jump = null
 var jump_timer = 0.0
+var skip_frame = false
+var jump_is_bigger = false
 
 func _draw():
 	pass
@@ -54,12 +56,22 @@ func _physics_process(delta):
 	#$Sprite.play(ELEMENTS[element_look])
 	motion.x = lerp(motion.x, 0, friction)
 
-	if current_jump != null:
+	if current_jump != null and not skip_frame:
+		if jump_timer == 0.0:
+			if null == $RayCast2D.get_collider():
+				jump_is_bigger = false
+			else:
+				jump_is_bigger = true
 		jump_timer += delta
 		if jump_timer < current_jump.get_parameter("time_jumping"):
-			motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
+			if jump_is_bigger:
+				motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power") * current_jump.get_parameter("power_boost")
+			else:
+				motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
 		else:
 			current_jump = null
+	else:
+		skip_frame = false
 
 #	if state == global.CHARACTER_STATES['STATE_FLY']:
 #		if(burst):
@@ -250,6 +262,7 @@ func _check_combo(attack:Action):
 func move(action:Action):
 	jump_timer = 0.0
 	current_jump = action
+	skip_frame = true # To process raycast
 
 func attack(attack:Action):
 	print("Action " + attack.get_parameter("name"))
@@ -388,7 +401,11 @@ func complete_gesture(gesture, button):
 		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
 		attack.set_parameter("power", 70.0)
 		attack.set_parameter("time_jumping", .25)
+		attack.set_parameter("power_boost", 2.0) # Boost factor if the character have a wall/floor/enemy to help him jump
 		attack.set_parameter("element_used", 10.0)
+
+		$RayCast2D.rotation = attack.get_parameter("direction").angle() + PI / 2.0
+
 	elif elmt == "Wood":
 		# Action anywhere, not really designed yet
 		pass
@@ -481,3 +498,4 @@ func _ready():
 
 	# $DrawDetector.add_gesture(gesture)
 	pass
+
