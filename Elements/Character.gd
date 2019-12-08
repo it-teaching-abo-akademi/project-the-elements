@@ -22,6 +22,8 @@ var motion = Vector2()
 var element_left = 0 #index of element
 var element_right = 1 #index of element
 
+var element_handler # Handles collectable elements
+
 #element selection
 onready var selection_plate = $SelectionPlate
 
@@ -268,10 +270,8 @@ func attack(attack:Action):
 	print("Action " + attack.get_parameter("name"))
 
 	attack = _check_combo(attack)
-
-	# Create the collectable element
-	get_node("/root/MainStage/ElementHandler").createElement(round(rand_range(0, 4)), rand_range(0.5, 1), Vector2(position[0] + 100 + rand_range(-3, 3), position[1]))
-
+	
+	
 	attack.direction = direction
 	print("emit: " + attack.get_parameter("name"))
 	attack.set_parameter("test", 42.51)
@@ -350,6 +350,7 @@ func complete_gesture(gesture, button):
 
 	var elmt = ELEMENTS[attack.element]
 	if elmt == "Knife":
+		element_handler.createElement(1, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		if (direction == 1 and gesture.direction == global.DIRECTION['DIR_SE']) or (direction == -1 and gesture.direction == global.DIRECTION['DIR_SW']):
 			attack.set_parameter("name", "Slash")
 			attack.set_parameter("damage", 42.0)
@@ -374,6 +375,8 @@ func complete_gesture(gesture, button):
 			attack.set_parameter("time_attack", 0.5)
 			attack.set_parameter("time_after", 0.5)
 	elif elmt == "Fire":
+		# Create element
+		element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		# Fireball
 		# Arrow
 		# if the line is in direction of the player, it's an arrow. Else it's a fireball
@@ -397,6 +400,7 @@ func complete_gesture(gesture, button):
 
 		# Rain of arrows (maybe later)
 	elif elmt == "Spring":
+		element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		attack.set_parameter("name", "Fly")
 		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
 		attack.set_parameter("power", 70.0)
@@ -407,9 +411,11 @@ func complete_gesture(gesture, button):
 		$RayCast2D.rotation = attack.get_parameter("direction").angle() + PI / 2.0
 
 	elif elmt == "Wood":
+		element_handler.createElement(3, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		# Action anywhere, not really designed yet
 		pass
 	elif elmt == "Earth":
+		element_handler.createElement(4, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		# Create a shield
 		pass
 
@@ -486,6 +492,8 @@ func element_collected(type, amount):
 
 func _ready():
 	selection_plate.hide()
+	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
+	element_handler.set_gravity(10)
 	# Create gestures
 	# Eventually it should be loaded from a file
 	# var attack = Action.new()
