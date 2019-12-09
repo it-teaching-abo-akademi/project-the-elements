@@ -233,6 +233,14 @@ func _check_combo(attack:Action):
 			# Heavy slash
 			attack.combo_effect = 4
 			combo_list.clear()
+			attack.set_parameter("name", "Heavy Slash")
+			attack.set_parameter("damage", 100.0)
+			# attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", 200.0)
+			attack.set_parameter("time_before", 1.0)
+			attack.set_parameter("time_attack", 0.5)
+			attack.set_parameter("time_after", 1.0)
+			attack.set_parameter("display_size_factor", 2.0)
 			print("ATTACK: combo heavy slash")
 			return attack
 		elif one == "Lift" and two == "Lift":
@@ -371,6 +379,7 @@ func complete_gesture(gesture, button):
 			attack.set_parameter("name", "Lift")
 			attack.set_parameter("damage", 5.0)
 			attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", direction * 200.0)
 			attack.set_parameter("time_before", 0.2)
 			attack.set_parameter("time_attack", 0.5)
 			attack.set_parameter("time_after", 0.5)
