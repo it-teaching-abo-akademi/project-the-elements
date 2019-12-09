@@ -12,11 +12,12 @@ const GRAVITY = 9
 const CHARACTER_SPEED = 150 #character moving speed
 const JUMP_HEIGHT = -500  #character jumping height
 const FLYING_SPEED = 20  #character flying speed 
-const FLYING_ADJUST_SPEED = 20 #character adjusting speed while flying
+const FLYING_ADJUST_SPEED = 5 #character adjusting speed while flying
 const BURST_SPEED = 50  #character burst speed
 const FUEL_CONSUME = 10  #character fuel consume per time unit
 const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
-const FRICTION = 0.1
+const FRICTION = 0.02
+const MAX_FLYING_SPEED = 800  #character flying speed 
 
 enum CHARACTER_STATES {STATE_IDLE, STATE_ATTACK, STATE_FLY}  # states of charater
 enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT} # states of enemies

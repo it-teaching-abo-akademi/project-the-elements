@@ -11,6 +11,7 @@ const FUEL_CONSUME = global.FUEL_CONSUME
 const BURST_FUEL_CONSUME = global.BURST_FUEL_CONSUME
 const ELEMENTS = global.ELEMENTS
 const friction = global.FRICTION
+const MAX_FLYING_SPEED = global.MAX_FLYING_SPEED
 
 export(float) var ATTACK_RANGE = 50.0
 export(float) var MINIMUM_LINE_LENGTH = 50.0
@@ -56,7 +57,7 @@ func _draw():
 func _physics_process(delta):
 	motion.y += GRAVITY
 	#$Sprite.play(ELEMENTS[element_look])
-	motion.x = lerp(motion.x, 0, friction)
+	#motion.x = lerp(motion.x, 0, friction)
 
 	if current_jump != null and not skip_frame:
 		if jump_timer == 0.0:
@@ -93,14 +94,28 @@ func _physics_process(delta):
 #			motion.x += -FLYING_ADJUST_SPEED * delta
 #		#$Sprite.play("Jump")
 #	else: #if there is no flying effect
-	if current_jump == null:
-		if (abs(motion.x) > SPEED):
-			motion *= 0.95
-		else:
+	if current_jump == null :
+		if(is_on_floor()):
+		#if (abs(motion.x) > SPEED):
+			motion *= 0
+		#else:
 			if Input.is_action_pressed("move_right"):
 				motion.x = SPEED
 			elif Input.is_action_pressed("move_left"):
 				motion.x = -SPEED
+		else:
+			if (motion.x == 0.0):
+				if Input.is_action_pressed("move_right"):
+					motion.x = SPEED
+				elif Input.is_action_pressed("move_left"):
+					motion.x = -SPEED
+			else:
+				if Input.is_action_pressed("move_right"):
+					motion.x += FLYING_ADJUST_SPEED
+				elif Input.is_action_pressed("move_left"):
+					motion.x -= FLYING_ADJUST_SPEED
+			if (abs(motion.x) > MAX_FLYING_SPEED):
+				motion.x = sign(motion.x) * MAX_FLYING_SPEED
 
 	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
@@ -412,9 +427,9 @@ func complete_gesture(gesture, button):
 		element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		attack.set_parameter("name", "Fly")
 		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
-		attack.set_parameter("power", 70.0)
-		attack.set_parameter("time_jumping", .25)
-		attack.set_parameter("power_boost", 2.0) # Boost factor if the character have a wall/floor/enemy to help him jump
+		attack.set_parameter("power", 100.0)
+		attack.set_parameter("time_jumping", .08)
+		attack.set_parameter("power_boost", 1.5) # Boost factor if the character have a wall/floor/enemy to help him jump
 		attack.set_parameter("element_used", 10.0)
 
 		$RayCast2D.rotation = attack.get_parameter("direction").angle() + PI / 2.0
