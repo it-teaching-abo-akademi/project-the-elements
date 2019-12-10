@@ -82,7 +82,7 @@ func get_direction():
 
 func set_weapon(attack:Action):
 	print("set_weapon(" + attack.get_parameter("name") + ")")
-	if attack.get_parameter("name") == "Slash":
+	if attack.get_parameter("name") == "Slash" or attack.get_parameter("name") == "Heavy Slash":
 		current_weapon = WEAPON_KATANA
 	elif attack.get_parameter("name") == "Thrust":
 		current_weapon = WEAPON_SPEAR
@@ -106,16 +106,22 @@ func set_weapon(attack:Action):
 		disappear_time = attack.get_parameter("time_after")
 		attack_time = attack.get_parameter("time_attack")
 		
-		sprite.position.y = -1 * 100.0
-		$VisualEffect.position.y = -1 * 50.0
+		var size_factor = 1.0
+		if attack.get_parameter("name") == "Heavy Slash":
+			size_factor = attack.get_parameter("display_size_factor")
+		
+		sprite.position.y = -1 * size_factor * 100.0
+		$VisualEffect.position.y = -1 * size_factor * 50.0
+		
+		sprite.scale *= size_factor
 		
 		var vfx = VFXTrail.new()
-		vfx.from = Vector2(direction * -7, -50)
-		vfx.to = Vector2(direction * -7, -190)
+		vfx.from = Vector2(direction * -7 * size_factor, -50 * size_factor)
+		vfx.to = Vector2(direction * -7 * size_factor, -190 * size_factor)
 		vfx.point_count = 20
 		vfx.line_width = vfx.Repartition.RANDOM
-		vfx.minimum_line_width = 5
-		vfx.maximum_line_width = 15
+		vfx.minimum_line_width = int(5 * size_factor)
+		vfx.maximum_line_width = int(15 * size_factor)
 		vfx.line_length = vfx.Repartition.RANDOM
 		vfx.minimum_length = 7
 		vfx.maximum_length = 12

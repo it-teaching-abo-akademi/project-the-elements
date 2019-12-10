@@ -11,6 +11,7 @@ const FUEL_CONSUME = global.FUEL_CONSUME
 const BURST_FUEL_CONSUME = global.BURST_FUEL_CONSUME
 const ELEMENTS = global.ELEMENTS
 const friction = global.FRICTION
+const MAX_FLYING_SPEED = global.MAX_FLYING_SPEED
 
 export(float) var ATTACK_RANGE = 50.0
 export(float) var MINIMUM_LINE_LENGTH = 50.0
@@ -47,6 +48,8 @@ onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
 var current_jump = null
 var jump_timer = 0.0
+var skip_frame = false
+var jump_is_bigger = false
 
 func _draw():
 	pass
@@ -54,14 +57,24 @@ func _draw():
 func _physics_process(delta):
 	motion.y += GRAVITY
 	#$Sprite.play(ELEMENTS[element_look])
-	motion.x = lerp(motion.x, 0, friction)
+	#motion.x = lerp(motion.x, 0, friction)
 
-	if current_jump != null:
+	if current_jump != null and not skip_frame:
+		if jump_timer == 0.0:
+			if null == $RayCast2D.get_collider():
+				jump_is_bigger = false
+			else:
+				jump_is_bigger = true
 		jump_timer += delta
 		if jump_timer < current_jump.get_parameter("time_jumping"):
-			motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
+			if jump_is_bigger:
+				motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power") * current_jump.get_parameter("power_boost")
+			else:
+				motion += current_jump.get_parameter("direction") * current_jump.get_parameter("power")
 		else:
 			current_jump = null
+	else:
+		skip_frame = false
 
 #	if state == global.CHARACTER_STATES['STATE_FLY']:
 #		if(burst):
@@ -81,14 +94,28 @@ func _physics_process(delta):
 #			motion.x += -FLYING_ADJUST_SPEED * delta
 #		#$Sprite.play("Jump")
 #	else: #if there is no flying effect
-	if current_jump == null:
-		if (abs(motion.x) > SPEED):
-			motion *= 0.95
-		else:
+	if current_jump == null :
+		if(is_on_floor()):
+		#if (abs(motion.x) > SPEED):
+			motion *= 0
+		#else:
 			if Input.is_action_pressed("move_right"):
 				motion.x = SPEED
 			elif Input.is_action_pressed("move_left"):
 				motion.x = -SPEED
+		else:
+			if (motion.x == 0.0):
+				if Input.is_action_pressed("move_right"):
+					motion.x = SPEED
+				elif Input.is_action_pressed("move_left"):
+					motion.x = -SPEED
+			else:
+				if Input.is_action_pressed("move_right"):
+					motion.x += FLYING_ADJUST_SPEED
+				elif Input.is_action_pressed("move_left"):
+					motion.x -= FLYING_ADJUST_SPEED
+			if (abs(motion.x) > MAX_FLYING_SPEED):
+				motion.x = sign(motion.x) * MAX_FLYING_SPEED
 
 	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
@@ -221,6 +248,14 @@ func _check_combo(attack:Action):
 			# Heavy slash
 			attack.combo_effect = 4
 			combo_list.clear()
+			attack.set_parameter("name", "Heavy Slash")
+			attack.set_parameter("damage", 100.0)
+			# attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", 200.0)
+			attack.set_parameter("time_before", 1.0)
+			attack.set_parameter("time_attack", 0.5)
+			attack.set_parameter("time_after", 1.0)
+			attack.set_parameter("display_size_factor", 2.0)
 			print("ATTACK: combo heavy slash")
 			return attack
 		elif one == "Lift" and two == "Lift":
@@ -252,6 +287,7 @@ func _check_combo(attack:Action):
 func move(action:Action):
 	jump_timer = 0.0
 	current_jump = action
+	skip_frame = true # To process raycast
 
 func attack(attack:Action):
 	print("Action " + attack.get_parameter("name"))
@@ -358,6 +394,7 @@ func complete_gesture(gesture, button):
 			attack.set_parameter("name", "Lift")
 			attack.set_parameter("damage", 5.0)
 			attack.set_parameter("start_position", position)
+			attack.set_parameter("range_effect", direction * 200.0)
 			attack.set_parameter("time_before", 0.2)
 			attack.set_parameter("time_attack", 0.5)
 			attack.set_parameter("time_after", 0.5)
@@ -390,9 +427,13 @@ func complete_gesture(gesture, button):
 		element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		attack.set_parameter("name", "Fly")
 		attack.set_parameter("direction", gesture.points.back().direction_to(gesture.points[0]))
-		attack.set_parameter("power", 70.0)
-		attack.set_parameter("time_jumping", .25)
+		attack.set_parameter("power", 100.0)
+		attack.set_parameter("time_jumping", .08)
+		attack.set_parameter("power_boost", 1.5) # Boost factor if the character have a wall/floor/enemy to help him jump
 		attack.set_parameter("element_used", 10.0)
+
+		$RayCast2D.rotation = attack.get_parameter("direction").angle() + PI / 2.0
+
 	elif elmt == "Wood":
 		element_handler.createElement(3, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
 		# Action anywhere, not really designed yet
@@ -489,3 +530,4 @@ func _ready():
 
 	# $DrawDetector.add_gesture(gesture)
 	pass
+
