@@ -19,6 +19,7 @@ var hero
 
 # List of element instances, changes dynamically
 var elements = []
+var elements_to_remove = []
 
 # Scene gravity, can be set with set_gravity()
 var gravity
@@ -85,8 +86,10 @@ func createElement(type, amount, position):
 	# The element is collectable, when it turns into its cloud form
 	element.element_is_collectable = false
 	
-	# Do not collide physically with the player
+	# Do not collide physically with the player, or other elements
 	element.add_collision_exception_with(hero)
+	for elem in elements:
+		element.add_collision_exception_with(elem)
 	
 	#element.Node
 	add_child(element)
@@ -102,8 +105,6 @@ func _element_process(element, delta):
 
 # List of timers
 var collection_timers = []
-
-var elements_to_remove = []
 
 func _remove_element():
 	# Remove the instance and the references to it
