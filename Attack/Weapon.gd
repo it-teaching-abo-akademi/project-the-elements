@@ -113,7 +113,7 @@ func set_weapon(attack:Action):
 		sprite.position.y = -1 * size_factor * 100.0
 		$VisualEffect.position.y = -1 * size_factor * 50.0
 		
-		sprite.scale *= size_factor
+		sprite.scale = Vector2(size_factor, size_factor)
 		
 		var vfx = VFXTrail.new()
 		vfx.from = Vector2(direction * -7 * size_factor, -50 * size_factor)

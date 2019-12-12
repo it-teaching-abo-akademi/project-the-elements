@@ -51,8 +51,13 @@ var jump_timer = 0.0
 var skip_frame = false
 var jump_is_bigger = false
 
+var combo_timer = 0.0
+
 func _draw():
 	pass
+
+func _process(delta):
+	combo_timer += delta
 
 func _physics_process(delta):
 	motion.y += GRAVITY
@@ -211,6 +216,16 @@ func _check_combo(attack:Action):
 	Check if there is a combo, and if there is,
 	update the Action object and return it
 	"""
+	
+	# TODO:
+	#  if the previous attack (should be in the list)
+	# is in time_attack, then the combo can be done
+	# if it's after that time, a normal attack is done
+	# (no change here then)
+	
+	# When it's a combo, the animator (Weapon) will receive
+	# the attack and will see it's a combo. It will then skip
+	# the time_after animation to launch the new attack (the combo)
 
 	combo_list.append(attack.get_parameter("name"))
 
