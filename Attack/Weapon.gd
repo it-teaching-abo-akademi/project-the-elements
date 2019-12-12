@@ -29,6 +29,7 @@ var timer:float = 0.0
 var state = STATE_HIDED
 
 var current_weapon = -1
+var current_attack = null
 
 var appear_time = 0.0
 var disappear_time = 0.0
@@ -86,8 +87,11 @@ func set_weapon(attack:Action):
 		current_weapon = WEAPON_KATANA
 	elif attack.get_parameter("name") == "Thrust":
 		current_weapon = WEAPON_SPEAR
+	elif attack.get_parameter("name") == "Lift":
+		current_weapon = WEAPON_SPEAR
 	
 	is_weapon_set = true
+	current_attack = attack
 	
 	var sprite = $Sprite
 	if current_weapon == WEAPON_KATANA:
@@ -195,8 +199,11 @@ func _process(delta):
 	elif state == STATE_ATTACK:
 		if current_weapon == WEAPON_KATANA:
 			_katana_attack(delta)
-		elif current_weapon == WEAPON_SPEAR:
+		elif current_weapon == WEAPON_SPEAR and current_attack.get_parameter("name") == "Thrust":
 			_spear_attack(delta)
+		elif current_attack.get_parameter("name") == "Lift":
+			_lift_attack(delta)
+		
 
 func appear():
 	if not is_weapon_set:
@@ -252,7 +259,13 @@ func _spear_attack(delta: float):
 		position.x = direction * SPEAR_MOVE_X
 		_set_state(STATE_DISAPPEAR)
 
-
+func _lift_attack(delta: float):
+	if timer < attack_time:
+		timer += delta
+		rotation_degrees = direction * ease(timer / attack_time, 4) * current_attack.get_parameter("display_rotation")
+	else:
+		rotation_degrees = direction * current_attack.get_parameter("display_rotation")
+		_set_state(STATE_DISAPPEAR)
 
 func _on_Player_character_attack(attack:Action):
 	# Display the attack

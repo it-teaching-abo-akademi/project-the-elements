@@ -150,6 +150,8 @@ func _on_Player_character_attack(attack):
 		
 		if attack.get_parameter("name") == "Thrust":
 			_set_state(global.ENEMY_STATES['KNOCK'])
+		elif attack.get_parameter("name") == "Lift":
+			_set_state(global.ENEMY_STATES['LIFT'])
 
 
 func _on_Detect_range_body_entered(body):

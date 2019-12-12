@@ -409,10 +409,13 @@ func complete_gesture(gesture, button):
 			attack.set_parameter("name", "Lift")
 			attack.set_parameter("damage", 5.0)
 			attack.set_parameter("start_position", position)
-			attack.set_parameter("range_effect", direction * 200.0)
+			attack.set_parameter("range_effect", direction * 100.0)
 			attack.set_parameter("time_before", 0.2)
 			attack.set_parameter("time_attack", 0.5)
 			attack.set_parameter("time_after", 0.5)
+			
+			# Display parameters
+			attack.set_parameter("display_rotation", -90)
 	elif elmt == "Fire":
 		# Create element
 		element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + 100*direction + rand_range(-3, 3), position[1]))
