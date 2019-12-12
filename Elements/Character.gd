@@ -282,6 +282,9 @@ func _check_combo(attack:Action):
 		elif one == "Thrust" and two == "Lift":
 			# Fast lift
 			attack.combo_effect = 6
+			attack.set_parameter("time_before", attack.get_parameter("time_before") * 0.5)
+			attack.set_parameter("time_attack", attack.get_parameter("time_attack") * 0.5)
+			attack.set_parameter("time_after", attack.get_parameter("time_after") * 0.5)
 			print("ATTACK: combo fast lift")
 			return attack
 		elif one == "Slash" and two == "Thrust":
