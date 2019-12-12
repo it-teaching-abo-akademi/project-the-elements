@@ -94,6 +94,12 @@ func set_weapon(attack:Action):
 	current_attack = attack
 	
 	var sprite = $Sprite
+	
+	# Re-init the sprite
+	sprite.position = Vector2.ZERO
+	sprite.rotation = 0
+	sprite.scale = Vector2.ONE
+	
 	if current_weapon == WEAPON_KATANA:
 		# Display katana
 		var katana_image = Image.new()
