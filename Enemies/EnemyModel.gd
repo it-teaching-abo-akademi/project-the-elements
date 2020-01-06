@@ -39,7 +39,7 @@ func _physics_process(delta):
 		pass
 		if player:
 			velocity = (player.position - position).normalized() * speed * delta
-			velocity.y += global.GRAVITY * delta
+			velocity.y = 0
 		else:
 			#code here
 			velocity = Vector2.ZERO
