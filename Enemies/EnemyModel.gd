@@ -14,6 +14,8 @@ var preferred_attack_range = 10
 var state
 var velocity
 
+signal attack(damage)
+
 # Abilities
 var canCooperate = false
 var canFly = false
@@ -38,11 +40,15 @@ func _physics_process(delta):
 		#chase()
 		pass
 		if player:
-			velocity = (player.position - position).normalized() * speed * delta
+			velocity = (player.position - position).normalized() * Vector2(1,0) * speed * delta
 			velocity.y += global.GRAVITY * delta
 		else:
 			#code here
 			velocity = Vector2.ZERO
+		if not is_on_floor():
+			velocity.y = global.GRAVITY * 1000 * delta
+		else:
+			velocity.y = 0
 		if velocity.x >= 0:
 			$Sprite.flip_h = true
 		else:
@@ -165,7 +171,9 @@ func _on_Detect_range_body_exited(body):
 
 
 func _on_Attack_range_body_entered(body):
-	pass # Replace with function body.
+	if "Player" in body.name:
+		emit_signal("attack",10)
+
 
 
 func _on_Attack_range_body_exited(body):

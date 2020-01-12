@@ -16,13 +16,13 @@ func _draw():
 
 
 func _input(event):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click") and not started:
 		# Begin to draw
 		button = 1
 		points.append(get_global_mouse_position())
 		get_owner().start_gesture(button)
 		started = true
-	elif event.is_action_pressed("right_mouse_click"):
+	elif event.is_action_pressed("right_mouse_click") and not started:
 		# Begin to draw
 		button = 0
 		points.append(get_global_mouse_position())

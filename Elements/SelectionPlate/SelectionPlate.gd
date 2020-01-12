@@ -1,6 +1,6 @@
 extends Node2D
 
-var elements = global.ELEMENTS
+const elements = ["Spring", "Knife", "Fire", "Wood", "Earth"]
 
 func _ready():
 	pass 

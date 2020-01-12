@@ -4,6 +4,8 @@ extends Object
 
 class_name Gesture
 
+export(float) var MINIMUM_LINE_LENGTH = 50.0
+
 var points = Array() setget set_points, get_points
 var line:bool = false setget set_is_line, is_line
 
@@ -13,7 +15,10 @@ var direction = -1 setget set_direction, get_direction
 
 var MAX_DISTANCE:float = 5.0
 
-
+var angle_with_x
+var first
+var last
+	
 func set_points(pts:Array):
 	if not points.empty():
 		points.clear()
@@ -32,11 +37,11 @@ func is_line():
 	Then we can check if every point is not far from the line
 	"""
 	computed = true
-	if points.size() < 2:
+	if points.size() < 2 or points[0].distance_squared_to(points.back()) < MINIMUM_LINE_LENGTH * MINIMUM_LINE_LENGTH:
 		direction = -1
 		return false
-	var first = points[0]
-	var last = points.back()
+	first = points[0]
+	last = points.back()
 	
 	for i in range(1, points.size()):
 		if _distance_line_point(first, last, points[i]) > MAX_DISTANCE:
@@ -47,49 +52,29 @@ func is_line():
 	# We now need to know the direction of the line
 	
 	# Compute the angle between the line and the x axe
-	var angle_with_x = first.angle_to_point(last)
+	angle_with_x = first.angle_to_point(last)
 	while angle_with_x > 2 * PI:
 		angle_with_x -= 2 * PI
 	
 	if angle_with_x < 0:
 		angle_with_x += 2 * PI
 	
-	if angle_with_x < PI / 8:
-		direction = global.DIRECTION['DIR_W']
-	elif angle_with_x < 3 * PI / 8:
-		direction = global.DIRECTION['DIR_NW']
-	elif angle_with_x < 5 * PI / 8:
-		direction = global.DIRECTION['DIR_N']
-	elif angle_with_x < 7 * PI / 8:
-		direction = global.DIRECTION['DIR_NE']
-	elif angle_with_x < 9 * PI / 8:
-		direction = global.DIRECTION['DIR_E']
-	elif angle_with_x < 11 * PI / 8:
-		direction = global.DIRECTION['DIR_SE']
-	elif angle_with_x < 13 * PI / 8:
-		direction = global.DIRECTION['DIR_S']
-	elif angle_with_x < 15 * PI / 8:
-		direction = global.DIRECTION['DIR_SW']
-	else:
-		direction = global.DIRECTION['DIR_W']
-
+	direction = angle_with_x
+	
+	print("line")
 	return true
+
+func get_angle_with_x():
+	if angle_with_x:
+		return angle_with_x
 
 func set_direction(dir):
 	direction = dir
 
 func get_direction():
-	if not computed:
-		is_line()
-	return direction
+	if last != null and first != null:
+		return (last-first).normalized()
 
-func _distance_line_point(line_p1: Vector2, line_p2: Vector2, point: Vector2):
-	var y2y1 = line_p2.y - line_p1.y
-	var x2x1 = line_p2.x - line_p1.x
-	var a = abs(y2y1 * point.x - x2x1 * point.y + line_p2.x * line_p1.y - line_p2.y * line_p1.x)
-	var sr = sqrt(y2y1 * y2y1 + x2x1 * x2x1)
-	
-	if sr == 0:
-		return 0
-	
-	return a / sr
+func _distance_line_point(p1: Vector2, p2: Vector2, p: Vector2):
+	var vector = (p-p1) - (p-p1)*(p2-p1)*(p2-p1)/p1.distance_squared_to(p2)
+	return 3

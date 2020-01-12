@@ -9,12 +9,15 @@ signal end_move
 signal begin_disappear
 signal end_disappear
 
+signal slash(time)
+signal thrust(time)
+
 const WEAPON_KATANA = 0
 const WEAPON_SPEAR = 1
 
 var is_weapon_set = false
 
-const KATANA_ROTATION = 90.0
+const KATANA_ROTATION = 120.0
 
 const SPEAR_MOVE_X = 100.0
 const SPEAR_START_POSITION = Vector2(100.0, 0.0)
@@ -137,6 +140,8 @@ func set_weapon(attack:Action):
 		vfx.maximum_length = 12
 		vfx.name = "VFX"
 		
+		emit_signal("slash",appear_time)
+		
 		add_child(vfx)
 		
 		global_vfx = vfx
@@ -171,6 +176,8 @@ func set_weapon(attack:Action):
 		vfx.minimum_length = 5
 		vfx.maximum_length = 10
 		vfx.name = "VFX"
+		
+		emit_signal("thrust",appear_time)
 		
 		add_child(vfx)
 		
