@@ -539,16 +539,5 @@ func _ready():
 	selection_plate.hide()
 	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
 	element_handler.set_gravity(10)
-	# Create gestures
-	# Eventually it should be loaded from a file
-	# var attack = Action.new()
-	# attack.damage = 42.0
-	# attack.get_parameter("name") = 'Random name'
-
-	# var gesture = Gesture.new(1.0, [Vector2(-100,-100), Vector2(100,100)])
-	# gesture.radius = 25.0
-	# gesture.attack = attack
-
-	# $DrawDetector.add_gesture(gesture)
 	pass
 
