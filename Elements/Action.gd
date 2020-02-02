@@ -19,6 +19,7 @@ var knock_power = 0
 var element_consume = 10
 var boost_factor = 1.5
 var direction = Vector2.ZERO
+var display_size_factor = 1.0
 
 # TODO: element consumed
 
@@ -60,10 +61,10 @@ func get_element_select():
 	return element_select
 
 func set_face_direction(dir:int):
-	direction = dir
+	face_direction = dir
 
 func get_face_direction():
-	return direction
+	return face_direction
 
 func load_data():
 	if name == null:

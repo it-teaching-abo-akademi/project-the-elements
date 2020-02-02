@@ -33,7 +33,7 @@ var health
 var defence
 var element_left = 0 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 var element_right = 1 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
-var face_direction = 1 # 1: look right, -1 left
+var face_direction : int = 1 # 1: look right, -1 left
 
 var motion = Vector2()
 
@@ -61,7 +61,6 @@ func _physics_process(delta):
 				jump_is_bigger = true
 		jump_timer += delta
 		if jump_timer < current_jump.time_action:
-			emit_signal("spring_burst")
 			if jump_is_bigger:
 				motion += current_jump.direction * current_jump.knock_power * current_jump.boost_factor
 			else:
@@ -93,7 +92,6 @@ func _physics_process(delta):
 					motion.x -= FLYING_ADJUST_SPEED
 			if (abs(motion.x) > MAX_FLYING_SPEED):
 				motion.x = sign(motion.x) * MAX_FLYING_SPEED
-				emit_signal("spring_burst")
 
 	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
@@ -207,7 +205,7 @@ func element_collected(type, amount):
 		4:
 			var temp = EARTH.current_amount + amount
 			EARTH.current_amount = EARTH.max_amount if temp > EARTH.max_amount  else temp
-	print("COLLECTED: ", type, ", ", amount)
+	#print("COLLECTED: ", type, ", ", amount)
 
 
 func _on_EnemyModel_attack(damage):
@@ -226,13 +224,14 @@ func complete_gesture(gesture, button):
 	
 	var action = Action.new()
 	if button == 1:
-		print("complete left gesture")
+		#print("complete left gesture")
 		action.element = element_left
 	else:
-		print("complete right gesture")
+		#print("complete right gesture")
 		action.element = element_right
 				
 	var elmt = ELEMENTS[action.element]
+	action.face_direction = face_direction
 	var angle_with_x = gesture.get_angle_with_x()
 	match elmt:
 		"Knife":
@@ -240,17 +239,17 @@ func complete_gesture(gesture, button):
 				if angle_with_x <= PI/6 or angle_with_x > 11*PI/6:
 					action.name = "Thrust"
 				elif angle_with_x > PI/6 and angle_with_x <= PI/2:
-					action.name = "Slash"
-				elif angle_with_x >3*PI/2 and angle_with_x <= 11*PI/6:
 					action.name = "Lift"
+				elif angle_with_x >3*PI/2 and angle_with_x <= 11*PI/6:
+					action.name = "Slash"
 			else:
-				if angle_with_x <= 5* PI/6 or angle_with_x > 7*PI/6:
+				if angle_with_x >= 5* PI/6 and angle_with_x < 7*PI/6:
 					action.name = "Thrust"
 				elif angle_with_x > PI/2 and angle_with_x <= 5*PI/6:
-					action.name = "Slash"
-				elif angle_with_x >7*PI/6 and angle_with_x <= 3*PI/2:
 					action.name = "Lift"
-				
+				elif angle_with_x >7*PI/6 and angle_with_x <= 3*PI/2:
+					action.name = "Slash"
+			
 		"Fire":
 			if face_direction == -1:
 				if angle_with_x > PI/2 and angle_with_x <= 3*PI/2:
@@ -277,7 +276,7 @@ func complete_gesture(gesture, button):
 	if action.name == null:
 		return
 	action.load_data()
-	if action.name == "Fly" or action.name == "Jump":
+	if action.name == "Fly":
 		move(action)
 	elif action.name != null:
 		attack(action)
@@ -288,6 +287,7 @@ func move(action:Action):
 	skip_frame = true # To process raycast
 
 func attack(attack:Action):
+	emit_signal("character_attack", attack)
 	#print("Action " + attack.name)
 	#attack = _check_combo(attack)
 	#attack.direction = direction
@@ -298,9 +298,11 @@ func attack(attack:Action):
 
 func start_gesture(button):
 	if button == 1:
-		print("start left gesture")
+		pass
+		#print("start left gesture")
 	else:
-		print("start right gesture")
+		pass
+		#print("start right gesture")
 	emit_signal("start_gesture", button)
 	
 export(float) var ATTACK_RANGE = 50.0

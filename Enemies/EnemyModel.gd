@@ -139,25 +139,18 @@ func _init():
 func chase():
 	pass
 
-
-
-
-
-
-
-
 func _on_Player_character_attack(attack):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
-	
-	if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
+	pass
+	"""if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
 		current_attack = attack
 		print("Damage done: " + str(attack.get_parameter("damage")))
 		
 		if attack.get_parameter("name") == "Thrust":
 			_set_state(global.ENEMY_STATES['KNOCK'])
 		elif attack.get_parameter("name") == "Lift":
-			_set_state(global.ENEMY_STATES['LIFT'])
+			_set_state(global.ENEMY_STATES['LIFT'])"""
 
 
 func _on_Detect_range_body_entered(body):
@@ -173,7 +166,6 @@ func _on_Detect_range_body_exited(body):
 func _on_Attack_range_body_entered(body):
 	if "Player" in body.name:
 		emit_signal("attack",10)
-
 
 
 func _on_Attack_range_body_exited(body):

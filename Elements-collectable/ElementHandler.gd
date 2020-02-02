@@ -108,7 +108,7 @@ var collection_timers = []
 
 func _remove_element():
 	# Remove the instance and the references to it
-	print(elements_to_remove[0])
+	#print(elements_to_remove[0])
 	elements_to_remove[0].queue_free()
 	elements.erase(elements_to_remove[0])
 	elements_to_remove.remove(0)

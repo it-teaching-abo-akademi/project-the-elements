@@ -34,15 +34,15 @@ margin_right = 764.211
 margin_bottom = -98.0
 text = "Press ctrl to change scene"
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 1118.53
-margin_top = 81.2632
-margin_right = 1217.53
-margin_bottom = 95.2632
-text = "TriggerDialogue"
-
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 290.678, 157.574 )
+
+[node name="Label2" type="Label" parent="Player"]
+margin_left = 827.852
+margin_top = -76.3108
+margin_right = 926.852
+margin_bottom = -62.3108
+text = "TriggerDialogue"
 
 [node name="Enemies" type="Node2D" parent="."]
 visible = false

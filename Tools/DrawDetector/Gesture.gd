@@ -13,7 +13,7 @@ var computed:bool = false
 
 var direction = -1 setget set_direction, get_direction
 
-var MAX_DISTANCE:float = 5.0
+var MAX_DISTANCE:float = 30.0
 
 var angle_with_x
 var first
@@ -61,7 +61,7 @@ func is_line():
 	
 	direction = angle_with_x
 	
-	print("line")
+	#print("line")
 	return true
 
 func get_angle_with_x():
@@ -76,5 +76,5 @@ func get_direction():
 		return (last-first).normalized()
 
 func _distance_line_point(p1: Vector2, p2: Vector2, p: Vector2):
-	var vector = (p-p1) - (p-p1)*(p2-p1)*(p2-p1)/p1.distance_squared_to(p2)
-	return 3
+	var vector = (p-p1) - (p-p1).dot((p2-p1))*(p2-p1)/p1.distance_squared_to(p2)
+	return vector.length()

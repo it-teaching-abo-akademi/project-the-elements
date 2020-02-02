@@ -41,7 +41,7 @@ func _ready():
 			var point = (1 - r) * from + r * to
 			points.append(point)
 	
-	print(str(points))
+	#print(str(points))
 	var i = 0
 	for point in points:
 		var node = Node2D.new()
