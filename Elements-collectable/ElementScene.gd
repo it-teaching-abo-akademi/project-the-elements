@@ -6,6 +6,7 @@ extends KinematicBody2D
 var element_amount
 var element_type
 var element_is_collectable
+var cloud_transform_timer = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

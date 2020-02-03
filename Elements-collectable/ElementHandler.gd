@@ -46,30 +46,34 @@ func set_gravity(g):
 	gravity = Vector2(0, g)
 
 # list of timers (each element needs its own timer)
-var cloud_timers = []
+#var cloud_timers = []
 
-func _turn_into_cloud():
+func _turn_into_cloud(elem):
 	# Turn particles into cloud point
-	var elem = elements[-1]
+	#var elem = elements[-1]
 	var particles = elem.get_node("ElementParticles")
-	particles.process_material.scale = 2
+	particles.process_material.scale = 0.5
 	# particles.amount = 120
 	particles.process_material.initial_velocity = 15
 	particles.process_material.trail_divisor = 4
 	particles.explosiveness = 0.2
 	elem.element_is_collectable = true
-	cloud_timers.remove(0)
+	#cloud_timers.remove(0)
 	
 
 ## type = 0 to 4, amount = 0.1 to 1.0, position = Vector2(x, y)
 func createElement(type, amount, position):
-	cloud_timers.append(Timer.new())
-	cloud_timers[-1].set_one_shot(true)
-	cloud_timers[-1].set_timer_process_mode(Timer.TIMER_PROCESS_IDLE)
-	cloud_timers[-1].set_wait_time(1.0)
-	cloud_timers[-1].connect("timeout", self, "_turn_into_cloud")
-	add_child(cloud_timers[-1])
-	cloud_timers[-1].start()
+	#print(elements)
+	#for el in elements:
+	#	print(el.element_is_collectable)
+	
+	#cloud_timers.append(Timer.new())
+	#cloud_timers[-1].set_one_shot(true)
+	#cloud_timers[-1].set_timer_process_mode(Timer.TIMER_PROCESS_PHYSICS)
+	#cloud_timers[-1].set_wait_time(1.0)
+	#cloud_timers[-1].connect("timeout", self, "_turn_into_cloud")
+	#add_child(cloud_timers[-1])
+	#cloud_timers[-1].start()
 	# Make an instance of the element scene
 	var element = elementScene.instance()
 	var particles = element.get_node("ElementParticles")
@@ -118,7 +122,13 @@ func _remove_element():
 func _element_collection_process(element, delta):
 	var particles = element.get_node("ElementParticles")
 	# The element collection is done only when the element is in cloud form
+	# If it is not in cloud form, the transformation is in progress and the timer is ticking
+	# The timer is implemented as a counter, because the real timer turned out to be unreliable
+	# when many elements are created in a short time
 	if !element.element_is_collectable:
+		element.cloud_transform_timer += delta
+		if element.cloud_transform_timer >= 1:
+			_turn_into_cloud(element)
 		return
 	# Check distance to player
 	var dx = element.position[0] - hero.position[0]
@@ -141,7 +151,7 @@ func _element_collection_process(element, delta):
 			if !element in elements_to_remove:
 				hero.element_collected(element.element_type, element.element_amount)
 				# Animate collection
-				particles.process_material.scale = 1
+				particles.process_material.scale = 0.25
 				particles.process_material.initial_velocity = 30
 				particles.process_material.trail_divisor = 1
 				particles.explosiveness = 0.2
@@ -159,9 +169,6 @@ func _element_collection_process(element, delta):
 	else:
 		particles.process_material.set_gravity(Vector3(0, 0, 0))
 	
-	# Handle lifetime
-	# TODO
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Do the processing in each element instance
