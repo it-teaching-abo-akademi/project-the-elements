@@ -14,6 +14,8 @@ var preferred_attack_range = 10
 var state
 var velocity
 
+signal attack(damage)
+
 # Abilities
 var canCooperate = false
 var canFly = false
@@ -38,11 +40,15 @@ func _physics_process(delta):
 		#chase()
 		pass
 		if player:
-			velocity = (player.position - position).normalized() * speed * delta
-			velocity.y = 0
+			velocity = (player.position - position).normalized() * Vector2(1,0) * speed * delta
+			velocity.y += global.GRAVITY * delta
 		else:
 			#code here
 			velocity = Vector2.ZERO
+		if not is_on_floor():
+			velocity.y = global.GRAVITY * 1000 * delta
+		else:
+			velocity.y = 0
 		if velocity.x >= 0:
 			$Sprite.flip_h = true
 		else:
@@ -133,25 +139,18 @@ func _init():
 func chase():
 	pass
 
-
-
-
-
-
-
-
 func _on_Player_character_attack(attack):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
-	
-	if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
+	pass
+	"""if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
 		current_attack = attack
 		print("Damage done: " + str(attack.get_parameter("damage")))
 		
 		if attack.get_parameter("name") == "Thrust":
 			_set_state(global.ENEMY_STATES['KNOCK'])
 		elif attack.get_parameter("name") == "Lift":
-			_set_state(global.ENEMY_STATES['LIFT'])
+			_set_state(global.ENEMY_STATES['LIFT'])"""
 
 
 func _on_Detect_range_body_entered(body):
@@ -165,7 +164,8 @@ func _on_Detect_range_body_exited(body):
 
 
 func _on_Attack_range_body_entered(body):
-	pass # Replace with function body.
+	if "Player" in body.name:
+		emit_signal("attack",10)
 
 
 func _on_Attack_range_body_exited(body):
