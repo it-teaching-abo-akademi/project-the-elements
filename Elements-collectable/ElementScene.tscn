@@ -36,6 +36,7 @@ orbit_velocity_random = 0.8
 radial_accel_random = 0.22
 angle = 45.0
 angle_random = 1.0
+scale = 0.1
 color_ramp = SubResource( 3 )
 
 [node name="Collectable-Element" type="KinematicBody2D"]
