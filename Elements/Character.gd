@@ -106,7 +106,7 @@ func _input(event):
 
 	if Input.is_action_just_released("ctrl"):
 		selection_plate.hide()
-		$Sprite.play(get_element_by_angle(get_mouse_angle()))
+		#$Sprite.play(get_element_by_angle(get_mouse_angle()))
 
 	#change elements
 	if Input.is_action_just_pressed("change_element_left_previous"):

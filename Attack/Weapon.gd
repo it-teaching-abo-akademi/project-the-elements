@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Weapon
+
 const STATE_HIDED = 0
 const STATE_APPEAR = 1
 const STATE_VISBLE = 2
@@ -22,6 +24,10 @@ var timer = null
 var direction = 1
 
 var state_machine
+
+signal launch_attack
+
+onready var enemies = get_tree().get_current_scene().get_node('Enemies')
 
 func display_attack(attack:Action):
 	if attack == null:
@@ -108,6 +114,7 @@ func _process(delta):
 					print(current_attack.name)
 					clear_record()
 					record_attack(current_attack)
+	emit_signal("launch_attack", current_attack)
 	current_attack = null
 
 func record_attack(attack:Action):
@@ -138,6 +145,10 @@ func count_time():
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
+	var count = 0
+	for node in enemies.get_children():
+		connect("launch_attack", node, "_on_Player_weapon_attack")
+
 
 func _on_Player_character_attack(attack: Action):
 	display_attack(attack)
