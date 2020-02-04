@@ -10,7 +10,7 @@
 [ext_resource path="res://Attack/SoundManager.gd" type="Script" id=8]
 [ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StreamTexture" id=11]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/frame0000.png-a1a46b7bba311ab7cb4f1cbaddde2cb5.stex"
 
@@ -167,7 +167,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=9]
 resource_name = "Sword_Appear"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sword:modulate")
@@ -206,7 +206,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 resource_name = "Sword_Attack"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sword:position")
@@ -233,7 +233,7 @@ tracks/1/keys = {
 "values": [ 0.0, 33.5 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "Sword_Disappear"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sword:modulate")
@@ -248,57 +248,57 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spear_Appear"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Spear_Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Spear_Disappear"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Sword_Appear"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Sword_Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Sword_Disappear"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/Spear_Appear/node = SubResource( 15 )
+[sub_resource type="AnimationNodeStateMachine" id=22]
+states/Spear_Appear/node = SubResource( 12 )
 states/Spear_Appear/position = Vector2( 353, 141 )
-states/Spear_Attack/node = SubResource( 16 )
+states/Spear_Attack/node = SubResource( 13 )
 states/Spear_Attack/position = Vector2( 645, 80 )
-states/Spear_Disappear/node = SubResource( 17 )
+states/Spear_Disappear/node = SubResource( 14 )
 states/Spear_Disappear/position = Vector2( 920, 133 )
-states/Sword_Appear/node = SubResource( 18 )
+states/Sword_Appear/node = SubResource( 15 )
 states/Sword_Appear/position = Vector2( 353, 397 )
-states/Sword_Attack/node = SubResource( 19 )
+states/Sword_Attack/node = SubResource( 16 )
 states/Sword_Attack/position = Vector2( 645, 343 )
-states/Sword_Disappear/node = SubResource( 20 )
+states/Sword_Disappear/node = SubResource( 17 )
 states/Sword_Disappear/position = Vector2( 920, 397 )
-transitions = [ "Spear_Appear", "Spear_Attack", SubResource( 21 ), "Spear_Attack", "Spear_Disappear", SubResource( 22 ), "Sword_Appear", "Sword_Attack", SubResource( 23 ), "Sword_Attack", "Sword_Disappear", SubResource( 24 ) ]
+transitions = [ "Spear_Appear", "Spear_Attack", SubResource( 18 ), "Spear_Attack", "Spear_Disappear", SubResource( 19 ), "Sword_Appear", "Sword_Attack", SubResource( 20 ), "Sword_Attack", "Sword_Disappear", SubResource( 21 ) ]
 graph_offset = Vector2( 0, 288.154 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 309.133, 184.231 )
@@ -309,7 +309,7 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -4.23999, 2.00543 )
 scale = Vector2( 0.195464, 0.195464 )
-texture = SubResource( 11 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -346,9 +346,9 @@ playback_speed = 4.0
 anims/Spear_Appear = SubResource( 6 )
 anims/Spear_Attack = SubResource( 7 )
 anims/Spear_Disappear = SubResource( 8 )
-anims/Sword_Appear = SubResource( 12 )
-anims/Sword_Attack = SubResource( 13 )
-anims/Sword_Disappear = SubResource( 14 )
+anims/Sword_Appear = SubResource( 9 )
+anims/Sword_Attack = SubResource( 10 )
+anims/Sword_Disappear = SubResource( 11 )
 
 [node name="SpearSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -364,7 +364,6 @@ enabled = true
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
-texture_mode = -1077936128
 
 [node name="SoundManager" parent="." instance=ExtResource( 7 )]
 visible = false
@@ -374,10 +373,8 @@ script = ExtResource( 8 )
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../SpearAnimations")
 active = true
-parameters/playback = SubResource( 10 )
+parameters/playback = SubResource( 23 )
 [connection signal="character_attack" from="." to="Weapon" method="_on_Player_character_attack"]
-[connection signal="slash" from="Weapon" to="SoundManager" method="_on_Weapon_slash"]
-[connection signal="thrust" from="Weapon" to="SoundManager" method="_on_Weapon_thrust"]

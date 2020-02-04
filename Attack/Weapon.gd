@@ -114,6 +114,11 @@ func _process(delta):
 					print(current_attack.name)
 					clear_record()
 					record_attack(current_attack)
+		_:
+			#不为连招，重新记录
+			print(current_attack.name)
+			clear_record()
+			record_attack(current_attack)
 	emit_signal("launch_attack", current_attack)
 	current_attack = null
 
