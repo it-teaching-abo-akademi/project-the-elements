@@ -65,6 +65,7 @@ func _process(delta):
 					clear_record()
 				"Lift":
 					print("180 lift")
+					state_machine.travel("180Lift_generate"+str_direction)
 					clear_record()
 				_:
 					#不为连招，重新记录

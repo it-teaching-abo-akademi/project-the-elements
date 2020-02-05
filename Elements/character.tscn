@@ -2152,6 +2152,7 @@ anims/Lift_generate_left = SubResource( 62 )
 anims/Lift_generate_right = SubResource( 31 )
 
 [node name="Ji" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 rotation = -1.309
 
 [node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
