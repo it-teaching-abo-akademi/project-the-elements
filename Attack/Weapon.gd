@@ -27,7 +27,10 @@ var state_machine
 
 signal launch_attack
 
+onready var root = get_tree().get_current_scene()
 onready var enemies = get_tree().get_current_scene().get_node('Enemies')
+onready var arrow_scene = preload("res://Elements/Arrow.tscn")
+onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
 func display_attack(attack:Action):
 	if attack == null:
@@ -52,7 +55,7 @@ func _process(delta):
 	match first_attack:
 		null:
 			#是什么技能就用什么技能
-			print(current_attack.name)
+			basic_attack()
 			record_attack(current_attack)
 		"Lift":
 			match current_attack.name:
@@ -67,7 +70,7 @@ func _process(delta):
 					clear_record()
 				_:
 					#不为连招，重新记录
-					print(current_attack.name)
+					basic_attack()
 					clear_record()
 					record_attack(current_attack)
 		"Thrust":
@@ -85,7 +88,7 @@ func _process(delta):
 							record_attack(current_attack)
 						_:
 							#不为连招，重新记录
-							print(current_attack.name)
+							basic_attack()
 							clear_record()
 							record_attack(current_attack)
 				"Thrust":
@@ -98,7 +101,7 @@ func _process(delta):
 							clear_record()
 						_:
 							#不为连招，重新记录
-							print(current_attack.name)
+							basic_attack()
 							clear_record()
 							record_attack(current_attack)
 		"Slash":
@@ -111,12 +114,12 @@ func _process(delta):
 					clear_record()
 				_:
 					#不为连招，重新记录
-					print(current_attack.name)
+					basic_attack()
 					clear_record()
 					record_attack(current_attack)
 		_:
 			#不为连招，重新记录
-			print(current_attack.name)
+			basic_attack()
 			clear_record()
 			record_attack(current_attack)
 	emit_signal("launch_attack", current_attack)
@@ -147,6 +150,26 @@ func count_time():
 	else:
 		timer.set_wait_time(5)
 	
+func basic_attack():
+	if current_attack == null:
+		return
+	match current_attack.name:
+		"Arrow":
+			var arrow_instance = arrow_scene.instance()
+			arrow_instance.linear_velocity = current_attack.direction * 800
+			arrow_instance.position = to_global(current_attack.position)
+			arrow_instance.position.x += current_attack.face_direction * 20
+			arrow_instance.scale.x = current_attack.face_direction
+			root.add_child(arrow_instance)
+		"Fireball":
+			var fireball_instance = fireball_scene.instance()
+			fireball_instance.linear_velocity = current_attack.direction * 1000
+			fireball_instance.position = to_global(current_attack.position)
+			fireball_instance.position.x += current_attack.face_direction * 20
+			fireball_instance.scale.x = current_attack.face_direction
+			root.add_child(fireball_instance)
+		_:
+			print(current_attack.name)
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")

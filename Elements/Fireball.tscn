@@ -28,6 +28,7 @@ hue_variation_random = 1.0
 [sub_resource type="CircleShape2D" id=3]
 
 [node name="Fireball" type="RigidBody2D"]
+gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )

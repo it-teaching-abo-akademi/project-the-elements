@@ -276,6 +276,8 @@ func complete_gesture(gesture, button):
 	if action.name == null:
 		return
 	action.load_data()
+	action.face_direction = face_direction
+	action.position = $Sprite.position
 	if action.name == "Fly":
 		move(action)
 	elif action.name != null:
