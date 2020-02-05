@@ -26,134 +26,134 @@ load_path = "res://.import/frame0000.png-a1a46b7bba311ab7cb4f1cbaddde2cb5.stex"
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19.03, 29.9677 )
 
-[sub_resource type="AnimationNodeAnimation" id=82]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "180Lift_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=72]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "180Lift_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=83]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "180Lift_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=73]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "180Lift_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=84]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "180Lift_generate_left"
 
-[sub_resource type="AnimationNodeAnimation" id=74]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "180Lift_generate_right"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Await"
 
-[sub_resource type="AnimationNodeAnimation" id=63]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Lift_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Lift_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=64]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Lift_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=56]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Lift_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=65]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Lift_generate_left"
 
-[sub_resource type="AnimationNodeAnimation" id=57]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Lift_generate_right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=67]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 1
 advance_condition = "180Lift_right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 switch_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=53]
-states/180Lift_act_left/node = SubResource( 82 )
+[sub_resource type="AnimationNodeStateMachine" id=32]
+states/180Lift_act_left/node = SubResource( 3 )
 states/180Lift_act_left/position = Vector2( -236.139, -9 )
-states/180Lift_act_right/node = SubResource( 72 )
+states/180Lift_act_right/node = SubResource( 4 )
 states/180Lift_act_right/position = Vector2( 617.861, -9 )
-states/180Lift_finish_left/node = SubResource( 83 )
+states/180Lift_finish_left/node = SubResource( 5 )
 states/180Lift_finish_left/position = Vector2( -14.1391, -86 )
-states/180Lift_finish_right/node = SubResource( 73 )
+states/180Lift_finish_right/node = SubResource( 6 )
 states/180Lift_finish_right/position = Vector2( 380.861, -86 )
-states/180Lift_generate_left/node = SubResource( 84 )
+states/180Lift_generate_left/node = SubResource( 7 )
 states/180Lift_generate_left/position = Vector2( -14.1391, -9 )
-states/180Lift_generate_right/node = SubResource( 74 )
+states/180Lift_generate_right/node = SubResource( 8 )
 states/180Lift_generate_right/position = Vector2( 380.861, -9 )
-states/Await/node = SubResource( 45 )
+states/Await/node = SubResource( 9 )
 states/Await/position = Vector2( 181, 137 )
-states/Lift_act_left/node = SubResource( 63 )
+states/Lift_act_left/node = SubResource( 10 )
 states/Lift_act_left/position = Vector2( -236.139, 63 )
-states/Lift_act_right/node = SubResource( 55 )
+states/Lift_act_right/node = SubResource( 11 )
 states/Lift_act_right/position = Vector2( 617.861, 63 )
-states/Lift_finish_left/node = SubResource( 64 )
+states/Lift_finish_left/node = SubResource( 12 )
 states/Lift_finish_left/position = Vector2( -14.1391, 63 )
-states/Lift_finish_right/node = SubResource( 56 )
+states/Lift_finish_right/node = SubResource( 13 )
 states/Lift_finish_right/position = Vector2( 380.861, 63 )
-states/Lift_generate_left/node = SubResource( 65 )
+states/Lift_generate_left/node = SubResource( 14 )
 states/Lift_generate_left/position = Vector2( -14.1391, 137 )
-states/Lift_generate_right/node = SubResource( 57 )
+states/Lift_generate_right/node = SubResource( 15 )
 states/Lift_generate_right/position = Vector2( 380.861, 137 )
-transitions = [ "Await", "Lift_generate_right", SubResource( 58 ), "Lift_generate_right", "Lift_act_right", SubResource( 59 ), "Lift_act_right", "Lift_finish_right", SubResource( 60 ), "Lift_finish_right", "Await", SubResource( 61 ), "Await", "Lift_generate_left", SubResource( 66 ), "Lift_generate_left", "Lift_act_left", SubResource( 67 ), "Lift_act_left", "Lift_finish_left", SubResource( 68 ), "Lift_finish_left", "Await", SubResource( 69 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 75 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 76 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 77 ), "180Lift_finish_right", "Await", SubResource( 78 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 85 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 86 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 87 ), "180Lift_finish_left", "Await", SubResource( 88 ) ]
-graph_offset = Vector2( -491.412, -178 )
+transitions = [ "Await", "Lift_generate_right", SubResource( 16 ), "Lift_generate_right", "Lift_act_right", SubResource( 17 ), "Lift_act_right", "Lift_finish_right", SubResource( 18 ), "Lift_finish_right", "Await", SubResource( 19 ), "Await", "Lift_generate_left", SubResource( 20 ), "Lift_generate_left", "Lift_act_left", SubResource( 21 ), "Lift_act_left", "Lift_finish_left", SubResource( 22 ), "Lift_finish_left", "Await", SubResource( 23 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 24 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 25 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 26 ), "180Lift_finish_right", "Await", SubResource( 27 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 28 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 29 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 30 ), "180Lift_finish_left", "Await", SubResource( 31 ) ]
+graph_offset = Vector2( -189.412, -244 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
-[sub_resource type="Animation" id=89]
+[sub_resource type="Animation" id=34]
 resource_name = "180Lift_act_left"
 length = 0.5
 tracks/0/type = "value"
@@ -405,7 +405,7 @@ tracks/20/keys = {
 "values": [ 79.0 ]
 }
 
-[sub_resource type="Animation" id=79]
+[sub_resource type="Animation" id=35]
 resource_name = "180Lift_act_right"
 length = 0.5
 tracks/0/type = "value"
@@ -657,7 +657,7 @@ tracks/20/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=90]
+[sub_resource type="Animation" id=36]
 resource_name = "180Lift_finish_left"
 length = 0.7
 tracks/0/type = "value"
@@ -789,7 +789,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=80]
+[sub_resource type="Animation" id=37]
 resource_name = "180Lift_finish_right"
 length = 0.7
 tracks/0/type = "value"
@@ -921,7 +921,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=91]
+[sub_resource type="Animation" id=38]
 resource_name = "180Lift_generate_left"
 length = 0.5
 tracks/0/type = "value"
@@ -1053,7 +1053,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=81]
+[sub_resource type="Animation" id=39]
 resource_name = "180Lift_generate_right"
 length = 0.5
 tracks/0/type = "value"
@@ -1185,7 +1185,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=40]
 resource_name = "Await"
 length = 0.1
 loop = true
@@ -1202,7 +1202,7 @@ tracks/0/keys = {
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=70]
+[sub_resource type="Animation" id=41]
 resource_name = "Lift_act_left"
 length = 0.3
 tracks/0/type = "value"
@@ -1372,8 +1372,7 @@ tracks/13/keys = {
 "values": [ 78.9 ]
 }
 
-[sub_resource type="Animation" id=34]
-resource_name = "Lift_act_right"
+[sub_resource type="Animation" id=42]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1542,7 +1541,7 @@ tracks/13/keys = {
 "values": [ 64.6492 ]
 }
 
-[sub_resource type="Animation" id=71]
+[sub_resource type="Animation" id=43]
 resource_name = "Lift_finish_left"
 length = 0.7
 tracks/0/type = "value"
@@ -1564,7 +1563,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.7 ),
+"times": PoolRealArray( 0, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -1600,7 +1599,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.35, -0.229055, 0.218387, 0.25, -0.238357 ),
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.8, -0.229055, 0.218387, 0.25, -0.238357 ),
 "times": PoolRealArray( 0, 0.7 )
 }
 tracks/5/type = "bezier"
@@ -1662,8 +1661,7 @@ tracks/9/keys = {
 "values": [ Vector2( -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=35]
-resource_name = "Lift_finish_right"
+[sub_resource type="Animation" id=44]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1684,7 +1682,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.7 ),
+"times": PoolRealArray( 0, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -1720,7 +1718,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.35, -0.229055, 0.218387, 0.25, -0.238357 ),
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.8, -0.229055, 0.218387, 0.25, -0.238357 ),
 "times": PoolRealArray( 0, 0.7 )
 }
 tracks/5/type = "bezier"
@@ -1782,7 +1780,7 @@ tracks/9/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=62]
+[sub_resource type="Animation" id=45]
 resource_name = "Lift_generate_left"
 length = 0.8
 tracks/0/type = "value"
@@ -1914,8 +1912,7 @@ tracks/10/keys = {
 "values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="Animation" id=31]
-resource_name = "Lift_generate_right"
+[sub_resource type="Animation" id=46]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -2046,24 +2043,24 @@ tracks/10/keys = {
 "values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=30]
+[sub_resource type="ShaderMaterial" id=47]
 render_priority = 2
 shader = ExtResource( 10 )
 shader_param/Brightness = 0.0
 shader_param/dissolve = -1.0
 shader_param/WeaponTexture = ExtResource( 11 )
 
-[sub_resource type="ShaderMaterial" id=28]
+[sub_resource type="ShaderMaterial" id=48]
 render_priority = 1
 shader = ExtResource( 13 )
 shader_param/Brightness = null
 shader_param/dissolve = 0.0
 shader_param/WeaponTexture = ExtResource( 14 )
 
-[sub_resource type="ShaderMaterial" id=54]
+[sub_resource type="ShaderMaterial" id=49]
 render_priority = 3
 
-[sub_resource type="ShaderMaterial" id=29]
+[sub_resource type="ShaderMaterial" id=50]
 render_priority = 1
 shader = ExtResource( 16 )
 shader_param/Brightness = null
@@ -2087,6 +2084,7 @@ shape = SubResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 current = true
+zoom = Vector2( 0.8, 0.8 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
@@ -2116,6 +2114,7 @@ enabled = true
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
+texture_mode = 407524432
 
 [node name="SoundManager" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -2129,38 +2128,39 @@ visible = false
 [node name="Weapon" parent="AttackSystem" instance=ExtResource( 9 )]
 
 [node name="AnimationTree" type="AnimationTree" parent="AttackSystem"]
-tree_root = SubResource( 53 )
+tree_root = SubResource( 32 )
 anim_player = NodePath("../Lift")
 active = true
-parameters/playback = SubResource( 16 )
+parameters/playback = SubResource( 33 )
 parameters/conditions/180Lift_right = false
 
 [node name="Lift" type="AnimationPlayer" parent="AttackSystem"]
-anims/180Lift_act_left = SubResource( 89 )
-anims/180Lift_act_right = SubResource( 79 )
-anims/180Lift_finish_left = SubResource( 90 )
-anims/180Lift_finish_right = SubResource( 80 )
-anims/180Lift_generate_left = SubResource( 91 )
-anims/180Lift_generate_right = SubResource( 81 )
-anims/Await = SubResource( 44 )
-anims/Lift_act_left = SubResource( 70 )
-anims/Lift_act_right = SubResource( 34 )
-anims/Lift_finish_left = SubResource( 71 )
-anims/Lift_finish_right = SubResource( 35 )
-anims/Lift_generate_left = SubResource( 62 )
-anims/Lift_generate_right = SubResource( 31 )
+anims/180Lift_act_left = SubResource( 34 )
+anims/180Lift_act_right = SubResource( 35 )
+anims/180Lift_finish_left = SubResource( 36 )
+anims/180Lift_finish_right = SubResource( 37 )
+anims/180Lift_generate_left = SubResource( 38 )
+anims/180Lift_generate_right = SubResource( 39 )
+anims/Await = SubResource( 40 )
+anims/Lift_act_left = SubResource( 41 )
+anims/Lift_act_right = SubResource( 42 )
+anims/Lift_finish_left = SubResource( 43 )
+anims/Lift_finish_right = SubResource( 44 )
+anims/Lift_generate_left = SubResource( 45 )
+anims/Lift_generate_right = SubResource( 46 )
 
 [node name="Ji" type="Node2D" parent="AttackSystem"]
 editor/display_folded = true
 rotation = -1.309
+scale = Vector2( -1, -1 )
 
 [node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
-visible = false
-material = SubResource( 30 )
-rotation = -2.00713
-scale = Vector2( 1.8, 1.35 )
+material = SubResource( 47 )
+rotation = 0.523599
+scale = Vector2( 0.65, 0.65 )
 texture = ExtResource( 11 )
 offset = Vector2( 59.507, -5.62614 )
+flip_v = true
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Ji"]
 texture = ExtResource( 12 )
@@ -2169,30 +2169,33 @@ energy = 0.2
 
 [node name="Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
 visible = false
-modulate = Color( 0.976471, 0.960784, 0.811765, 0.130418 )
-material = SubResource( 28 )
+modulate = Color( 0.976471, 0.960784, 0.811765, 0.17 )
+material = SubResource( 48 )
 position = Vector2( 36.8442, 56.0844 )
-rotation = 1.12834
-scale = Vector2( 0.55, 0.55 )
+rotation = 1.37706
+scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 14 )
-offset = Vector2( -6.06262, 8.07626 )
+offset = Vector2( -6.063, 80 )
+flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Lift_VFX"]
 visible = false
-material = SubResource( 54 )
+material = SubResource( 49 )
 texture = ExtResource( 15 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 energy = 1.2
 
 [node name="180Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
 visible = false
-modulate = Color( 1, 1, 1, 0.13 )
-material = SubResource( 29 )
+modulate = Color( 1, 1, 1, 0.17 )
+material = SubResource( 50 )
 position = Vector2( 30.0774, -56.6627 )
-rotation = 1.5708
+rotation = 1.37881
 scale = Vector2( 0.55, 0.65 )
 texture = ExtResource( 17 )
+offset = Vector2( 0, 110 )
+flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/180Lift_VFX"]

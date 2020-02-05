@@ -51,13 +51,14 @@ func _re_init():
 
 
 func _process(delta):
+
+		
+	if current_attack == null:
+		return
 	if current_attack.face_direction == 1:
 		str_direction = "_right"
 	else:
 		str_direction = "_left"
-		
-	if current_attack == null:
-		return
 	match first_attack:
 		null:
 			#是什么技能就用什么技能
@@ -73,6 +74,7 @@ func _process(delta):
 					clear_record()
 				"Lift":
 					print("180 lift")
+					current_attack.name = "180 lift"
 					state_machine.travel("180Lift_generate"+str_direction)
 					clear_record()
 				_:
@@ -146,7 +148,7 @@ func clear_record():
 func count_time():
 	if timer == null:
 		timer = Timer.new()
-		timer.set_wait_time(5)
+		timer.set_wait_time(2)
 		timer.set_one_shot(true)
 		self.add_child(timer)
 		timer.start()
@@ -155,7 +157,7 @@ func count_time():
 		timer = null
 		clear_record()
 	else:
-		timer.set_wait_time(5)
+		timer.set_wait_time(2)
 	
 func basic_attack():
 	if current_attack == null:
@@ -170,7 +172,7 @@ func basic_attack():
 			root.add_child(arrow_instance)
 		"Fireball":
 			var fireball_instance = fireball_scene.instance()
-			fireball_instance.linear_velocity = current_attack.direction * 1000
+			fireball_instance.linear_velocity = current_attack.direction * 600
 			fireball_instance.position = to_global(current_attack.position)
 			fireball_instance.position.x += current_attack.face_direction * 20
 			fireball_instance.scale.x = current_attack.face_direction

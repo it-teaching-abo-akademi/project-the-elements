@@ -134,9 +134,11 @@ func chase():
 func _on_Player_weapon_attack(attack):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
+	print("enemy ",attack.name)
 	hp -= attack.damage
 	if hp <= 0:
-		get_node("CollisionShape2D").disabled = true
+		queue_free()
+		#get_node("CollisionShape2D").disabled = true
 	pass
 
 
