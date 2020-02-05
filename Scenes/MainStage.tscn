@@ -97,6 +97,5 @@ script = ExtResource( 9 )
 stream = ExtResource( 10 )
 volume_db = -20.0
 autoplay = true
-[connection signal="character_attack" from="Player" to="Enemies/Monster2" method="_on_Player_character_attack"]
 
 [editable path="CanvasLayer/Indicators"]

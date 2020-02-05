@@ -8,19 +8,12 @@ var speed = 5000
 var strength = 5
 var hp = 100
 var max_hp = 100
-var detection_range = 200
-var attack_range = 10
-var preferred_attack_range = 10
 var state
 var velocity
 
 signal attack(damage)
 
 # Abilities
-var canCooperate = false
-var canFly = false
-var canDetectFlyingHero = false
-var canMove = true
 var player
 
 onready var character_body : Character = get_tree().get_current_scene().get_node('Player')
@@ -124,7 +117,6 @@ func _physics_process(delta):
 			_set_state(previous_state)
 func _ready():
 	_init()
-	
 
 # Instantiation, to be extended by subclasses
 func _init():
@@ -139,18 +131,13 @@ func _init():
 func chase():
 	pass
 
-func _on_Player_character_attack(attack):
+func _on_Player_weapon_attack(attack):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
+	hp -= attack.damage
+	if hp <= 0:
+		get_node("CollisionShape2D").disabled = true
 	pass
-	"""if position.x < attack.get_parameter("start_position").x + attack.get_parameter("range_effect"):
-		current_attack = attack
-		print("Damage done: " + str(attack.get_parameter("damage")))
-		
-		if attack.get_parameter("name") == "Thrust":
-			_set_state(global.ENEMY_STATES['KNOCK'])
-		elif attack.get_parameter("name") == "Lift":
-			_set_state(global.ENEMY_STATES['LIFT'])"""
 
 
 func _on_Detect_range_body_entered(body):

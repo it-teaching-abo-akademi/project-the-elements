@@ -20,6 +20,7 @@ var element_consume = 10
 var boost_factor = 1.5
 var direction = Vector2.ZERO
 var display_size_factor = 1.0
+var position = Vector2.ZERO
 
 # TODO: element consumed
 

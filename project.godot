@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "VFXTrail",
 "language": "GDScript",
 "path": "res://Attack/VFX.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Attack/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "DialogueManager": "",
 "EnemyModel": "",
 "Gesture": "",
-"VFXTrail": ""
+"VFXTrail": "",
+"Weapon": ""
 }
 
 [application]
