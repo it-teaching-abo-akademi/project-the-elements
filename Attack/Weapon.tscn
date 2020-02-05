@@ -1,9 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Attack/Weapon.gd" type="Script" id=1]
-[ext_resource path="res://Attack/dissolveShader.tres" type="Shader" id=2]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=2]
 [ext_resource path="res://Attack/katana.png" type="Texture" id=3]
 [ext_resource path="res://Attack/particle.png" type="Texture" id=4]
+
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )

@@ -20,6 +20,7 @@ var attack_time = 0.0
 var timer = null
 # 1 -> right ; -1 -> left
 var direction = 1
+var str_direction
 
 var state_machine
 
@@ -41,12 +42,18 @@ func _re_init():
 
 
 func _process(delta):
+	if direction == 1:
+		str_direction = "_right"
+	else:
+		str_direction = "_left"
+		
 	if current_attack == null:
 		return
 	match first_attack:
 		null:
 			#是什么技能就用什么技能
 			print(current_attack.name)
+			state_machine.travel(current_attack.name+"_generate"+str_direction)
 			record_attack(current_attack)
 		"Lift":
 			match current_attack.name:
@@ -138,6 +145,8 @@ func count_time():
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
+	state_machine.start("Await")
+	direction = 1
 
 func _on_Player_character_attack(attack: Action):
 	display_attack(attack)

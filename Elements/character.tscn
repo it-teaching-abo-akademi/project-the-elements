@@ -1,161 +1,1552 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Elements/Character.gd" type="Script" id=1]
-[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Elements/Sprites/sword.png" type="Texture" id=5]
-[ext_resource path="res://Elements/Sprites/spear.png" type="Texture" id=6]
-[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=8]
-[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Elements/Sprites/sword.png" type="Texture" id=4]
+[ext_resource path="res://Elements/Sprites/spear.png" type="Texture" id=5]
+[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=7]
+[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=10]
+[ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=11]
+[ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=12]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShader4Lift_VFX.tres" type="Shader" id=13]
+[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=14]
+[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=15]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShader4_180Lift_VFX.tres" type="Shader" id=16]
+[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=17]
+[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=18]
 
-[sub_resource type="StreamTexture" id=11]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/frame0000.png-a1a46b7bba311ab7cb4f1cbaddde2cb5.stex"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19.03, 29.9677 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Appear"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 49.7566, -62.3616 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "180Lift_act_left"
 
-[sub_resource type="Animation" id=4]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 49.7566, -62.3616 ), Vector2( 63.0386, -14.6829 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 33.5 ]
-}
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "180Lift_act_right"
 
-[sub_resource type="Animation" id=5]
-resource_name = "Disappear"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "180Lift_finish_left"
 
-[sub_resource type="Animation" id=6]
-resource_name = "Spear_Appear"
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpearSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 40.1863, -4.08675 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpearSprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SpearSprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "180Lift_finish_right"
 
-[sub_resource type="Animation" id=7]
-resource_name = "Spear_Attack"
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpearSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 40.1863, -4.08675 ), Vector2( 140, -4.087 ) ]
-}
+[sub_resource type="AnimationNodeAnimation" id=84]
+animation = "180Lift_generate_left"
 
-[sub_resource type="Animation" id=8]
-resource_name = "Spear_Disappear"
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "180Lift_generate_right"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "Await"
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "Lift_act_left"
+
+[sub_resource type="AnimationNodeAnimation" id=55]
+animation = "Lift_act_right"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "Lift_finish_left"
+
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "Lift_finish_right"
+
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "Lift_generate_left"
+
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "Lift_generate_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+switch_mode = 1
+advance_condition = "180Lift_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=53]
+states/180Lift_act_left/node = SubResource( 82 )
+states/180Lift_act_left/position = Vector2( -236.139, -9 )
+states/180Lift_act_right/node = SubResource( 72 )
+states/180Lift_act_right/position = Vector2( 617.861, -9 )
+states/180Lift_finish_left/node = SubResource( 83 )
+states/180Lift_finish_left/position = Vector2( -14.1391, -86 )
+states/180Lift_finish_right/node = SubResource( 73 )
+states/180Lift_finish_right/position = Vector2( 380.861, -86 )
+states/180Lift_generate_left/node = SubResource( 84 )
+states/180Lift_generate_left/position = Vector2( -14.1391, -9 )
+states/180Lift_generate_right/node = SubResource( 74 )
+states/180Lift_generate_right/position = Vector2( 380.861, -9 )
+states/Await/node = SubResource( 45 )
+states/Await/position = Vector2( 181, 137 )
+states/Lift_act_left/node = SubResource( 63 )
+states/Lift_act_left/position = Vector2( -236.139, 63 )
+states/Lift_act_right/node = SubResource( 55 )
+states/Lift_act_right/position = Vector2( 617.861, 63 )
+states/Lift_finish_left/node = SubResource( 64 )
+states/Lift_finish_left/position = Vector2( -14.1391, 63 )
+states/Lift_finish_right/node = SubResource( 56 )
+states/Lift_finish_right/position = Vector2( 380.861, 63 )
+states/Lift_generate_left/node = SubResource( 65 )
+states/Lift_generate_left/position = Vector2( -14.1391, 137 )
+states/Lift_generate_right/node = SubResource( 57 )
+states/Lift_generate_right/position = Vector2( 380.861, 137 )
+transitions = [ "Await", "Lift_generate_right", SubResource( 58 ), "Lift_generate_right", "Lift_act_right", SubResource( 59 ), "Lift_act_right", "Lift_finish_right", SubResource( 60 ), "Lift_finish_right", "Await", SubResource( 61 ), "Await", "Lift_generate_left", SubResource( 66 ), "Lift_generate_left", "Lift_act_left", SubResource( 67 ), "Lift_act_left", "Lift_finish_left", SubResource( 68 ), "Lift_finish_left", "Await", SubResource( 69 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 75 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 76 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 77 ), "180Lift_finish_right", "Await", SubResource( 78 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 85 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 86 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 87 ), "180Lift_finish_left", "Await", SubResource( 88 ) ]
+graph_offset = Vector2( -491.412, -178 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="Animation" id=89]
+resource_name = "180Lift_act_left"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpearSprite:modulate")
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, 145.0, 275.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Lift_VFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Lift_VFX:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.17, -0.426612, -1.62081, 0.244326, 0.928258, 1.3, -0.25, -1.17599, 0.22142, 1.04155, 0.130418, -0.557206, 4.88281, 0.0706254, -0.618892 ),
+"times": PoolRealArray( 0, 0.116436, 0.4 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ji/Ji:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.65, 0.65 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.45 ), Vector2( 0.5, 0.5 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_v")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ji/Lift_VFX:flip_v")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Ji/Lift_VFX:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.063, 80 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Lift_VFX:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 78.9 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("Ji/180Lift_VFX:modulate:a")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0.17, -0.25, 0, 0.25, 0, 1.3, -0.25, 0, 0.25, 0, 0.13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.2, 0.5 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/180Lift_VFX:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.55 ), Vector2( 0.5, 0.6 ), Vector2( 0.55, 0.65 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Ji/180Lift_VFX:offset")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 110 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Ji/180Lift_VFX:flip_h")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Ji/180Lift_VFX:flip_v")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Ji/180Lift_VFX:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 79.0 ]
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "180Lift_act_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 120.0, 15.0, -115.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Lift_VFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Lift_VFX:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.17, -0.426612, -1.62081, 0.244326, 0.928258, 1.3, -0.25, -1.17599, 0.22142, 1.04155, 0.130418, -0.557206, 4.88281, 0.0706254, -0.618892 ),
+"times": PoolRealArray( 0, 0.116436, 0.4 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ji/Ji:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.65, 0.65 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.45 ), Vector2( 0.5, 0.5 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_v")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ji/Lift_VFX:flip_v")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Ji/Lift_VFX:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.06262, 8.07626 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Lift_VFX:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 64.6492 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("Ji/180Lift_VFX:modulate:a")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0.17, -0.25, 0, 0.25, 0, 1.3, -0.25, 0, 0.25, 0, 0.13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.2, 0.5 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/180Lift_VFX:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.55 ), Vector2( 0.5, 0.6 ), Vector2( 0.55, 0.65 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Ji/180Lift_VFX:offset")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Ji/180Lift_VFX:flip_h")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Ji/180Lift_VFX:flip_v")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Ji/180Lift_VFX:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=90]
+resource_name = "180Lift_finish_left"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 275.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.999999 ),
+"update": 0,
+"values": [ 0.0, -0.35, -0.58, -1.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.8, -0.229055, 0.218387, 0.25, -0.238357 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.172755, 0.465746, -0.321839, 1.35, -0.234782, 0.244594, 0.25, -0.260448 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_v")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Ji:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=80]
+resource_name = "180Lift_finish_right"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -115.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.999999 ),
+"update": 0,
+"values": [ 0.0, -0.35, -0.58, -1.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.8, -0.229055, 0.218387, 0.25, -0.238357 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.172755, 0.465746, -0.321839, 1.35, -0.234782, 0.244594, 0.25, -0.260448 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_v")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Ji:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=91]
+resource_name = "180Lift_generate_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, 30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
+"transitions": PoolRealArray( 0.999999, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.0, -0.65, -0.35, 0.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Ji:flip_v")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji/Lift_VFX:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=81]
+resource_name = "180Lift_generate_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 120.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
+"transitions": PoolRealArray( 0.999999, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.0, -0.65, -0.35, 0.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Ji:flip_v")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji/Lift_VFX:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/180Lift_VFX:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=44]
+resource_name = "Await"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+
+[sub_resource type="Animation" id=70]
+resource_name = "Lift_act_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, 145.0, 155.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Lift_VFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Lift_VFX:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.168235, -0.426612, -1.62081, 0.244326, 0.928258, 1.29273, -0.25, -1.17599, 0.22142, 1.04155, 0.130418, -0.557206, 4.88281, 0.0706254, -0.618892 ),
+"times": PoolRealArray( 0, 0.116436, 0.292045 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ji/Ji:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.65, 0.65 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.45 ), Vector2( 0.5, 0.5 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_v")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ji/Lift_VFX:flip_v")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Ji/Lift_VFX:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.063, 80 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Lift_VFX:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 78.9 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "Lift_act_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 120.0, 15.0, 5.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Lift_VFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Lift_VFX:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.168235, -0.426612, -1.62081, 0.244326, 0.928258, 1.29273, -0.25, -1.17599, 0.22142, 1.04155, 0.130418, -0.557206, 4.88281, 0.0706254, -0.618892 ),
+"times": PoolRealArray( 0, 0.116436, 0.292045 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ji/Ji:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.65, 0.65 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.45, 0.45 ), Vector2( 0.5, 0.5 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_v")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ji/Lift_VFX:flip_v")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Ji/Lift_VFX:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.06262, 8.07626 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Lift_VFX:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 64.6492 ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "Lift_finish_left"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -164,152 +1555,529 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "Sword_Appear"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ 155.0, 220.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:position")
+tracks/1/path = NodePath("Ji/Ji:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 49.7566, -62.3616 ) ]
+"times": PoolRealArray( 0, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/path = NodePath("Ji/Ji:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.999999 ),
+"update": 0,
+"values": [ 0.0, -0.35, -0.65, -1.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.35, -0.229055, 0.218387, 0.25, -0.238357 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.172755, 0.465746, -0.321839, 1.35, -0.234782, 0.244594, 0.25, -0.260448 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_v")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "Sword_Attack"
+[sub_resource type="Animation" id=35]
+resource_name = "Lift_finish_right"
+length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:position")
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 49.7566, -62.3616 ), Vector2( 63.0386, -14.6829 ) ]
+"values": [ 5.0, -60.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("Ji/Ji:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 33.5 ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.999999 ),
+"update": 0,
+"values": [ 0.0, -0.35, -0.65, -1.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.0541994, 0.64899, -0.1407, 1.35, -0.229055, 0.218387, 0.25, -0.238357 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.65, -0.25, 0.172755, 0.465746, -0.321839, 1.35, -0.234782, 0.244594, 0.25, -0.260448 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Lift_VFX:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji/Ji:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_v")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "Sword_Disappear"
+[sub_resource type="Animation" id=62]
+resource_name = "Lift_generate_left"
+length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sword:modulate")
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 30.0, 30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8 ),
+"transitions": PoolRealArray( 0.999999, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.0, -0.65, -0.35, 0.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 0.8 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 0.8 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Ji:flip_v")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji/Lift_VFX:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Spear_Appear"
+[sub_resource type="Animation" id=31]
+resource_name = "Lift_generate_right"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 120.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ji/Ji:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ji/Ji:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ji/Ji:material:shader_param/dissolve")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8 ),
+"transitions": PoolRealArray( 0.999999, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.0, -0.65, -0.35, 0.0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Ji/Ji:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 0.8 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Ji/Ji:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.35, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 0.8 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ji/Ji:flip_v")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ji:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Ji/Ji:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Ji/Lift_VFX:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Ji/Lift_VFX:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.06262, 8.07626 ) ]
+}
 
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "Spear_Attack"
+[sub_resource type="ShaderMaterial" id=30]
+render_priority = 2
+shader = ExtResource( 10 )
+shader_param/Brightness = 0.0
+shader_param/dissolve = -1.0
+shader_param/WeaponTexture = ExtResource( 11 )
 
-[sub_resource type="AnimationNodeAnimation" id=17]
-animation = "Spear_Disappear"
+[sub_resource type="ShaderMaterial" id=28]
+render_priority = 1
+shader = ExtResource( 13 )
+shader_param/Brightness = null
+shader_param/dissolve = 0.0
+shader_param/WeaponTexture = ExtResource( 14 )
 
-[sub_resource type="AnimationNodeAnimation" id=18]
-animation = "Sword_Appear"
+[sub_resource type="ShaderMaterial" id=54]
+render_priority = 3
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "Sword_Attack"
-
-[sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Sword_Disappear"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/Spear_Appear/node = SubResource( 15 )
-states/Spear_Appear/position = Vector2( 353, 141 )
-states/Spear_Attack/node = SubResource( 16 )
-states/Spear_Attack/position = Vector2( 645, 80 )
-states/Spear_Disappear/node = SubResource( 17 )
-states/Spear_Disappear/position = Vector2( 920, 133 )
-states/Sword_Appear/node = SubResource( 18 )
-states/Sword_Appear/position = Vector2( 353, 397 )
-states/Sword_Attack/node = SubResource( 19 )
-states/Sword_Attack/position = Vector2( 645, 343 )
-states/Sword_Disappear/node = SubResource( 20 )
-states/Sword_Disappear/position = Vector2( 920, 397 )
-transitions = [ "Spear_Appear", "Spear_Attack", SubResource( 21 ), "Spear_Attack", "Spear_Disappear", SubResource( 22 ), "Sword_Appear", "Sword_Attack", SubResource( 23 ), "Sword_Attack", "Sword_Disappear", SubResource( 24 ) ]
-graph_offset = Vector2( 0, 288.154 )
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="ShaderMaterial" id=29]
+render_priority = 1
+shader = ExtResource( 16 )
+shader_param/Brightness = null
+shader_param/dissolve = null
+shader_param/WeaponTexture = ExtResource( 17 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 309.133, 184.231 )
 script = ExtResource( 1 )
 
-[node name="Weapon" parent="." instance=ExtResource( 2 )]
-
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -4.23999, 2.00543 )
 scale = Vector2( 0.195464, 0.195464 )
-texture = SubResource( 11 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -319,42 +2087,26 @@ shape = SubResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 current = true
-zoom = Vector2( 1.5, 1.5 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="DrawDetector" parent="." instance=ExtResource( 3 )]
+[node name="DrawDetector" parent="." instance=ExtResource( 2 )]
 
-[node name="SelectionPlate" parent="." instance=ExtResource( 4 )]
+[node name="SelectionPlate" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( -257.01, -182.135 )
-
-[node name="SwordAnimations" type="AnimationPlayer" parent="."]
-playback_speed = 4.0
-anims/Appear = SubResource( 3 )
-anims/Attack = SubResource( 4 )
-anims/Disappear = SubResource( 5 )
 
 [node name="Sword" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 63.0386, -14.6829 )
 rotation = 0.584685
-texture = ExtResource( 5 )
-
-[node name="SpearAnimations" type="AnimationPlayer" parent="."]
-playback_speed = 4.0
-anims/Spear_Appear = SubResource( 6 )
-anims/Spear_Attack = SubResource( 7 )
-anims/Spear_Disappear = SubResource( 8 )
-anims/Sword_Appear = SubResource( 12 )
-anims/Sword_Attack = SubResource( 13 )
-anims/Sword_Disappear = SubResource( 14 )
+texture = ExtResource( 4 )
 
 [node name="SpearSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 140, -4.087 )
 scale = Vector2( 1, 0.999999 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 editor/display_folded = true
@@ -366,18 +2118,83 @@ visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
 texture_mode = -1077936128
 
-[node name="SoundManager" parent="." instance=ExtResource( 7 )]
+[node name="SoundManager" parent="." instance=ExtResource( 6 )]
 visible = false
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
-[node name="Status" parent="." instance=ExtResource( 9 )]
+[node name="Status" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
-anim_player = NodePath("../SpearAnimations")
+[node name="AttackSystem" type="Node2D" parent="."]
+
+[node name="Weapon" parent="AttackSystem" instance=ExtResource( 9 )]
+
+[node name="AnimationTree" type="AnimationTree" parent="AttackSystem"]
+tree_root = SubResource( 53 )
+anim_player = NodePath("../Lift")
 active = true
-parameters/playback = SubResource( 10 )
-[connection signal="character_attack" from="." to="Weapon" method="_on_Player_character_attack"]
-[connection signal="slash" from="Weapon" to="SoundManager" method="_on_Weapon_slash"]
-[connection signal="thrust" from="Weapon" to="SoundManager" method="_on_Weapon_thrust"]
+parameters/playback = SubResource( 16 )
+parameters/conditions/180Lift_right = false
+
+[node name="Lift" type="AnimationPlayer" parent="AttackSystem"]
+anims/180Lift_act_left = SubResource( 89 )
+anims/180Lift_act_right = SubResource( 79 )
+anims/180Lift_finish_left = SubResource( 90 )
+anims/180Lift_finish_right = SubResource( 80 )
+anims/180Lift_generate_left = SubResource( 91 )
+anims/180Lift_generate_right = SubResource( 81 )
+anims/Await = SubResource( 44 )
+anims/Lift_act_left = SubResource( 70 )
+anims/Lift_act_right = SubResource( 34 )
+anims/Lift_finish_left = SubResource( 71 )
+anims/Lift_finish_right = SubResource( 35 )
+anims/Lift_generate_left = SubResource( 62 )
+anims/Lift_generate_right = SubResource( 31 )
+
+[node name="Ji" type="Node2D" parent="AttackSystem"]
+rotation = -1.309
+
+[node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
+visible = false
+material = SubResource( 30 )
+rotation = -2.00713
+scale = Vector2( 1.8, 1.35 )
+texture = ExtResource( 11 )
+offset = Vector2( 59.507, -5.62614 )
+
+[node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Ji"]
+texture = ExtResource( 12 )
+texture_scale = 1.2
+energy = 0.2
+
+[node name="Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
+visible = false
+modulate = Color( 0.976471, 0.960784, 0.811765, 0.130418 )
+material = SubResource( 28 )
+position = Vector2( 36.8442, 56.0844 )
+rotation = 1.12834
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 14 )
+offset = Vector2( -6.06262, 8.07626 )
+region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
+
+[node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Lift_VFX"]
+visible = false
+material = SubResource( 54 )
+texture = ExtResource( 15 )
+color = Color( 0.968627, 0.980392, 0.639216, 1 )
+energy = 1.2
+
+[node name="180Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
+visible = false
+modulate = Color( 1, 1, 1, 0.13 )
+material = SubResource( 29 )
+position = Vector2( 30.0774, -56.6627 )
+rotation = 1.5708
+scale = Vector2( 0.55, 0.65 )
+texture = ExtResource( 17 )
+region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
+
+[node name="Light2D" type="Light2D" parent="AttackSystem/Ji/180Lift_VFX"]
+texture = ExtResource( 18 )
+[connection signal="character_attack" from="." to="AttackSystem/Weapon" method="_on_Player_character_attack"]
