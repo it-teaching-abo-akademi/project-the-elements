@@ -22,6 +22,7 @@ var attack_time = 0.0
 var timer = null
 # 1 -> right ; -1 -> left
 var direction = 1
+var str_direction
 
 var state_machine
 
@@ -50,6 +51,11 @@ func _re_init():
 
 
 func _process(delta):
+	if current_attack.face_direction == 1:
+		str_direction = "_right"
+	else:
+		str_direction = "_left"
+		
 	if current_attack == null:
 		return
 	match first_attack:
@@ -169,13 +175,16 @@ func basic_attack():
 			fireball_instance.scale.x = current_attack.face_direction
 			root.add_child(fireball_instance)
 		_:
-			print(current_attack.name)
+			state_machine.travel(current_attack.name+"_generate"+str_direction)
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
+
 	var count = 0
 	for node in enemies.get_children():
 		connect("launch_attack", node, "_on_Player_weapon_attack")
+
+	state_machine.start("Await")
 
 
 func _on_Player_character_attack(attack: Action):
