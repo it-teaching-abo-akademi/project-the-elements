@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Elements/Fireball.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/fireball_effect_1.png" type="Texture" id=2]
 [ext_resource path="res://Elements/Sprites/fireball_effect_2.png" type="Texture" id=3]
-[ext_resource path="res://Elements/Sprites/fireball.png" type="Texture" id=4]
+[ext_resource path="res://Attack/Sources/Weapons/Fireball.png" type="Texture" id=4]
+[ext_resource path="res://Attack/Sources/Weapons/Fireball_lighting.png" type="Texture" id=5]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
@@ -27,6 +28,24 @@ hue_variation = 0.05
 hue_variation_random = 1.0
 
 [sub_resource type="CircleShape2D" id=3]
+radius = 12.635
+
+[sub_resource type="Animation" id=4]
+resource_name = "fireball"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 1 ), Vector2( 0.35, -0.9 ), Vector2( 0.35, 1 ) ]
+}
 
 [node name="Fireball" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -45,6 +64,7 @@ process_material = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="ExplodeEffect" type="Particles2D" parent="."]
+visible = false
 emitting = false
 amount = 50
 lifetime = 0.1
@@ -56,10 +76,23 @@ process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 0.35, -0.343309 )
 texture = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="Sprite"]
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.84, 1.89 )
 shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/fireball = SubResource( 4 )
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( -3.15559, 0 )
+scale = Vector2( 0.442357, -0.125661 )
+texture = ExtResource( 5 )
+energy = 1.8
 [connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]

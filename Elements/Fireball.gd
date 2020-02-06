@@ -9,3 +9,5 @@ func _on_Fireball_body_entered(body):
 	$ExplodeEffect.emitting = true
 	queue_free()
 	
+func _ready():
+	$AnimationPlayer.play("fireball")

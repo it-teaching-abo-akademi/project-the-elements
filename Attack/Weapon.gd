@@ -51,8 +51,6 @@ func _re_init():
 
 
 func _process(delta):
-
-		
 	if current_attack == null:
 		return
 	if current_attack.face_direction == 1:
@@ -71,6 +69,8 @@ func _process(delta):
 					clear_record()
 				"Slash":
 					print("Heavy slash")
+					current_attack.name = "Heavy slash"
+					state_machine.travel("HeavySlash_generate"+str_direction)
 					clear_record()
 				"Lift":
 					print("180 lift")
@@ -88,25 +88,30 @@ func _process(delta):
 					match current_attack.name:
 						"Lift":
 							print("Fast lift")
-							clear_record()
-						"Slash":
-							print("Heavy slash")
+							current_attack.name = "Fast lift"
+							state_machine.travel("FastLift_act"+str_direction)
 							clear_record()
 						"Thrust":
-							print("Thrust")
+							print("Thrust 2")
+							current_attack.name = "Thrust 2"
+							state_machine.travel("Thrust_act"+str_direction+" 2")
 							record_attack(current_attack)
 						_:
 							#不为连招，重新记录
 							basic_attack()
 							clear_record()
 							record_attack(current_attack)
-				"Thrust":
+				"Thrust 2":
 					match current_attack.name:
 						"Thrust":
-							print("Lunge")
+							print("ThrustX3")
+							current_attack.name = "ThrustX3"
+							state_machine.travel("ThrustX3_act"+str_direction)
 							clear_record()
 						"Slash":
 							print("Sword wave")
+							current_attack.name = "Sword wave"
+							state_machine.travel("SwordWave_act"+str_direction)
 							clear_record()
 						_:
 							#不为连招，重新记录
@@ -117,9 +122,13 @@ func _process(delta):
 			match current_attack.name:
 				"Thrust":
 					print("Laijutsu")
+					current_attack.name = "Laijutsu"
+					state_machine.travel("Laijutsu_act"+str_direction)
 					clear_record()
 				"Lift":
-					print("Higher lift")
+					print("Short lift")
+					current_attack.name = "Short lift"
+					state_machine.travel("ShortLift_act"+str_direction)
 					clear_record()
 				_:
 					#不为连招，重新记录
@@ -138,6 +147,7 @@ func record_attack(attack:Action):
 	if first_attack == null:
 		first_attack = attack.name
 	elif second_attack == null:
+		print("second record")
 		second_attack = attack.name
 	count_time()
 
@@ -148,7 +158,7 @@ func clear_record():
 func count_time():
 	if timer == null:
 		timer = Timer.new()
-		timer.set_wait_time(2)
+		timer.set_wait_time(3)
 		timer.set_one_shot(true)
 		self.add_child(timer)
 		timer.start()
@@ -157,8 +167,8 @@ func count_time():
 		timer = null
 		clear_record()
 	else:
-		timer.set_wait_time(2)
-	
+		timer.set_wait_time(3)
+
 func basic_attack():
 	if current_attack == null:
 		return

@@ -46,6 +46,7 @@ text = "TriggerDialogue"
 position = Vector2( 290.678, 157.574 )
 
 [node name="Enemies" type="Node2D" parent="."]
+visible = false
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]

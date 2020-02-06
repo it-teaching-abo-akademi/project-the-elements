@@ -65,7 +65,7 @@ func is_line():
 	return true
 
 func get_angle_with_x():
-	if angle_with_x:
+	if angle_with_x != null:
 		return angle_with_x
 
 func set_direction(dir):
