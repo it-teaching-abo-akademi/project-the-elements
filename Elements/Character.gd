@@ -216,6 +216,7 @@ func _ready():
 	selection_plate.hide()
 	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
 	element_handler.set_gravity(10)
+	$FloatingHero.play("Floating")
 
 
 func complete_gesture(gesture, button):
@@ -235,6 +236,7 @@ func complete_gesture(gesture, button):
 	var angle_with_x = gesture.get_angle_with_x()
 	match elmt:
 		"Knife":
+			element_handler.createElement(1, rand_range(0.5, 1), Vector2(position[0] + 20*face_direction + rand_range(-10, 10), position[1]+ rand_range(-10, 10)))
 			if face_direction == -1:
 				if angle_with_x <= PI/6 or angle_with_x > 11*PI/6:
 					action.name = "Thrust"
@@ -251,6 +253,7 @@ func complete_gesture(gesture, button):
 					action.name = "Slash"
 			
 		"Fire":
+			element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + -20*face_direction + rand_range(-3, 3), position[1]))
 			if face_direction == -1:
 				if angle_with_x > PI/2 and angle_with_x <= 3*PI/2:
 					action.name = "Arrow"
@@ -266,6 +269,7 @@ func complete_gesture(gesture, button):
 					action.name = "Arrow"
 					action.direction = - gesture.get_direction()
 		"Spring":
+			element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + rand_range(-3, 3), position[1]))
 			action.name = "Fly"
 			action.direction = - gesture.get_direction()
 			

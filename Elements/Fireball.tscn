@@ -76,7 +76,7 @@ process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.35, -0.343309 )
+scale = Vector2( 0.35, 0.553911 )
 texture = ExtResource( 4 )
 
 [node name="Light2D" type="Light2D" parent="Sprite"]

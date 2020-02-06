@@ -1,36 +1,66 @@
-[gd_scene load_steps=207 format=2]
+[gd_scene load_steps=209 format=2]
 
 [ext_resource path="res://Elements/Character.gd" type="Script" id=1]
-[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=5]
-[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=8]
-[ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=9]
-[ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=10]
-[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=11]
-[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=12]
-[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=13]
-[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=14]
-[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=15]
-[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=16]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=17]
-[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=18]
-[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=19]
-[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=20]
-[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=21]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=22]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=23]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=24]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=25]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=26]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=27]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=28]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=29]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=30]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=31]
+[ext_resource path="res://Lighting/light.png" type="Texture" id=2]
+[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=6]
+[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=9]
+[ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=10]
+[ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=11]
+[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=12]
+[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=13]
+[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=14]
+[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=15]
+[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=16]
+[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=17]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=18]
+[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=19]
+[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=20]
+[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=21]
+[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=22]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=23]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=24]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=25]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=26]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=27]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=28]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=29]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=30]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=31]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=32]
+
+[sub_resource type="Animation" id=176]
+resource_name = "Floating"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Light2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.392157 ) ]
+}
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -90,115 +120,101 @@ animation = "HeavySlash_generate_left"
 [sub_resource type="AnimationNodeAnimation" id=19]
 animation = "HeavySlash_generate_right"
 
-[sub_resource type="AnimationNodeAnimation" id=166]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "Laijutsu_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=167]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "Laijutsu_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=168]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "Laijutsu_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=169]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "Laijutsu_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "Lift_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "Lift_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "Lift_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "Lift_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "Lift_generate_left"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "Lift_generate_right"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "ShortLift_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "ShortLift_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "ShortLift_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "ShortLift_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=34]
 animation = "Slash_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=35]
 animation = "Slash_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "Slash_finish_left"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "Slash_finish_right"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "Slash_generate_left"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "Slash_generate_right"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "SwordWave_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "SwordWave_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=42]
 animation = "ThrustX3_act_left"
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=43]
 animation = "ThrustX3_act_right"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "Thrust_act_left"
-
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "Thrust_act_left"
-
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "Thrust_act_right"
-
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "Thrust_act_right"
-
 [sub_resource type="AnimationNodeAnimation" id=44]
-animation = "Thrust_finish_left"
+animation = "Thrust_act_left"
 
 [sub_resource type="AnimationNodeAnimation" id=45]
-animation = "Thrust_finish_right"
+animation = "Thrust_act_left"
 
 [sub_resource type="AnimationNodeAnimation" id=46]
-animation = "Thrust_generate_left"
+animation = "Thrust_act_right"
 
 [sub_resource type="AnimationNodeAnimation" id=47]
+animation = "Thrust_act_right"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "Thrust_finish_left"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "Thrust_finish_right"
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "Thrust_generate_left"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "Thrust_generate_right"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=50]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=51]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
 
@@ -215,8 +231,6 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
-switch_mode = 1
-advance_condition = "180Lift_right"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
 switch_mode = 2
@@ -232,6 +246,7 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=60]
 switch_mode = 1
+advance_condition = "180Lift_right"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=61]
 switch_mode = 2
@@ -246,6 +261,7 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=64]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=65]
 switch_mode = 2
@@ -274,8 +290,6 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=72]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=73]
 switch_mode = 2
@@ -291,9 +305,11 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=76]
 switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=77]
 switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=78]
 switch_mode = 2
@@ -305,33 +321,33 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=80]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=81]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=82]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=83]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=84]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=85]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=86]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=87]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=88]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=89]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=90]
 
@@ -358,10 +374,10 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=97]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=98]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=99]
 switch_mode = 2
@@ -372,32 +388,30 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=101]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=102]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=103]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=104]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=105]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=106]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=107]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=108]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=109]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=110]
 switch_mode = 2
@@ -407,27 +421,43 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=170]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=171]
+[sub_resource type="AnimationNodeStateMachineTransition" id=112]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=172]
+[sub_resource type="AnimationNodeStateMachineTransition" id=113]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=173]
+[sub_resource type="AnimationNodeStateMachineTransition" id=114]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=174]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=175]
+[sub_resource type="AnimationNodeStateMachineTransition" id=115]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=112]
+[sub_resource type="AnimationNodeStateMachineTransition" id=116]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=117]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=118]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=119]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=120]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=121]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=122]
 states/180Lift_act_left/node = SubResource( 3 )
 states/180Lift_act_left/position = Vector2( -472.412, -86 )
 states/180Lift_act_right/node = SubResource( 4 )
@@ -462,76 +492,76 @@ states/HeavySlash_generate_left/node = SubResource( 18 )
 states/HeavySlash_generate_left/position = Vector2( -12.5933, -86 )
 states/HeavySlash_generate_right/node = SubResource( 19 )
 states/HeavySlash_generate_right/position = Vector2( 380.861, -86 )
-states/Laijutsu_act_left/node = SubResource( 166 )
+states/Laijutsu_act_left/node = SubResource( 20 )
 states/Laijutsu_act_left/position = Vector2( -253.412, 665.392 )
-states/Laijutsu_act_right/node = SubResource( 167 )
+states/Laijutsu_act_right/node = SubResource( 21 )
 states/Laijutsu_act_right/position = Vector2( 620.134, 665.392 )
-states/Laijutsu_finish_left/node = SubResource( 168 )
+states/Laijutsu_finish_left/node = SubResource( 22 )
 states/Laijutsu_finish_left/position = Vector2( -15.3204, 665.392 )
-states/Laijutsu_finish_right/node = SubResource( 169 )
+states/Laijutsu_finish_right/node = SubResource( 23 )
 states/Laijutsu_finish_right/position = Vector2( 380.861, 665.392 )
-states/Lift_act_left/node = SubResource( 20 )
+states/Lift_act_left/node = SubResource( 24 )
 states/Lift_act_left/position = Vector2( -236.139, 63 )
-states/Lift_act_right/node = SubResource( 21 )
+states/Lift_act_right/node = SubResource( 25 )
 states/Lift_act_right/position = Vector2( 617.861, 63 )
-states/Lift_finish_left/node = SubResource( 22 )
+states/Lift_finish_left/node = SubResource( 26 )
 states/Lift_finish_left/position = Vector2( -14.1391, 63 )
-states/Lift_finish_right/node = SubResource( 23 )
+states/Lift_finish_right/node = SubResource( 27 )
 states/Lift_finish_right/position = Vector2( 380.861, 63 )
-states/Lift_generate_left/node = SubResource( 24 )
+states/Lift_generate_left/node = SubResource( 28 )
 states/Lift_generate_left/position = Vector2( -14.1391, 137 )
-states/Lift_generate_right/node = SubResource( 25 )
+states/Lift_generate_right/node = SubResource( 29 )
 states/Lift_generate_right/position = Vector2( 380.861, 137 )
-states/ShortLift_act_left/node = SubResource( 26 )
+states/ShortLift_act_left/node = SubResource( 30 )
 states/ShortLift_act_left/position = Vector2( -253.412, 568.392 )
-states/ShortLift_act_right/node = SubResource( 27 )
+states/ShortLift_act_right/node = SubResource( 31 )
 states/ShortLift_act_right/position = Vector2( 617.861, 568.392 )
-states/ShortLift_finish_left/node = SubResource( 28 )
+states/ShortLift_finish_left/node = SubResource( 32 )
 states/ShortLift_finish_left/position = Vector2( -13.5933, 568.392 )
-states/ShortLift_finish_right/node = SubResource( 29 )
+states/ShortLift_finish_right/node = SubResource( 33 )
 states/ShortLift_finish_right/position = Vector2( 380.861, 568.392 )
-states/Slash_act_left/node = SubResource( 30 )
+states/Slash_act_left/node = SubResource( 34 )
 states/Slash_act_left/position = Vector2( -253.412, 484.392 )
-states/Slash_act_right/node = SubResource( 31 )
+states/Slash_act_right/node = SubResource( 35 )
 states/Slash_act_right/position = Vector2( 617.861, 484.392 )
-states/Slash_finish_left/node = SubResource( 32 )
+states/Slash_finish_left/node = SubResource( 36 )
 states/Slash_finish_left/position = Vector2( -14.8662, 491.392 )
-states/Slash_finish_right/node = SubResource( 33 )
+states/Slash_finish_right/node = SubResource( 37 )
 states/Slash_finish_right/position = Vector2( 386.861, 491.392 )
-states/Slash_generate_left/node = SubResource( 34 )
+states/Slash_generate_left/node = SubResource( 38 )
 states/Slash_generate_left/position = Vector2( -14.1391, 425.392 )
-states/Slash_generate_right/node = SubResource( 35 )
+states/Slash_generate_right/node = SubResource( 39 )
 states/Slash_generate_right/position = Vector2( 380.861, 425.392 )
-states/SwordWave_act_left/node = SubResource( 36 )
+states/SwordWave_act_left/node = SubResource( 40 )
 states/SwordWave_act_left/position = Vector2( -361.412, 425.392 )
-states/SwordWave_act_right/node = SubResource( 37 )
+states/SwordWave_act_right/node = SubResource( 41 )
 states/SwordWave_act_right/position = Vector2( 738.588, 425.392 )
-states/ThrustX3_act_left/node = SubResource( 38 )
+states/ThrustX3_act_left/node = SubResource( 42 )
 states/ThrustX3_act_left/position = Vector2( -472.412, 292 )
-states/ThrustX3_act_right/node = SubResource( 39 )
+states/ThrustX3_act_right/node = SubResource( 43 )
 states/ThrustX3_act_right/position = Vector2( 868.588, 292 )
-states/Thrust_act_left/node = SubResource( 41 )
+states/Thrust_act_left/node = SubResource( 45 )
 states/Thrust_act_left/position = Vector2( -236.139, 292 )
-"states/Thrust_act_left 2/node" = SubResource( 40 )
+"states/Thrust_act_left 2/node" = SubResource( 44 )
 "states/Thrust_act_left 2/position" = Vector2( -472.412, 210 )
-states/Thrust_act_right/node = SubResource( 43 )
+states/Thrust_act_right/node = SubResource( 47 )
 states/Thrust_act_right/position = Vector2( 617.861, 292 )
-"states/Thrust_act_right 2/node" = SubResource( 42 )
+"states/Thrust_act_right 2/node" = SubResource( 46 )
 "states/Thrust_act_right 2/position" = Vector2( 868.588, 210 )
-states/Thrust_finish_left/node = SubResource( 44 )
+states/Thrust_finish_left/node = SubResource( 48 )
 states/Thrust_finish_left/position = Vector2( -236.139, 210 )
-states/Thrust_finish_right/node = SubResource( 45 )
+states/Thrust_finish_right/node = SubResource( 49 )
 states/Thrust_finish_right/position = Vector2( 617.861, 210 )
-states/Thrust_generate_left/node = SubResource( 46 )
+states/Thrust_generate_left/node = SubResource( 50 )
 states/Thrust_generate_left/position = Vector2( -14.1391, 210 )
-states/Thrust_generate_right/node = SubResource( 47 )
+states/Thrust_generate_right/node = SubResource( 51 )
 states/Thrust_generate_right/position = Vector2( 380.861, 210 )
-transitions = [ "Await", "Lift_generate_right", SubResource( 48 ), "Lift_generate_right", "Lift_act_right", SubResource( 49 ), "Lift_act_right", "Lift_finish_right", SubResource( 50 ), "Lift_finish_right", "Await", SubResource( 51 ), "Await", "Lift_generate_left", SubResource( 52 ), "Lift_generate_left", "Lift_act_left", SubResource( 53 ), "Lift_act_left", "Lift_finish_left", SubResource( 54 ), "Lift_finish_left", "Await", SubResource( 55 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 56 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 57 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 58 ), "180Lift_finish_right", "Await", SubResource( 59 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 60 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 61 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 62 ), "180Lift_finish_left", "Await", SubResource( 63 ), "Await", "Thrust_generate_left", SubResource( 64 ), "Thrust_generate_left", "Thrust_act_left", SubResource( 65 ), "Thrust_act_left", "Thrust_finish_left", SubResource( 66 ), "Thrust_finish_left", "Await", SubResource( 67 ), "Await", "Thrust_generate_right", SubResource( 68 ), "Thrust_generate_right", "Thrust_act_right", SubResource( 69 ), "Thrust_act_right", "Thrust_finish_right", SubResource( 70 ), "Thrust_finish_right", "Await", SubResource( 71 ), "FastLift_act_left", "FastLift_finish_left", SubResource( 72 ), "FastLift_finish_left", "Await", SubResource( 73 ), "FastLift_act_right", "FastLift_finish_right", SubResource( 74 ), "FastLift_finish_right", "Await", SubResource( 75 ), "Thrust_act_right", "FastLift_act_right", SubResource( 76 ), "Thrust_act_left", "FastLift_act_left", SubResource( 77 ), "ThrustX3_act_right", "Thrust_finish_right", SubResource( 78 ), "ThrustX3_act_left", "Thrust_finish_left", SubResource( 79 ), "Thrust_act_right 2", "Thrust_finish_right", SubResource( 80 ), "Thrust_act_left 2", "Thrust_finish_left", SubResource( 81 ), "Thrust_finish_right", "Thrust_act_right 2", SubResource( 82 ), "Thrust_finish_right", "ThrustX3_act_right", SubResource( 83 ), "Thrust_finish_left", "Thrust_act_left 2", SubResource( 84 ), "Thrust_finish_left", "ThrustX3_act_left", SubResource( 85 ), "Await", "Slash_generate_left", SubResource( 86 ), "Slash_generate_left", "Slash_act_left", SubResource( 87 ), "Slash_act_left", "Slash_finish_left", SubResource( 88 ), "Slash_finish_left", "Await", SubResource( 89 ), "Await", "Slash_generate_right", SubResource( 90 ), "Slash_generate_right", "Slash_act_right", SubResource( 91 ), "Slash_act_right", "Slash_finish_right", SubResource( 92 ), "Slash_finish_right", "Await", SubResource( 93 ), "Slash_finish_left", "ShortLift_act_left", SubResource( 94 ), "ShortLift_act_left", "ShortLift_finish_left", SubResource( 95 ), "ShortLift_finish_left", "Await", SubResource( 96 ), "Slash_finish_right", "ShortLift_act_right", SubResource( 97 ), "ShortLift_act_right", "ShortLift_finish_right", SubResource( 98 ), "ShortLift_finish_right", "Await", SubResource( 99 ), "SwordWave_act_right", "Slash_finish_right", SubResource( 100 ), "SwordWave_act_left", "Slash_finish_left", SubResource( 101 ), "Thrust_finish_right", "SwordWave_act_right", SubResource( 102 ), "Thrust_finish_left", "SwordWave_act_left", SubResource( 103 ), "Lift_finish_left", "HeavySlash_generate_left", SubResource( 104 ), "Lift_finish_right", "HeavySlash_generate_right", SubResource( 105 ), "HeavySlash_generate_left", "HeavySlash_act_left", SubResource( 106 ), "HeavySlash_act_left", "HeavySlash_finish_left", SubResource( 107 ), "HeavySlash_finish_left", "Await", SubResource( 108 ), "HeavySlash_generate_right", "HeavySlash_act_right", SubResource( 109 ), "HeavySlash_act_right", "HeavySlash_finish_right", SubResource( 110 ), "HeavySlash_finish_right", "Await", SubResource( 111 ), "Slash_finish_left", "Laijutsu_act_left", SubResource( 170 ), "Laijutsu_act_left", "Laijutsu_finish_left", SubResource( 171 ), "Laijutsu_finish_left", "Await", SubResource( 172 ), "Laijutsu_finish_right", "Await", SubResource( 173 ), "Slash_finish_right", "Laijutsu_act_right", SubResource( 174 ), "Laijutsu_act_right", "Laijutsu_finish_right", SubResource( 175 ) ]
+transitions = [ "Await", "Lift_generate_right", SubResource( 52 ), "Lift_generate_right", "Lift_act_right", SubResource( 53 ), "Lift_act_right", "Lift_finish_right", SubResource( 54 ), "Lift_finish_right", "Await", SubResource( 55 ), "Await", "Lift_generate_left", SubResource( 56 ), "Lift_generate_left", "Lift_act_left", SubResource( 57 ), "Lift_act_left", "Lift_finish_left", SubResource( 58 ), "Lift_finish_left", "Await", SubResource( 59 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 60 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 61 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 62 ), "180Lift_finish_right", "Await", SubResource( 63 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 64 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 65 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 66 ), "180Lift_finish_left", "Await", SubResource( 67 ), "Await", "Thrust_generate_left", SubResource( 68 ), "Thrust_generate_left", "Thrust_act_left", SubResource( 69 ), "Thrust_act_left", "Thrust_finish_left", SubResource( 70 ), "Thrust_finish_left", "Await", SubResource( 71 ), "Await", "Thrust_generate_right", SubResource( 72 ), "Thrust_generate_right", "Thrust_act_right", SubResource( 73 ), "Thrust_act_right", "Thrust_finish_right", SubResource( 74 ), "Thrust_finish_right", "Await", SubResource( 75 ), "FastLift_act_left", "FastLift_finish_left", SubResource( 76 ), "FastLift_finish_left", "Await", SubResource( 77 ), "FastLift_act_right", "FastLift_finish_right", SubResource( 78 ), "FastLift_finish_right", "Await", SubResource( 79 ), "Thrust_act_right", "FastLift_act_right", SubResource( 80 ), "Thrust_act_left", "FastLift_act_left", SubResource( 81 ), "ThrustX3_act_right", "Thrust_finish_right", SubResource( 82 ), "ThrustX3_act_left", "Thrust_finish_left", SubResource( 83 ), "Thrust_act_right 2", "Thrust_finish_right", SubResource( 84 ), "Thrust_act_left 2", "Thrust_finish_left", SubResource( 85 ), "Thrust_finish_right", "Thrust_act_right 2", SubResource( 86 ), "Thrust_finish_right", "ThrustX3_act_right", SubResource( 87 ), "Thrust_finish_left", "Thrust_act_left 2", SubResource( 88 ), "Thrust_finish_left", "ThrustX3_act_left", SubResource( 89 ), "Await", "Slash_generate_left", SubResource( 90 ), "Slash_generate_left", "Slash_act_left", SubResource( 91 ), "Slash_act_left", "Slash_finish_left", SubResource( 92 ), "Slash_finish_left", "Await", SubResource( 93 ), "Await", "Slash_generate_right", SubResource( 94 ), "Slash_generate_right", "Slash_act_right", SubResource( 95 ), "Slash_act_right", "Slash_finish_right", SubResource( 96 ), "Slash_finish_right", "Await", SubResource( 97 ), "Slash_finish_left", "ShortLift_act_left", SubResource( 98 ), "ShortLift_act_left", "ShortLift_finish_left", SubResource( 99 ), "ShortLift_finish_left", "Await", SubResource( 100 ), "Slash_finish_right", "ShortLift_act_right", SubResource( 101 ), "ShortLift_act_right", "ShortLift_finish_right", SubResource( 102 ), "ShortLift_finish_right", "Await", SubResource( 103 ), "SwordWave_act_right", "Slash_finish_right", SubResource( 104 ), "SwordWave_act_left", "Slash_finish_left", SubResource( 105 ), "Thrust_finish_right", "SwordWave_act_right", SubResource( 106 ), "Thrust_finish_left", "SwordWave_act_left", SubResource( 107 ), "Lift_finish_left", "HeavySlash_generate_left", SubResource( 108 ), "Lift_finish_right", "HeavySlash_generate_right", SubResource( 109 ), "HeavySlash_generate_left", "HeavySlash_act_left", SubResource( 110 ), "HeavySlash_act_left", "HeavySlash_finish_left", SubResource( 111 ), "HeavySlash_finish_left", "Await", SubResource( 112 ), "HeavySlash_generate_right", "HeavySlash_act_right", SubResource( 113 ), "HeavySlash_act_right", "HeavySlash_finish_right", SubResource( 114 ), "HeavySlash_finish_right", "Await", SubResource( 115 ), "Slash_finish_left", "Laijutsu_act_left", SubResource( 116 ), "Laijutsu_act_left", "Laijutsu_finish_left", SubResource( 117 ), "Laijutsu_finish_left", "Await", SubResource( 118 ), "Laijutsu_finish_right", "Await", SubResource( 119 ), "Slash_finish_right", "Laijutsu_act_right", SubResource( 120 ), "Laijutsu_act_right", "Laijutsu_finish_right", SubResource( 121 ) ]
 graph_offset = Vector2( 74.588, 159.392 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=113]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=123]
 
-[sub_resource type="Animation" id=114]
+[sub_resource type="Animation" id=124]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -806,7 +836,7 @@ tracks/22/keys = {
 "values": [ Vector2( 0, 110 ) ]
 }
 
-[sub_resource type="Animation" id=115]
+[sub_resource type="Animation" id=125]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1081,7 +1111,7 @@ tracks/22/keys = {
 "values": [ Vector2( 23.109, -70.4497 ) ]
 }
 
-[sub_resource type="Animation" id=116]
+[sub_resource type="Animation" id=126]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1212,7 +1242,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=117]
+[sub_resource type="Animation" id=127]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1343,7 +1373,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=118]
+[sub_resource type="Animation" id=128]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1474,7 +1504,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=119]
+[sub_resource type="Animation" id=129]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1605,7 +1635,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=120]
+[sub_resource type="Animation" id=130]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -1621,7 +1651,7 @@ tracks/0/keys = {
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=121]
+[sub_resource type="Animation" id=131]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -1814,7 +1844,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=122]
+[sub_resource type="Animation" id=132]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -2007,7 +2037,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=123]
+[sub_resource type="Animation" id=133]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -2118,7 +2148,7 @@ tracks/8/keys = {
 "values": [ 0.0, -0.35, -0.65, -1.0 ]
 }
 
-[sub_resource type="Animation" id=124]
+[sub_resource type="Animation" id=134]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -2229,8 +2259,7 @@ tracks/8/keys = {
 "values": [ 0.0, -0.35, -0.65, -1.0 ]
 }
 
-[sub_resource type="Animation" id=125]
-resource_name = "HeavySlash_act_left"
+[sub_resource type="Animation" id=135]
 length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -2497,8 +2526,7 @@ tracks/21/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=126]
-resource_name = "HeavySlash_act_right"
+[sub_resource type="Animation" id=136]
 length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -2765,8 +2793,7 @@ tracks/21/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=127]
-resource_name = "HeavySlash_finish_left"
+[sub_resource type="Animation" id=137]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -2949,8 +2976,7 @@ tracks/14/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=128]
-resource_name = "HeavySlash_finish_right"
+[sub_resource type="Animation" id=138]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -3133,8 +3159,7 @@ tracks/14/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=129]
-resource_name = "HeavySlash_generate_left"
+[sub_resource type="Animation" id=139]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -3317,8 +3342,7 @@ tracks/14/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=130]
-resource_name = "HeavySlash_generate_right"
+[sub_resource type="Animation" id=140]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hammer/Hammer:visible")
@@ -3501,7 +3525,7 @@ tracks/14/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=162]
+[sub_resource type="Animation" id=141]
 resource_name = "Laijutsu_act_left"
 length = 1.2
 tracks/0/type = "value"
@@ -3697,7 +3721,7 @@ tracks/15/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=163]
+[sub_resource type="Animation" id=142]
 resource_name = "Laijutsu_act_right"
 length = 1.2
 tracks/0/type = "value"
@@ -3893,7 +3917,7 @@ tracks/15/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=164]
+[sub_resource type="Animation" id=143]
 resource_name = "Laijutsu_finish_left"
 length = 0.8
 tracks/0/type = "value"
@@ -4041,7 +4065,7 @@ tracks/11/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=165]
+[sub_resource type="Animation" id=144]
 resource_name = "Laijutsu_finish_right"
 length = 0.8
 tracks/0/type = "value"
@@ -4189,7 +4213,7 @@ tracks/11/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=131]
+[sub_resource type="Animation" id=145]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -4382,7 +4406,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=132]
+[sub_resource type="Animation" id=146]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -4575,7 +4599,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=133]
+[sub_resource type="Animation" id=147]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -4694,7 +4718,7 @@ tracks/9/keys = {
 "values": [ Vector2( -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=134]
+[sub_resource type="Animation" id=148]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -4813,7 +4837,7 @@ tracks/9/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=135]
+[sub_resource type="Animation" id=149]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -4944,7 +4968,7 @@ tracks/10/keys = {
 "values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="Animation" id=136]
+[sub_resource type="Animation" id=150]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -5075,7 +5099,7 @@ tracks/10/keys = {
 "values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="Animation" id=137]
+[sub_resource type="Animation" id=151]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -5232,7 +5256,7 @@ tracks/12/keys = {
 "values": [ Vector2( 0.7, 0.65 ), Vector2( 1.2, 0.55 ) ]
 }
 
-[sub_resource type="Animation" id=138]
+[sub_resource type="Animation" id=152]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -5427,7 +5451,7 @@ tracks/15/keys = {
 "values": [ 41.3591 ]
 }
 
-[sub_resource type="Animation" id=139]
+[sub_resource type="Animation" id=153]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
 tracks/0/interp = 1
@@ -5645,7 +5669,7 @@ tracks/17/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=140]
+[sub_resource type="Animation" id=154]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -5780,7 +5804,7 @@ tracks/10/keys = {
 "values": [ Vector2( -86.1285, -99.7628 ) ]
 }
 
-[sub_resource type="Animation" id=141]
+[sub_resource type="Animation" id=155]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -5915,7 +5939,7 @@ tracks/10/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=142]
+[sub_resource type="Animation" id=156]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6110,7 +6134,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=143]
+[sub_resource type="Animation" id=157]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6329,7 +6353,7 @@ tracks/17/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=144]
+[sub_resource type="Animation" id=158]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6464,7 +6488,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=145]
+[sub_resource type="Animation" id=159]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6599,7 +6623,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=146]
+[sub_resource type="Animation" id=160]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6722,7 +6746,7 @@ tracks/9/keys = {
 "values": [ Vector2( -0.431702, 37.5236 ) ]
 }
 
-[sub_resource type="Animation" id=147]
+[sub_resource type="Animation" id=161]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -6845,7 +6869,7 @@ tracks/9/keys = {
 "values": [ Vector2( 0.502563, -36.8338 ) ]
 }
 
-[sub_resource type="Animation" id=148]
+[sub_resource type="Animation" id=162]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -7064,7 +7088,7 @@ tracks/17/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=149]
+[sub_resource type="Animation" id=163]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Katana/Katana:visible")
@@ -7283,7 +7307,7 @@ tracks/17/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=150]
+[sub_resource type="Animation" id=164]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -7440,7 +7464,7 @@ tracks/12/keys = {
 "values": [ Vector2( 0.7, 0.65 ), Vector2( 0.7, 0.65 ), Vector2( 0.9, 0.65 ) ]
 }
 
-[sub_resource type="Animation" id=151]
+[sub_resource type="Animation" id=165]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -7597,7 +7621,7 @@ tracks/12/keys = {
 "values": [ Vector2( 0.7, 0.65 ), Vector2( 0.7, 0.65 ), Vector2( 0.9, 0.65 ) ]
 }
 
-[sub_resource type="Animation" id=152]
+[sub_resource type="Animation" id=166]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -7730,7 +7754,7 @@ tracks/10/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=153]
+[sub_resource type="Animation" id=167]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -7875,7 +7899,7 @@ tracks/11/keys = {
 "values": [ Vector2( 0.7, 0.65 ) ]
 }
 
-[sub_resource type="Animation" id=154]
+[sub_resource type="Animation" id=168]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
 tracks/0/interp = 1
@@ -7973,7 +7997,7 @@ tracks/7/keys = {
 "values": [ 0.0, -0.35, -0.65, -1.0 ]
 }
 
-[sub_resource type="Animation" id=155]
+[sub_resource type="Animation" id=169]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
 tracks/0/interp = 1
@@ -8095,7 +8119,7 @@ tracks/9/keys = {
 "values": [ Vector2( 59.507, -5.62614 ), Vector2( 59.507, -8.566 ), Vector2( 59.507, -8.566 ), Vector2( 59.507, -5.62614 ) ]
 }
 
-[sub_resource type="Animation" id=156]
+[sub_resource type="Animation" id=170]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -8226,7 +8250,7 @@ tracks/10/keys = {
 "values": [ Vector2( -6.06262, 8.07626 ) ]
 }
 
-[sub_resource type="Animation" id=157]
+[sub_resource type="Animation" id=171]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ji/Ji:rotation_degrees")
@@ -8345,27 +8369,27 @@ tracks/9/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="ShaderMaterial" id=158]
+[sub_resource type="ShaderMaterial" id=172]
 render_priority = 2
-shader = ExtResource( 8 )
+shader = ExtResource( 9 )
 shader_param/Brightness = 0.0
 shader_param/dissolve = -1.0
-shader_param/WeaponTexture = ExtResource( 9 )
+shader_param/WeaponTexture = ExtResource( 10 )
 
-[sub_resource type="ShaderMaterial" id=159]
+[sub_resource type="ShaderMaterial" id=173]
 render_priority = 3
 
-[sub_resource type="ShaderMaterial" id=160]
-shader = ExtResource( 17 )
+[sub_resource type="ShaderMaterial" id=174]
+shader = ExtResource( 18 )
 shader_param/Brightness = null
 shader_param/dissolve = -0.8
-shader_param/WeaponTexture = ExtResource( 18 )
+shader_param/WeaponTexture = ExtResource( 19 )
 
-[sub_resource type="ShaderMaterial" id=161]
-shader = ExtResource( 26 )
+[sub_resource type="ShaderMaterial" id=175]
+shader = ExtResource( 27 )
 shader_param/Brightness = null
 shader_param/dissolve = 0.0
-shader_param/WeaponTexture = ExtResource( 27 )
+shader_param/WeaponTexture = ExtResource( 28 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 306.928, 181.291 )
@@ -8375,26 +8399,35 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
+[node name="FloatingHero" type="AnimationPlayer" parent="."]
+playback_speed = 0.75
+anims/Floating = SubResource( 176 )
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -4.23999, 2.00543 )
 scale = Vector2( 0.195464, 0.195464 )
 texture = SubResource( 1 )
+offset = Vector2( 0, -0.993077 )
+
+[node name="Light2D" type="Light2D" parent="Sprite"]
+position = Vector2( 2.27222, -13.2476 )
+scale = Vector2( 0.818559, 0.818565 )
+texture = ExtResource( 2 )
+color = Color( 1, 1, 1, 0.686682 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -7.80774, -3.28589 )
+position = Vector2( -6.93176, 2.26193 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 current = true
 zoom = Vector2( 0.8, 0.8 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="DrawDetector" parent="." instance=ExtResource( 2 )]
+[node name="DrawDetector" parent="." instance=ExtResource( 3 )]
 
-[node name="SelectionPlate" parent="." instance=ExtResource( 3 )]
+[node name="SelectionPlate" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( -257.01, -182.135 )
 
@@ -8407,89 +8440,91 @@ enabled = true
 visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
 
-[node name="SoundManager" parent="." instance=ExtResource( 4 )]
+[node name="SoundManager" parent="." instance=ExtResource( 5 )]
 visible = false
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
-[node name="Status" parent="." instance=ExtResource( 6 )]
+[node name="Status" parent="." instance=ExtResource( 7 )]
 visible = false
 
 [node name="AttackSystem" type="Node2D" parent="."]
+editor/display_folded = true
 
-[node name="Weapon" parent="AttackSystem" instance=ExtResource( 7 )]
+[node name="Weapon" parent="AttackSystem" instance=ExtResource( 8 )]
 
 [node name="AnimationTree" type="AnimationTree" parent="AttackSystem"]
-tree_root = SubResource( 112 )
+tree_root = SubResource( 122 )
 anim_player = NodePath("../AttackAnimation")
 active = true
-parameters/playback = SubResource( 113 )
+parameters/playback = SubResource( 123 )
 parameters/conditions/180Lift_right = false
 
 [node name="AttackAnimation" type="AnimationPlayer" parent="AttackSystem"]
-anims/180Lift_act_left = SubResource( 114 )
-anims/180Lift_act_right = SubResource( 115 )
-anims/180Lift_finish_left = SubResource( 116 )
-anims/180Lift_finish_right = SubResource( 117 )
-anims/180Lift_generate_left = SubResource( 118 )
-anims/180Lift_generate_right = SubResource( 119 )
-anims/Await = SubResource( 120 )
-anims/FastLift_act_left = SubResource( 121 )
-anims/FastLift_act_right = SubResource( 122 )
-anims/FastLift_finish_left = SubResource( 123 )
-anims/FastLift_finish_right = SubResource( 124 )
-anims/HeavySlash_act_left = SubResource( 125 )
-anims/HeavySlash_act_right = SubResource( 126 )
-anims/HeavySlash_finish_left = SubResource( 127 )
-anims/HeavySlash_finish_right = SubResource( 128 )
-anims/HeavySlash_generate_left = SubResource( 129 )
-anims/HeavySlash_generate_right = SubResource( 130 )
-anims/Laijutsu_act_left = SubResource( 162 )
-anims/Laijutsu_act_right = SubResource( 163 )
-anims/Laijutsu_finish_left = SubResource( 164 )
-anims/Laijutsu_finish_right = SubResource( 165 )
-anims/Lift_act_left = SubResource( 131 )
-anims/Lift_act_right = SubResource( 132 )
-anims/Lift_finish_left = SubResource( 133 )
-anims/Lift_finish_right = SubResource( 134 )
-anims/Lift_generate_left = SubResource( 135 )
-anims/Lift_generate_right = SubResource( 136 )
-"anims/Lunge_act_right (abandon)" = SubResource( 137 )
-anims/ShortLift_act_left = SubResource( 138 )
-anims/ShortLift_act_right = SubResource( 139 )
-anims/ShortLift_finish_left = SubResource( 140 )
-anims/ShortLift_finish_right = SubResource( 141 )
-anims/Slash_act_left = SubResource( 142 )
-anims/Slash_act_right = SubResource( 143 )
-anims/Slash_finish_left = SubResource( 144 )
-anims/Slash_finish_right = SubResource( 145 )
-anims/Slash_generate_left = SubResource( 146 )
-anims/Slash_generate_right = SubResource( 147 )
-anims/SwordWave_act_left = SubResource( 148 )
-anims/SwordWave_act_right = SubResource( 149 )
-anims/ThrustX3_act_left = SubResource( 150 )
-anims/ThrustX3_act_right = SubResource( 151 )
-anims/Thrust_act_left = SubResource( 152 )
-anims/Thrust_act_right = SubResource( 153 )
-anims/Thrust_finish_left = SubResource( 154 )
-anims/Thrust_finish_right = SubResource( 155 )
-anims/Thrust_generate_left = SubResource( 156 )
-anims/Thrust_generate_right = SubResource( 157 )
+anims/180Lift_act_left = SubResource( 124 )
+anims/180Lift_act_right = SubResource( 125 )
+anims/180Lift_finish_left = SubResource( 126 )
+anims/180Lift_finish_right = SubResource( 127 )
+anims/180Lift_generate_left = SubResource( 128 )
+anims/180Lift_generate_right = SubResource( 129 )
+anims/Await = SubResource( 130 )
+anims/FastLift_act_left = SubResource( 131 )
+anims/FastLift_act_right = SubResource( 132 )
+anims/FastLift_finish_left = SubResource( 133 )
+anims/FastLift_finish_right = SubResource( 134 )
+anims/HeavySlash_act_left = SubResource( 135 )
+anims/HeavySlash_act_right = SubResource( 136 )
+anims/HeavySlash_finish_left = SubResource( 137 )
+anims/HeavySlash_finish_right = SubResource( 138 )
+anims/HeavySlash_generate_left = SubResource( 139 )
+anims/HeavySlash_generate_right = SubResource( 140 )
+anims/Laijutsu_act_left = SubResource( 141 )
+anims/Laijutsu_act_right = SubResource( 142 )
+anims/Laijutsu_finish_left = SubResource( 143 )
+anims/Laijutsu_finish_right = SubResource( 144 )
+anims/Lift_act_left = SubResource( 145 )
+anims/Lift_act_right = SubResource( 146 )
+anims/Lift_finish_left = SubResource( 147 )
+anims/Lift_finish_right = SubResource( 148 )
+anims/Lift_generate_left = SubResource( 149 )
+anims/Lift_generate_right = SubResource( 150 )
+"anims/Lunge_act_right (abandon)" = SubResource( 151 )
+anims/ShortLift_act_left = SubResource( 152 )
+anims/ShortLift_act_right = SubResource( 153 )
+anims/ShortLift_finish_left = SubResource( 154 )
+anims/ShortLift_finish_right = SubResource( 155 )
+anims/Slash_act_left = SubResource( 156 )
+anims/Slash_act_right = SubResource( 157 )
+anims/Slash_finish_left = SubResource( 158 )
+anims/Slash_finish_right = SubResource( 159 )
+anims/Slash_generate_left = SubResource( 160 )
+anims/Slash_generate_right = SubResource( 161 )
+anims/SwordWave_act_left = SubResource( 162 )
+anims/SwordWave_act_right = SubResource( 163 )
+anims/ThrustX3_act_left = SubResource( 164 )
+anims/ThrustX3_act_right = SubResource( 165 )
+anims/Thrust_act_left = SubResource( 166 )
+anims/Thrust_act_right = SubResource( 167 )
+anims/Thrust_finish_left = SubResource( 168 )
+anims/Thrust_finish_right = SubResource( 169 )
+anims/Thrust_generate_left = SubResource( 170 )
+anims/Thrust_generate_right = SubResource( 171 )
 
 [node name="Ji" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 rotation = -1.309
 
 [node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
 editor/display_folded = true
 visible = false
-material = SubResource( 158 )
+material = SubResource( 172 )
 position = Vector2( 10.599, 39.558 )
 rotation = -17.4533
 scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 offset = Vector2( 59.507, -6.11612 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Ji"]
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 texture_scale = 1.2
 energy = 0.2
 
@@ -8500,14 +8535,14 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.130418 )
 position = Vector2( 75.0785, 80.0098 )
 rotation = 0.565804
 scale = Vector2( 0.3, 0.45 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 offset = Vector2( -6.06262, 8.07626 )
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Lift_VFX"]
 visible = false
-material = SubResource( 159 )
-texture = ExtResource( 12 )
+material = SubResource( 173 )
+texture = ExtResource( 13 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 energy = 1.2
 
@@ -8518,13 +8553,13 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
 position = Vector2( 23.109, -70.4497 )
 rotation = 1.37881
 scale = Vector2( 0.75, 0.85 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 offset = Vector2( 0, 110 )
 flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/180Lift_VFX"]
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 offset = Vector2( 0, 110 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 
@@ -8535,38 +8570,39 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
 position = Vector2( 17.6364, 54.2743 )
 rotation = 1.309
 scale = Vector2( 0.7, 0.65 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Thrust"]
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 energy = 1.5
 
 [node name="Katana" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 
 [node name="Katana" type="Sprite" parent="AttackSystem/Katana"]
 editor/display_folded = true
-material = SubResource( 160 )
+material = SubResource( 174 )
 position = Vector2( 13.6653, -6.53673 )
 rotation = 3.05433
 scale = Vector2( 0.3, 0.4 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 offset = Vector2( 0.502563, -36.8338 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Katana"]
 position = Vector2( 1.4101, 34.1098 )
 enabled = false
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="Slash" type="Sprite" parent="AttackSystem/Katana"]
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 45.1369, -10.1389 )
 scale = Vector2( 0.34, 0.39 )
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Slash"]
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="SwordWave" type="Sprite" parent="AttackSystem/Katana"]
@@ -8574,11 +8610,11 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 200, -22.556 )
 scale = Vector2( 0.8, 0.2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 offset = Vector2( 0, 100 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/SwordWave"]
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 offset = Vector2( 0, 100 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
@@ -8587,28 +8623,29 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 40.2968, -23.1492 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 offset = Vector2( 10, 0 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Laijutsu"]
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="Hammer" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 scale = Vector2( -1, -1 )
 
 [node name="Hammer" type="Sprite" parent="AttackSystem/Hammer"]
 visible = false
 modulate = Color( 1, 1, 1, 0.431373 )
-material = SubResource( 161 )
+material = SubResource( 175 )
 position = Vector2( 5.204, 3.321 )
 rotation = -1.65806
 scale = Vector2( 1, -1 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 offset = Vector2( 16.26, -49.915 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/Hammer"]
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 offset = Vector2( 16.26, -49.915 )
 
 [node name="HeavySlash1" type="Sprite" parent="AttackSystem/Hammer"]
@@ -8616,11 +8653,11 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 79.9858, 55.4362 )
 scale = Vector2( 1, -0.7 )
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash1"]
 visible = false
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="HeavySlash2" type="Sprite" parent="AttackSystem/Hammer"]
@@ -8628,10 +8665,10 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 79.7584, 50.0116 )
 scale = Vector2( 1, -0.7 )
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash2"]
 visible = false
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [connection signal="character_attack" from="." to="AttackSystem/Weapon" method="_on_Player_character_attack"]

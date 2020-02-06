@@ -32,7 +32,7 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.0994415, 0 )
-scale = Vector2( 0.4, -0.0858257 )
+scale = Vector2( 0.4, -0.12865 )
 texture = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="Sprite"]
