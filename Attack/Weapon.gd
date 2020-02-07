@@ -178,6 +178,7 @@ func basic_attack():
 			arrow_instance.linear_velocity = current_attack.direction * 800
 			arrow_instance.position = to_global(current_attack.position)
 			arrow_instance.position.x += current_attack.face_direction * 20
+			arrow_instance.rotation = current_attack.direction.angle()
 			arrow_instance.scale.x = current_attack.face_direction
 			root.add_child(arrow_instance)
 		"Fireball":
@@ -185,6 +186,7 @@ func basic_attack():
 			fireball_instance.linear_velocity = current_attack.direction * 600
 			fireball_instance.position = to_global(current_attack.position)
 			fireball_instance.position.x += current_attack.face_direction * 20
+			fireball_instance.rotation = current_attack.direction.angle()
 			fireball_instance.scale.x = current_attack.face_direction
 			root.add_child(fireball_instance)
 		_:

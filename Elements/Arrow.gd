@@ -8,7 +8,8 @@ func _on_Arrow_body_entered(body):
 	queue_free()
 
 func _process(delta):
-	rotation = atan2(linear_velocity.y, linear_velocity.x)
+	rotation = linear_velocity.angle()
+	position += linear_velocity * delta
 	
 func _ready():
 	$AnimationPlayer.play("arrow")
