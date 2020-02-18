@@ -122,7 +122,7 @@ func _ready():
 func _init():
 	speed = rand_range(4500,5500)
 	strength = rand_range(4, 6)
-	max_hp = rand_range(80, 120)
+	max_hp = rand_range(80000, 120000)
 	hp = max_hp
 	state = global.ENEMY_STATES['PATROL']
 	
@@ -154,7 +154,7 @@ func _on_Detect_range_body_exited(body):
 
 func _on_Attack_range_body_entered(body):
 	if "Player" in body.name:
-		emit_signal("attack",10)
+		emit_signal("attack",0)
 
 
 func _on_Attack_range_body_exited(body):
