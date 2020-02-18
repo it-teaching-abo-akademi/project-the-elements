@@ -319,6 +319,14 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=83]
 switch_mode = 2
 auto_advance = true
@@ -328,12 +336,8 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=85]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=86]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=87]
 
@@ -342,46 +346,50 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=89]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=90]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=91]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=92]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=93]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=94]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=95]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=96]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=97]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=98]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=99]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=100]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=101]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=102]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=103]
 switch_mode = 2
@@ -392,20 +400,20 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=105]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=106]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=107]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=108]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=109]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=110]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=111]
 switch_mode = 2
@@ -424,34 +432,26 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=115]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=116]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=117]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=118]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=119]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=120]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=121]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=177]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=178]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=179]
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=180]
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=181]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=182]
+[sub_resource type="AnimationNodeStateMachineTransition" id=122]
 switch_mode = 2
 auto_advance = true
 
@@ -554,7 +554,7 @@ states/Thrust_generate_left/node = SubResource( 51 )
 states/Thrust_generate_left/position = Vector2( -14.1391, 210 )
 states/Thrust_generate_right/node = SubResource( 52 )
 states/Thrust_generate_right/position = Vector2( 380.861, 210 )
-transitions = [ "Await", "Lift_generate_right", SubResource( 53 ), "Lift_generate_right", "Lift_act_right", SubResource( 54 ), "Lift_act_right", "Lift_finish_right", SubResource( 55 ), "Lift_finish_right", "Await", SubResource( 56 ), "Await", "Lift_generate_left", SubResource( 57 ), "Lift_generate_left", "Lift_act_left", SubResource( 58 ), "Lift_act_left", "Lift_finish_left", SubResource( 59 ), "Lift_finish_left", "Await", SubResource( 60 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 61 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 62 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 63 ), "180Lift_finish_right", "Await", SubResource( 64 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 65 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 66 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 67 ), "180Lift_finish_left", "Await", SubResource( 68 ), "Await", "Thrust_generate_left", SubResource( 69 ), "Thrust_generate_left", "Thrust_act_left", SubResource( 70 ), "Thrust_act_left", "Thrust_finish_left", SubResource( 71 ), "Thrust_finish_left", "Await", SubResource( 72 ), "Await", "Thrust_generate_right", SubResource( 73 ), "Thrust_generate_right", "Thrust_act_right", SubResource( 74 ), "Thrust_act_right", "Thrust_finish_right", SubResource( 75 ), "Thrust_finish_right", "Await", SubResource( 76 ), "FastLift_act_left", "FastLift_finish_left", SubResource( 77 ), "FastLift_finish_left", "Await", SubResource( 78 ), "FastLift_act_right", "FastLift_finish_right", SubResource( 79 ), "FastLift_finish_right", "Await", SubResource( 80 ), "ThrustX3_act_right", "Thrust_finish_right", SubResource( 83 ), "ThrustX3_act_left", "Thrust_finish_left", SubResource( 84 ), "Thrust_act_right 2", "Thrust_finish_right", SubResource( 85 ), "Thrust_act_left 2", "Thrust_finish_left", SubResource( 86 ), "Thrust_finish_right", "Thrust_act_right 2", SubResource( 87 ), "Thrust_finish_right", "ThrustX3_act_right", SubResource( 88 ), "Thrust_finish_left", "Thrust_act_left 2", SubResource( 89 ), "Thrust_finish_left", "ThrustX3_act_left", SubResource( 90 ), "Await", "Slash_generate_left", SubResource( 91 ), "Slash_generate_left", "Slash_act_left", SubResource( 92 ), "Slash_act_left", "Slash_finish_left", SubResource( 93 ), "Slash_finish_left", "Await", SubResource( 94 ), "Await", "Slash_generate_right", SubResource( 95 ), "Slash_generate_right", "Slash_act_right", SubResource( 96 ), "Slash_act_right", "Slash_finish_right", SubResource( 97 ), "Slash_finish_right", "Await", SubResource( 98 ), "Slash_finish_left", "ShortLift_act_left", SubResource( 99 ), "ShortLift_act_left", "ShortLift_finish_left", SubResource( 100 ), "ShortLift_finish_left", "Await", SubResource( 101 ), "Slash_finish_right", "ShortLift_act_right", SubResource( 102 ), "ShortLift_act_right", "ShortLift_finish_right", SubResource( 103 ), "ShortLift_finish_right", "Await", SubResource( 104 ), "SwordWave_act_right", "Slash_finish_right", SubResource( 105 ), "SwordWave_act_left", "Slash_finish_left", SubResource( 106 ), "Thrust_finish_right", "SwordWave_act_right", SubResource( 107 ), "Thrust_finish_left", "SwordWave_act_left", SubResource( 108 ), "Lift_finish_left", "HeavySlash_generate_left", SubResource( 109 ), "Lift_finish_right", "HeavySlash_generate_right", SubResource( 110 ), "HeavySlash_generate_left", "HeavySlash_act_left", SubResource( 111 ), "HeavySlash_act_left", "HeavySlash_finish_left", SubResource( 112 ), "HeavySlash_finish_left", "Await", SubResource( 113 ), "HeavySlash_generate_right", "HeavySlash_act_right", SubResource( 114 ), "HeavySlash_act_right", "HeavySlash_finish_right", SubResource( 115 ), "HeavySlash_finish_right", "Await", SubResource( 116 ), "Slash_finish_left", "Laijutsu_act_left", SubResource( 117 ), "Slash_finish_right", "Laijutsu_act_right", SubResource( 121 ), "Thrust_finish_right", "Slash_generate_right", SubResource( 177 ), "Thrust_finish_left", "Slash_generate_left", SubResource( 178 ), "Thrust_finish_right", "FastLift_act_right", SubResource( 179 ), "Thrust_finish_left", "FastLift_act_left", SubResource( 180 ), "Laijutsu_act_right", "Await", SubResource( 181 ), "Laijutsu_act_left", "Await", SubResource( 182 ) ]
+transitions = [ "Await", "Lift_generate_right", SubResource( 53 ), "Lift_generate_right", "Lift_act_right", SubResource( 54 ), "Lift_act_right", "Lift_finish_right", SubResource( 55 ), "Lift_finish_right", "Await", SubResource( 56 ), "Await", "Lift_generate_left", SubResource( 57 ), "Lift_generate_left", "Lift_act_left", SubResource( 58 ), "Lift_act_left", "Lift_finish_left", SubResource( 59 ), "Lift_finish_left", "Await", SubResource( 60 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 61 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 62 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 63 ), "180Lift_finish_right", "Await", SubResource( 64 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 65 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 66 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 67 ), "180Lift_finish_left", "Await", SubResource( 68 ), "Await", "Thrust_generate_left", SubResource( 69 ), "Thrust_generate_left", "Thrust_act_left", SubResource( 70 ), "Thrust_act_left", "Thrust_finish_left", SubResource( 71 ), "Thrust_finish_left", "Await", SubResource( 72 ), "Await", "Thrust_generate_right", SubResource( 73 ), "Thrust_generate_right", "Thrust_act_right", SubResource( 74 ), "Thrust_act_right", "Thrust_finish_right", SubResource( 75 ), "Thrust_finish_right", "Await", SubResource( 76 ), "FastLift_act_left", "FastLift_finish_left", SubResource( 77 ), "FastLift_finish_left", "Await", SubResource( 78 ), "FastLift_act_right", "FastLift_finish_right", SubResource( 79 ), "FastLift_finish_right", "Await", SubResource( 80 ), "ThrustX3_act_right", "Thrust_finish_right", SubResource( 81 ), "ThrustX3_act_left", "Thrust_finish_left", SubResource( 82 ), "Thrust_act_right 2", "Thrust_finish_right", SubResource( 83 ), "Thrust_act_left 2", "Thrust_finish_left", SubResource( 84 ), "Thrust_finish_right", "Thrust_act_right 2", SubResource( 85 ), "Thrust_finish_right", "ThrustX3_act_right", SubResource( 86 ), "Thrust_finish_left", "Thrust_act_left 2", SubResource( 87 ), "Thrust_finish_left", "ThrustX3_act_left", SubResource( 88 ), "Await", "Slash_generate_left", SubResource( 89 ), "Slash_generate_left", "Slash_act_left", SubResource( 90 ), "Slash_act_left", "Slash_finish_left", SubResource( 91 ), "Slash_finish_left", "Await", SubResource( 92 ), "Await", "Slash_generate_right", SubResource( 93 ), "Slash_generate_right", "Slash_act_right", SubResource( 94 ), "Slash_act_right", "Slash_finish_right", SubResource( 95 ), "Slash_finish_right", "Await", SubResource( 96 ), "Slash_finish_left", "ShortLift_act_left", SubResource( 97 ), "ShortLift_act_left", "ShortLift_finish_left", SubResource( 98 ), "ShortLift_finish_left", "Await", SubResource( 99 ), "Slash_finish_right", "ShortLift_act_right", SubResource( 100 ), "ShortLift_act_right", "ShortLift_finish_right", SubResource( 101 ), "ShortLift_finish_right", "Await", SubResource( 102 ), "SwordWave_act_right", "Slash_finish_right", SubResource( 103 ), "SwordWave_act_left", "Slash_finish_left", SubResource( 104 ), "Thrust_finish_right", "SwordWave_act_right", SubResource( 105 ), "Thrust_finish_left", "SwordWave_act_left", SubResource( 106 ), "Lift_finish_left", "HeavySlash_generate_left", SubResource( 107 ), "Lift_finish_right", "HeavySlash_generate_right", SubResource( 108 ), "HeavySlash_generate_left", "HeavySlash_act_left", SubResource( 109 ), "HeavySlash_act_left", "HeavySlash_finish_left", SubResource( 110 ), "HeavySlash_finish_left", "Await", SubResource( 111 ), "HeavySlash_generate_right", "HeavySlash_act_right", SubResource( 112 ), "HeavySlash_act_right", "HeavySlash_finish_right", SubResource( 113 ), "HeavySlash_finish_right", "Await", SubResource( 114 ), "Slash_finish_left", "Laijutsu_act_left", SubResource( 115 ), "Slash_finish_right", "Laijutsu_act_right", SubResource( 116 ), "Thrust_finish_right", "Slash_generate_right", SubResource( 117 ), "Thrust_finish_left", "Slash_generate_left", SubResource( 118 ), "Thrust_finish_right", "FastLift_act_right", SubResource( 119 ), "Thrust_finish_left", "FastLift_act_left", SubResource( 120 ), "Laijutsu_act_right", "Await", SubResource( 121 ), "Laijutsu_act_left", "Await", SubResource( 122 ) ]
 graph_offset = Vector2( -407.412, 108.392 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=124]
@@ -8481,6 +8481,7 @@ enabled = true
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
+texture_mode = -191446400
 
 [node name="SoundManager" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -8555,7 +8556,6 @@ rotation = -1.309
 scale = Vector2( -1, -1 )
 
 [node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
-editor/display_folded = true
 visible = false
 material = SubResource( 173 )
 rotation = 5.06145
@@ -8620,7 +8620,6 @@ energy = 1.5
 [node name="Katana" type="Node2D" parent="AttackSystem"]
 
 [node name="Katana" type="Sprite" parent="AttackSystem/Katana"]
-editor/display_folded = true
 visible = false
 material = SubResource( 175 )
 position = Vector2( 13.6653, -6.53673 )
@@ -8673,10 +8672,10 @@ texture = ExtResource( 26 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="Hammer" type="Node2D" parent="AttackSystem"]
-editor/display_folded = true
 scale = Vector2( -1, -1 )
 
 [node name="Hammer" type="Sprite" parent="AttackSystem/Hammer"]
+visible = false
 modulate = Color( 1, 1, 1, 0.431373 )
 material = SubResource( 176 )
 position = Vector2( 5.204, 3.321 )
@@ -8690,6 +8689,7 @@ texture = ExtResource( 29 )
 offset = Vector2( 16.26, -49.915 )
 
 [node name="HeavySlash1" type="Sprite" parent="AttackSystem/Hammer"]
+visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 79.9858, 55.4362 )
 scale = Vector2( 1, -0.7 )
@@ -8701,6 +8701,7 @@ texture = ExtResource( 31 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="HeavySlash2" type="Sprite" parent="AttackSystem/Hammer"]
+visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 79.7584, 50.0116 )
 scale = Vector2( 1, -0.7 )
