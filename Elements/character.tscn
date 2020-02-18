@@ -8951,7 +8951,7 @@ enabled = true
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
-texture_mode = -1039925248
+texture_mode = -191446400
 
 [node name="SoundManager" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -9186,6 +9186,7 @@ shape = SubResource( 179 )
 disabled = true
 
 [node name="Hammer" type="Node2D" parent="AttackSystem"]
+scale = Vector2( -1, -1 )
 
 [node name="Hammer" type="Sprite" parent="AttackSystem/Hammer"]
 visible = false

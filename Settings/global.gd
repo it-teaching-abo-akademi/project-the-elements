@@ -33,7 +33,7 @@ var attack_range = 10
 var preferred_attack_range = 10
 var busy = false # If the enemy can do next move or not
 
-
+var current_scene = null
 
 
 
