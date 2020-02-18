@@ -12,7 +12,7 @@ var state = STATE_HIDED
 
 var first_attack = null
 var second_attack = null
-
+var recent_attack = null
 var current_attack = null
 
 var appear_time = 0.0
@@ -140,14 +140,14 @@ func _process(delta):
 			basic_attack()
 			clear_record()
 			record_attack(current_attack)
-	emit_signal("launch_attack", current_attack)
+	#emit_signal("launch_attack", current_attack)
+	recent_attack = current_attack
 	current_attack = null
 
 func record_attack(attack:Action):
 	if first_attack == null:
 		first_attack = attack.name
 	elif second_attack == null:
-		print("second record")
 		second_attack = attack.name
 	count_time()
 
@@ -196,11 +196,12 @@ func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
 
 	var count = 0
-	for node in enemies.get_children():
-		connect("launch_attack", node, "_on_Player_weapon_attack")
+	#for node in enemies.get_children():
+		#connect("launch_attack", node, "_on_Player_weapon_attack")
 
 	state_machine.start("Await")
 
 
 func _on_Player_character_attack(attack: Action):
 	display_attack(attack)
+

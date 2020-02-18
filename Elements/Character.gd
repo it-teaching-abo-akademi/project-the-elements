@@ -315,3 +315,4 @@ export(float) var ATTACK_RANGE = 50.0
 func _point_is_in_range(point:Vector2):
 	return point.x > position.x - ATTACK_RANGE and point.x < position.x + ATTACK_RANGE \
 	and point.y > position.y - ATTACK_RANGE and point.y < position.y + ATTACK_RANGE
+

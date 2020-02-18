@@ -22,13 +22,11 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Detect_range" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_range"]
 shape = SubResource( 2 )
 
 [node name="Attack_range" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
 position = Vector2( -46.7015, 5.38864 )

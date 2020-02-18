@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=2]
+[gd_scene load_steps=214 format=2]
 
 [ext_resource path="res://Elements/Character.gd" type="Script" id=1]
 [ext_resource path="res://Lighting/light.png" type="Texture" id=2]
@@ -11,27 +11,28 @@
 [ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=9]
 [ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=10]
 [ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=11]
-[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=12]
-[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=13]
-[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=14]
-[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=15]
-[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=16]
-[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=17]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=18]
-[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=19]
-[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=20]
-[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=21]
-[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=22]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=23]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=24]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=25]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=26]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=27]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=28]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=29]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=30]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=31]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=32]
+[ext_resource path="res://Attack/AttackRange.gd" type="Script" id=12]
+[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=13]
+[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=14]
+[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=15]
+[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=16]
+[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=17]
+[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=18]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=19]
+[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=20]
+[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=21]
+[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=22]
+[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=23]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=24]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=25]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=26]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=27]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=28]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=29]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=30]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=31]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=32]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=33]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Floating"
@@ -833,6 +834,18 @@ tracks/22/keys = {
 "update": 0,
 "values": [ Vector2( 0, 110 ) ]
 }
+tracks/23/type = "value"
+tracks/23/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.499882 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=126]
 length = 0.5
@@ -1155,6 +1168,18 @@ tracks/26/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=127]
@@ -1889,6 +1914,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.296014 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=133]
 length = 0.3
@@ -2081,6 +2118,18 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.294345 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=134]
@@ -2571,6 +2620,18 @@ tracks/21/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/22/type = "value"
+tracks/22/path = NodePath("Hammer/Hammer/Area2D3/CollisionShape2D:disabled")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.9, 1.39071 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=137]
 length = 1.4
@@ -2837,6 +2898,18 @@ tracks/21/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Hammer/Hammer/Area2D3/CollisionShape2D:disabled")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.9, 1.38472 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=138]
@@ -3724,10 +3797,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 59.1591, 8.57379 ) ]
+"values": [ Vector2( 59.1591, 8.57379 ), Vector2( 59.1591, 8.57379 ), Vector2( 69.159, 8.574 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Katana/Laijutsu:scale")
@@ -3746,7 +3819,7 @@ tracks/14/path = NodePath("Katana/Laijutsu:offset")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "times": PoolRealArray( 0, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -3764,6 +3837,54 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Katana/Laijutsu/Area2D3/CollisionShape2D2:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Katana/Laijutsu/Area2D3/CollisionShape2D2:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -131.137, 70.6215 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.37964, 54.1666 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=143]
@@ -3919,10 +4040,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 40.2968, -23.1492 ) ]
+"values": [ Vector2( 40.2968, -23.1492 ), Vector2( 40.2968, -23.1492 ), Vector2( 50.297, -23.149 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Katana/Laijutsu:scale")
@@ -3941,7 +4062,7 @@ tracks/14/path = NodePath("Katana/Laijutsu:offset")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "times": PoolRealArray( 0, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -3959,6 +4080,54 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Katana/Laijutsu/Area2D3/CollisionShape2D2:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Laijutsu/Area2D3/CollisionShape2D2:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -131.137, 70.6215 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.766998, -51.6586 ) ]
 }
 
 [sub_resource type="Animation" id=144]
@@ -4117,7 +4286,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.82 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -4447,6 +4616,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=147]
 length = 0.3
@@ -4639,6 +4820,18 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=148]
@@ -5492,6 +5685,30 @@ tracks/15/keys = {
 "update": 0,
 "values": [ 41.3591 ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.497194 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.37964, 54.1666 ) ]
+}
 
 [sub_resource type="Animation" id=154]
 tracks/0/type = "value"
@@ -5709,6 +5926,30 @@ tracks/17/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.766998, -51.6586 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=155]
@@ -6175,6 +6416,30 @@ tracks/15/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.184706 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.37964, 54.1666 ) ]
+}
 
 [sub_resource type="Animation" id=158]
 length = 0.2
@@ -6393,6 +6658,30 @@ tracks/17/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.766998, -51.6586 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.191188 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=159]
@@ -7129,6 +7418,54 @@ tracks/17/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.37964, 54.1666 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Katana/SwordWave/Area2D4/CollisionShape2D2:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Katana/SwordWave/Area2D4/CollisionShape2D2:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 24.502, 111.083 ) ]
+}
 
 [sub_resource type="Animation" id=164]
 length = 0.5
@@ -7348,6 +7685,54 @@ tracks/17/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Katana/Katana/Area2D2/CollisionShape2D:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.766998, -51.6586 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Katana/SwordWave/Area2D4/CollisionShape2D2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.4012, 14.0248 ), Vector2( 23.2415, 71.3202 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Katana/SwordWave/Area2D4/CollisionShape2D2:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=165]
 length = 0.8
@@ -7504,6 +7889,18 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.7, 0.65 ), Vector2( 0.7, 0.65 ), Vector2( 0.9, 0.65 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=166]
@@ -7662,6 +8059,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Vector2( 0.7, 0.65 ), Vector2( 0.7, 0.65 ), Vector2( 0.9, 0.65 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 0.798253 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 110.809, -1.81174 ), Vector2( 110.809, -13.1877 ) ]
+}
 
 [sub_resource type="Animation" id=167]
 length = 0.4
@@ -7794,6 +8215,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=168]
@@ -7939,6 +8372,30 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0.7, 0.65 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.1, 0.391725 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Ji/Ji/Area2D/CollisionShape2D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 110.809, -0.0615845 ), Vector2( 110.809, -13.1877 ) ]
 }
 
 [sub_resource type="Animation" id=169]
@@ -8415,26 +8872,39 @@ tracks/9/keys = {
 render_priority = 2
 shader = ExtResource( 9 )
 shader_param/Brightness = 0.0
-shader_param/dissolve = -1.0
+shader_param/dissolve = 0.0
 shader_param/WeaponTexture = ExtResource( 10 )
 
-[sub_resource type="ShaderMaterial" id=174]
-render_priority = 3
+[sub_resource type="RectangleShape2D" id=174]
+extents = Vector2( 58.8135, 14.111 )
 
 [sub_resource type="ShaderMaterial" id=175]
-shader = ExtResource( 18 )
-shader_param/Brightness = null
-shader_param/dissolve = -1.0
-shader_param/WeaponTexture = ExtResource( 19 )
+render_priority = 3
 
 [sub_resource type="ShaderMaterial" id=176]
-shader = ExtResource( 27 )
+shader = ExtResource( 19 )
 shader_param/Brightness = null
-shader_param/dissolve = 0.0
-shader_param/WeaponTexture = ExtResource( 28 )
+shader_param/dissolve = -1.0
+shader_param/WeaponTexture = ExtResource( 20 )
+
+[sub_resource type="CapsuleShape2D" id=177]
+radius = 12.0206
+height = 118.74
+
+[sub_resource type="RectangleShape2D" id=178]
+extents = Vector2( 104.578, 180.695 )
+
+[sub_resource type="CircleShape2D" id=179]
+radius = 65.0
+
+[sub_resource type="ShaderMaterial" id=180]
+shader = ExtResource( 28 )
+shader_param/Brightness = null
+shader_param/dissolve = -1.0
+shader_param/WeaponTexture = ExtResource( 29 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 306.928, 181.291 )
+position = Vector2( 290.265, 113.911 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -8558,8 +9028,9 @@ scale = Vector2( -1, -1 )
 [node name="Ji" type="Sprite" parent="AttackSystem/Ji"]
 visible = false
 material = SubResource( 173 )
-rotation = 5.06145
-scale = Vector2( 1.8, 1.35 )
+position = Vector2( 8.68567, 57.4157 )
+rotation = 1.309
+scale = Vector2( 0.75, 0.65 )
 texture = ExtResource( 10 )
 offset = Vector2( 59.507, -6.11612 )
 flip_v = true
@@ -8569,37 +9040,49 @@ texture = ExtResource( 11 )
 texture_scale = 1.2
 energy = 0.2
 
+[node name="Area2D" type="Area2D" parent="AttackSystem/Ji/Ji"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Ji/Ji/Area2D"]
+position = Vector2( 110.809, -13.1877 )
+shape = SubResource( 174 )
+disabled = true
+
 [node name="Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
+editor/display_folded = true
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0.130418 )
-position = Vector2( 46.766, 104.53 )
-rotation = 1.47364
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 12 )
-offset = Vector2( -6.063, 80 )
+position = Vector2( 29.4324, 89.0362 )
+rotation = 1.51186
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 13 )
+offset = Vector2( -6.06262, 8.07626 )
 flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Lift_VFX"]
 visible = false
-material = SubResource( 174 )
-texture = ExtResource( 13 )
+material = SubResource( 175 )
+texture = ExtResource( 14 )
+offset = Vector2( -6.063, 8.076 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 energy = 1.2
 
 [node name="180Lift_VFX" type="Sprite" parent="AttackSystem/Ji"]
+editor/display_folded = true
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
 position = Vector2( 23.109, -70.4497 )
 rotation = 1.37881
 scale = Vector2( 0.75, 0.85 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 offset = Vector2( 0, 110 )
 flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/180Lift_VFX"]
-texture = ExtResource( 15 )
+visible = false
+texture = ExtResource( 16 )
 offset = Vector2( 0, 110 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 
@@ -8607,43 +9090,53 @@ color = Color( 0.968627, 0.980392, 0.639216, 1 )
 editor/display_folded = true
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
-position = Vector2( 17.6364, 54.2743 )
+position = Vector2( 26.2129, 73.361 )
 rotation = 1.309
 scale = Vector2( 0.7, 0.65 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Thrust"]
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 energy = 1.5
 
 [node name="Katana" type="Node2D" parent="AttackSystem"]
+scale = Vector2( -1, -1 )
 
 [node name="Katana" type="Sprite" parent="AttackSystem/Katana"]
 visible = false
-material = SubResource( 175 )
-position = Vector2( 13.6653, -6.53673 )
-rotation = -1.0472
-scale = Vector2( 0.5, 0.65 )
-texture = ExtResource( 19 )
-offset = Vector2( 0.502563, -36.8338 )
+material = SubResource( 176 )
+position = Vector2( 9.64468, -7.90317 )
+rotation = -4.01426
+scale = Vector2( 0.5, 1.1 )
+texture = ExtResource( 20 )
+offset = Vector2( -0.432, 37.524 )
 flip_h = true
+flip_v = true
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Katana"]
 position = Vector2( 1.4101, 34.1098 )
 enabled = false
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
+
+[node name="Area2D2" type="Area2D" parent="AttackSystem/Katana/Katana"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Katana/Katana/Area2D2"]
+position = Vector2( -0.766998, -51.6586 )
+shape = SubResource( 177 )
+disabled = true
 
 [node name="Slash" type="Sprite" parent="AttackSystem/Katana"]
+editor/display_folded = true
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 45.1369, -10.1389 )
-rotation = -0.298451
-scale = Vector2( 0.34, -0.39 )
-texture = ExtResource( 21 )
+scale = Vector2( 0.34, 0.39 )
+texture = ExtResource( 22 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Slash"]
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="SwordWave" type="Sprite" parent="AttackSystem/Katana"]
@@ -8651,25 +9144,46 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 200, -22.556 )
 scale = Vector2( 0.8, 0.2 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 offset = Vector2( 0, 100 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/SwordWave"]
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 offset = Vector2( 0, 100 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
+
+[node name="Area2D4" type="Area2D" parent="AttackSystem/Katana/SwordWave"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackSystem/Katana/SwordWave/Area2D4"]
+position = Vector2( 23.2415, 71.3202 )
+shape = SubResource( 178 )
+disabled = true
 
 [node name="Laijutsu" type="Sprite" parent="AttackSystem/Katana"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 40.2968, -23.1492 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 25 )
+position = Vector2( 69.159, 8.574 )
+scale = Vector2( 0.9, -0.9 )
+texture = ExtResource( 26 )
 offset = Vector2( 10, 0 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Laijutsu"]
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
+
+[node name="Area2D3" type="Area2D" parent="AttackSystem/Katana/Laijutsu"]
+position = Vector2( -47.1677, 7.8661 )
+rotation = -2.61799
+scale = Vector2( 0.555556, -0.722222 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackSystem/Katana/Laijutsu/Area2D3"]
+position = Vector2( -131.137, 70.6215 )
+rotation = -1.55905
+scale = Vector2( 1.38465, -2.90652 )
+shape = SubResource( 179 )
+disabled = true
 
 [node name="Hammer" type="Node2D" parent="AttackSystem"]
 scale = Vector2( -1, -1 )
@@ -8677,38 +9191,53 @@ scale = Vector2( -1, -1 )
 [node name="Hammer" type="Sprite" parent="AttackSystem/Hammer"]
 visible = false
 modulate = Color( 1, 1, 1, 0.431373 )
-material = SubResource( 176 )
-position = Vector2( 5.204, 3.321 )
-rotation = -1.65806
-scale = Vector2( 1, -1 )
-texture = ExtResource( 28 )
-offset = Vector2( 16.26, -49.915 )
+material = SubResource( 180 )
+position = Vector2( 1.38092, 0.847458 )
+rotation = 1.65806
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 29 )
+offset = Vector2( 10, -60 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/Hammer"]
-texture = ExtResource( 29 )
-offset = Vector2( 16.26, -49.915 )
+visible = false
+texture = ExtResource( 30 )
+offset = Vector2( 10, -60 )
+
+[node name="Area2D3" type="Area2D" parent="AttackSystem/Hammer/Hammer"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Hammer/Hammer/Area2D3"]
+visible = false
+position = Vector2( 13.7348, -86.5887 )
+shape = SubResource( 174 )
+disabled = true
 
 [node name="HeavySlash1" type="Sprite" parent="AttackSystem/Hammer"]
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
-position = Vector2( 79.9858, 55.4362 )
-scale = Vector2( 1, -0.7 )
-texture = ExtResource( 30 )
+position = Vector2( 91.0662, -50.9353 )
+scale = Vector2( 1, 0.7 )
+texture = ExtResource( 31 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash1"]
 visible = false
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="HeavySlash2" type="Sprite" parent="AttackSystem/Hammer"]
 visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
-position = Vector2( 79.7584, 50.0116 )
-scale = Vector2( 1, -0.7 )
-texture = ExtResource( 32 )
+position = Vector2( 88.6227, -41.9554 )
+scale = Vector2( 1, 0.7 )
+texture = ExtResource( 33 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash2"]
 visible = false
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [connection signal="character_attack" from="." to="AttackSystem/Weapon" method="_on_Player_character_attack"]
+[connection signal="body_entered" from="AttackSystem/Ji/Ji/Area2D" to="AttackSystem/Ji/Ji/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AttackSystem/Katana/Katana/Area2D2" to="AttackSystem/Katana/Katana/Area2D2" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AttackSystem/Katana/SwordWave/Area2D4" to="AttackSystem/Katana/SwordWave/Area2D4" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AttackSystem/Katana/Laijutsu/Area2D3" to="AttackSystem/Katana/Laijutsu/Area2D3" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="AttackSystem/Hammer/Hammer/Area2D3" to="AttackSystem/Hammer/Hammer/Area2D3" method="_on_Area2D_body_entered"]

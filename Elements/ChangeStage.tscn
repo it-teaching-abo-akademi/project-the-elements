@@ -53,6 +53,7 @@ curve = SubResource( 5 )
 trail_size_modifier = SubResource( 6 )
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 6.74038e+022
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.08
