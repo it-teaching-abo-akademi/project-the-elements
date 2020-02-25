@@ -10,132 +10,106 @@ var hp = 100
 var max_hp = 100
 var state
 var velocity
-
-signal attack(damage)
+var face_direction = 1
 
 # Abilities
-var player
+var player = null
+var player_in_attack_range = null
 
-onready var character_body : Character = get_tree().get_current_scene().get_node('Player')
+var character_body : Character = null
 
-var previous_state
-var current_attack = null
-var time_counter = 0
+var current_attack : Action = null
 
-func _set_state(new_state):
-	# We can do whatever with the previous state here
-	previous_state = state
-	state = new_state
+var attack_mode : Action = null
+
+var timer = null
+
+var state_machine
+
+signal timer_end
 
 func _physics_process(delta):
 	if state == global.ENEMY_STATES['PATROL']:
 		# print("ici")
 		#chase()
-		pass
-		if player:
-			velocity = (player.position - position).normalized() * Vector2(1,0) * speed * delta
-			velocity.y += global.GRAVITY * delta
-		else:
-			#code here
+		if player == null:
 			velocity = Vector2.ZERO
+			return
+		else:
+			velocity = (player.position - get_global_position()).normalized() * Vector2(1,0) * speed * delta
+			velocity.y += global.GRAVITY * delta
 		if not is_on_floor():
 			velocity.y = global.GRAVITY * 1000 * delta
 		else:
 			velocity.y = 0
 		if velocity.x >= 0:
 			$Sprite.flip_h = true
+			face_direction = 1
 		else:
 			$Sprite.flip_h = false
+			face_direction = -1
 		velocity = move_and_slide(velocity)
-	elif state == global.ENEMY_STATES['KNOCK']:
-		# Normal knock
-		# Heavy slash
-		# Lunge
-		# Sword wave
-		time_counter += delta
-		if current_attack.get_parameter("time_before") != 0:
-			if time_counter > current_attack.get_parameter("time_before"):
-				time_counter = 0
-				current_attack.set_parameter("time_before", 0.0)
-		elif current_attack.get_parameter("time_attack") != 0:
-			velocity.y = global.GRAVITY
-			velocity.x += speed * delta
-			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.get_parameter("time_attack"):
-				time_counter = 0
-				current_attack.set_parameter("time_attack", 0.0)
-		elif current_attack.get_parameter("time_after") != 0:
-			velocity = Vector2.ZERO
-			if time_counter > current_attack.get_parameter("time_after"):
-				time_counter = 0
-				current_attack.set_parameter("time_after", 0.0)
-				_set_state(previous_state)
-		else:
-			time_counter = 0
-			current_attack.set_parameter("time_after", 0.0)
-			_set_state(previous_state)
 	elif state == global.ENEMY_STATES['LIFT']:
-		# Normal lift
-		# 180° lift
-		# fast lift
-		# higher lift
-		time_counter += delta
-		if current_attack.get_parameter("time_before") != 0:
-			if time_counter > current_attack.get_parameter("time_before"):
-				time_counter = 0
-				current_attack.set_parameter("time_before", 0.0)
-		elif current_attack.get_parameter("time_attack") != 0:
-			if current_attack.get_parameter("combo_effect") == 6:
-				# Faster lift
-				current_attack.set_parameter("time_attack", current_attack.get_parameter("time_attack") / 2.0)
-				velocity.y = -speed * delta * 2.0
-			elif current_attack.get_parameter("combo_effect") == 8:
-				# Higher lift
-				velocity.y = -speed * delta * 1.5
-			else:
-				# Normal lift
-				velocity.y = -speed * delta
-			velocity.x = 0
-			if time_counter > current_attack.get_parameter("time_attack") / 2.0:
-				# 180°
-				velocity.x = 200
-			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.get_parameter("time_attack"):
-				time_counter = 0
-				current_attack.set_parameter("time_attack", 0.0)
-		elif current_attack.get_parameter("time_after") != 0:
-			velocity.y = global.GRAVITY * delta
-			velocity.x = 0
-			velocity = move_and_slide(velocity)
-			if time_counter > current_attack.get_parameter("time_after"):
-				time_counter = 0
-				current_attack.set_parameter("time_after", 0.0)
-				_set_state(previous_state)
+		if current_attack == null:
+			state = global.ENEMY_STATES['PATROL']
+			return
+		position.x += current_attack.face_direction * 30
+		position.y += 20
+		current_attack = null
+		state = global.ENEMY_STATES['PATROL']
+	elif state == global.ENEMY_STATES['ATTACK']:
+		if attack_mode == null:
+			state = global.ENEMY_STATES['PATROL']
+			return
+		attack_mode.face_direction = face_direction
+		var str_direction
+		if face_direction == 1:
+			str_direction = "_right"
 		else:
-			time_counter = 0
-			current_attack.set_parameter("time_after", 0.0)
-			_set_state(previous_state)
+			str_direction = "_left"
+		state_machine.travel(attack_mode.name+"_generate"+str_direction)
+		state = global.ENEMY_STATES['IDLE']
+		wait(3)
+		yield(self, "timer_end")
+		timer.queue_free()
+		if player_in_attack_range == null:
+			state = global.ENEMY_STATES['PATROL']
 func _ready():
+	state_machine = get_node("AttackSystem/AnimationTree").get("parameters/playback")
+	state_machine.start("Await")
 	_init()
 
 # Instantiation, to be extended by subclasses
 func _init():
 	speed = rand_range(4500,5500)
 	strength = rand_range(4, 6)
-	max_hp = rand_range(80000, 120000)
+	max_hp = rand_range(800, 1200)
 	hp = max_hp
 	state = global.ENEMY_STATES['PATROL']
-	
 	velocity = Vector2.ZERO
+	attack_mode = Action.new()
+	attack_mode.name = "Thrust"
+	attack_mode.load_data()
 
-func chase():
-	pass
+func wait(time):
+	timer = Timer.new()
+	timer.set_wait_time(time)
+	timer.set_one_shot(true)
+	timer.connect("timeout",self,"_emit_timer_end_signal")
+	self.add_child(timer)
+	timer.start()
+	
 
-func _on_Player_weapon_attack(attack):
+func _emit_timer_end_signal():
+    emit_signal("timer_end")
+	
+func _on_Player_weapon_attack(attack : Action):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
 	print(name, attack.name)
 	hp -= attack.damage
+	current_attack = attack
+	state = global.ENEMY_STATES['LIFT']
 	if hp <= 0:
 		queue_free()
 		#get_node("CollisionShape2D").disabled = true
@@ -143,6 +117,8 @@ func _on_Player_weapon_attack(attack):
 
 
 func _on_Detect_range_body_entered(body):
+	if character_body == null:
+		character_body = global.current_scene.get_node('Player')
 	if "Player" in body.name:
 		player = character_body
 
@@ -154,8 +130,10 @@ func _on_Detect_range_body_exited(body):
 
 func _on_Attack_range_body_entered(body):
 	if "Player" in body.name:
-		emit_signal("attack",0)
+		player_in_attack_range = character_body
+		state = global.ENEMY_STATES['ATTACK']
 
 
 func _on_Attack_range_body_exited(body):
-	pass # Replace with function body.
+	if "Player" in body.name:
+		player_in_attack_range = null
