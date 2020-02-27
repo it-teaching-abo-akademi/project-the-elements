@@ -1,6 +1,7 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Maps/Magma.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )
@@ -226,6 +227,54 @@ points = PoolVector2Array( 0.302185, 21, 21, 0, 21, 21 )
 
 [sub_resource type="ConvexPolygonShape2D" id=75]
 points = PoolVector2Array( 21, 21, 0, 21, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=93]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=94]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=95]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=96]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=97]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=98]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=99]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=100]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=101]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 0, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=102]
+points = PoolVector2Array( 21, 0, 21, 20.7472, 12.2285, 20.2649, 8.37045, 18.8182, 4.03018, 15.9246, 0, 11.5844, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=103]
+points = PoolVector2Array( 1.76706, 20.2649, 21, 0, 21, 21 )
+
+[sub_resource type="ConvexPolygonShape2D" id=104]
+points = PoolVector2Array( 21, 21, 0, 21, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=105]
+points = PoolVector2Array( 21, 0, 21, 10.6199, 0, 10.6199, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=106]
+points = PoolVector2Array( 21, 0, 21, 10.2858, 17.237, 11.2502, 11.4499, 14.626, 8.55643, 21, 0, 21, 0, 0.158447 )
+
+[sub_resource type="ConvexPolygonShape2D" id=107]
+points = PoolVector2Array( 0, 0, 21, 0, 21, 21, 12.1181, 21, 10.6714, 14.1438, 4.88434, 11.2502, 0, 8.35675 )
+
+[sub_resource type="ConvexPolygonShape2D" id=108]
+points = PoolVector2Array( 21, 0, 21, 5.9455, 17.5332, 15.5905, 9.81723, 20.4131, 0, 21, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=76]
 points = PoolVector2Array( 15.6107, 0, 16.1689, 14.0147, 21, 20.7127, 0, 21, 5.28467, 13.7357, 5.28467, 0.339722 )
@@ -671,7 +720,103 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 3/autotile/z_index_map = [  ]
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/shapes = [  ]
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 93 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 94 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 95 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 96 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 97 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 98 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 99 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 100 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 6, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 101 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 102 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 103 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 6, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 104 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 7, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 105 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 106 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 107 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 108 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 3/z_index = 0
 4/name = "Pillar"
 4/texture = ExtResource( 1 )
@@ -974,6 +1119,15 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 12/shapes = [  ]
 12/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=90]
+extents = Vector2( 493.355, 8.79175 )
+
+[sub_resource type="RectangleShape2D" id=91]
+extents = Vector2( 21.0995, 8.90147 )
+
+[sub_resource type="RectangleShape2D" id=92]
+extents = Vector2( 31.459, 7.52359 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -981,3 +1135,20 @@ tile_set = SubResource( 89 )
 cell_size = Vector2( 21, 21 )
 format = 1
 tile_data = PoolIntArray( -458752, -1610612733, 65537, -458751, 1610612739, 0, -458750, 1610612739, 0, -458749, 1610612739, 0, -458748, 1610612739, 0, -458747, 1610612739, 0, -458746, 1610612739, 0, -458745, 1610612739, 0, -458744, 1610612739, 0, -458743, 1610612739, 0, -458742, 1610612739, 0, -458741, 1610612739, 0, -458740, 1610612739, 0, -458739, 1610612739, 0, -458738, 1610612739, 0, -458737, 1610612739, 0, -458736, 1610612739, 0, -458735, 1610612739, 0, -458734, 1610612739, 0, -458733, 1610612739, 0, -458732, 1610612739, 0, -458731, 1610612739, 0, -458730, 1610612739, 0, -458729, 1610612739, 0, -458728, 1610612739, 0, -458727, 1610612739, 0, -458726, 1610612739, 0, -458725, 1610612739, 0, -458724, 1610612739, 0, -458723, 1610612739, 0, -458722, 1610612739, 0, -458721, 1610612739, 0, -458720, 1610612739, 0, -458719, 1610612739, 0, -458718, 1610612739, 0, -458717, 1610612739, 0, -458716, 1610612739, 0, -458715, 1610612739, 0, -458714, 1610612739, 0, -458713, 1610612739, 0, -458712, 1610612739, 0, -458711, 1610612739, 0, -458710, 1610612739, 0, -458709, 1610612739, 0, -458708, 1610612739, 0, -458707, 1610612739, 0, -458706, -1610612733, 65537, -393216, -1610612733, 0, -393170, -1073741821, 0, -327680, -1610612733, 0, -327634, -1073741821, 0, -262144, -1610612733, 0, -262098, -1073741821, 0, -196608, -1610612733, 0, -196562, -1073741821, 0, -131072, -1610612733, 0, -131026, -1073741821, 0, -65536, -1610612733, 0, -65535, -1610612732, 0, -65491, -1073741820, 0, -65490, -1073741821, 0, 0, -1610612733, 0, 46, -1073741821, 0, 65536, -1610612733, 0, 65555, 3, 0, 65556, 3, 0, 65557, 3, 0, 65558, 3, 0, 65559, 3, 0, 65560, 3, 0, 65561, 3, 0, 65582, -1073741821, 0, 131072, -1610612733, 0, 131118, -1073741821, 0, 196608, -1610612733, 0, 196654, -1073741821, 0, 262144, -1610612733, 65537, 262145, 3, 65539, 262146, 3, 65539, 262147, 3, 65539, 262148, 3, 65539, 262149, 3, 65539, 262150, 3, 65539, 262151, 3, 65539, 262152, 3, 65539, 262153, 3, 65539, 262154, 3, 65539, 262155, 3, 65539, 262156, 3, 65539, 262157, 3, 65539, 262158, 3, 65539, 262159, 3, 65539, 262160, 3, 65539, 262161, 3, 65539, 262162, 3, 65539, 262170, 3, 65539, 262171, 3, 65539, 262172, 3, 65539, 262173, 3, 65539, 262174, 3, 65539, 262175, 3, 65539, 262176, 3, 65539, 262177, 3, 65539, 262178, 3, 65539, 262179, 3, 65539, 262180, 3, 65539, 262181, 3, 65539, 262182, 3, 65539, 262183, 3, 65539, 262184, 3, 65539, 262185, 3, 65539, 262186, 3, 65539, 262187, 3, 65539, 262188, 3, 65539, 262189, 3, 65539, 262190, -1610612733, 65537, 327680, -1610612733, 0, 327726, -1073741821, 0, 393216, -1610612733, 0, 393262, -1073741821, 0, 458752, -1610612733, 0, 458798, -1073741821, 0, 524288, -1610612733, 0, 524334, -1073741821, 0, 589824, -1610612733, 0, 589831, 3, 65537, 589832, 3, 65537, 589833, 5, 0, 589834, 5, 0, 589835, 3, 65537, 589836, 3, 65537, 589837, 3, 65537, 589857, 3, 65537, 589858, 3, 65537, 589859, 5, 0, 589860, 5, 0, 589861, 5, 0, 589862, 3, 65537, 589863, 3, 65537, 589870, -1073741821, 0, 655360, -1610612733, 0, 655406, -1073741821, 0, 720896, -1610612733, 0, 720919, 1610612740, 0, 720942, -1073741821, 0, 786432, -1610612733, 0, 786455, 1610612740, 6, 786478, -1073741821, 0, 851968, -1610612733, 0, 851991, 4, 0, 852014, -1073741821, 0, 917504, 5, 0, 917505, 5, 0, 917506, 5, 0, 917507, 5, 0, 917508, 5, 0, 917509, 5, 0, 917510, 5, 0, 917511, 5, 0, 917512, 5, 0, 917513, 5, 0, 917514, 5, 0, 917515, 5, 0, 917516, 5, 0, 917517, 5, 0, 917518, 5, 0, 917519, 5, 0, 917520, 5, 0, 917521, 5, 0, 917522, 5, 0, 917523, 5, 0, 917524, 5, 0, 917525, 5, 0, 917526, 5, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0, 917530, 5, 0, 917531, 5, 0, 917532, 5, 0, 917533, 5, 0, 917534, 5, 0, 917535, 5, 0, 917536, 5, 0, 917537, 5, 0, 917538, 5, 0, 917539, 5, 0, 917540, 5, 0, 917541, 5, 0, 917542, 5, 0, 917543, 5, 0, 917544, 5, 0, 917545, 5, 0, 917546, 5, 0, 917547, 5, 0, 917548, 5, 0, 917549, 5, 0, 917550, 5, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 493.238, 299.169 )
+shape = SubResource( 90 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 210.027, 194.089 )
+shape = SubResource( 91 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 766.633, 194.031 )
+shape = SubResource( 92 )
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

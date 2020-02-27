@@ -96,7 +96,10 @@ func _physics_process(delta):
 	# move_and_slide already applie delta on motion, so we shouldn't do it beforehand
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
 
-
+func magma():
+	get_node("Status/Health")._get_hit(10)
+	motion.y = -200
+	
 #keypress 
 func _input(event):
 	#show selection plate
