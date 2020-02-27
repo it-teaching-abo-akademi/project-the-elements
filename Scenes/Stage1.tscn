@@ -1,84 +1,18 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Elements/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Stage1.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Music/Battle.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Enemies/EnemyModel.gd" type="Script" id=6]
-[ext_resource path="res://Enemies/sprites/Fire_origin.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/sprites/dust.png" type="Texture" id=8]
-[ext_resource path="res://Lighting/light.png" type="Texture" id=9]
-[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Elements/character.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 60.8254, 98.3564 )
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 584.078
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 92.56, 116.505 )
-
-[sub_resource type="Animation" id=5]
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Light2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 2.0, 6.0, 3.0, 6.0, 2.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 30 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Curve" id=6]
-_data = [ Vector2( 0.0607591, 0.0247999 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
-[sub_resource type="Curve" id=8]
-_data = [ Vector2( 0.016835, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.852 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
-
-[sub_resource type="ParticlesMaterial" id=10]
-trail_size_modifier = SubResource( 9 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.08
-scale_curve = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="Stage1" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( -214.92, 347.131 )
-z_index = 2
-
-[node name="AnimationTree" parent="Player" index="13"]
-tree_root = null
-active = false
+script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -99,70 +33,14 @@ volume_db = -20.0
 autoplay = true
 
 [node name="Enemies" type="Node2D" parent="."]
-editor/display_folded = true
 
-[node name="EnemyModel" type="KinematicBody2D" parent="Enemies"]
-position = Vector2( 299.153, 288.445 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Enemies/EnemyModel"]
-scale = Vector2( 0.2, 0.2 )
-z_index = 1
-texture = ExtResource( 7 )
-offset = Vector2( 0, 7.33945 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyModel"]
-position = Vector2( 0, 2.58472 )
-shape = SubResource( 2 )
-
-[node name="Detect_range" type="Area2D" parent="Enemies/EnemyModel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyModel/Detect_range"]
-position = Vector2( -29.6916, -18.5925 )
-shape = SubResource( 3 )
-
-[node name="Attack_range" type="Area2D" parent="Enemies/EnemyModel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyModel/Attack_range"]
-position = Vector2( 0.454109, -2.32776 )
-shape = SubResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/EnemyModel"]
-autoplay = "stable"
-anims/stable = SubResource( 5 )
-
-[node name="Dust" type="Particles2D" parent="Enemies/EnemyModel"]
-modulate = Color( 1, 0, 0, 0.478431 )
-position = Vector2( -2.04578, 96.3526 )
-scale = Vector2( 4.81236, 1.36502 )
-amount = 4
-lifetime = 0.8
-speed_scale = 0.3
-process_material = SubResource( 10 )
-texture = ExtResource( 8 )
-
-[node name="Light2D" type="Light2D" parent="Enemies/EnemyModel/Dust"]
-position = Vector2( 0.942693, -0.158119 )
-scale = Vector2( 0.379092, 0.405814 )
-texture = ExtResource( 8 )
-texture_scale = 0.2
-color = Color( 0.603922, 0.0588235, 0.0588235, 1 )
-energy = 3.71
-
-[node name="Light2D" type="Light2D" parent="Enemies/EnemyModel"]
-position = Vector2( 2.85075, -14.2539 )
-scale = Vector2( 1.00792, 0.868837 )
-texture = ExtResource( 9 )
-color = Color( 0.984314, 0.360784, 0.360784, 0.0352941 )
-energy = 3.0
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 0.576471 )
+[node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 2
 
-[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 10 )]
+[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
 percent_visible = 1.0
@@ -196,16 +74,18 @@ editor/display_folded = false
 
 [node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
 visible = false
-[connection signal="on_hp_changed" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_on_hp_changed"]
-[connection signal="set_max_hp" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_set_max_hp"]
-[connection signal="attack" from="Enemies/EnemyModel" to="Player" method="_on_EnemyModel_attack"]
-[connection signal="body_entered" from="Enemies/EnemyModel/Detect_range" to="Enemies/EnemyModel" method="_on_Detect_range_body_entered"]
-[connection signal="body_exited" from="Enemies/EnemyModel/Detect_range" to="Enemies/EnemyModel" method="_on_Detect_range_body_exited"]
-[connection signal="body_entered" from="Enemies/EnemyModel/Attack_range" to="Enemies/EnemyModel" method="_on_Attack_range_body_entered"]
-[connection signal="body_exited" from="Enemies/EnemyModel/Attack_range" to="Enemies/EnemyModel" method="_on_Attack_range_body_exited"]
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( -177.997, 343.007 )
+
+[node name="AnimationTree" parent="Player/AttackSystem" index="1"]
+parameters/playback = SubResource( 1 )
+
+[node name="Ji" parent="Player/AttackSystem" index="3"]
+visible = false
+
+[editable path="CanvasLayer/Indicators"]
 
 [editable path="Player"]
 
 [editable path="Player/Status"]
-
-[editable path="CanvasLayer/Indicators"]
