@@ -18,6 +18,7 @@
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 z_index = -1
 tile_set = ExtResource( 2 )
 format = 1
@@ -45,13 +46,18 @@ margin_bottom = 95.2632
 text = "TriggerDialogue"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 290.678, 157.574 )
 z_index = 1
+
+[node name="Camera2D" parent="Player" index="4"]
+offset = Vector2( 0, 0 )
 
 [node name="AnimationTree" parent="Player/AttackSystem" index="1"]
 parameters/playback = SubResource( 1 )
 
 [node name="Enemies" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]
@@ -63,6 +69,7 @@ visible = false
 position = Vector2( 456.231, 162.204 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 6
 
 [node name="Indicators" parent="CanvasLayer" instance=ExtResource( 8 )]
@@ -78,8 +85,6 @@ stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
 [connection signal="update_element_indicators" from="Player" to="CanvasLayer/Indicators" method="_on_Player_update_element_indicators"]
-[connection signal="on_hp_changed" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_on_hp_changed"]
-[connection signal="set_max_hp" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_set_max_hp"]
 [connection signal="change_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_max_value"]
 [connection signal="change_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_value"]
 [connection signal="set_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_set_max_value"]

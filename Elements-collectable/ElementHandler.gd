@@ -43,7 +43,7 @@ func refPlayer(p):
 	hero = p
 
 func set_gravity(g):
-	gravity = Vector2(0, g)
+	gravity = Vector2(0, 0)
 
 # list of timers (each element needs its own timer)
 #var cloud_timers = []
