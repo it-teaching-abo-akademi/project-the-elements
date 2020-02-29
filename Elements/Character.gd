@@ -34,6 +34,7 @@ var defence
 var element_left = 0 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 var element_right = 1 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 var face_direction : int = 1 # 1: look right, -1 left
+var protected
 
 var motion = Vector2()
 
@@ -217,6 +218,9 @@ func element_collected(type, amount):
 
 
 func _on_EnemyModel_attack(attack : Action):
+	if protected:
+		protected = false
+		return
 	get_node("Status/Health")._get_hit(attack.damage)
 	position.x += attack.face_direction * 30
 
@@ -285,9 +289,9 @@ func complete_gesture(gesture, button):
 			action.direction = - gesture.get_direction()
 			
 		"Wood":
-			pass
+			protected = true
 		"Earth":
-			pass
+			get_node("Status/Health")._get_hit(-30)
 	if action.name == null:
 		return
 	action.load_data()
