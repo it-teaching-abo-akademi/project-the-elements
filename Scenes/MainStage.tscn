@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
@@ -12,10 +12,13 @@
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=10]
 [ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=11]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 z_index = -1
 tile_set = ExtResource( 2 )
 format = 1
@@ -43,58 +46,33 @@ margin_bottom = 95.2632
 text = "TriggerDialogue"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 290.678, 157.574 )
 z_index = 1
 
+[node name="Camera2D" parent="Player" index="4"]
+offset = Vector2( 0, 0 )
+
+[node name="AnimationTree" parent="Player/AttackSystem" index="1"]
+parameters/playback = SubResource( 1 )
+
 [node name="Enemies" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 588.831, -257.314 )
-scale = Vector2( 0.800002, 0.64 )
+position = Vector2( 585.491, -322.451 )
 z_index = -1
 
 [node name="EnemyModel2" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1.59082, 230.46 )
+visible = false
+position = Vector2( 456.231, 162.204 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 6
 
 [node name="Indicators" parent="CanvasLayer" instance=ExtResource( 8 )]
-margin_left = -27.7418
-margin_top = -7.69952
-margin_right = -27.7418
-margin_bottom = -7.69952
-
-[node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
-percent_visible = 1.0
-
-[node name="knife_amount" parent="CanvasLayer/Indicators" index="1"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/knife_amount" index="0"]
-visible = false
-
-[node name="wood_amount" parent="CanvasLayer/Indicators" index="2"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/wood_amount" index="0"]
-visible = false
-
-[node name="fire_amount" parent="CanvasLayer/Indicators" index="3"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/fire_amount" index="0"]
-visible = false
-
-[node name="spring_amount" parent="CanvasLayer/Indicators" index="4"]
-editor/display_folded = false
-
-[node name="Earth_amount" parent="CanvasLayer/Indicators" index="5"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
-visible = false
 
 [node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 9 )]
 pause_mode = 2
@@ -106,5 +84,13 @@ script = ExtResource( 10 )
 stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
+[connection signal="update_element_indicators" from="Player" to="CanvasLayer/Indicators" method="_on_Player_update_element_indicators"]
+[connection signal="change_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_max_value"]
+[connection signal="change_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_value"]
+[connection signal="set_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_set_max_value"]
+
+[editable path="Player"]
+
+[editable path="Player/Status"]
 
 [editable path="CanvasLayer/Indicators"]

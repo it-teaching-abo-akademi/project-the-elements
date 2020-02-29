@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Settings/Controls_UI.gd" type="Script" id=1]
+[ext_resource path="res://UI/Menu/empty_space.png" type="Texture" id=2]
+[ext_resource path="res://UI/fonts/Alatsi-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 3 )
 
 [node name="controls_ui" type="Control"]
 script = ExtResource( 1 )
@@ -11,6 +17,26 @@ margin_top = 40.0
 margin_right = 467.0
 margin_bottom = 54.0
 text = "Click on a key binding to reassign it."
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 447.851, 225.776 )
+scale = Vector2( 0.520002, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 10.83
+margin_top = 27.0751
+margin_right = 50.83
+margin_bottom = 67.0751
+rect_scale = Vector2( 15.56, 8.12 )
+
+[node name="Settings" type="Label" parent="."]
+margin_left = 281.348
+margin_top = 40.9473
+margin_right = 376.348
+margin_bottom = 74.9473
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
 
 [node name="bindings" type="Control" parent="."]
 margin_right = 40.0
@@ -34,6 +60,7 @@ margin_right = 268.0
 margin_bottom = 116.0
 
 [node name="move_right" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -51,6 +78,7 @@ margin_right = 268.0
 margin_bottom = 161.0
 
 [node name="change_element_left_previous" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -68,6 +96,7 @@ margin_right = 268.0
 margin_bottom = 212.0
 
 [node name="change_element_left_next" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -85,6 +114,7 @@ margin_right = 268.0
 margin_bottom = 258.0
 
 [node name="change_element_right_previous" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -102,6 +132,7 @@ margin_right = 268.0
 margin_bottom = 300.354
 
 [node name="change_element_right_next" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -119,6 +150,7 @@ margin_right = 268.815
 margin_bottom = 338.636
 
 [node name="ctrl" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -136,6 +168,7 @@ margin_right = 485.473
 margin_bottom = 115.462
 
 [node name="space" type="Control" parent="bindings"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
