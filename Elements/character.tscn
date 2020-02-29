@@ -9022,6 +9022,7 @@ anims/Thrust_generate_left = SubResource( 171 )
 anims/Thrust_generate_right = SubResource( 172 )
 
 [node name="Ji" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 rotation = -1.309
 scale = Vector2( -1, -1 )
 
@@ -9101,6 +9102,7 @@ color = Color( 0.980392, 0.992157, 0.803922, 1 )
 energy = 1.5
 
 [node name="Katana" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 scale = Vector2( -1, -1 )
 
 [node name="Katana" type="Sprite" parent="AttackSystem/Katana"]
@@ -9186,6 +9188,7 @@ shape = SubResource( 179 )
 disabled = true
 
 [node name="Hammer" type="Node2D" parent="AttackSystem"]
+editor/display_folded = true
 scale = Vector2( -1, -1 )
 
 [node name="Hammer" type="Sprite" parent="AttackSystem/Hammer"]

@@ -13,10 +13,15 @@ func _ready():
 	CURRENT_HP = MAX_HP
 	emit_signal("set_max_hp",MAX_HP)
 
+func _update_max_hp(new_max_hp):
+	MAX_HP = max(MAX_HP,new_max_hp)
+	emit_signal("set_max_hp",MAX_HP)
+
 func _get_hit(damage):
 	CURRENT_HP-= damage
 	CURRENT_HP = max(0, CURRENT_HP)
-	IS_DEAD = true
+	if CURRENT_HP == 0:
+		IS_DEAD = true
 	emit_signal("on_hp_changed",CURRENT_HP)
 
 func _is_dead():

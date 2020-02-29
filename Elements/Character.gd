@@ -46,6 +46,7 @@ var jump_is_bigger = false
 
 signal character_attack
 signal start_gesture
+signal update_element_indicators
 
 func _draw():
 	pass
@@ -114,12 +115,16 @@ func _input(event):
 	#change elements
 	if Input.is_action_just_pressed("change_element_left_previous"):
 		element_left = change_element_to_previous(element_left, element_right)
+		update_element_indicators()
 	if Input.is_action_just_pressed("change_element_left_next"):
 		element_left = change_element_to_next(element_left, element_right)
+		update_element_indicators()
 	if Input.is_action_just_pressed("change_element_right_previous"):
 		element_right = change_element_to_previous(element_right, element_left)
+		update_element_indicators()
 	if Input.is_action_just_pressed("change_element_right_next"):
 		element_right = change_element_to_next(element_right, element_left)
+		update_element_indicators()
 
 	#flip sprite
 	if Input.is_action_pressed("move_right"):
@@ -216,6 +221,7 @@ func _on_EnemyModel_attack(damage):
 
 
 func _ready():
+	update_element_indicators()
 	selection_plate.hide()
 	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
 	element_handler.set_gravity(10)
@@ -240,6 +246,7 @@ func complete_gesture(gesture, button):
 	match elmt:
 		"Knife":
 			element_handler.createElement(1, rand_range(0.5, 1), Vector2(position[0] + 20*face_direction + rand_range(-10, 10), position[1]+ rand_range(-10, 10)))
+			#get_node("Status/Elements").change_value(1,10)
 			if face_direction == -1:
 				if angle_with_x <= PI/6 or angle_with_x > 11*PI/6:
 					action.name = "Thrust"
@@ -304,6 +311,9 @@ func attack(attack:Action):
 	#attack.set_parameter("test", 42.51)
 	#emit_signal("character_attack", attack)
 	pass
+
+func update_element_indicators():
+	emit_signal("update_element_indicators",element_left, element_right) #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 
 func start_gesture(button):
 	if button == 1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=10]
 [ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=11]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -46,6 +48,9 @@ text = "TriggerDialogue"
 position = Vector2( 290.678, 157.574 )
 z_index = 1
 
+[node name="AnimationTree" parent="Player/AttackSystem" index="1"]
+parameters/playback = SubResource( 1 )
+
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 256.842, 384.211 )
 
@@ -58,40 +63,9 @@ visible = false
 position = Vector2( 456.231, 162.204 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 6
 
 [node name="Indicators" parent="CanvasLayer" instance=ExtResource( 8 )]
-
-[node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
-percent_visible = 1.0
-
-[node name="knife_amount" parent="CanvasLayer/Indicators" index="1"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/knife_amount" index="0"]
-visible = false
-
-[node name="wood_amount" parent="CanvasLayer/Indicators" index="2"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/wood_amount" index="0"]
-visible = false
-
-[node name="fire_amount" parent="CanvasLayer/Indicators" index="3"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/fire_amount" index="0"]
-visible = false
-
-[node name="spring_amount" parent="CanvasLayer/Indicators" index="4"]
-editor/display_folded = false
-
-[node name="Earth_amount" parent="CanvasLayer/Indicators" index="5"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
-visible = false
 
 [node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 9 )]
 pause_mode = 2
@@ -103,5 +77,15 @@ script = ExtResource( 10 )
 stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
+[connection signal="update_element_indicators" from="Player" to="CanvasLayer/Indicators" method="_on_Player_update_element_indicators"]
+[connection signal="on_hp_changed" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_on_hp_changed"]
+[connection signal="set_max_hp" from="Player/Status/Health" to="CanvasLayer/Indicators" method="_on_Health_set_max_hp"]
+[connection signal="change_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_max_value"]
+[connection signal="change_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_value"]
+[connection signal="set_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_set_max_value"]
+
+[editable path="Player"]
+
+[editable path="Player/Status"]
 
 [editable path="CanvasLayer/Indicators"]
