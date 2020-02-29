@@ -291,6 +291,7 @@ func complete_gesture(gesture, button):
 		"Wood":
 			protected = true
 		"Earth":
+			#回血
 			get_node("Status/Health")._get_hit(-30)
 	if action.name == null:
 		return
