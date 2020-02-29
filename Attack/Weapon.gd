@@ -194,7 +194,6 @@ func basic_attack():
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
-
 	var count = 0
 	#for node in enemies.get_children():
 		#connect("launch_attack", node, "_on_Player_weapon_attack")
