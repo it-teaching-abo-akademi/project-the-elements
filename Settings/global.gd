@@ -11,7 +11,7 @@ const UP = Vector2(0, -1)
 const GRAVITY = 9
 const FRICTION = 0.02
 
-enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT} # states of enemies
+enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT,IDLE} # states of enemies
 enum DIRECTION {
 	DIR_N,
 	DIR_S,

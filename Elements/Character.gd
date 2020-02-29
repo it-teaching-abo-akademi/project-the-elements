@@ -216,8 +216,9 @@ func element_collected(type, amount):
 	#print("COLLECTED: ", type, ", ", amount)
 
 
-func _on_EnemyModel_attack(damage):
-	get_node("Status/Health")._get_hit(damage)
+func _on_EnemyModel_attack(attack : Action):
+	get_node("Status/Health")._get_hit(attack.damage)
+	position.x += attack.face_direction * 30
 
 
 func _ready():
