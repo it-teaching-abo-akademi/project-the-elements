@@ -23,6 +23,14 @@ enum DIRECTION {
 	DIR_SW
 }
 
+#Elements
+var SPRING = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+var KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+var FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+
+
 #Enemies data
 var speed = 5
 var strength = 5

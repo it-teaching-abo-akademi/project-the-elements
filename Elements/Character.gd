@@ -29,11 +29,7 @@ const friction = global.FRICTION
 const MAX_FLYING_SPEED = 800  #character flying speed 
 
 #Elements
-var FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var SPRING = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+onready var elements = get_node("Status/Elements")
 
 #properties
 var health
@@ -41,7 +37,7 @@ var defence
 var element_left = 0 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 var element_right = 1 #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth
 var face_direction : int = 1 # 1: look right, -1 left
-var protected
+var protected = false
 
 var motion = Vector2()
 
@@ -113,12 +109,12 @@ func magma():
 #keypress 
 func _input(event):
 	#show selection plate
-	if Input.is_action_pressed("ctrl"):
-		selection_plate.show()
-		selection_plate.lighten_element(get_element_by_angle(get_mouse_angle()))
+	#if Input.is_action_pressed("ctrl"):
+		#selection_plate.show()
+		#selection_plate.lighten_element(get_element_by_angle(get_mouse_angle()))
 
-	if Input.is_action_just_released("ctrl"):
-		selection_plate.hide()
+	#if Input.is_action_just_released("ctrl"):
+		#selection_plate.hide()
 		#$Sprite.play(get_element_by_angle(get_mouse_angle()))
 
 	#change elements
@@ -211,24 +207,7 @@ func element_collected(type, amount):
 	
 	#var temp = get(type).current_amount + amount
 	#get(type).current_amount = get(type).max_amount if temp > get(type).max_amount  else temp
-	
-	match type:
-		0: 
-			var temp = SPRING.current_amount + amount
-			SPRING.current_amount = SPRING.max_amount if temp > SPRING.max_amount  else temp
-		1:
-			var temp = KNIFE.current_amount + amount
-			KNIFE.current_amount = KNIFE.max_amount if temp > KNIFE.max_amount  else temp
-		2:
-			var temp = FIRE.current_amount + amount
-			FIRE.current_amount = FIRE.max_amount if temp > FIRE.max_amount  else temp
-		3:
-			var temp = WOOD.current_amount + amount
-			WOOD.current_amount = WOOD.max_amount if temp > WOOD.max_amount  else temp
-		4:
-			var temp = EARTH.current_amount + amount
-			EARTH.current_amount = EARTH.max_amount if temp > EARTH.max_amount  else temp
-	#print("COLLECTED: ", type, ", ", amount)
+	elements.change_value(type, -amount)
 
 
 func _on_EnemyModel_attack(attack : Action):
@@ -244,7 +223,7 @@ func _ready():
 	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
 	connect("update_element_indicators",indicator,"_on_Player_update_element_indicators")
 	update_element_indicators()
-	selection_plate.hide()
+	#selection_plate.hide()
 	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
 	element_handler.set_gravity(10)
 	$FloatingHero.play("Floating")
@@ -267,7 +246,6 @@ func complete_gesture(gesture, button):
 	var angle_with_x = gesture.get_angle_with_x()
 	match elmt:
 		"Knife":
-			element_handler.createElement(1, rand_range(0.5, 1), Vector2(position[0] + 20*face_direction + rand_range(-10, 10), position[1]+ rand_range(-10, 10)))
 			#get_node("Status/Elements").change_value(1,10)
 			if face_direction == -1:
 				if angle_with_x <= PI/6 or angle_with_x > 11*PI/6:
@@ -283,9 +261,10 @@ func complete_gesture(gesture, button):
 					action.name = "Lift"
 				elif angle_with_x >7*PI/6 and angle_with_x <= 3*PI/2:
 					action.name = "Slash"
-			
+			if elements.change_value(action.element, action.element_consume) == false:
+				return
+			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 		"Fire":
-			element_handler.createElement(2, rand_range(0.5, 1), Vector2(position[0] + -20*face_direction + rand_range(-3, 3), position[1]))
 			if face_direction == -1:
 				if angle_with_x > PI/2 and angle_with_x <= 3*PI/2:
 					action.name = "Arrow"
@@ -300,16 +279,33 @@ func complete_gesture(gesture, button):
 				else:
 					action.name = "Arrow"
 					action.direction = - gesture.get_direction()
+			if elements.change_value(action.element, action.element_consume) == false:
+				return
+			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 		"Spring":
-			element_handler.createElement(0, rand_range(0.5, 1), Vector2(position[0] + rand_range(-3, 3), position[1]))
 			action.name = "Fly"
+			action.load_data()
+			if elements.change_value(action.element, action.element_consume) == false:
+				return
+			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 			action.direction = - gesture.get_direction()
 			
 		"Wood":
-			protected = true
+			action.name = "Recovery"
+			action.load_data()
+			if elements.change_value(action.element, action.element_consume) == false:
+				return
+			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
+			get_node("Status/Health")._get_hit(action.damage)
+			return
 		"Earth":
-			#回血
-			get_node("Status/Health")._get_hit(-30)
+			action.name = "Shield"
+			action.load_data()
+			if elements.change_value(action.element, action.element_consume) == false:
+				return
+			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
+			protected = true
+			return
 	if action.name == null:
 		return
 	action.load_data()

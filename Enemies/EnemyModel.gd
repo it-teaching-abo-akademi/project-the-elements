@@ -26,6 +26,8 @@ var timer = null
 
 var state_machine
 
+onready var element_handler = global.current_scene.get_node("ElementHandler")
+
 signal timer_end
 
 func _physics_process(delta):
@@ -88,7 +90,7 @@ func _ready():
 func _init():
 	speed = rand_range(4500,5500)
 	strength = rand_range(4, 6)
-	max_hp = rand_range(800, 1200)
+	max_hp = rand_range(80, 120)
 	hp = max_hp
 	state = global.ENEMY_STATES['PATROL']
 	velocity = Vector2.ZERO
@@ -116,6 +118,7 @@ func _on_Player_weapon_attack(attack : Action):
 	current_attack = attack
 	state = global.ENEMY_STATES['LIFT']
 	if hp <= 0:
+		element_handler.createElement(1, 10, Vector2(player.position[0] + rand_range(-3, 3), player.position[1]))
 		queue_free()
 		#get_node("CollisionShape2D").disabled = true
 	pass

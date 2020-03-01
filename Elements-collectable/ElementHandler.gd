@@ -96,7 +96,7 @@ func createElement(type, amount, position):
 		element.add_collision_exception_with(elem)
 	
 	#element.Node
-	add_child(element)
+	get_tree().get_current_scene().add_child(element)
 	
 	elements.append(element)
 

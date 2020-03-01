@@ -30,6 +30,7 @@ signal launch_attack
 
 onready var root = get_tree().get_current_scene()
 onready var enemies = get_tree().get_current_scene().get_node('Enemies')
+onready var elements = get_tree().get_current_scene().get_node("Player/Status/Elements")
 onready var arrow_scene = preload("res://Elements/Arrow.tscn")
 onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
@@ -185,12 +186,13 @@ func basic_attack():
 			var fireball_instance = fireball_scene.instance()
 			fireball_instance.linear_velocity = current_attack.direction * 600
 			fireball_instance.position = to_global(current_attack.position)
-			fireball_instance.position.x += current_attack.face_direction * 20
+			fireball_instance.position.x += current_attack.face_direction * 50
 			fireball_instance.rotation = current_attack.direction.angle()
 			fireball_instance.scale.x = current_attack.face_direction
 			root.add_child(fireball_instance)
 		_:
 			state_machine.travel(current_attack.name+"_generate"+str_direction)
+	
 	
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")

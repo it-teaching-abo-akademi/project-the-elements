@@ -5,8 +5,6 @@
 [ext_resource path="res://Attack/katana.png" type="Texture" id=3]
 [ext_resource path="res://Attack/particle.png" type="Texture" id=4]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/Brightness = null

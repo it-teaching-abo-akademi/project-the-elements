@@ -24,6 +24,7 @@ func _update_max_hp(new_max_hp):
 func _get_hit(damage):
 	CURRENT_HP-= damage
 	CURRENT_HP = max(0, CURRENT_HP)
+	CURRENT_HP = min(CURRENT_HP, MAX_HP)
 	if CURRENT_HP == 0:
 		IS_DEAD = true
 	emit_signal("on_hp_changed",CURRENT_HP)

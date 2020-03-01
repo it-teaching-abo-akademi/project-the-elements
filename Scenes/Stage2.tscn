@@ -39,6 +39,7 @@ z_index = -1
 layer = 6
 
 [node name="Indicators" parent="CanvasLayer" instance=ExtResource( 6 )]
+editor/display_folded = true
 margin_left = -10.474
 margin_top = -7.69952
 margin_right = -10.474
