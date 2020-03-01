@@ -1,15 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=8]
-[ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Enemies/EnemyModelThrust.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=7]
+[ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=9]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -54,15 +53,12 @@ position = Vector2( 588.831, -257.314 )
 scale = Vector2( 0.800002, 0.64 )
 z_index = -1
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1.59082, 230.46 )
-
 [node name="ElementHandler" type="Node2D" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
+[node name="CanvasLayer" parent="." instance=ExtResource( 8 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 volume_db = -20.0
 autoplay = true

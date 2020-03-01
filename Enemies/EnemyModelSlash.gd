@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 # This is the base class for enemies
-class_name EnemyModel
+class_name EnemyModelLift
+
 
 # Variables
 var speed = 5000
@@ -11,6 +12,7 @@ var max_hp = 100
 var state
 var velocity = Vector2.ZERO
 var face_direction = 1
+var element = 1
 
 # Abilities
 var player = null
@@ -31,9 +33,7 @@ onready var element_handler = global.current_scene.get_node("ElementHandler")
 signal timer_end
 
 func _physics_process(delta):
-	
 	if state == global.ENEMY_STATES['PATROL']:
-		# print("ici")
 		#chase()
 		if player == null:
 			if $RayCast2D.is_colliding() == false:
@@ -95,7 +95,7 @@ func _init():
 	state = global.ENEMY_STATES['PATROL']
 	velocity = Vector2.ZERO
 	attack_mode = Action.new()
-	attack_mode.name = "Thrust"
+	attack_mode.name = "Lift"
 	attack_mode.load_data()
 
 func wait(time):
@@ -113,12 +113,11 @@ func _emit_timer_end_signal():
 func _on_Player_weapon_attack(attack : Action):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
-	print(name, attack.name)
 	hp -= attack.damage
 	current_attack = attack
 	state = global.ENEMY_STATES['LIFT']
 	if hp <= 0:
-		element_handler.createElement(1, 10, Vector2(player.position[0] + rand_range(-3, 3), player.position[1]))
+		element_handler.createElement(element, 10, Vector2(player.position[0] + rand_range(-3, 3), player.position[1]))
 		queue_free()
 		#get_node("CollisionShape2D").disabled = true
 	pass
@@ -133,7 +132,6 @@ func _on_Detect_range_body_entered(body):
 
 func _on_Detect_range_body_exited(body):
 	if "Player" in body.name:
-		print(player)
 		player = null
 
 

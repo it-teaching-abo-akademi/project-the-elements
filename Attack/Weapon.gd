@@ -181,14 +181,16 @@ func basic_attack():
 			arrow_instance.position.x += current_attack.face_direction * 20
 			arrow_instance.rotation = current_attack.direction.angle()
 			arrow_instance.scale.x = current_attack.face_direction
+			arrow_instance.add_collision_exception_with(root.get_node("Player"))
 			root.add_child(arrow_instance)
 		"Fireball":
 			var fireball_instance = fireball_scene.instance()
 			fireball_instance.linear_velocity = current_attack.direction * 600
 			fireball_instance.position = to_global(current_attack.position)
-			fireball_instance.position.x += current_attack.face_direction * 50
+			fireball_instance.position.x += current_attack.face_direction * 20
 			fireball_instance.rotation = current_attack.direction.angle()
 			fireball_instance.scale.x = current_attack.face_direction
+			fireball_instance.add_collision_exception_with(root.get_node("Player"))
 			root.add_child(fireball_instance)
 		_:
 			state_machine.travel(current_attack.name+"_generate"+str_direction)

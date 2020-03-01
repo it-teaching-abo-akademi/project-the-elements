@@ -43,7 +43,11 @@ var busy = false # If the enemy can do next move or not
 
 var current_scene = null
 
-
+var Fire_enemy = preload("res://.import/Fire_origin.png-9c301150443c9d211ed53d15b28488f4.stex")
+var Spring_enemy = preload("res://.import/Spring_origin.png-8a8dc2c87d1c481d1f1d3af4f8df01af.stex")
+var Knife_enemy = preload("res://.import/Knife_origin.png-c02330c853ea7d1e313d729a4707f709.stex")
+var fireball_scene = preload("res://Elements/Fireball.tscn")
+var arrow_scene = preload("res://Elements/Arrow.tscn")
 
 #functions
 func _ready():

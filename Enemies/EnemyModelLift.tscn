@@ -1,6 +1,6 @@
 [gd_scene load_steps=218 format=2]
 
-[ext_resource path="res://Enemies/EnemyModel.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/EnemyModelLift.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/sprites/Fire_origin.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/sprites/dust.png" type="Texture" id=3]
 [ext_resource path="res://Lighting/light.png" type="Texture" id=4]

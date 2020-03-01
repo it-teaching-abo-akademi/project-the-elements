@@ -18,7 +18,7 @@ func _on_StoryMode_pressed():
 
 
 func _on_ArenaMode_pressed():
-	get_tree().change_scene("res://Scenes/MainStage.tscn")
+	get_tree().change_scene("res://Scenes/Scene1.tscn")
 	pass # Replace with function body.
 
 

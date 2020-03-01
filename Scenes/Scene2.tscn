@@ -7,7 +7,6 @@
 [ext_resource path="res://Maps/Magma.gd" type="Script" id=5]
 [ext_resource path="res://Sound/Fire.ogg" type="AudioStream" id=6]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )
 
