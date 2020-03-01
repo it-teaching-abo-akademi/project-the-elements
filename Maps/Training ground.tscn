@@ -1,9 +1,11 @@
 [gd_scene load_steps=94 format=2]
 
-[ext_resource path="res://spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://ButtonAndFloor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Maps/ButtonAndFloor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=4]
+
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )

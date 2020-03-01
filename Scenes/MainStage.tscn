@@ -3,7 +3,6 @@
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=3]
-
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=6]
@@ -23,7 +22,6 @@ tile_data = PoolIntArray( -524298, 0, 196619, -458763, 0, 196619, -458762, 0, 19
 
 [node name="TriggerDialogue" parent="TileMap" instance=ExtResource( 3 )]
 position = Vector2( 1172.85, 147.662 )
-
 
 [node name="ChangeStage" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 676.535, -46.8775 )
