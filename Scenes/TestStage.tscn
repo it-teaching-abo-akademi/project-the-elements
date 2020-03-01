@@ -53,36 +53,6 @@ layer = 6
 [node name="Indicators" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
 
-[node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
-percent_visible = 1.0
-
-[node name="knife_amount" parent="CanvasLayer/Indicators" index="1"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/knife_amount" index="0"]
-visible = false
-
-[node name="wood_amount" parent="CanvasLayer/Indicators" index="2"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/wood_amount" index="0"]
-visible = false
-
-[node name="fire_amount" parent="CanvasLayer/Indicators" index="3"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/fire_amount" index="0"]
-visible = false
-
-[node name="spring_amount" parent="CanvasLayer/Indicators" index="4"]
-editor/display_folded = false
-
-[node name="Earth_amount" parent="CanvasLayer/Indicators" index="5"]
-editor/display_folded = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
-visible = false
-
 [node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 6 )]
 pause_mode = 2
 

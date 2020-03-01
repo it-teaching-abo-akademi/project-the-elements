@@ -9,7 +9,7 @@ var strength = 5
 var hp = 100
 var max_hp = 100
 var state
-var velocity
+var velocity = Vector2.ZERO
 var face_direction = 1
 
 # Abilities
@@ -29,26 +29,26 @@ var state_machine
 signal timer_end
 
 func _physics_process(delta):
+	
 	if state == global.ENEMY_STATES['PATROL']:
 		# print("ici")
 		#chase()
 		if player == null:
-			velocity = Vector2.ZERO
-			return
+			if $RayCast2D.is_colliding() == false:
+				face_direction = face_direction * -1
+			velocity.x = face_direction * speed * delta * 0.5
 		else:
+			if $RayCast2D.is_colliding() == false:
+				return
 			velocity = (player.position - get_global_position()).normalized() * Vector2(1,0) * speed * delta
-			velocity.y += global.GRAVITY * delta
-		if not is_on_floor():
-			velocity.y = global.GRAVITY * 1000 * delta
-		else:
-			velocity.y = 0
+		velocity.y += global.GRAVITY * delta
 		if velocity.x >= 0:
 			$Sprite.flip_h = true
 			face_direction = 1
 		else:
 			$Sprite.flip_h = false
 			face_direction = -1
-		velocity = move_and_slide(velocity)
+		velocity = move_and_slide(velocity,global.UP)
 	elif state == global.ENEMY_STATES['LIFT']:
 		if current_attack == null:
 			state = global.ENEMY_STATES['PATROL']
@@ -61,6 +61,9 @@ func _physics_process(delta):
 		if attack_mode == null:
 			state = global.ENEMY_STATES['PATROL']
 			return
+		velocity.x = 0
+		velocity.y += global.GRAVITY * delta
+		move_and_slide(velocity,global.UP)
 		attack_mode.face_direction = face_direction
 		var str_direction
 		if face_direction == 1:
@@ -74,6 +77,8 @@ func _physics_process(delta):
 		timer.queue_free()
 		if player_in_attack_range == null:
 			state = global.ENEMY_STATES['PATROL']
+		else:
+			state = global.ENEMY_STATES['ATTACK']
 func _ready():
 	state_machine = get_node("AttackSystem/AnimationTree").get("parameters/playback")
 	state_machine.start("Await")
@@ -125,6 +130,7 @@ func _on_Detect_range_body_entered(body):
 
 func _on_Detect_range_body_exited(body):
 	if "Player" in body.name:
+		print(player)
 		player = null
 
 
@@ -137,3 +143,8 @@ func _on_Attack_range_body_entered(body):
 func _on_Attack_range_body_exited(body):
 	if "Player" in body.name:
 		player_in_attack_range = null
+
+
+func _on_Wall_detect_body_entered(body):
+	if "Tile" in body.name:
+		face_direction = face_direction * -1

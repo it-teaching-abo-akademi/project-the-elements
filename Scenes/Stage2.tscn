@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=9]
-[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=8]
+[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=10]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -32,54 +31,35 @@ z_index = 1
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 588.831, -257.314 )
-scale = Vector2( 0.800002, 0.64 )
+position = Vector2( 527.05, -243.186 )
+scale = Vector2( 0.451138, 0.483216 )
 z_index = -1
-
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 1.59082, 230.46 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 6
 
-[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 7 )]
-editor/display_folded = true
-margin_left = -27.7418
+[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 6 )]
+margin_left = -10.474
 margin_top = -7.69952
-margin_right = -27.7418
+margin_right = -10.474
 margin_bottom = -7.69952
 
-[node name="hp_amount" parent="CanvasLayer/Indicators" index="0"]
+[node name="hp_amount" parent="CanvasLayer/Indicators" index="1"]
 editor/display_folded = true
 
-[node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
-percent_visible = 1.0
-
-[node name="curent_element" parent="CanvasLayer/Indicators/knife_amount" index="0"]
-visible = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/wood_amount" index="0"]
-visible = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/fire_amount" index="0"]
-visible = false
-
-[node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
-visible = false
-
-[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 8 )]
+[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 7 )]
 pause_mode = 2
 
 [node name="ElementHandler" type="Node2D" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 volume_db = -20.0
 autoplay = true
 
-[node name="ChangeStage" parent="." instance=ExtResource( 11 )]
-position = Vector2( 676.535, -55.2284 )
+[node name="ChangeStage" parent="." instance=ExtResource( 10 )]
+position = Vector2( 670.218, -46.2034 )
 target_stage = "res://Scenes/Stage1.tscn"
 
 [editable path="CanvasLayer/Indicators"]
