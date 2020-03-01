@@ -1,15 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=7]
-[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Maps/Fire1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Maps/FireInjection.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Scene2.tscn" type="PackedScene" id=6]
 
 [node name="Test" type="Node"]
 script = ExtResource( 1 )
@@ -33,40 +29,19 @@ position = Vector2( 275.17, 52.8934 )
 scale = Vector2( 0.760001, 0.68 )
 z_index = 1
 
-[node name="Enemies" type="Node2D" parent="."]
-visible = false
-position = Vector2( 256.842, 384.211 )
-
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 538.966, -387.069 )
-scale = Vector2( 0.600002, 0.6 )
-z_index = -1
-
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 456.231, 162.204 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 6
 
-[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 3 )]
 visible = false
 
-[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 4 )]
 pause_mode = 2
 
 [node name="ElementHandler" type="Node2D" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 5 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-volume_db = -20.0
-autoplay = true
-
-[node name="Node2D" parent="." instance=ExtResource( 9 )]
-
-[node name="FireInjection" parent="." instance=ExtResource( 10 )]
-position = Vector2( 142.159, -182.222 )
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
 
 [editable path="CanvasLayer/Indicators"]

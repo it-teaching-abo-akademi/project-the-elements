@@ -108,8 +108,19 @@ func _physics_process(delta):
 
 func magma():
 	get_node("Status/Health")._get_hit(10)
-	motion.y = -200
-	
+	if(motion.y >= 0):
+		motion.y = -200
+	else:
+		motion.y = 50
+
+func thorn(direction):
+	get_node("Status/Health")._get_hit(10)
+	if(direction == 0):
+		motion.y = -200
+	else:
+		motion.x = direction * 200
+
+
 #keypress 
 func _input(event):
 	#show selection plate
