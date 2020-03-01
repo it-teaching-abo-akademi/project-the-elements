@@ -8,6 +8,13 @@ onready var arrow_scene = preload("res://Elements/Arrow.tscn")
 onready var fireball_scene = preload("res://Elements/Fireball.tscn")
 
 const ELEMENTS = ["Spring", "Knife", "Fire", "Wood", "Earth"]
+const ELEMENT_COLORS = [
+	Color(0, 0.5, 1, 0.5), # Spring
+	Color(0.96, 0.96, 0.96, 0.5), # Knife
+	Color(0.86, 0.08, 0.24, 0.5), # Fire
+	Color(0.2, 0.8, 0.2, 0.5), # Wood
+	Color(0.82, 0.41, 0.12, 0.5), # Earth
+]
 
 const UP = global.UP
 const GRAVITY = global.GRAVITY
@@ -39,6 +46,7 @@ var protected
 var motion = Vector2()
 
 var element_handler # Handles collectable elements
+var mouse_effect
 
 var current_jump = null
 var jump_timer = 0.0
@@ -134,6 +142,12 @@ func _input(event):
 	elif Input.is_action_pressed("move_left"):
 				$Sprite.flip_h = true
 				face_direction = -1
+				
+	#mouse pressed
+	if Input.is_action_pressed("left_mouse_click"):
+		generate_mouse_effect(element_left,get_global_mouse_position()-self.position)
+	elif Input.is_action_pressed("right_mouse_click"):
+		generate_mouse_effect(element_right,get_global_mouse_position()-self.position)
 
 
 #elements change 
@@ -226,6 +240,9 @@ func _on_EnemyModel_attack(attack : Action):
 
 
 func _ready():
+	mouse_effect = preload("res://Attack/MouseEffect.tscn")
+	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
+	connect("update_element_indicators",indicator,"_on_Player_update_element_indicators")
 	update_element_indicators()
 	selection_plate.hide()
 	element_handler = get_node("/root/"+get_tree().get_current_scene().get_name()+"/ElementHandler")
@@ -317,6 +334,15 @@ func attack(attack:Action):
 	#attack.set_parameter("test", 42.51)
 	#emit_signal("character_attack", attack)
 	pass
+
+func generate_mouse_effect(type, position):
+	var effect = mouse_effect.instance()
+	effect.position = position
+	var particles = effect.get_node("Particles2D")
+	particles.modulate = ELEMENT_COLORS[type]
+	get_node("Camera2D").add_child(effect)
+	particles.set_emitting(true)
+	
 
 func update_element_indicators():
 	emit_signal("update_element_indicators",element_left, element_right) #index of element   0:Spring 1:Knife 2:Fire 3:Wood 4:Earth

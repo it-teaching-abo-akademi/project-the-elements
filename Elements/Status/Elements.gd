@@ -15,6 +15,10 @@ signal change_value(type,value)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#todo read values from global
+	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
+	connect("set_max_value",indicator,"_on_Elements_set_max_value")
+	connect("change_max_value",indicator,"_on_Elements_change_max_value")
+	connect("change_value",indicator,"_on_Elements_change_value")
 	emit_signal("set_max_value",0,SPRING.max_amount)
 	emit_signal("set_max_value",1,KNIFE.max_amount)
 	emit_signal("set_max_value",2,FIRE.max_amount)
