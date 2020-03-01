@@ -10,7 +10,7 @@ func _draw():
 	var prev = null
 	for point in points:
 		if prev != null:
-			draw_line(prev, to_local(point), Color(0.0, 0.0, 0.75), 2.0)
+			draw_line(prev, to_local(point), Color(1, 1, 1), 2.0)
 		prev = to_local(point)
 		# draw_circle(point, 1, Color.red)
 
