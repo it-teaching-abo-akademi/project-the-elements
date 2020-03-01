@@ -25,7 +25,6 @@ tile_data = PoolIntArray( -589837, 0, 196619, -589836, 0, 196619, -589835, 0, 19
 [node name="ChangeStage" parent="." instance=ExtResource( 4 )]
 position = Vector2( 646.388, -240.057 )
 z_index = 1
-target_stage = "res://Scenes/MainStage.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
