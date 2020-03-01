@@ -44,6 +44,7 @@ func _ready():
 	var centered_pos = (screen_size - window_size) / 2
 	OS.set_window_position(centered_pos)
 	load_config()
+	global.current_scene = get_tree().get_current_scene()
 
 
 func load_config():

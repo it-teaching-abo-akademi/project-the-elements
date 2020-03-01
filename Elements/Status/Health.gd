@@ -13,7 +13,6 @@ signal on_hp_changed(health)
 func _ready():
 	CURRENT_HP = MAX_HP
 	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
-	print(indicator.name)
 	connect("on_hp_changed",indicator,"_on_Health_on_hp_changed")
 	connect("set_max_hp",indicator,"_on_Health_set_max_hp")
 	emit_signal("set_max_hp",MAX_HP)

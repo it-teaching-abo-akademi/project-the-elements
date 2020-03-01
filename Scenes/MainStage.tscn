@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
@@ -7,18 +7,14 @@
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=10]
-[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=11]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=8]
+[ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=10]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
-editor/display_folded = true
 z_index = -1
 tile_set = ExtResource( 2 )
 format = 1
@@ -46,51 +42,26 @@ margin_bottom = 95.2632
 text = "TriggerDialogue"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 290.678, 157.574 )
 z_index = 1
 
-[node name="Camera2D" parent="Player" index="4"]
-offset = Vector2( 0, 0 )
-
-[node name="AnimationTree" parent="Player/AttackSystem" index="1"]
-parameters/playback = SubResource( 1 )
-
 [node name="Enemies" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 585.491, -322.451 )
+position = Vector2( 588.831, -257.314 )
+scale = Vector2( 0.800002, 0.64 )
 z_index = -1
 
 [node name="EnemyModel2" parent="Enemies" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 456.231, 162.204 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
-layer = 6
-
-[node name="Indicators" parent="CanvasLayer" instance=ExtResource( 8 )]
-
-[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 9 )]
-pause_mode = 2
+position = Vector2( 1.59082, 230.46 )
 
 [node name="ElementHandler" type="Node2D" parent="."]
-script = ExtResource( 10 )
+script = ExtResource( 8 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 10 )
 volume_db = -20.0
 autoplay = true
-[connection signal="update_element_indicators" from="Player" to="CanvasLayer/Indicators" method="_on_Player_update_element_indicators"]
-[connection signal="change_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_max_value"]
-[connection signal="change_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_change_value"]
-[connection signal="set_max_value" from="Player/Status/Elements" to="CanvasLayer/Indicators" method="_on_Elements_set_max_value"]
-
-[editable path="Player"]
-
-[editable path="Player/Status"]
-
-[editable path="CanvasLayer/Indicators"]

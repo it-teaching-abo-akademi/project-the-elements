@@ -1,42 +1,45 @@
-[gd_scene load_steps=215 format=2]
+[gd_scene load_steps=222 format=2]
 
 [ext_resource path="res://Elements/Character.gd" type="Script" id=1]
 [ext_resource path="res://Lighting/light.png" type="Texture" id=2]
-[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=6]
-[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=9]
-[ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=10]
-[ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=11]
-[ext_resource path="res://Attack/AttackRange.gd" type="Script" id=12]
-[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=13]
-[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=14]
-[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=15]
-[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=16]
-[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=17]
-[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=18]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=19]
-[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=20]
-[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=21]
-[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=22]
-[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=23]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=24]
-[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=25]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=26]
-[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=27]
-[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=28]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=29]
-[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=30]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=31]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=32]
-[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=33]
+[ext_resource path="res://Attack/Shield.png" type="Texture" id=3]
+[ext_resource path="res://Attack/particle.png" type="Texture" id=4]
+[ext_resource path="res://Tools/DrawDetector/DrawDetector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Elements/SelectionPlate/SelectionPlate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Attack/SoundManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Attack/SoundManager.gd" type="Script" id=8]
+[ext_resource path="res://Elements/Status/Status.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Attack/Weapon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderJi.tres" type="Shader" id=11]
+[ext_resource path="res://Attack/Sources/Weapons/ji.png" type="Texture" id=12]
+[ext_resource path="res://Attack/Sources/Weapons/ji_lighting.png" type="Texture" id=13]
+[ext_resource path="res://Attack/AttackRange.gd" type="Script" id=14]
+[ext_resource path="res://Attack/Sources/VFX/Lift.png" type="Texture" id=15]
+[ext_resource path="res://Attack/Sources/VFX/Lift_lighting.png" type="Texture" id=16]
+[ext_resource path="res://Attack/Sources/VFX/180Lift.png" type="Texture" id=17]
+[ext_resource path="res://Attack/Sources/VFX/180Lift_lighting.png" type="Texture" id=18]
+[ext_resource path="res://Attack/Sources/VFX/Thrust.png" type="Texture" id=19]
+[ext_resource path="res://Attack/Sources/VFX/Thrust_lighting.png" type="Texture" id=20]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderKatana.tres" type="Shader" id=21]
+[ext_resource path="res://Attack/Sources/Weapons/katana.png" type="Texture" id=22]
+[ext_resource path="res://Attack/Sources/Weapons/katana_lighting.png" type="Texture" id=23]
+[ext_resource path="res://Attack/Sources/VFX/Slash.png" type="Texture" id=24]
+[ext_resource path="res://Attack/Sources/VFX/Slash_lighting.png" type="Texture" id=25]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave.png" type="Texture" id=26]
+[ext_resource path="res://Attack/Sources/VFX/Swordwave_lighting.png" type="Texture" id=27]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu.png" type="Texture" id=28]
+[ext_resource path="res://Attack/Sources/VFX/Laijutsu_lighting.png" type="Texture" id=29]
+[ext_resource path="res://Attack/Sources/Shaders/dissolveShaderHammer.tres" type="Shader" id=30]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer.png" type="Texture" id=31]
+[ext_resource path="res://Attack/Sources/Weapons/Hammer_lighting.png" type="Texture" id=32]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_1.png" type="Texture" id=33]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_lighting.png" type="Texture" id=34]
+[ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=35]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Floating"
-length = 0.9
+length = 1.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:offset")
@@ -45,10 +48,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 2 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/Light2D:color")
@@ -57,10 +60,34 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.9, 1.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.392157 ) ]
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sheild/Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.956863, 0.796078, 0.572549, 0.607843 ), Color( 0.956863, 0.796078, 0.572549, 0.254902 ), Color( 0.956863, 0.796078, 0.572549, 0.705882 ), Color( 0.956863, 0.796078, 0.572549, 0.607843 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Sheild/Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.298667, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20, 0 ), Vector2( -20, -2 ), Vector2( -20, 2 ), Vector2( -20, 0 ), Vector2( -20, -2 ), Vector2( -20, 2 ), Vector2( -20, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -82,6 +109,33 @@ tracks/0/keys = {
 [sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/frame0000.png-a1a46b7bba311ab7cb4f1cbaddde2cb5.stex"
+
+[sub_resource type="Gradient" id=182]
+colors = PoolColorArray( 0.59529, 0.910156, 0.540405, 1, 0.603922, 0.913725, 0.552941, 0.313726 )
+
+[sub_resource type="GradientTexture" id=183]
+gradient = SubResource( 182 )
+
+[sub_resource type="Curve" id=184]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.990778, 0.28 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=185]
+curve = SubResource( 184 )
+
+[sub_resource type="ParticlesMaterial" id=186]
+trail_divisor = 6
+trail_size_modifier = SubResource( 185 )
+trail_color_modifier = SubResource( 183 )
+emission_shape = 2
+emission_box_extents = Vector3( 100, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 180.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 30.0
+linear_accel_random = 1.0
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19.03, 29.9677 )
@@ -572,7 +626,7 @@ states/Thrust_generate_left/position = Vector2( -14.1391, 210 )
 states/Thrust_generate_right/node = SubResource( 53 )
 states/Thrust_generate_right/position = Vector2( 380.861, 210 )
 transitions = [ "Await", "Lift_generate_right", SubResource( 54 ), "Lift_generate_right", "Lift_act_right", SubResource( 55 ), "Lift_act_right", "Lift_finish_right", SubResource( 56 ), "Lift_finish_right", "Await", SubResource( 57 ), "Await", "Lift_generate_left", SubResource( 58 ), "Lift_generate_left", "Lift_act_left", SubResource( 59 ), "Lift_act_left", "Lift_finish_left", SubResource( 60 ), "Lift_finish_left", "Await", SubResource( 61 ), "Lift_finish_right", "180Lift_generate_right", SubResource( 62 ), "180Lift_generate_right", "180Lift_act_right", SubResource( 63 ), "180Lift_act_right", "180Lift_finish_right", SubResource( 64 ), "180Lift_finish_right", "Await", SubResource( 65 ), "Lift_finish_left", "180Lift_generate_left", SubResource( 66 ), "180Lift_generate_left", "180Lift_act_left", SubResource( 67 ), "180Lift_act_left", "180Lift_finish_left", SubResource( 68 ), "180Lift_finish_left", "Await", SubResource( 69 ), "Await", "Thrust_generate_left", SubResource( 70 ), "Thrust_generate_left", "Thrust_act_left", SubResource( 71 ), "Thrust_act_left", "Thrust_finish_left", SubResource( 72 ), "Thrust_finish_left", "Await", SubResource( 73 ), "Await", "Thrust_generate_right", SubResource( 74 ), "Thrust_generate_right", "Thrust_act_right", SubResource( 75 ), "Thrust_act_right", "Thrust_finish_right", SubResource( 76 ), "Thrust_finish_right", "Await", SubResource( 77 ), "FastLift_act_left", "FastLift_finish_left", SubResource( 78 ), "FastLift_finish_left", "Await", SubResource( 79 ), "FastLift_act_right", "FastLift_finish_right", SubResource( 80 ), "FastLift_finish_right", "Await", SubResource( 81 ), "ThrustX3_act_right", "Thrust_finish_right", SubResource( 82 ), "ThrustX3_act_left", "Thrust_finish_left", SubResource( 83 ), "Thrust_act_right 2", "Thrust_finish_right", SubResource( 84 ), "Thrust_act_left 2", "Thrust_finish_left", SubResource( 85 ), "Thrust_finish_right", "Thrust_act_right 2", SubResource( 86 ), "Thrust_finish_right", "ThrustX3_act_right", SubResource( 87 ), "Thrust_finish_left", "Thrust_act_left 2", SubResource( 88 ), "Thrust_finish_left", "ThrustX3_act_left", SubResource( 89 ), "Await", "Slash_generate_left", SubResource( 90 ), "Slash_generate_left", "Slash_act_left", SubResource( 91 ), "Slash_act_left", "Slash_finish_left", SubResource( 92 ), "Slash_finish_left", "Await", SubResource( 93 ), "Await", "Slash_generate_right", SubResource( 94 ), "Slash_generate_right", "Slash_act_right", SubResource( 95 ), "Slash_act_right", "Slash_finish_right", SubResource( 96 ), "Slash_finish_right", "Await", SubResource( 97 ), "Slash_finish_left", "ShortLift_act_left", SubResource( 98 ), "ShortLift_act_left", "ShortLift_finish_left", SubResource( 99 ), "ShortLift_finish_left", "Await", SubResource( 100 ), "Slash_finish_right", "ShortLift_act_right", SubResource( 101 ), "ShortLift_act_right", "ShortLift_finish_right", SubResource( 102 ), "ShortLift_finish_right", "Await", SubResource( 103 ), "SwordWave_act_right", "Slash_finish_right", SubResource( 104 ), "SwordWave_act_left", "Slash_finish_left", SubResource( 105 ), "Thrust_finish_right", "SwordWave_act_right", SubResource( 106 ), "Thrust_finish_left", "SwordWave_act_left", SubResource( 107 ), "Lift_finish_left", "HeavySlash_generate_left", SubResource( 108 ), "Lift_finish_right", "HeavySlash_generate_right", SubResource( 109 ), "HeavySlash_generate_left", "HeavySlash_act_left", SubResource( 110 ), "HeavySlash_act_left", "HeavySlash_finish_left", SubResource( 111 ), "HeavySlash_finish_left", "Await", SubResource( 112 ), "HeavySlash_generate_right", "HeavySlash_act_right", SubResource( 113 ), "HeavySlash_act_right", "HeavySlash_finish_right", SubResource( 114 ), "HeavySlash_finish_right", "Await", SubResource( 115 ), "Slash_finish_left", "Laijutsu_act_left", SubResource( 116 ), "Slash_finish_right", "Laijutsu_act_right", SubResource( 117 ), "Thrust_finish_right", "Slash_generate_right", SubResource( 118 ), "Thrust_finish_left", "Slash_generate_left", SubResource( 119 ), "Thrust_finish_right", "FastLift_act_right", SubResource( 120 ), "Thrust_finish_left", "FastLift_act_left", SubResource( 121 ), "Laijutsu_act_right", "Await", SubResource( 122 ), "Laijutsu_act_left", "Await", SubResource( 123 ) ]
-graph_offset = Vector2( -407.412, 108.392 )
+graph_offset = Vector2( 35.588, 187.392 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=125]
 
@@ -8886,10 +8940,10 @@ tracks/9/keys = {
 
 [sub_resource type="ShaderMaterial" id=174]
 render_priority = 2
-shader = ExtResource( 9 )
+shader = ExtResource( 11 )
 shader_param/Brightness = 0.0
 shader_param/dissolve = 0.0
-shader_param/WeaponTexture = ExtResource( 10 )
+shader_param/WeaponTexture = ExtResource( 12 )
 
 [sub_resource type="RectangleShape2D" id=175]
 extents = Vector2( 58.8135, 14.111 )
@@ -8898,10 +8952,10 @@ extents = Vector2( 58.8135, 14.111 )
 render_priority = 3
 
 [sub_resource type="ShaderMaterial" id=177]
-shader = ExtResource( 19 )
+shader = ExtResource( 21 )
 shader_param/Brightness = null
 shader_param/dissolve = -1.0
-shader_param/WeaponTexture = ExtResource( 20 )
+shader_param/WeaponTexture = ExtResource( 22 )
 
 [sub_resource type="CapsuleShape2D" id=178]
 radius = 12.0206
@@ -8914,10 +8968,10 @@ extents = Vector2( 104.578, 180.695 )
 radius = 65.0
 
 [sub_resource type="ShaderMaterial" id=181]
-shader = ExtResource( 28 )
+shader = ExtResource( 30 )
 shader_param/Brightness = null
 shader_param/dissolve = -1.0
-shader_param/WeaponTexture = ExtResource( 29 )
+shader_param/WeaponTexture = ExtResource( 31 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 290.265, 113.911 )
@@ -8938,13 +8992,33 @@ anims/vibration = SubResource( 2 )
 position = Vector2( -4.23999, 2.00543 )
 scale = Vector2( 0.195464, 0.195464 )
 texture = SubResource( 3 )
-offset = Vector2( 0, -0.993077 )
 
 [node name="Light2D" type="Light2D" parent="Sprite"]
 position = Vector2( 2.27222, -13.2476 )
 scale = Vector2( 0.818559, 0.818565 )
 texture = ExtResource( 2 )
-color = Color( 1, 1, 1, 0.686682 )
+color = Color( 1, 1, 1, 0.392157 )
+
+[node name="Sheild" type="Node2D" parent="Sprite"]
+position = Vector2( 21.6919, -10.2599 )
+scale = Vector2( 5.11603, 5.11603 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Sheild"]
+modulate = Color( 0.956863, 0.796078, 0.572549, 0.607843 )
+scale = Vector2( 0.25, 0.2 )
+texture = ExtResource( 3 )
+offset = Vector2( -20, 0 )
+
+[node name="Recover" type="Particles2D" parent="Sprite"]
+modulate = Color( 0.592157, 0.952941, 0.462745, 0.631373 )
+position = Vector2( 0, 130 )
+emitting = false
+amount = 50
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.9
+process_material = SubResource( 186 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -6.93176, 2.26193 )
@@ -8957,9 +9031,9 @@ zoom = Vector2( 0.8, 0.8 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="DrawDetector" parent="." instance=ExtResource( 3 )]
+[node name="DrawDetector" parent="." instance=ExtResource( 5 )]
 
-[node name="SelectionPlate" parent="." instance=ExtResource( 4 )]
+[node name="SelectionPlate" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( -257.01, -182.135 )
 
@@ -8973,16 +9047,16 @@ visible = false
 points = PoolVector2Array( 0.867004, -4.231, 0.867004, 55.769 )
 texture_mode = -191446400
 
-[node name="SoundManager" parent="." instance=ExtResource( 5 )]
+[node name="SoundManager" parent="." instance=ExtResource( 7 )]
 visible = false
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
-[node name="Status" parent="." instance=ExtResource( 7 )]
+[node name="Status" parent="." instance=ExtResource( 9 )]
 visible = false
 
 [node name="AttackSystem" type="Node2D" parent="."]
 
-[node name="Weapon" parent="AttackSystem" instance=ExtResource( 8 )]
+[node name="Weapon" parent="AttackSystem" instance=ExtResource( 10 )]
 
 [node name="AnimationTree" type="AnimationTree" parent="AttackSystem"]
 tree_root = SubResource( 124 )
@@ -9052,17 +9126,17 @@ material = SubResource( 174 )
 position = Vector2( 8.68567, 57.4157 )
 rotation = 1.309
 scale = Vector2( 0.75, 0.65 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 offset = Vector2( 59.507, -6.11612 )
 flip_v = true
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Ji"]
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 texture_scale = 1.2
 energy = 0.2
 
 [node name="Area2D" type="Area2D" parent="AttackSystem/Ji/Ji"]
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Ji/Ji/Area2D"]
 position = Vector2( 110.809, -13.1877 )
@@ -9076,7 +9150,7 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.130418 )
 position = Vector2( 29.4324, 89.0362 )
 rotation = 1.51186
 scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
 offset = Vector2( -6.06262, 8.07626 )
 flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
@@ -9084,7 +9158,7 @@ region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Lift_VFX"]
 visible = false
 material = SubResource( 176 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 offset = Vector2( -6.063, 8.076 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 energy = 1.2
@@ -9096,14 +9170,14 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
 position = Vector2( 23.109, -70.4497 )
 rotation = 1.37881
 scale = Vector2( 0.75, 0.85 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 offset = Vector2( 0, 110 )
 flip_v = true
 region_rect = Rect2( 88.0201, 1.24489, 16.3245, 12.2434 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/180Lift_VFX"]
 visible = false
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 offset = Vector2( 0, 110 )
 color = Color( 0.968627, 0.980392, 0.639216, 1 )
 
@@ -9114,10 +9188,10 @@ modulate = Color( 0.976471, 0.960784, 0.811765, 0.13 )
 position = Vector2( 26.2129, 73.361 )
 rotation = 1.309
 scale = Vector2( 0.7, 0.65 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Ji/Thrust"]
-texture = ExtResource( 18 )
+texture = ExtResource( 20 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 energy = 1.5
 
@@ -9131,7 +9205,7 @@ material = SubResource( 177 )
 position = Vector2( 9.64468, -7.90317 )
 rotation = -4.01426
 scale = Vector2( 0.5, 1.1 )
-texture = ExtResource( 20 )
+texture = ExtResource( 22 )
 offset = Vector2( -0.432, 37.524 )
 flip_h = true
 flip_v = true
@@ -9139,10 +9213,10 @@ flip_v = true
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Katana"]
 position = Vector2( 1.4101, 34.1098 )
 enabled = false
-texture = ExtResource( 21 )
+texture = ExtResource( 23 )
 
 [node name="Area2D2" type="Area2D" parent="AttackSystem/Katana/Katana"]
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Katana/Katana/Area2D2"]
 position = Vector2( -0.766998, -51.6586 )
@@ -9155,10 +9229,10 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 45.1369, -10.1389 )
 scale = Vector2( 0.34, 0.39 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Slash"]
-texture = ExtResource( 23 )
+texture = ExtResource( 25 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="SwordWave" type="Sprite" parent="AttackSystem/Katana"]
@@ -9166,16 +9240,16 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 200, -22.556 )
 scale = Vector2( 0.8, 0.2 )
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 offset = Vector2( 0, 100 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/SwordWave"]
-texture = ExtResource( 25 )
+texture = ExtResource( 27 )
 offset = Vector2( 0, 100 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="Area2D4" type="Area2D" parent="AttackSystem/Katana/SwordWave"]
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackSystem/Katana/SwordWave/Area2D4"]
 position = Vector2( 23.2415, 71.3202 )
@@ -9187,18 +9261,18 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 69.159, 8.574 )
 scale = Vector2( 0.9, -0.9 )
-texture = ExtResource( 26 )
+texture = ExtResource( 28 )
 offset = Vector2( 10, 0 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Katana/Laijutsu"]
-texture = ExtResource( 27 )
+texture = ExtResource( 29 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="Area2D3" type="Area2D" parent="AttackSystem/Katana/Laijutsu"]
 position = Vector2( -47.1677, 7.8661 )
 rotation = -2.61799
 scale = Vector2( 0.555556, -0.722222 )
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackSystem/Katana/Laijutsu/Area2D3"]
 position = Vector2( -131.137, 70.6215 )
@@ -9218,16 +9292,16 @@ material = SubResource( 181 )
 position = Vector2( 1.38092, 0.847458 )
 rotation = 1.65806
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 29 )
+texture = ExtResource( 31 )
 offset = Vector2( 10, -60 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/Hammer"]
 visible = false
-texture = ExtResource( 30 )
+texture = ExtResource( 32 )
 offset = Vector2( 10, -60 )
 
 [node name="Area2D3" type="Area2D" parent="AttackSystem/Hammer/Hammer"]
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSystem/Hammer/Hammer/Area2D3"]
 visible = false
@@ -9240,11 +9314,11 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 91.0662, -50.9353 )
 scale = Vector2( 1, 0.7 )
-texture = ExtResource( 31 )
+texture = ExtResource( 33 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash1"]
 visible = false
-texture = ExtResource( 32 )
+texture = ExtResource( 34 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 
 [node name="HeavySlash2" type="Sprite" parent="AttackSystem/Hammer"]
@@ -9252,11 +9326,11 @@ visible = false
 modulate = Color( 0.976471, 0.960784, 0.811765, 0 )
 position = Vector2( 88.6227, -41.9554 )
 scale = Vector2( 1, 0.7 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 
 [node name="Light2D" type="Light2D" parent="AttackSystem/Hammer/HeavySlash2"]
 visible = false
-texture = ExtResource( 32 )
+texture = ExtResource( 34 )
 color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [connection signal="character_attack" from="." to="AttackSystem/Weapon" method="_on_Player_character_attack"]
 [connection signal="body_entered" from="AttackSystem/Ji/Ji/Area2D" to="AttackSystem/Ji/Ji/Area2D" method="_on_Area2D_body_entered"]
