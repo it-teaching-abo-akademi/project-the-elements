@@ -1,8 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Button.gd" type="Script" id=1]
-[ext_resource path="res://blueCrystal.png" type="Texture" id=2]
-[ext_resource path="res://redCrystal.png" type="Texture" id=3]
+[ext_resource path="res://Maps/Button.gd" type="Script" id=1]
+[ext_resource path="res://Maps/blueCrystal.png" type="Texture" id=2]
+[ext_resource path="res://Maps/redCrystal.png" type="Texture" id=3]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.5976, 16.6314 )
@@ -11,7 +13,7 @@ extents = Vector2( 16.5976, 16.6314 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 319.211, 149.913 )
+position = Vector2( 310.211, 111.913 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
@@ -20,11 +22,11 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 1.29236, 152.498 )
+position = Vector2( -113.707, 183.498 )
 texture = ExtResource( 3 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 639.715, 151.205 )
+position = Vector2( 781.715, 182.205 )
 texture = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]

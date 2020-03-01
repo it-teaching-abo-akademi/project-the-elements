@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 [gd_scene load_steps=9 format=2]
+=======
+[gd_scene load_steps=7 format=2]
+>>>>>>> ab216c04792c3e99fd791d25b2e491d3404a997c
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=5]
+<<<<<<< HEAD
 [ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Maps/Fire1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Maps/FireInjection.tscn" type="PackedScene" id=8]
+=======
+[ext_resource path="res://Scenes/Scene5.tscn" type="PackedScene" id=6]
+>>>>>>> ab216c04792c3e99fd791d25b2e491d3404a997c
 
 [node name="Test" type="Node"]
 script = ExtResource( 1 )
@@ -31,10 +39,13 @@ position = Vector2( 275.17, 52.8934 )
 scale = Vector2( 0.760001, 0.68 )
 z_index = 1
 
+<<<<<<< HEAD
 [node name="Enemies" type="Node2D" parent="."]
 visible = false
 position = Vector2( 256.842, 384.211 )
 
+=======
+>>>>>>> ab216c04792c3e99fd791d25b2e491d3404a997c
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 6
@@ -47,6 +58,7 @@ pause_mode = 2
 
 [node name="ElementHandler" type="Node2D" parent="."]
 script = ExtResource( 5 )
+<<<<<<< HEAD
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -57,5 +69,10 @@ autoplay = true
 
 [node name="FireInjection" parent="." instance=ExtResource( 8 )]
 position = Vector2( 142.159, -182.222 )
+=======
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 144.896, -218.631 )
+>>>>>>> ab216c04792c3e99fd791d25b2e491d3404a997c
 
 [editable path="CanvasLayer/Indicators"]
