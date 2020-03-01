@@ -3,16 +3,14 @@
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=3]
-
-[ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=10]
-[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=11]
-
+[ext_resource path="res://Elements/character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/EnemyModel2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/EnemyModel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=9]
+[ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=11]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -26,28 +24,7 @@ tile_data = PoolIntArray( -524298, 0, 196619, -458763, 0, 196619, -458762, 0, 19
 [node name="TriggerDialogue" parent="TileMap" instance=ExtResource( 3 )]
 position = Vector2( 1172.85, 147.662 )
 
-
-[node name="ChangeStage" parent="TileMap" instance=ExtResource( 4 )]
-position = Vector2( 676.535, -46.8775 )
-z_index = 1
-target_stage = "res://Scenes/Stage1.tscn"
-
-[node name="Label" type="Label" parent="."]
-margin_left = 596.211
-margin_top = -112.0
-margin_right = 764.211
-margin_bottom = -98.0
-text = "Press ctrl to change scene"
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 1118.53
-margin_top = 81.2632
-margin_right = 1217.53
-margin_bottom = 95.2632
-text = "TriggerDialogue"
-
-[node name="Player" parent="." instance=ExtResource( 5 )]
-
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 290.678, 157.574 )
 z_index = 1
 
@@ -72,9 +49,25 @@ margin_top = -7.69952
 margin_right = -27.7418
 margin_bottom = -7.69952
 
+[node name="hp_amount" parent="CanvasLayer/Indicators" index="0"]
+editor/display_folded = true
 
-[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 9 )]
+[node name="Label" parent="CanvasLayer/Indicators/hp_amount" index="0"]
+percent_visible = 1.0
 
+[node name="curent_element" parent="CanvasLayer/Indicators/knife_amount" index="0"]
+visible = false
+
+[node name="curent_element" parent="CanvasLayer/Indicators/wood_amount" index="0"]
+visible = false
+
+[node name="curent_element" parent="CanvasLayer/Indicators/fire_amount" index="0"]
+visible = false
+
+[node name="curent_element" parent="CanvasLayer/Indicators/Earth_amount" index="0"]
+visible = false
+
+[node name="DialogueAction" parent="CanvasLayer" instance=ExtResource( 8 )]
 pause_mode = 2
 
 [node name="ElementHandler" type="Node2D" parent="."]
