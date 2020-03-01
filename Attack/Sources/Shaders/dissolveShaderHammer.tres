@@ -61,7 +61,7 @@ uniform sampler2D tex_frg_3;uniform float dissolve;
 
 
 void vertex() {
-// 日志:0
+// Output:0
 
 }
 
@@ -70,7 +70,7 @@ void fragment() {
 	float n_out10p0;
 	n_out10p0 = Brightness;
 
-// 输入:9
+// Input:9
 	vec3 n_out9p0;
 	n_out9p0 = vec3(UV,0.0);
 
@@ -87,7 +87,7 @@ void fragment() {
 	float n_out11p0;
 	n_out11p0 = n_out10p0 + dot(n_out18p0,vec3(0.333333,0.333333,0.333333));
 
-// 输入:2
+// Input:2
 	vec3 n_out2p0;
 	n_out2p0 = vec3(UV,0.0);
 
@@ -142,14 +142,14 @@ void fragment() {
 	float n_out8p0;
 	n_out8p0 = n_out18p1 * n_out6p0;
 
-// 日志:0
+// Output:0
 	COLOR.rgb = n_out17p0;
 	COLOR.a = n_out8p0;
 
 }
 
 void light() {
-// 日志:0
+// Output:0
 
 }
 "
