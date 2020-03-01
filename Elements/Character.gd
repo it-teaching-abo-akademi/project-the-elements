@@ -118,6 +118,7 @@ func thorn(direction):
 	if(direction == 0):
 		motion.y = -200
 	else:
+		motion.y = -150
 		motion.x = direction * 200
 
 

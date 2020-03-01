@@ -5,7 +5,7 @@
 [ext_resource path="res://UI/Indicators.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dialogue/DialogueAction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Scene2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Scene5.tscn" type="PackedScene" id=6]
 
 [node name="Test" type="Node"]
 script = ExtResource( 1 )
@@ -43,5 +43,6 @@ pause_mode = 2
 script = ExtResource( 5 )
 
 [node name="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 144.896, -218.631 )
 
 [editable path="CanvasLayer/Indicators"]
