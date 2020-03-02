@@ -11,6 +11,10 @@ const UP = Vector2(0, -1)
 const GRAVITY = 9
 const FRICTION = 0.02
 
+
+var max_hp = 200
+var current_hp = 200
+
 enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT,IDLE} # states of enemies
 enum DIRECTION {
 	DIR_N,
@@ -30,16 +34,6 @@ var FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10
 var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
 var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
 
-
-#Enemies data
-var speed = 5
-var strength = 5
-var hp = 100
-var max_hp = 100
-var detection_range = 200
-var attack_range = 10
-var preferred_attack_range = 10
-var busy = false # If the enemy can do next move or not
 
 var current_scene = null
 

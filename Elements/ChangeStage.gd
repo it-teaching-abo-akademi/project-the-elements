@@ -22,6 +22,8 @@ func _on_ChangeStage_body_exited(body):
 	
 func _process(delta):
 	if Input.is_action_pressed("ctrl") and area_entered:
+		global.current_scene.get_node("Player/Status/Health").update()
+		global.current_scene.get_node("Player/Status/Elements").update()
 		get_tree().change_scene(target_stage)
 
 

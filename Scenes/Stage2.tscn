@@ -83,6 +83,7 @@ autoplay = true
 
 [node name="ChangeStage" parent="." instance=ExtResource( 13 )]
 position = Vector2( 670.218, -46.2034 )
+target_stage = "res://Scenes/Stage1.tscn"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 129.544, 572.719 )

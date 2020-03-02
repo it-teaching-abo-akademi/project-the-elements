@@ -25,6 +25,11 @@ func _ready():
 	emit_signal("set_max_value",2,FIRE.max_amount)
 	emit_signal("set_max_value",3,WOOD.max_amount)
 	emit_signal("set_max_value",4,EARTH.max_amount)
+	emit_signal("change_value",0,SPRING.current_amount)
+	emit_signal("change_value",1,KNIFE.current_amount)
+	emit_signal("change_value",2,FIRE.current_amount)
+	emit_signal("change_value",3,WOOD.current_amount)
+	emit_signal("change_value",4,EARTH.current_amount)
 
 func init():
 	SPRING = global.SPRING
