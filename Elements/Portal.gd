@@ -19,5 +19,5 @@ func _on_Area2D_body_exited(body):
 		player = null
 		
 func _process(delta):
-	if Input.is_action_pressed("ctrl") and area_entered:
+	if Input.is_action_just_pressed("ctrl") and area_entered:
 		player.position = get_node(target_portal).position

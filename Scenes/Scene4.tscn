@@ -986,7 +986,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 12/shapes = [  ]
 12/z_index = 0
 
-[node name="Stage wood" type="Node2D"]
+[node name="Stage Wood" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="wood_background" type="Sprite" parent="."]

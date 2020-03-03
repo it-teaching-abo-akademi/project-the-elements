@@ -8987,7 +8987,6 @@ anims/Floating = SubResource( 1 )
 anims/vibration = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( -4.23999, 2.00543 )
 scale = Vector2( 0.195464, 0.195464 )
 texture = SubResource( 3 )
@@ -9050,7 +9049,6 @@ script = ExtResource( 7 )
 visible = false
 
 [node name="AttackSystem" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Weapon" parent="AttackSystem" instance=ExtResource( 9 )]
 

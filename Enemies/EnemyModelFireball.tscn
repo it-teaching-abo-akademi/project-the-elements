@@ -35,10 +35,10 @@
 extents = Vector2( 53.9627, 93.3529 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 399.53
+radius = 709.925
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 528.436, 165.064 )
+extents = Vector2( 830.646, 203.019 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0

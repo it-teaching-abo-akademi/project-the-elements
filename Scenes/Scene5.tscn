@@ -1000,7 +1000,7 @@ extents = Vector2( 15.8666, 56.3268 )
 [sub_resource type="RectangleShape2D" id=93]
 extents = Vector2( 15.2262, 46.3916 )
 
-[node name="Stage knife" type="Node2D"]
+[node name="Stage Knife" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="knife_background" type="Sprite" parent="."]
@@ -1103,6 +1103,7 @@ stream = ExtResource( 10 )
 autoplay = true
 
 [node name="Enemies" type="Node2D" parent="."]
+editor/display_folded = true
 scale = Vector2( 0.159998, 0.200533 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 11 )]
