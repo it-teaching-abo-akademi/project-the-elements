@@ -1,7 +1,7 @@
 [gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Scenes/Scene1.gd" type="Script" id=1]
-[ext_resource path="res://abstract-platformer-370-assets/PNG/Backgrounds/set4_background.png" type="Texture" id=2]
+[ext_resource path="res://Maps/set4_background.png" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Sound/Earth.ogg" type="AudioStream" id=4]
 [ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=5]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Enemies/EnemyModelThrust.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemies/EnemyModelSlash.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Enemies/EnemyModelLift.tscn" type="PackedScene" id=12]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )
