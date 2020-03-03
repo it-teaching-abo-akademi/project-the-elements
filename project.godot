@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameTest"
-run/main_scene="res://Scenes/Stage2.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://Elements/Sprites/Hero/Earth/frame0000.png"
 
 [autoload]
