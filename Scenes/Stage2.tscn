@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/MainStage.gd" type="Script" id=1]
 [ext_resource path="res://Elements/Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=11]
 [ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Enemies/sprites/Wood_origin.png" type="Texture" id=14]
+[ext_resource path="res://Elements/Portal.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemies/sprites/Earth_origin.png" type="Texture" id=16]
 
 [node name="MainStage" type="Node"]
 script = ExtResource( 1 )
@@ -34,19 +37,23 @@ z_index = 1
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 527.05, -243.186 )
 scale = Vector2( 0.451138, 0.483216 )
 z_index = -1
 
 [node name="EnemyModel2" parent="Enemies" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -123.989, -256.526 )
 scale = Vector2( 0.640001, 0.599999 )
 
 [node name="EnemyModel3" parent="Enemies" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 312.368, 138.923 )
 scale = Vector2( 0.439999, 0.48 )
 
 [node name="EnemyModel4" parent="Enemies" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( -86.9762, 197.363 )
 scale = Vector2( 0.533049, 0.52 )
 
@@ -77,5 +84,18 @@ autoplay = true
 [node name="ChangeStage" parent="." instance=ExtResource( 13 )]
 position = Vector2( 670.218, -46.2034 )
 target_stage = "res://Scenes/Stage1.tscn"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 129.544, 572.719 )
+scale = Vector2( 0.111595, 0.14013 )
+texture = ExtResource( 14 )
+
+[node name="Area2D" parent="Sprite" instance=ExtResource( 15 )]
+target_portal = NodePath("../../Sprite2")
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 905.831, 438.305 )
+scale = Vector2( 0.0830596, 0.128716 )
+texture = ExtResource( 16 )
 
 [editable path="CanvasLayer/Indicators"]

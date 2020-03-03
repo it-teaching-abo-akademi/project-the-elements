@@ -11,6 +11,10 @@ const UP = Vector2(0, -1)
 const GRAVITY = 9
 const FRICTION = 0.02
 
+
+var max_hp = 200
+var current_hp = 200
+
 enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT,IDLE} # states of enemies
 enum DIRECTION {
 	DIR_N,
@@ -31,21 +35,14 @@ var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10
 var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
 
 
-#Enemies data
-var speed = 5
-var strength = 5
-var hp = 100
-var max_hp = 100
-var detection_range = 200
-var attack_range = 10
-var preferred_attack_range = 10
-var busy = false # If the enemy can do next move or not
-
 var current_scene = null
 
 var Fire_enemy = preload("res://.import/Fire_origin.png-9c301150443c9d211ed53d15b28488f4.stex")
 var Spring_enemy = preload("res://.import/Spring_origin.png-8a8dc2c87d1c481d1f1d3af4f8df01af.stex")
 var Knife_enemy = preload("res://.import/Knife_origin.png-c02330c853ea7d1e313d729a4707f709.stex")
+var Wood_enemy = preload("res://.import/Wood_origin.png-11ae17ea190a908ddfff32ddbf42927c.stex")
+var Earth_enemy = preload("res://.import/Earth_origin.png-3fd7ce9c915b05cf45e15753e1d7b12a.stex")
+
 var fireball_scene = preload("res://Elements/Fireball.tscn")
 var arrow_scene = preload("res://Elements/Arrow.tscn")
 

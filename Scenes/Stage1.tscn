@@ -9,7 +9,6 @@
 [ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="Stage1" type="Node2D"]
