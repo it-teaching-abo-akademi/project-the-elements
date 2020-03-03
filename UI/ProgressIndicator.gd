@@ -8,20 +8,20 @@ func change_value(v):
 	animate_value(current_value, v)
 	current_value = v
 	self.value = v
-	if(get_node("Label")!=null):
+	if self.name == "hp_amount":
 		get_node("Label").text = "%s / %s" % [v, maximum_value]
 
 func set_max_value(v): #current_value = max_value
 	self.max_value = v
 	self.value = v
 	maximum_value = v
-	if(get_node("Label")!=null):
+	if self.name == "hp_amount":
 		get_node("Label").text = "%s / %s" % [maximum_value, maximum_value]
 
 func change_max_value(v): #current_value != max_value
 	self.max_value = v
 	maximum_value = v
-	if(get_node("Label")!=null):
+	if self.name == "hp_amount":
 		get_node("Label").text = "%s / %s" % [current_value, maximum_value]
 
 func animate_value(start, end):

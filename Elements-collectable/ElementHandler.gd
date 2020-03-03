@@ -27,11 +27,11 @@ var gravity
 enum {WATER, KNIFE, FIRE, WOOD, SOIL}
 
 const _ELEMENT_COLORS = [
-	Color(0, 0.5, 1), # Water
-	Color(0.5, 0.5, 0.5), # Knife
-	Color(1, 0, 0), # Fire
-	Color(0.1, 0.8, 0), # Wood
-	Color(0.5, 0.4, 0), # Soil
+	Color(0, 0.5, 1, 1), # Water
+	Color(0.96, 0.96, 0.96, 1), # Knife
+	Color(1, 0, 0, 1), # Fire
+	Color(0.1, 0.8, 0, 1), # Wood
+	Color(0.5, 0.4, 0, 1), # Soil
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -52,7 +52,7 @@ func _turn_into_cloud(elem):
 	# Turn particles into cloud point
 	#var elem = elements[-1]
 	var particles = elem.get_node("ElementParticles")
-	particles.process_material.scale = 0.5
+	particles.process_material.scale = 0.2
 	# particles.amount = 120
 	particles.process_material.initial_velocity = 15
 	particles.process_material.trail_divisor = 4
@@ -78,12 +78,13 @@ func createElement(type, amount, position):
 	var element = elementScene.instance()
 	var particles = element.get_node("ElementParticles")
 	# Make the process material and its objects unique for this instance (making it independent of other instances)
-	particles.process_material = particles.process_material.duplicate()
-	particles.process_material.color_ramp = particles.process_material.color_ramp.duplicate()
-	particles.process_material.color_ramp.gradient = particles.process_material.color_ramp.gradient.duplicate()
+	#particles.process_material = particles.process_material.duplicate()
+	#particles.process_material.color_ramp = particles.process_material.color_ramp.duplicate()
+	#particles.process_material.color_ramp.gradient = particles.process_material.color_ramp.gradient.duplicate()
 	element.position = position
 	# The amount of the element brightens the color
-	particles.process_material.color_ramp.gradient.set_color(0, _ELEMENT_COLORS[type].lightened(amount*0.5))
+	#particles.process_material.color_ramp.gradient.set_color(0, _ELEMENT_COLORS[type].lightened(amount*0.5))
+	particles.modulate = _ELEMENT_COLORS[type]
 	# Set the type and amount in the instance
 	element.element_type = type
 	element.element_amount = amount

@@ -16,16 +16,16 @@ const ELEMENT_COLORS = [
 	Color(0.82, 0.41, 0.12, 0.5), # Earth
 ]
 
-const UP = global.UP
-const GRAVITY = global.GRAVITY
-const SPEED = 150
+var UP = global.UP
+var GRAVITY = global.GRAVITY
+var SPEED = 150
 const JUMP_HEIGHT = -500  #character jumping height
 const FLYING_SPEED = 20  #character flying speed 
 const FLYING_ADJUST_SPEED = 5 #character adjusting speed while flying
 const BURST_SPEED = 50  #character burst speed
 const FUEL_CONSUME = 10  #character fuel consume per time unit
 const BURST_FUEL_CONSUME = 20  #character burst fuel consuming per time unit
-const friction = global.FRICTION
+var friction = global.FRICTION
 const MAX_FLYING_SPEED = 800  #character flying speed 
 
 #Elements
@@ -225,6 +225,7 @@ func element_collected(type, amount):
 func _on_EnemyModel_attack(attack : Action):
 	if protected:
 		protected = false
+		global.current_scene.get_node("Player/Sprite/Shield").visible = false
 		return
 	get_node("Status/Health")._get_hit(attack.damage)
 	position.x += attack.face_direction * 30
@@ -232,6 +233,7 @@ func _on_EnemyModel_attack(attack : Action):
 
 func _ready():
 	mouse_effect = preload("res://Attack/MouseEffect.tscn")
+	global.current_scene.get_node("Player/Sprite/Shield").visible = false
 	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
 	connect("update_element_indicators",indicator,"_on_Player_update_element_indicators")
 	update_element_indicators()
@@ -299,7 +301,7 @@ func complete_gesture(gesture, button):
 			action.load_data()
 			if elements.change_value(action.element, action.element_consume) == false:
 				return
-			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
+			element_handler.createElement(0, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 			action.direction = - gesture.get_direction()
 			
 		"Wood":
@@ -308,15 +310,19 @@ func complete_gesture(gesture, button):
 			if elements.change_value(action.element, action.element_consume) == false:
 				return
 			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
+			global.current_scene.get_node("Player/Sprite/Recover").emitting = true
 			get_node("Status/Health")._get_hit(action.damage)
 			return
 		"Earth":
+			if protected == true:
+				return
 			action.name = "Shield"
 			action.load_data()
 			if elements.change_value(action.element, action.element_consume) == false:
 				return
 			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 			protected = true
+			global.current_scene.get_node("Player/Sprite/Shield").visible = true
 			return
 	if action.name == null:
 		return

@@ -8924,7 +8924,7 @@ shader_param/dissolve = -1.0
 shader_param/WeaponTexture = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=187]
-extents = Vector2( 35.0668, 10 )
+extents = Vector2( 35.0668, 16.5517 )
 
 [node name="EnemyModel" type="KinematicBody2D"]
 position = Vector2( 294.836, 273.336 )
@@ -8941,6 +8941,7 @@ position = Vector2( 4.31696, 4.7432 )
 shape = SubResource( 1 )
 
 [node name="Detect_range" type="Area2D" parent="."]
+visible = false
 position = Vector2( 4.31696, 2.15848 )
 scale = Vector2( 1.86232, 0.84 )
 
@@ -8949,6 +8950,7 @@ position = Vector2( -29.6916, -18.5925 )
 shape = SubResource( 2 )
 
 [node name="Attack_range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
 position = Vector2( 0.454109, -2.32776 )
@@ -9266,7 +9268,7 @@ color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [node name="Wall_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_detect"]
-position = Vector2( 2.15845, 0 )
+position = Vector2( 1.25595, 9.92752 )
 scale = Vector2( 1.76, 5.04 )
 shape = SubResource( 187 )
 

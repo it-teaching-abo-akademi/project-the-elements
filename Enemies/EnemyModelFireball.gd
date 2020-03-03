@@ -18,8 +18,6 @@ var element = 1
 var player = null
 var player_in_attack_range = null
 
-var character_body : Character = null
-
 var current_attack : Action = null
 
 var attack_mode : Action = null
@@ -33,7 +31,11 @@ onready var element_handler = global.current_scene.get_node("ElementHandler")
 signal timer_end
 
 func _physics_process(delta):
-	if state == global.ENEMY_STATES['PATROL']:
+	if state == global.ENEMY_STATES['IDLE']:
+		velocity.y += global.GRAVITY * delta
+		velocity.x = 0
+		velocity = move_and_slide(velocity, global.UP)
+	elif state == global.ENEMY_STATES['PATROL']:
 		#chase()
 		if player == null:
 			if $RayCast2D.is_colliding() == false:
@@ -56,7 +58,7 @@ func _physics_process(delta):
 			state = global.ENEMY_STATES['PATROL']
 			return
 		position.x += current_attack.face_direction * 30
-		position.y += 20
+		position.y -= 20
 		current_attack = null
 		state = global.ENEMY_STATES['PATROL']
 	elif state == global.ENEMY_STATES['ATTACK']:
@@ -65,7 +67,7 @@ func _physics_process(delta):
 			return
 		velocity.x = 0
 		velocity.y += global.GRAVITY * delta
-		move_and_slide(velocity,global.UP)
+		velocity = move_and_slide(velocity,global.UP)
 		attack_mode.face_direction = face_direction
 		var str_direction
 		if face_direction == 1:
@@ -129,17 +131,16 @@ func _on_Player_weapon_attack(attack : Action):
 	current_attack = attack
 	state = global.ENEMY_STATES['LIFT']
 	if hp <= 0:
-		element_handler.createElement(element, 10, Vector2(player.position[0] + rand_range(-3, 3), player.position[1]))
+		var hero = global.current_scene.get_node('Player')
+		element_handler.createElement(element, 10, Vector2(hero.position[0] + rand_range(-3, 3), hero.position[1]))
 		queue_free()
 		#get_node("CollisionShape2D").disabled = true
 	pass
 
 
 func _on_Detect_range_body_entered(body):
-	if character_body == null:
-		character_body = global.current_scene.get_node('Player')
 	if "Player" in body.name:
-		player = character_body
+		player = global.current_scene.get_node('Player')
 
 
 func _on_Detect_range_body_exited(body):
@@ -149,7 +150,7 @@ func _on_Detect_range_body_exited(body):
 
 func _on_Attack_range_body_entered(body):
 	if "Player" in body.name:
-		player_in_attack_range = character_body
+		player_in_attack_range = player
 		state = global.ENEMY_STATES['ATTACK']
 
 

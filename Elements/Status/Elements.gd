@@ -12,6 +12,14 @@ signal set_max_value(type,value)
 signal change_max_value(type,value)
 signal change_value(type,value)
 
+
+func _process(delta):
+	change_value(0,-SPRING.recovery_speed * 0.01)
+	change_value(1,-KNIFE.recovery_speed * 0.01)
+	change_value(2,-FIRE.recovery_speed * 0.01)
+	change_value(3,-WOOD.recovery_speed * 0.01)
+	change_value(4,-EARTH.recovery_speed * 0.01)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#todo read values from global

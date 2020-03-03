@@ -40,6 +40,7 @@ scale = 0.1
 color_ramp = SubResource( 3 )
 
 [node name="Collectable-Element" type="KinematicBody2D"]
+modulate = Color( 1, 1, 1, 0.75 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -61,5 +62,5 @@ position = Vector2( -0.259567, 0.0809479 )
 scale = Vector2( 0.0503959, 0.0503959 )
 z_index = 3
 texture = ExtResource( 3 )
-energy = 0.45
+energy = 0.1
 shadow_enabled = true

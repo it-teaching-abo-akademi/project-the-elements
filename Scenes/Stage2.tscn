@@ -37,23 +37,19 @@ z_index = 1
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 527.05, -243.186 )
 scale = Vector2( 0.451138, 0.483216 )
 z_index = -1
 
 [node name="EnemyModel2" parent="Enemies" instance=ExtResource( 6 )]
-visible = false
 position = Vector2( -123.989, -256.526 )
 scale = Vector2( 0.640001, 0.599999 )
 
 [node name="EnemyModel3" parent="Enemies" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 312.368, 138.923 )
 scale = Vector2( 0.439999, 0.48 )
 
 [node name="EnemyModel4" parent="Enemies" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( -86.9762, 197.363 )
 scale = Vector2( 0.533049, 0.52 )
 
