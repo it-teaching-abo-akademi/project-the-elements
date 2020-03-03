@@ -1,12 +1,17 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=102 format=2]
 
-[ext_resource path="res://Elements/character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://abstract-platformer-370-assets/PNG/Backgrounds/set4_background.png" type="Texture" id=2]
-[ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
-[ext_resource path="res://Maps/enemyFloating_1.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Scene1.gd" type="Script" id=1]
+[ext_resource path="res://Elements/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://abstract-platformer-370-assets/PNG/Backgrounds/set4_background.png" type="Texture" id=3]
+[ext_resource path="res://Maps/spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Sound/Earth.ogg" type="AudioStream" id=5]
 [ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/EnemyModelArrow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/EnemyModelThrust.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/EnemyModelSlash.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/EnemyModelLift.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )
@@ -274,7 +279,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 
 [sub_resource type="TileSet" id=89]
 0/name = "Earth"
-0/texture = ExtResource( 3 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 25, 2, 205, 44 )
@@ -404,7 +409,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 0/z_index = 0
 1/name = "Knife"
-1/texture = ExtResource( 3 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 25, 48, 205, 44 )
@@ -540,7 +545,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 1/z_index = 0
 2/name = "Wood"
-2/texture = ExtResource( 3 )
+2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 25, 94, 205, 44 )
@@ -664,7 +669,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 2/z_index = 0
 3/name = "Fire"
-3/texture = ExtResource( 3 )
+3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 347, 416, 251, 44 )
@@ -680,7 +685,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 3/shapes = [  ]
 3/z_index = 0
 4/name = "Pillar"
-4/texture = ExtResource( 3 )
+4/texture = ExtResource( 4 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 117, 324, 182, 21 )
@@ -744,7 +749,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 4/z_index = 0
 5/name = "Magma"
-5/texture = ExtResource( 3 )
+5/texture = ExtResource( 4 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 25, 278, 90, 21 )
@@ -784,7 +789,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 5/z_index = 0
 6/name = "Thorn"
-6/texture = ExtResource( 3 )
+6/texture = ExtResource( 4 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 232, 48, 21, 21 )
@@ -800,7 +805,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 6/z_index = 0
 7/name = "spritesheet.png 7"
-7/texture = ExtResource( 3 )
+7/texture = ExtResource( 4 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 232, 623, 21, 67 )
@@ -810,7 +815,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 7/shapes = [  ]
 7/z_index = 0
 8/name = "spritesheet.png 8"
-8/texture = ExtResource( 3 )
+8/texture = ExtResource( 4 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 255, 623, 21, 67 )
@@ -820,7 +825,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 8/shapes = [  ]
 8/z_index = 0
 9/name = "spritesheet.png 9"
-9/texture = ExtResource( 3 )
+9/texture = ExtResource( 4 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 301, 623, 21, 67 )
@@ -830,7 +835,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 9/shapes = [  ]
 9/z_index = 0
 10/name = "spritesheet.png 10"
-10/texture = ExtResource( 3 )
+10/texture = ExtResource( 4 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 278, 623, 21, 67 )
@@ -840,7 +845,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 10/shapes = [  ]
 10/z_index = 0
 11/name = "Spring"
-11/texture = ExtResource( 3 )
+11/texture = ExtResource( 4 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 25, 370, 205, 44 )
@@ -964,7 +969,7 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 } ]
 11/z_index = 0
 12/name = "Ice"
-12/texture = ExtResource( 3 )
+12/texture = ExtResource( 4 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 278, 370, 44, 21 )
@@ -980,36 +985,21 @@ points = PoolVector2Array( 3.31271, 11.7704, 6.66168, 19.0265, 10.5688, 11.4913,
 12/shapes = [  ]
 12/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="Stage Earth" type="Node2D"]
+script = ExtResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="set4_background" type="Sprite" parent="."]
-position = Vector2( 493.351, 168.358 )
-scale = Vector2( 1.54308, 0.776449 )
-texture = ExtResource( 2 )
+position = Vector2( 488.673, 170.451 )
+scale = Vector2( 2.10647, 1.66764 )
+texture = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 89 )
 cell_size = Vector2( 21, 21 )
 format = 1
 tile_data = PoolIntArray( -65536, 1610612736, 65537, -65535, 1610612736, 0, -65534, 1610612736, 0, -65533, 1610612736, 0, -65532, 1610612736, 0, -65531, 1610612736, 0, -65530, 1610612736, 0, -65529, 1610612736, 0, -65528, 1610612736, 0, -65527, 1610612736, 0, -65526, 1610612736, 0, -65525, 1610612736, 0, -65524, 1610612736, 0, -65523, 1610612736, 0, -65522, 1610612736, 0, -65521, 1610612736, 0, -65520, 1610612736, 0, -65519, 1610612736, 0, -65518, 1610612736, 0, -65517, 1610612736, 0, -65516, 1610612736, 0, -65515, 1610612736, 0, -65514, 1610612736, 0, -65513, 1610612736, 0, -65512, 1610612736, 0, -65511, 1610612736, 0, -65510, 1610612736, 0, -65509, 1610612736, 0, -65508, 1610612736, 0, -65507, 1610612736, 0, -65506, 1610612736, 0, -65505, 1610612736, 0, -65504, 1610612736, 0, -65503, 1610612736, 0, -65502, 1610612736, 0, -65501, 1610612736, 0, -65500, 1610612736, 0, -65499, 1610612736, 0, -65498, 1610612736, 0, -65497, 1610612736, 0, -65496, 1610612736, 0, -65495, 1610612736, 0, -65494, 1610612736, 0, -65493, 1610612736, 0, -65492, 1610612736, 0, -65491, 1610612736, 0, -65490, 1610612736, 65537, 0, -1610612736, 0, 46, -1073741824, 0, 65536, -1610612736, 0, 65582, -1073741824, 0, 131072, -1610612736, 0, 131118, -1073741824, 0, 196608, -1610612736, 0, 196654, -1073741824, 0, 262144, -1610612736, 0, 262190, -1073741824, 0, 327680, -1610612736, 0, 327726, -1073741824, 0, 393216, -1610612736, 0, 393262, -1073741824, 0, 458752, -1610612736, 0, 458798, -1073741824, 0, 524288, -1610612736, 0, 524334, -1073741824, 0, 589824, -1610612736, 0, 589870, -1073741824, 0, 655360, -1610612736, 0, 655368, 0, 65536, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 65538, 655386, 0, 5, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655395, 0, 0, 655396, 0, 65538, 655406, -1073741824, 0, 720896, -1610612736, 0, 720921, 0, 5, 720922, 0, 65541, 720942, -1073741824, 0, 786432, -1610612736, 0, 786456, 0, 5, 786457, 0, 65541, 786458, 0, 65537, 786478, -1073741824, 0, 851968, -1610612736, 0, 851969, 7, 0, 851991, 0, 5, 851992, 0, 65541, 851993, 0, 65537, 851994, 0, 65537, 851995, 9, 0, 852014, -1073741824, 0, 917504, -1610612736, 0, 917526, 0, 5, 917527, 0, 65541, 917528, 0, 65537, 917529, 0, 65537, 917530, 0, 65537, 917550, -1073741824, 0, 983040, -1610612736, 0, 983061, 0, 5, 983062, 0, 65541, 983063, 0, 65537, 983064, 0, 65537, 983065, 0, 65537, 983066, 0, 65537, 983086, -1073741824, 0, 1048576, -1610612736, 65537, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 65537, 1048598, 0, 65537, 1048599, 0, 65537, 1048600, 0, 65537, 1048601, 0, 65537, 1048602, 0, 65537, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1048606, 0, 0, 1048607, 0, 0, 1048608, 0, 0, 1048609, 0, 0, 1048610, 0, 0, 1048611, 0, 0, 1048612, 0, 0, 1048613, 0, 0, 1048614, 0, 0, 1048615, 0, 0, 1048616, 0, 0, 1048617, 0, 0, 1048618, 0, 0, 1048619, 0, 0, 1048620, 0, 0, 1048621, 0, 0, 1048622, -1073741824, 65539 )
-
-[node name="远程" type="Sprite" parent="."]
-position = Vector2( 269.968, 172.815 )
-texture = ExtResource( 4 )
-
-[node name="近战3" type="Sprite" parent="."]
-position = Vector2( 659.759, 307.278 )
-texture = ExtResource( 4 )
-
-[node name="近战" type="Sprite" parent="."]
-position = Vector2( 689.613, 177.248 )
-texture = ExtResource( 4 )
-
-[node name="近战2" type="Sprite" parent="."]
-position = Vector2( 291.486, 310.78 )
-texture = ExtResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -1019,5 +1009,29 @@ autoplay = true
 
 [node name="ElementHandler" parent="." instance=ExtResource( 7 )]
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
+[node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 49.9962, 302.86 )
+scale = Vector2( 0.68, 0.60723 )
+
+[node name="ChangeStage" parent="." instance=ExtResource( 8 )]
+position = Vector2( 580.309, 306.851 )
+scale = Vector2( 0.355303, 0.4835 )
+target_stage = "res://Scenes/Scene2.tscn"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyModel" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 255.298, 181.263 )
+scale = Vector2( 0.290153, 0.244224 )
+
+[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 679.837, 294.336 )
+scale = Vector2( 0.385562, 0.360001 )
+
+[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 664.007, 168.971 )
+scale = Vector2( 0.360001, 0.359999 )
+
+[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 219.201, 308.191 )
+scale = Vector2( 0.234969, 0.200001 )
