@@ -51,18 +51,18 @@ func _ready():
 		add_child(node)
 		nodes.append(node)
 	
-		var trail = Trail2D.new()
-		
-		add_child(trail)
-		trail.set_target(node)
-		
-		if line_width == Repartition.RANDOM:
-			trail.width = (randi() % (maximum_line_width - minimum_line_width)) + minimum_line_width
-		elif line_width == Repartition.REGULAR:
-			trail.width = minimum_line_width
-		
-		if line_length == Repartition.RANDOM:
-			trail.trail_length = (randi() % (maximum_length - minimum_length)) + minimum_length
-		elif line_length == Repartition.REGULAR:
-			trail.trail_length = minimum_length
-		i += 1
+#		var trail = Trail2D.new()
+#
+#		add_child(trail)
+#		trail.set_target(node)
+#
+#		if line_width == Repartition.RANDOM:
+#			trail.width = (randi() % (maximum_line_width - minimum_line_width)) + minimum_line_width
+#		elif line_width == Repartition.REGULAR:
+#			trail.width = minimum_line_width
+#
+#		if line_length == Repartition.RANDOM:
+#			trail.trail_length = (randi() % (maximum_length - minimum_length)) + minimum_length
+#		elif line_length == Repartition.REGULAR:
+#			trail.trail_length = minimum_length
+#		i += 1

@@ -5,6 +5,7 @@ class_name EnemyAI
 
 var UP = global.UP
 var GRAVITY = global.GRAVITY
+var isEnemy = true
 
 # Variables
 var speed = 5000
@@ -50,7 +51,6 @@ func _physics_process(delta):
 				sleep_timer = 0
 		1: #patrol
 			if $RayCast2D.is_colliding() == false:
-				print('deteced')
 				motion_state = 3
 				motion.x = 0
 			else:
@@ -193,12 +193,12 @@ func _on_Player_weapon_attack(attack : Action):
 	# The player attacked. We need to check here if the current monster is hurt
 	# TODO: the check is just for debug, it needs to be improved
 	current_attack = attack
-	if current_attack.name.begin_with('Thrust') && motion_state != global.ENEMY_MOTION_STATES['ISKNOCKED']:
+	if current_attack.name.begins_with('Thrust') && motion_state != global.ENEMY_MOTION_STATES['ISKNOCKED']:
 		print('knocked')
 		last_motion_state = motion_state
 		motion_state = global.ENEMY_MOTION_STATES['ISKNOCKED']
 		knockback_timer = 0
-	elif current_attack.name.end_with('ift') && motion_state != global.ENEMY_MOTION_STATES['ISLIFTED']:
+	elif current_attack.name.ends_with('ift') && motion_state != global.ENEMY_MOTION_STATES['ISLIFTED']:
 		print('lift')
 		last_motion_state = motion_state
 		motion_state = global.ENEMY_MOTION_STATES['ISLIFTED']
