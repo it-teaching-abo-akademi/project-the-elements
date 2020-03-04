@@ -13,7 +13,7 @@ var state = STATE_HIDED
 var first_attack = null
 var second_attack = null
 var recent_attack = null
-var current_attack = null
+var current_attack :Action = null
 
 var appear_time = 0.0
 var disappear_time = 0.0
@@ -218,6 +218,7 @@ func basic_attack():
 	
 func can_attack():
 	current_attack.load_data()
+	current_attack.damage = current_attack.damage * (1 + elements.get_level(current_attack.element) * 0.1)
 	if elements.can_lance(current_attack.element, current_attack.element_consume) == false:
 		return false
 	else:
