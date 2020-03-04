@@ -1012,14 +1012,14 @@ position = Vector2( 49.9962, 302.86 )
 scale = Vector2( 0.68, 0.60723 )
 
 [node name="ChangeStage" parent="." instance=ExtResource( 8 )]
-position = Vector2( 581.965, 316.236 )
+position = Vector2( 581.965, 315.333 )
 scale = Vector2( 0.431554, 0.4835 )
 target_stage = "res://Scenes/Scene2.tscn"
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Arrow1" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 255.298, 181.263 )
+position = Vector2( 257.298, 175.263 )
 scale = Vector2( 0.290153, 0.244224 )
 
 [node name="Thrust1" parent="Enemies" instance=ExtResource( 10 )]

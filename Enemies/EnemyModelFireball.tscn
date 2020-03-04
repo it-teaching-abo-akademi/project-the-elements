@@ -35,10 +35,10 @@
 extents = Vector2( 53.9627, 93.3529 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 709.925
+radius = 1554.97
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 830.646, 203.019 )
+extents = Vector2( 1746.14, 203.019 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -8927,7 +8927,7 @@ shader_param/WeaponTexture = ExtResource( 26 )
 extents = Vector2( 35.0668, 16.8423 )
 
 [node name="EnemyModel" type="KinematicBody2D"]
-position = Vector2( 294.836, 273.336 )
+position = Vector2( 2658.89, 1350.79 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
