@@ -9112,7 +9112,6 @@ anims/Thrust_generate_left = SubResource( 177 )
 anims/Thrust_generate_right = SubResource( 178 )
 
 [node name="Ji" type="Node2D" parent="AttackSystem"]
-editor/display_folded = true
 rotation = -1.309
 scale = Vector2( -1, -1 )
 
