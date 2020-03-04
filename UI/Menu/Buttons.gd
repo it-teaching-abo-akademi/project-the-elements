@@ -21,10 +21,10 @@ func _on_ArenaMode_pressed():
 	global.max_hp = 200
 	global.current_hp = 200
 	global.SPRING = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-	global.KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-	global.FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-	global.WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-	global.EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+	global.KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+	global.FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+	global.WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+	global.EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
 	get_tree().change_scene("res://Scenes/Scene1.tscn")
 	pass # Replace with function body.
 

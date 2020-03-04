@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/TransitionScenes.gd" type="Script" id=1]
 [ext_resource path="res://UI/Menu/empty_space.png" type="Texture" id=2]
 [ext_resource path="res://Attack/particle.png" type="Texture" id=3]
 [ext_resource path="res://UI/fonts/Alatsi-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sound/TheElements.ogg" type="AudioStream" id=5]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
@@ -140,4 +141,8 @@ margin_bottom = 294.754
 rect_scale = Vector2( 1.6047, 1.31764 )
 custom_fonts/font = SubResource( 5 )
 text = "Home"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
