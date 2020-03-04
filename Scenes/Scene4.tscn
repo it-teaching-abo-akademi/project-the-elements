@@ -1047,7 +1047,7 @@ position = Vector2( 5138.29, -300.122 )
 scale = Vector2( 5.4424, 4.00902 )
 
 [node name="Slash2" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 1042.08, 1279.81 )
+position = Vector2( 1824.4, 1282.72 )
 scale = Vector2( 3.70406, 3.16667 )
 
 [node name="Thrust1" parent="Enemies" instance=ExtResource( 13 )]

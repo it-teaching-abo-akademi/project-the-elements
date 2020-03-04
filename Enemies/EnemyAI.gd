@@ -63,7 +63,7 @@ func _physics_process(delta):
 			if (($RayCast2D.is_colliding() == false)||($RayCast2D2.is_colliding() == true)):
 				motion.x = 0
 			else:
-				if player.position.x >= self.position.x:
+				if player.position.x >= to_global($Sprite.position).x:
 					face_direction = 1
 					$Sprite.flip_h = true
 				else:
@@ -139,7 +139,7 @@ func turn_aroud():
 	face_direction = -face_direction
 
 func face_to_player():
-	if self.position.x - player_in_attack_range.position.x < 0:
+	if to_global($Sprite.position).x - player_in_attack_range.position.x < 0:
 		$Sprite.flip_h = true
 		face_direction = 1
 	else:

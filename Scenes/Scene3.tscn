@@ -1025,7 +1025,7 @@ tile_data = PoolIntArray( 65535, -1610612725, 0, 0, 1610612747, 0, 1, 1610612747
 scale = Vector2( 1.29966, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 40.3371, 241.147 )
+position = Vector2( 38.4371, 392.197 )
 scale = Vector2( 0.839999, 0.880001 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
@@ -1070,7 +1070,7 @@ position = Vector2( 6648.72, 997.02 )
 scale = Vector2( 3.44118, 2.93511 )
 
 [node name="Slash3" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 2431.26, 983.169 )
+position = Vector2( 2462.28, 1008.72 )
 scale = Vector2( 2.40419, 3.27954 )
 
 [node name="Fireball1" parent="Enemies" instance=ExtResource( 11 )]
@@ -1083,7 +1083,7 @@ position = Vector2( 942.862, 381.889 )
 position = Vector2( 7420.75, 573.021 )
 
 [node name="Thrust" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 1024.25, 1342.84 )
+position = Vector2( 1836.23, 1342.84 )
 scale = Vector2( 3.625, 4.625 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

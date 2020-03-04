@@ -29,33 +29,33 @@ func _ready():
 			e.attack_mode = Action.new()
 			e.attack_mode.name = "Arrow"
 			e.attack_mode.load_data()
-			e.get_node('RayCast2D2').cast_to.y = 45
-			e.set_status(2500,3,70)
+			e.get_node('RayCast2D2').cast_to.y = 90
+			e.set_status(2250,3,70)
 			
 		elif(e.name.begins_with('Fireball')):
 			e.attack_mode = Action.new()
 			e.attack_mode.name = "Fireball"
 			e.attack_mode.load_data()
-			e.get_node('RayCast2D2').cast_to.y = 45
-			e.set_status(2000,3,80)
+			e.get_node('RayCast2D2').cast_to.y = 90
+			e.set_status(1750,3,80)
 			
 		elif(e.name.begins_with('Lift')):
 			e.attack_mode = Action.new()
 			e.attack_mode.name = "Lift"
 			e.attack_mode.load_data()
-			e.get_node('RayCast2D2').cast_to.y = 30
-			e.set_status(6000,2,200)
+			e.get_node('RayCast2D2').cast_to.y = 45
+			e.set_status(5500,2,200)
 			
 		elif(e.name.begins_with('Slash')):
 			e.attack_mode = Action.new()
 			e.attack_mode.name = "Slash"
 			e.attack_mode.load_data()
-			e.get_node('RayCast2D2').cast_to.y = 20
-			e.set_status(6000,3,100)
+			e.get_node('RayCast2D2').cast_to.y = 25
+			e.set_status(6500,3,100)
 			
 		elif(e.name.begins_with('Thrust')):
 			e.attack_mode = Action.new()
 			e.attack_mode.name = "Thrust"
 			e.attack_mode.load_data()
-			e.get_node('RayCast2D2').cast_to.y = 40
+			e.get_node('RayCast2D2').cast_to.y = 45
 			e.set_status(4000,4,150)

@@ -32,7 +32,7 @@
 [ext_resource path="res://Attack/Sources/VFX/Heavy Slash_2.png" type="Texture" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 53.9627, 93.3529 )
+extents = Vector2( 53.9627, 98.0956 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1554.97
@@ -8924,7 +8924,7 @@ shader_param/dissolve = -1.0
 shader_param/WeaponTexture = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=187]
-extents = Vector2( 35.0668, 16.8423 )
+extents = Vector2( 42.2773, 6.99741 )
 
 [node name="EnemyModel" type="KinematicBody2D"]
 position = Vector2( 2658.89, 1350.79 )
@@ -8946,13 +8946,14 @@ scale = Vector2( 1.86232, 0.84 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_range"]
 position = Vector2( -29.6916, -18.5925 )
+scale = Vector2( 0.47594, 0.499465 )
 shape = SubResource( 2 )
 
 [node name="Attack_range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
 position = Vector2( 0.454109, -2.32776 )
-scale = Vector2( 0.90791, 1.31689 )
+scale = Vector2( 0.54245, 2.06482 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -9267,8 +9268,8 @@ color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [node name="Wall_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_detect"]
-position = Vector2( 2.15845, 6.1387 )
-scale = Vector2( 1.76, 5.04 )
+position = Vector2( 1.38477, -10.1108 )
+scale = Vector2( 2.02465, 13.0393 )
 shape = SubResource( 187 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

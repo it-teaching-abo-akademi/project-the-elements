@@ -1103,7 +1103,6 @@ stream = ExtResource( 10 )
 autoplay = true
 
 [node name="Enemies" type="Node2D" parent="."]
-editor/display_folded = true
 scale = Vector2( 0.159998, 0.200533 )
 
 [node name="Thrust1" parent="Enemies" instance=ExtResource( 11 )]
@@ -1123,11 +1122,11 @@ position = Vector2( 9469.96, -559.537 )
 scale = Vector2( 5.14327, 4.36492 )
 
 [node name="Lift1" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 3118.8, 1632.23 )
+position = Vector2( 4820.64, 1123.9 )
 scale = Vector2( 5.9638, 6.24989 )
 
 [node name="Slash3" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 1151.91, 1605.93 )
+position = Vector2( 2794.04, 1563.07 )
 scale = Vector2( 5.7223, 4.36573 )
 
 [node name="Arrow1" parent="Enemies" instance=ExtResource( 14 )]
