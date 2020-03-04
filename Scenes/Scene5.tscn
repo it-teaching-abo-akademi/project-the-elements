@@ -1105,35 +1105,35 @@ autoplay = true
 [node name="Enemies" type="Node2D" parent="."]
 scale = Vector2( 0.159998, 0.200533 )
 
-[node name="Thrust1" parent="Enemies" instance=ExtResource( 11 )]
+[node name="EThrust1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 15414.6, -1918.44 )
 scale = Vector2( 5.25008, 3.79256 )
 
-[node name="Thrust2" parent="Enemies" instance=ExtResource( 11 )]
+[node name="EThrust2" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 17963.8, -3172.13 )
 scale = Vector2( 6.50007, 5.18884 )
 
-[node name="Slash1" parent="Enemies" instance=ExtResource( 12 )]
+[node name="ESlash1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 18095.7, -1953.5 )
 scale = Vector2( 5.00005, 3.39363 )
 
-[node name="Slash2" parent="Enemies" instance=ExtResource( 12 )]
+[node name="ESlash2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 9469.96, -559.537 )
 scale = Vector2( 5.14327, 4.36492 )
 
-[node name="Lift1" parent="Enemies" instance=ExtResource( 13 )]
+[node name="ELift1" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 4820.64, 1123.9 )
 scale = Vector2( 5.9638, 6.24989 )
 
-[node name="Slash3" parent="Enemies" instance=ExtResource( 12 )]
+[node name="ESlash3" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 2794.04, 1563.07 )
 scale = Vector2( 5.7223, 4.36573 )
 
-[node name="Arrow1" parent="Enemies" instance=ExtResource( 14 )]
+[node name="EArrow1" parent="Enemies" instance=ExtResource( 14 )]
 position = Vector2( 10310, -869.91 )
 scale = Vector2( 2.22657, 1.37748 )
 
-[node name="Fireball1" parent="Enemies" instance=ExtResource( 15 )]
+[node name="EFireball1" parent="Enemies" instance=ExtResource( 15 )]
 position = Vector2( 5709.54, 801.33 )
 scale = Vector2( 2.67602, 1.5134 )
 [connection signal="body_entered" from="Thorn_vertical" to="Thorn_vertical" method="_on_Thorn_vertical_body_entered"]

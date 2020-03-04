@@ -1061,28 +1061,28 @@ target_stage = "res://Scenes/Scene4.tscn"
 [node name="Enemies" type="Node2D" parent="."]
 scale = Vector2( 0.32, 0.32 )
 
-[node name="Slash1" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ESlash1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 5132.1, 993.557 )
 scale = Vector2( 3.20392, 3.69814 )
 
-[node name="Slash2" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ESlash2" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 6648.72, 997.02 )
 scale = Vector2( 3.44118, 2.93511 )
 
-[node name="Slash3" parent="Enemies" instance=ExtResource( 10 )]
+[node name="ESlash3" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 2462.28, 1008.72 )
 scale = Vector2( 2.40419, 3.27954 )
 
-[node name="Fireball1" parent="Enemies" instance=ExtResource( 11 )]
+[node name="EFireball1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 5966.59, 668.073 )
 
-[node name="Fireball2" parent="Enemies" instance=ExtResource( 11 )]
+[node name="EFireball2" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 942.862, 381.889 )
 
-[node name="Arrow1" parent="Enemies" instance=ExtResource( 12 )]
+[node name="EArrow1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 7420.75, 573.021 )
 
-[node name="Thrust" parent="Enemies" instance=ExtResource( 13 )]
+[node name="EThrust" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 1836.23, 1342.84 )
 scale = Vector2( 3.625, 4.625 )
 

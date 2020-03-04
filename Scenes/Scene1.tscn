@@ -1018,22 +1018,18 @@ target_stage = "res://Scenes/Scene2.tscn"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-
-[node name="Arrow1" parent="Enemies" instance=ExtResource( 9 )]
+[node name="EArrow1" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 257.298, 175.263 )
 scale = Vector2( 0.290153, 0.244224 )
 
-[node name="Thrust1" parent="Enemies" instance=ExtResource( 10 )]
-
+[node name="EThrust1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 679.837, 294.336 )
 scale = Vector2( 0.669341, 0.674015 )
 
-
-[node name="Slash1" parent="Enemies" instance=ExtResource( 11 )]
+[node name="ESlash1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 676.504, 182.938 )
 scale = Vector2( 0.837449, 0.805316 )
 
-[node name="Lift1" parent="Enemies" instance=ExtResource( 12 )]
+[node name="ELift1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 403.119, 314.092 )
 scale = Vector2( 0.609487, 0.560001 )
-

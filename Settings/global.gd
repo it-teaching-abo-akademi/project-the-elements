@@ -15,6 +15,9 @@ const FRICTION = 0.02
 var max_hp = 200
 var current_hp = 200
 
+#game level
+var level = 0
+
  # states of enemies
 enum ENEMY_MOTION_STATES {SLEEP, PATROL, CHASE, TURN, ISKNOCKED, ISLIFTED}
 enum ENEMY_LOGIC_STATES {ATTACK, IDLE}

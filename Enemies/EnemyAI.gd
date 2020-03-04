@@ -203,6 +203,7 @@ func _on_Player_weapon_attack(attack : Action):
 		last_motion_state = motion_state
 		motion_state = global.ENEMY_MOTION_STATES['ISLIFTED']
 		liftup_timer = 0
+	print('arrow')
 	hp -= current_attack.damage
 	
 	if hp <= 0:
