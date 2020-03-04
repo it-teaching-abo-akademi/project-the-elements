@@ -1,23 +1,18 @@
 extends Control
 
 #constants
-const ACTIONS = global.ACTIONS
-const CONFIG_FILE = global.CONFIG_FILE
+var ACTIONS = global.ACTIONS
+var CONFIG_FILE = global.CONFIG_FILE
 
 
 var button #register the pressed button
 var action #register the action being handled
-
+var config
 			
 			
 func save_to_config(section, key, value):
-	var config = ConfigFile.new()
-	var err = config.load(CONFIG_FILE)
-	if err:
-		print("Error loading config file: ", err)
-	else:
-		config.set_value(section, key, value)
-		config.save(CONFIG_FILE)
+	config.set_value(section, key, value)
+	config.save(CONFIG_FILE)
 		
 		
 func wait_for_input(action_bind):
@@ -41,6 +36,7 @@ func _input(event):
 			#remove the previous key binding
 			for old_event in InputMap.get_action_list(action):
 				InputMap.action_erase_event(action, old_event)
+				check_duplicate(scancode, old_event)
 			InputMap.action_add_event(action, event)
 			save_to_config("key_settings", action, scancode)
 
@@ -54,7 +50,24 @@ func _ready():
 		button.connect("pressed", self, "wait_for_input", [action])
 	#stop processing input until a button is pressed
 	set_process_input(false)
-
+	config = ConfigFile.new()
+	var err = config.load(CONFIG_FILE)
+	if err:
+		print("Error loading config file: ", err)
 
 func _on_Back_pressed():
 	get_tree().change_scene("res://Scenes/Menu.tscn")
+
+func check_duplicate(new_scancode, old_event):
+	for action_name in config.get_section_keys("key_settings"):
+			#get the key scancode corresponding to the saved string
+			var scancode = OS.find_scancode_from_string(config.get_value("key_settings" , action_name))
+			var scancode_str = OS.get_scancode_string(scancode)
+			print(scancode_str, " ", new_scancode)
+			if scancode_str == new_scancode:
+				for event in InputMap.get_action_list(action_name):
+					if event is InputEventKey:
+						InputMap.action_erase_event(action_name, event)
+				InputMap.action_add_event(action_name, old_event)
+				save_to_config("key_settings", action_name, OS.get_scancode_string(old_event.scancode))
+				get_node("bindings").get_node(action_name).get_node("Button").text = OS.get_scancode_string(old_event.scancode)
