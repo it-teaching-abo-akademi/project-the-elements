@@ -103,7 +103,20 @@ func can_lance(type, amount):
 				return false
 			else:
 				return true
-
+				
+func get_level(type):
+	match type:
+		0:
+			return SPRING.level
+		1:
+			return KNIFE.level
+		2:
+			return FIRE.level
+		3:
+			return WOOD.level
+		4:
+			return EARTH.level
+	
 func change_value(type,amount):
 	match type:
 		0:
@@ -112,7 +125,8 @@ func change_value(type,amount):
 			else:
 				SPRING.current_amount -= amount
 				if SPRING.current_amount > SPRING.max_amount:
-					SPRING.max_amount = SPRING.max_amount * 1.2
+					SPRING.level += 1
+					SPRING.max_amount = 100 + SPRING.level * 15
 					SPRING.current_amount = SPRING.max_amount / 2
 				emit_signal("change_value",0,SPRING.current_amount)
 				emit_signal("change_max_value",0,SPRING.max_amount)
@@ -123,7 +137,8 @@ func change_value(type,amount):
 			else:
 				KNIFE.current_amount -= amount
 				if KNIFE.current_amount > KNIFE.max_amount:
-					KNIFE.max_amount = KNIFE.max_amount * 1.2
+					KNIFE.level += 1
+					KNIFE.max_amount = 100 + KNIFE.level * 15
 					KNIFE.current_amount = KNIFE.max_amount / 2
 				emit_signal("change_value",1,KNIFE.current_amount)
 				emit_signal("change_max_value",1,KNIFE.max_amount)
@@ -134,7 +149,8 @@ func change_value(type,amount):
 			else:
 				FIRE.current_amount -= amount
 				if FIRE.current_amount > FIRE.max_amount:
-					FIRE.max_amount = FIRE.max_amount * 1.2
+					FIRE.level += 1
+					FIRE.max_amount = 100 + FIRE.level * 15
 					FIRE.current_amount = FIRE.max_amount / 2
 				emit_signal("change_value",2,FIRE.current_amount)
 				emit_signal("change_max_value",2,FIRE.max_amount)
@@ -145,7 +161,8 @@ func change_value(type,amount):
 			else:
 				WOOD.current_amount -= amount
 				if WOOD.current_amount > WOOD.max_amount:
-					WOOD.max_amount = WOOD.max_amount * 1.2
+					WOOD.level += 1
+					WOOD.max_amount = 100 + WOOD.level * 15
 					WOOD.current_amount = WOOD.max_amount / 2
 				emit_signal("change_value",3,WOOD.current_amount)
 				emit_signal("change_max_value",3,WOOD.max_amount)
@@ -156,7 +173,8 @@ func change_value(type,amount):
 			else:
 				EARTH.current_amount -= amount
 				if EARTH.current_amount > EARTH.max_amount:
-					EARTH.max_amount = EARTH.max_amount * 1.2
+					EARTH.level += 1
+					EARTH.max_amount = 100 + EARTH.level * 15
 					EARTH.current_amount = EARTH.max_amount / 2
 				emit_signal("change_value",4,EARTH.current_amount)
 				emit_signal("change_max_value",4,EARTH.max_amount)

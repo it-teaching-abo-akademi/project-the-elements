@@ -71,6 +71,8 @@ func load_data():
 	if name == null:
 		return
 	var data = statistics.get(name)
+	if data == null:
+		return
 	if data.has("damage"):
 		damage = data["damage"]
 	if data.has("range_effect"):

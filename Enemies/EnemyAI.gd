@@ -34,7 +34,7 @@ var knockback_timer = 0.5
 var liftup_timer = 0.5
 var cd = 4 # attack cd
 
-onready var element_handler = global.current_scene.get_node("ElementHandler")
+onready var element_handler = get_tree().get_current_scene().get_node("ElementHandler")
 
 
 func _physics_process(delta):
@@ -158,7 +158,6 @@ func fire_ball():
 	var fireball_instance = global.fireball_scene.instance()
 	player = global.current_scene.get_node('Player')
 	var direction = (- to_global($Sprite.position) + player.position).normalized()
-	print(direction)
 	fireball_instance.linear_velocity = direction * 500
 	fireball_instance.position = to_global($Sprite.position)
 	fireball_instance.position.x += face_direction * 20
@@ -194,12 +193,10 @@ func _on_Player_weapon_attack(attack : Action):
 	# TODO: the check is just for debug, it needs to be improved
 	current_attack = attack
 	if current_attack.name.begins_with('Thrust') && motion_state != global.ENEMY_MOTION_STATES['ISKNOCKED']:
-		print('knocked')
 		last_motion_state = motion_state
 		motion_state = global.ENEMY_MOTION_STATES['ISKNOCKED']
 		knockback_timer = 0
 	elif current_attack.name.ends_with('ift') && motion_state != global.ENEMY_MOTION_STATES['ISLIFTED']:
-		print('lift')
 		last_motion_state = motion_state
 		motion_state = global.ENEMY_MOTION_STATES['ISLIFTED']
 		liftup_timer = 0
