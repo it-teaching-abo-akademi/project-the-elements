@@ -1006,7 +1006,7 @@ tile_data = PoolIntArray( -1703937, 1610612738, 65539, -1769472, 1610612738, 0, 
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 16.0794, 315.279 )
-scale = Vector2( 0.88, 0.760001 )
+scale = Vector2( 0.688347, 0.680731 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
 
@@ -1029,21 +1029,27 @@ position = Vector2( 4787.89, -1272.11 )
 
 [node name="Fireball3" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 893.91, -609.777 )
+scale = Vector2( 0.69833, 0.669359 )
 
 [node name="Arrow1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 4332.35, 1226.45 )
 
 [node name="Lift1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 2896.78, -1388.72 )
+scale = Vector2( 4.86293, 3.66668 )
 
 [node name="Lift2" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 1060.78, -951.337 )
+scale = Vector2( 2.56736, 3.06498 )
 
 [node name="Slash1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 5138.29, -300.122 )
+scale = Vector2( 5.4424, 4.00902 )
 
 [node name="Slash2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 1042.08, 1279.81 )
+scale = Vector2( 3.70406, 3.16667 )
 
 [node name="Thrust1" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 2066.83, 636.961 )
+scale = Vector2( 4.09035, 3.83335 )

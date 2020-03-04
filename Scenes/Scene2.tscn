@@ -1200,23 +1200,23 @@ target_stage = "res://Scenes/Scene3.tscn"
 
 [node name="Slash1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 724.836, 53.3358 )
-scale = Vector2( 0.281358, 0.240001 )
+scale = Vector2( 0.752466, 0.749053 )
 
 [node name="Thrust1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 282.836, 48.3358 )
-scale = Vector2( 0.244376, 0.236165 )
+scale = Vector2( 0.764374, 0.836164 )
 
 [node name="Thrust2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 468.836, -25.6642 )
-scale = Vector2( 0.256011, 0.218842 )
+scale = Vector2( 0.622156, 1.03555 )
 
 [node name="Fireball1" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 211.836, 156.336 )
-scale = Vector2( 0.249607, 0.240001 )
+position = Vector2( 210.836, 167.336 )
+scale = Vector2( 0.274397, 0.235198 )
 
 [node name="Fireball2" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 763.837, 156.336 )
-scale = Vector2( 0.23338, 0.259278 )
+position = Vector2( 759.837, 174.336 )
+scale = Vector2( 0.19338, 0.179278 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 494, 273 )
