@@ -49,6 +49,12 @@ var jump_timer = 0.0
 var skip_frame = false
 var jump_is_bigger = false
 
+var knockback_timer = 0
+var isKnockedBack = false
+var liftup_timer = 0
+var isLiftedUp = false
+var attack_get: Action = null
+
 signal character_attack
 signal start_gesture
 signal update_element_indicators
@@ -58,6 +64,22 @@ func _draw():
 
 #movement
 func _physics_process(delta):
+	if isKnockedBack:
+		knockback_timer += delta
+		move_and_collide(UP*attack_get.knock_power*delta)
+		move_and_collide(Vector2(attack_get.face_direction,0)*attack_get.knock_power*80*delta)
+		if(knockback_timer>attack_get.knock_power/2):
+			isKnockedBack = false
+		return
+	
+	if isLiftedUp:
+		liftup_timer += delta
+		move_and_collide(UP*attack_get.knock_power*80*delta)
+		move_and_collide(Vector2(attack_get.face_direction,0)*attack_get.knock_power*20*delta)
+		if(liftup_timer>attack_get.knock_power/2):
+			isLiftedUp = false
+		return
+	
 	motion.y += GRAVITY
 	if current_jump != null and not skip_frame:
 		if jump_timer == 0.0:
@@ -225,15 +247,23 @@ func element_collected(type, amount):
 func _on_EnemyModel_attack(attack : Action):
 	if protected:
 		protected = false
-		global.current_scene.get_node("Player/Sprite/Shield").visible = false
+		get_tree().get_current_scene().get_node("Player/Sprite/Shield").visible = false
 		return
+	get_node('Camera').play("vibration")
 	get_node("Status/Health")._get_hit(attack.damage)
-	position.x += attack.face_direction * 30
+	attack_get = attack
+	if attack_get.name.begins_with('Thrust'):
+		isKnockedBack = true
+		knockback_timer = 0
+	elif attack_get.name.ends_with('ift'):
+		isLiftedUp = true
+		liftup_timer = 0
+	#position.x += attack.face_direction * 30
 
 
 func _ready():
 	mouse_effect = preload("res://Attack/MouseEffect.tscn")
-	global.current_scene.get_node("Player/Sprite/Shield").visible = false
+	get_tree().get_current_scene().get_node("Player/Sprite/Shield").visible = false
 	var indicator = get_tree().get_current_scene().get_node("CanvasLayer/Indicators")
 	connect("update_element_indicators",indicator,"_on_Player_update_element_indicators")
 	update_element_indicators()
@@ -310,7 +340,7 @@ func complete_gesture(gesture, button):
 			if elements.change_value(action.element, action.element_consume) == false:
 				return
 			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
-			global.current_scene.get_node("Player/Sprite/Recover").emitting = true
+			get_tree().get_current_scene().get_node("Player/Sprite/Recover").emitting = true
 			get_node("Status/Health")._get_hit(action.damage)
 			return
 		"Earth":
@@ -322,7 +352,7 @@ func complete_gesture(gesture, button):
 				return
 			#element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 			protected = true
-			global.current_scene.get_node("Player/Sprite/Shield").visible = true
+			get_tree().get_current_scene().get_node("Player/Sprite/Shield").visible = true
 			return
 	if action.name == null:
 		return

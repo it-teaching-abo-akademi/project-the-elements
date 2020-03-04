@@ -42,7 +42,7 @@ func _is_dead():
 	if(IS_DEAD):
 		IS_DEAD = false
 		CURRENT_HP = MAX_HP
-		get_tree().change_scene("res://Scenes/MainStage.tscn")	
+		get_tree().change_scene("res://Scenes/Menu.tscn")	
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

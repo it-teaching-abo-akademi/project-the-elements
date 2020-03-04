@@ -15,7 +15,10 @@ const FRICTION = 0.02
 var max_hp = 200
 var current_hp = 200
 
-enum ENEMY_STATES {SLEEP, PATROL, CHASE, ATTACK, DEAD, KNOCK, LIFT,IDLE} # states of enemies
+ # states of enemies
+enum ENEMY_MOTION_STATES {SLEEP, PATROL, CHASE, TURN, ISKNOCKED, ISLIFTED}
+enum ENEMY_LOGIC_STATES {ATTACK, IDLE}
+
 enum DIRECTION {
 	DIR_N,
 	DIR_S,

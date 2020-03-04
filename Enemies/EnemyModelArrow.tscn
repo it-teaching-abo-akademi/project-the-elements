@@ -35,10 +35,10 @@
 extents = Vector2( 53.9627, 93.3529 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 1166.8
+radius = 680.438
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1136.54, 572.707 )
+extents = Vector2( 872.121, 430.081 )
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -8892,7 +8892,7 @@ tracks/9/keys = {
 render_priority = 2
 shader = ExtResource( 6 )
 shader_param/Brightness = 0.0
-shader_param/dissolve = 0.0
+shader_param/dissolve = null
 shader_param/WeaponTexture = ExtResource( 7 )
 
 [sub_resource type="RectangleShape2D" id=180]
@@ -8904,7 +8904,7 @@ render_priority = 3
 [sub_resource type="ShaderMaterial" id=182]
 shader = ExtResource( 16 )
 shader_param/Brightness = null
-shader_param/dissolve = -1.0
+shader_param/dissolve = null
 shader_param/WeaponTexture = ExtResource( 17 )
 
 [sub_resource type="CapsuleShape2D" id=183]
@@ -8920,7 +8920,7 @@ radius = 65.0
 [sub_resource type="ShaderMaterial" id=186]
 shader = ExtResource( 25 )
 shader_param/Brightness = null
-shader_param/dissolve = -1.0
+shader_param/dissolve = null
 shader_param/WeaponTexture = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=187]
@@ -8945,13 +8945,13 @@ position = Vector2( 4.31696, 2.15848 )
 scale = Vector2( 1.86232, 0.84 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_range"]
-position = Vector2( -29.6916, -18.5925 )
+position = Vector2( 10.6342, -342.756 )
 shape = SubResource( 2 )
 
 [node name="Attack_range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
-position = Vector2( 0.454109, -121.579 )
+position = Vector2( 2.0249, -246.527 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -8988,6 +8988,8 @@ shadow_color = Color( 0, 0, 0, 0.576471 )
 
 [node name="AttackSystem" type="Node2D" parent="."]
 editor/display_folded = true
+scale = Vector2( 2, 2 )
+z_index = 2
 
 [node name="Weapon" parent="AttackSystem" instance=ExtResource( 5 )]
 
@@ -9271,10 +9273,18 @@ scale = Vector2( 1.76, 5.04 )
 shape = SubResource( 187 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -38.8266, 10.7065 )
-scale = Vector2( 2.59721, 2.28 )
+position = Vector2( -4.80191, -80.7544 )
+rotation = 0.436332
+scale = Vector2( 2.597, 2.74 )
 enabled = true
-cast_to = Vector2( 0, 46 )
+cast_to = Vector2( 0, 80 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( 1.84628, 1.24051 )
+rotation = 1.5708
+scale = Vector2( 2.597, 2.74 )
+enabled = true
+cast_to = Vector2( 0, 60 )
 [connection signal="body_entered" from="Detect_range" to="." method="_on_Detect_range_body_entered"]
 [connection signal="body_exited" from="Detect_range" to="." method="_on_Detect_range_body_exited"]
 [connection signal="body_entered" from="Attack_range" to="." method="_on_Attack_range_body_entered"]

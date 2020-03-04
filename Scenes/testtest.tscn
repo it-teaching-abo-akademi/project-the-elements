@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Scenes/Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Earth_background.png" type="Texture" id=2]
@@ -9,9 +9,6 @@
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/EnemyModelArrow.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Enemies/EnemyModelThrust.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemies/EnemyModelSlash.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemies/EnemyModelLift.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 21, 21, 0, 21, 21, 0 )
@@ -1018,18 +1015,6 @@ target_stage = "res://Scenes/Scene2.tscn"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 255.298, 181.263 )
+[node name="Slash1" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 411.173, 299.057 )
 scale = Vector2( 0.290153, 0.244224 )
-
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 679.837, 294.336 )
-scale = Vector2( 0.385562, 0.360001 )
-
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 664.007, 168.971 )
-scale = Vector2( 0.360001, 0.359999 )
-
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 323.728, 308.946 )
-scale = Vector2( 0.234969, 0.200001 )
