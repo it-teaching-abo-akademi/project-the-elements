@@ -1,6 +1,6 @@
 [gd_scene load_steps=218 format=2]
 
-[ext_resource path="res://Enemies/EnemyModelArrow.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/EnemyAI.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/sprites/Fire_origin.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/sprites/dust.png" type="Texture" id=3]
 [ext_resource path="res://Lighting/light.png" type="Texture" id=4]
@@ -8924,24 +8924,24 @@ shader_param/dissolve = -1.0
 shader_param/WeaponTexture = ExtResource( 26 )
 
 [sub_resource type="RectangleShape2D" id=187]
-extents = Vector2( 35.0668, 16.5517 )
+extents = Vector2( 35.0668, 16.3726 )
 
 [node name="EnemyModel" type="KinematicBody2D"]
 position = Vector2( 294.836, 273.336 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.05, 0.05 )
 z_index = 1
 texture = ExtResource( 2 )
 offset = Vector2( 0, 7.33945 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.31696, 4.7432 )
+scale = Vector2( 0.32, 0.33 )
 shape = SubResource( 1 )
 
 [node name="Detect_range" type="Area2D" parent="."]
-visible = false
 position = Vector2( 4.31696, 2.15848 )
 scale = Vector2( 1.86232, 0.84 )
 
@@ -8950,7 +8950,6 @@ position = Vector2( -29.6916, -18.5925 )
 shape = SubResource( 2 )
 
 [node name="Attack_range" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
 position = Vector2( 0.454109, -2.32776 )
@@ -8963,8 +8962,8 @@ anims/stable = SubResource( 4 )
 [node name="Dust" type="Particles2D" parent="."]
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 0.478431 )
-position = Vector2( -2.04578, 96.3526 )
-scale = Vector2( 4.81236, 1.36502 )
+position = Vector2( 0.024, 22.89 )
+scale = Vector2( 1.67, 1.365 )
 amount = 4
 lifetime = 0.8
 speed_scale = 0.3
@@ -9268,15 +9267,22 @@ color = Color( 0.980392, 0.992157, 0.803922, 1 )
 [node name="Wall_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_detect"]
-position = Vector2( 1.25595, 9.92752 )
-scale = Vector2( 1.76, 5.04 )
+position = Vector2( 3.06097, 9.02502 )
+scale = Vector2( 0.98, 2.32 )
 shape = SubResource( 187 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -38.8266, 10.7065 )
+position = Vector2( 1.00769, -22.6774 )
 scale = Vector2( 2.59721, 2.28 )
 enabled = true
 cast_to = Vector2( 0, 46 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( 1.84628, 1.24051 )
+rotation = 1.5708
+scale = Vector2( 2.597, 2.74 )
+enabled = true
+cast_to = Vector2( 0, 60 )
 [connection signal="body_entered" from="Detect_range" to="." method="_on_Detect_range_body_entered"]
 [connection signal="body_exited" from="Detect_range" to="." method="_on_Detect_range_body_exited"]
 [connection signal="body_entered" from="Attack_range" to="." method="_on_Attack_range_body_entered"]

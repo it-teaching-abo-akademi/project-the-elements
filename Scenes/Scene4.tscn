@@ -1,6 +1,6 @@
 [gd_scene load_steps=103 format=2]
 
-[ext_resource path="res://Scenes/Scene4.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ArenaScenes.gd" type="Script" id=1]
 [ext_resource path="res://Maps/wood_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=4]
@@ -1021,29 +1021,29 @@ target_stage = "res://Scenes/Scene5.tscn"
 [node name="Enemies" type="Node2D" parent="."]
 scale = Vector2( 0.207096, 0.239999 )
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 9 )]
+[node name="Fireball1" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 6472.79, -1331.35 )
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 9 )]
+[node name="Fireball2" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 4787.89, -1272.11 )
 
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 9 )]
+[node name="Fireball3" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 893.91, -609.777 )
 
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 10 )]
+[node name="Arrow1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 4332.35, 1226.45 )
 
-[node name="EnemyModel5" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Lift1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 2896.78, -1388.72 )
 
-[node name="EnemyModel6" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Lift2" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 1060.78, -951.337 )
 
-[node name="EnemyModel7" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Slash1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 5138.29, -300.122 )
 
-[node name="EnemyModel8" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Slash2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 1042.08, 1279.81 )
 
-[node name="EnemyModel9" parent="Enemies" instance=ExtResource( 13 )]
+[node name="Thrust1" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 2066.83, 636.961 )

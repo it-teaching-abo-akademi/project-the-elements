@@ -1,6 +1,6 @@
 [gd_scene load_steps=106 format=2]
 
-[ext_resource path="res://Scenes/Scene3.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ArenaScenes.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Spring_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Elements-collectable/ElementHandler.tscn" type="PackedScene" id=4]
@@ -1057,25 +1057,25 @@ target_stage = "res://Scenes/Scene4.tscn"
 [node name="Enemies" type="Node2D" parent="."]
 scale = Vector2( 0.32, 0.32 )
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 10 )]
+[node name="Slash1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 5132.1, 993.557 )
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 10 )]
+[node name="Slash2" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 6648.72, 997.02 )
 
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 10 )]
+[node name="Slash3" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 2431.26, 983.169 )
 
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Thrust1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 679.185, 1381.37 )
 
-[node name="EnemyModel5" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Fireball1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 5966.59, 668.073 )
 
-[node name="EnemyModel6" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Fireball2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 942.862, 381.889 )
 
-[node name="EnemyModel7" parent="Enemies" instance=ExtResource( 13 )]
+[node name="Arrow1" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 7420.75, 573.021 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

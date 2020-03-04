@@ -1,6 +1,6 @@
 [gd_scene load_steps=218 format=2]
 
-[ext_resource path="res://Enemies/EnemyModelFireball.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/EnemyAI.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/sprites/Fire_origin.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/sprites/dust.png" type="Texture" id=3]
 [ext_resource path="res://Lighting/light.png" type="Texture" id=4]
@@ -9276,6 +9276,13 @@ position = Vector2( -38.8266, 10.7065 )
 scale = Vector2( 2.59721, 2.28 )
 enabled = true
 cast_to = Vector2( 0, 46 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( 1.84628, 1.24051 )
+rotation = 1.5708
+scale = Vector2( 2.597, 2.74 )
+enabled = true
+cast_to = Vector2( 0, 60 )
 [connection signal="body_entered" from="Detect_range" to="." method="_on_Detect_range_body_entered"]
 [connection signal="body_exited" from="Detect_range" to="." method="_on_Detect_range_body_exited"]
 [connection signal="body_entered" from="Attack_range" to="." method="_on_Attack_range_body_entered"]

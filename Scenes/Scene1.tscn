@@ -1,6 +1,6 @@
 [gd_scene load_steps=102 format=2]
 
-[ext_resource path="res://Scenes/Scene1.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ArenaScenes.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Earth_background.png" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Sound/Earth.ogg" type="AudioStream" id=4]
@@ -1012,24 +1012,24 @@ position = Vector2( 49.9962, 302.86 )
 scale = Vector2( 0.68, 0.60723 )
 
 [node name="ChangeStage" parent="." instance=ExtResource( 8 )]
-position = Vector2( 580.309, 306.851 )
-scale = Vector2( 0.355303, 0.4835 )
+position = Vector2( 581.965, 316.236 )
+scale = Vector2( 0.431554, 0.4835 )
 target_stage = "res://Scenes/Scene2.tscn"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 9 )]
+[node name="Arrow1" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 255.298, 181.263 )
 scale = Vector2( 0.290153, 0.244224 )
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 10 )]
+[node name="Thrust1" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 679.837, 294.336 )
-scale = Vector2( 0.385562, 0.360001 )
+scale = Vector2( 0.669341, 0.674015 )
 
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 664.007, 168.971 )
-scale = Vector2( 0.360001, 0.359999 )
+[node name="Slash1" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 676.504, 182.938 )
+scale = Vector2( 0.837449, 0.805316 )
 
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 323.728, 308.946 )
-scale = Vector2( 0.234969, 0.200001 )
+[node name="Lift1" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 299.47, 315.562 )
+scale = Vector2( 0.609487, 0.560001 )

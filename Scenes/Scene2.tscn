@@ -1,6 +1,6 @@
 [gd_scene load_steps=123 format=2]
 
-[ext_resource path="res://Scenes/Scene2.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ArenaScenes.gd" type="Script" id=1]
 [ext_resource path="res://Maps/fire_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Maps/FireInjection.tscn" type="PackedScene" id=4]
@@ -1198,23 +1198,23 @@ target_stage = "res://Scenes/Scene3.tscn"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Slash1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 724.836, 53.3358 )
 scale = Vector2( 0.281358, 0.240001 )
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Thrust1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 282.836, 48.3358 )
 scale = Vector2( 0.244376, 0.236165 )
 
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Thrust2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 468.836, -25.6642 )
 scale = Vector2( 0.256011, 0.218842 )
 
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 13 )]
+[node name="Fireball1" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 211.836, 156.336 )
 scale = Vector2( 0.249607, 0.240001 )
 
-[node name="EnemyModel5" parent="Enemies" instance=ExtResource( 13 )]
+[node name="Fireball2" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( 763.837, 156.336 )
 scale = Vector2( 0.23338, 0.259278 )
 
