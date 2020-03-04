@@ -33,6 +33,8 @@ onready var enemies = get_tree().get_current_scene().get_node('Enemies')
 onready var elements = get_tree().get_current_scene().get_node("Player/Status/Elements")
 onready var arrow_scene = preload("res://Elements/Arrow.tscn")
 onready var fireball_scene = preload("res://Elements/Fireball.tscn")
+onready var element_handler = get_tree().get_current_scene().get_node("ElementHandler")
+onready var player = get_tree().get_current_scene().get_node("Player")
 
 func display_attack(attack:Action):
 	if attack == null:
@@ -71,11 +73,15 @@ func _process(delta):
 				"Slash":
 					print("Heavy slash")
 					current_attack.name = "Heavy slash"
+					if can_attack() == false:
+						return
 					state_machine.travel("HeavySlash_generate"+str_direction)
 					clear_record()
 				"Lift":
 					print("180 lift")
 					current_attack.name = "180 lift"
+					if can_attack() == false:
+						return
 					state_machine.travel("180Lift_generate"+str_direction)
 					clear_record()
 				_:
@@ -90,11 +96,15 @@ func _process(delta):
 						"Lift":
 							print("Fast lift")
 							current_attack.name = "Fast lift"
+							if can_attack() == false:
+								return
 							state_machine.travel("FastLift_act"+str_direction)
 							clear_record()
 						"Thrust":
 							print("Thrust 2")
 							current_attack.name = "Thrust 2"
+							if can_attack() == false:
+								return
 							state_machine.travel("Thrust_act"+str_direction+" 2")
 							record_attack(current_attack)
 						_:
@@ -107,11 +117,15 @@ func _process(delta):
 						"Thrust":
 							print("ThrustX3")
 							current_attack.name = "ThrustX3"
+							if can_attack() == false:
+								return
 							state_machine.travel("ThrustX3_act"+str_direction)
 							clear_record()
 						"Slash":
 							print("Sword wave")
 							current_attack.name = "Sword wave"
+							if can_attack() == false:
+								return
 							state_machine.travel("SwordWave_act"+str_direction)
 							clear_record()
 						_:
@@ -124,11 +138,15 @@ func _process(delta):
 				"Thrust":
 					print("Laijutsu")
 					current_attack.name = "Laijutsu"
+					if can_attack() == false:
+						return
 					state_machine.travel("Laijutsu_act"+str_direction)
 					clear_record()
 				"Lift":
 					print("Short lift")
 					current_attack.name = "Short lift"
+					if can_attack() == false:
+						return
 					state_machine.travel("ShortLift_act"+str_direction)
 					clear_record()
 				_:
@@ -173,6 +191,8 @@ func count_time():
 func basic_attack():
 	if current_attack == null:
 		return
+	if can_attack() == false:
+		return
 	match current_attack.name:
 		"Arrow":
 			var arrow_instance = arrow_scene.instance()
@@ -196,6 +216,15 @@ func basic_attack():
 			state_machine.travel(current_attack.name+"_generate"+str_direction)
 	
 	
+func can_attack():
+	current_attack.load_data()
+	if elements.can_lance(current_attack.element, current_attack.element_consume) == false:
+		return false
+	else:
+		elements.change_value(current_attack.element, current_attack.element_consume)
+		element_handler.createElement(current_attack.element, current_attack.element_consume, Vector2(player.position[0] + rand_range(-3, 3), player.position[1]))
+		return true
+		
 func _ready():
 	state_machine = get_node("../AnimationTree").get("parameters/playback")
 	var count = 0

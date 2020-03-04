@@ -76,6 +76,34 @@ func change_max_value(type,v):
 			emit_signal("change_max_value",4,v)
 		
 
+func can_lance(type, amount):
+	match type:
+		0:
+			if(SPRING.current_amount<amount):
+				return false
+			else:
+				return true
+		1:
+			if(KNIFE.current_amount<amount):
+				return false
+			else:
+				return true
+		2:
+			if(FIRE.current_amount<amount):
+				return false
+			else:
+				return true
+		3:
+			if(WOOD.current_amount<amount):
+				return false
+			else:
+				return true
+		4:
+			if(EARTH.current_amount<amount):
+				return false
+			else:
+				return true
+
 func change_value(type,amount):
 	match type:
 		0:

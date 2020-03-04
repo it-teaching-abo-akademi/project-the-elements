@@ -5,7 +5,7 @@
 [ext_resource path="res://Dialogue/TriggerDialogue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Elements/ChangeStage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Elements/character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/EnemyModelThrust.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/EnemyModelArrow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Elements-collectable/ElementHandler.gd" type="Script" id=7]
 [ext_resource path="res://UI/CanvasLayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Music/Altar.ogg" type="AudioStream" id=9]
@@ -49,9 +49,8 @@ z_index = 1
 position = Vector2( 256.842, 384.211 )
 
 [node name="EnemyModel" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 588.831, -257.314 )
-scale = Vector2( 0.800002, 0.64 )
-z_index = -1
+position = Vector2( 545.892, -245.513 )
+scale = Vector2( 0.359997, 0.4 )
 
 [node name="ElementHandler" type="Node2D" parent="."]
 script = ExtResource( 7 )

@@ -305,9 +305,6 @@ func complete_gesture(gesture, button):
 					action.name = "Lift"
 				elif angle_with_x >7*PI/6 and angle_with_x <= 3*PI/2:
 					action.name = "Slash"
-			if elements.change_value(action.element, action.element_consume) == false:
-				return
-			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 		"Fire":
 			if face_direction == -1:
 				if angle_with_x > PI/2 and angle_with_x <= 3*PI/2:
@@ -323,9 +320,6 @@ func complete_gesture(gesture, button):
 				else:
 					action.name = "Arrow"
 					action.direction = - gesture.get_direction()
-			if elements.change_value(action.element, action.element_consume) == false:
-				return
-			element_handler.createElement(action.element, action.element_consume, Vector2(position[0] + rand_range(-3, 3), position[1]))
 		"Spring":
 			action.name = "Fly"
 			action.load_data()
