@@ -12,8 +12,9 @@ func _on_Fireball_body_entered(body):
 	else:
 		fireball.face_direction = 1
 	if "Player" in body.name:
+		fireball.damage *= 0.3
 		body._on_EnemyModel_attack(fireball)
-	if "Enemy" in body.name:
+	if body.name.begins_with('ESlash')||body.name.begins_with('EThrust')||body.name.begins_with('EFireball')||body.name.begins_with('EArrow')||body.name.begins_with('ELift'):
 		body._on_Player_weapon_attack(fireball)
 	$ExplodeEffect.emitting = true
 	queue_free()

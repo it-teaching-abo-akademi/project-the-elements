@@ -125,7 +125,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP, false, 4, PI/4, true)
 
 func magma():
-	get_node("Status/Health")._get_hit(10)
+	get_node("Status/Health")._get_hit(3)
 	if(motion.y >= 0):
 		motion.y = -200
 	else:

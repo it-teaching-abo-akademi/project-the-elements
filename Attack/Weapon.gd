@@ -72,14 +72,14 @@ func _process(delta):
 					clear_record()
 				"Slash":
 					print("Heavy slash")
-					current_attack.name = "Heavy slash"
+					current_attack.name = "HeavySlash"
 					if can_attack() == false:
 						return
 					state_machine.travel("HeavySlash_generate"+str_direction)
 					clear_record()
 				"Lift":
 					print("180 lift")
-					current_attack.name = "180 lift"
+					current_attack.name = "PowerLift"
 					if can_attack() == false:
 						return
 					state_machine.travel("180Lift_generate"+str_direction)
@@ -95,14 +95,14 @@ func _process(delta):
 					match current_attack.name:
 						"Lift":
 							print("Fast lift")
-							current_attack.name = "Fast lift"
+							current_attack.name = "Lift"
 							if can_attack() == false:
 								return
 							state_machine.travel("FastLift_act"+str_direction)
 							clear_record()
 						"Thrust":
-							print("Thrust 2")
-							current_attack.name = "Thrust 2"
+							print("Thrust2")
+							current_attack.name = "Thrust"
 							if can_attack() == false:
 								return
 							state_machine.travel("Thrust_act"+str_direction+" 2")
@@ -112,18 +112,18 @@ func _process(delta):
 							basic_attack()
 							clear_record()
 							record_attack(current_attack)
-				"Thrust 2":
+				"Thrust":
 					match current_attack.name:
 						"Thrust":
-							print("ThrustX3")
-							current_attack.name = "ThrustX3"
+							print("TripleThrust")
+							current_attack.name = "TripleThrust"
 							if can_attack() == false:
 								return
 							state_machine.travel("ThrustX3_act"+str_direction)
 							clear_record()
 						"Slash":
 							print("Sword wave")
-							current_attack.name = "Sword wave"
+							current_attack.name = "SwordWave"
 							if can_attack() == false:
 								return
 							state_machine.travel("SwordWave_act"+str_direction)
@@ -144,7 +144,7 @@ func _process(delta):
 					clear_record()
 				"Lift":
 					print("Short lift")
-					current_attack.name = "Short lift"
+					current_attack.name = "Lift"
 					if can_attack() == false:
 						return
 					state_machine.travel("ShortLift_act"+str_direction)
@@ -199,6 +199,7 @@ func basic_attack():
 			arrow_instance.linear_velocity = current_attack.direction * 800
 			arrow_instance.position = to_global(current_attack.position)
 			arrow_instance.position.x += current_attack.face_direction * 20
+			arrow_instance.position.y -= 10
 			arrow_instance.rotation = current_attack.direction.angle()
 			arrow_instance.scale.x = current_attack.face_direction
 			arrow_instance.add_collision_exception_with(root.get_node("Player"))

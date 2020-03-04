@@ -15,6 +15,9 @@ const FRICTION = 0.02
 var max_hp = 200
 var current_hp = 200
 
+#game level
+var level = 0
+
  # states of enemies
 enum ENEMY_MOTION_STATES {SLEEP, PATROL, CHASE, TURN, ISKNOCKED, ISLIFTED}
 enum ENEMY_LOGIC_STATES {ATTACK, IDLE}
@@ -32,10 +35,10 @@ enum DIRECTION {
 
 #Elements
 var SPRING = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
-var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":10}
+var KNIFE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+var FIRE = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+var WOOD = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
+var EARTH = {"max_amount":100, "current_amount":100,"level":1,"recovery_speed":2}
 
 
 var current_scene = null
