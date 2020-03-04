@@ -1,6 +1,6 @@
 [gd_scene load_steps=109 format=2]
 
-[ext_resource path="res://Scenes/Scene5.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ArenaScenes.gd" type="Script" id=1]
 [ext_resource path="res://Maps/knife_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Maps/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Maps/Thorn_vertical.gd" type="Script" id=4]
@@ -1103,32 +1103,39 @@ stream = ExtResource( 10 )
 autoplay = true
 
 [node name="Enemies" type="Node2D" parent="."]
-editor/display_folded = true
 scale = Vector2( 0.159998, 0.200533 )
 
-[node name="EnemyModel" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Thrust1" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 15414.6, -1918.44 )
+scale = Vector2( 5.25008, 3.79256 )
 
-[node name="EnemyModel2" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Thrust2" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 17963.8, -3172.13 )
+scale = Vector2( 6.50007, 5.18884 )
 
-[node name="EnemyModel3" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Slash1" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 18095.7, -1953.5 )
+scale = Vector2( 5.00005, 3.39363 )
 
-[node name="EnemyModel4" parent="Enemies" instance=ExtResource( 12 )]
+[node name="Slash2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 9469.96, -559.537 )
+scale = Vector2( 5.14327, 4.36492 )
 
-[node name="EnemyModel5" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 3118.8, 1632.23 )
+[node name="Lift1" parent="Enemies" instance=ExtResource( 13 )]
+position = Vector2( 4820.64, 1123.9 )
+scale = Vector2( 5.9638, 6.24989 )
 
-[node name="EnemyModel6" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 1151.91, 1605.93 )
+[node name="Slash3" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 2794.04, 1563.07 )
+scale = Vector2( 5.7223, 4.36573 )
 
-[node name="EnemyModel7" parent="Enemies" instance=ExtResource( 14 )]
+[node name="Arrow1" parent="Enemies" instance=ExtResource( 14 )]
 position = Vector2( 10310, -869.91 )
+scale = Vector2( 2.22657, 1.37748 )
 
-[node name="EnemyModel8" parent="Enemies" instance=ExtResource( 15 )]
+[node name="Fireball1" parent="Enemies" instance=ExtResource( 15 )]
 position = Vector2( 5709.54, 801.33 )
+scale = Vector2( 2.67602, 1.5134 )
 [connection signal="body_entered" from="Thorn_vertical" to="Thorn_vertical" method="_on_Thorn_vertical_body_entered"]
 [connection signal="body_entered" from="Thorn_right" to="Thorn_right" method="_on_Thorn_right_body_entered"]
 [connection signal="body_entered" from="Thorn_left" to="Thorn_left" method="_on_Thorn_left_body_entered"]

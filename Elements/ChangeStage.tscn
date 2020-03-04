@@ -62,12 +62,12 @@ scale_curve = SubResource( 4 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 14.5224 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -3.15125, -3.78149 )
 shape = SubResource( 1 )
 
